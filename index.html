@@ -1781,84 +1781,88 @@ document.querySelectorAll("[data-panel]").forEach(button => {
 
         if (panel === "profile") {
 
-            const p = PNGPD.player;
+    const p = PNGPD.player;
 
-            PNGPD.openPanel(
-                "👤 Player Profile",
-                `
-                <h3>${p?.full_name || "Player"}</h3>
-                <br>
-                <p>Level: ${p?.level || 1}</p>
-                <p>XP: ${p?.xp || 0}</p>
-                <p>Academic Rating: ${p?.academic_rating || 0}</p>
-                <p>Coins: ${PNGPD.moneyFormat(p?.coins || 0)}</p>
-                `
-            );
+    PNGPD.openPanel(
+        "👤 Player Profile",
+        `
+        <div style="
+            text-align:center;
+            padding:10px;
+        ">
 
-        }
+            <div style="
+                width:110px;
+                height:110px;
+                margin:0 auto 15px;
+                border-radius:50%;
+                overflow:hidden;
+                border:3px solid #00d49b;
+                background:#102b3d;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                font-size:45px;
+            ">
+                ${
+                    p?.avatar_url
+                    ?
+                    `<img
+                        src="${p.avatar_url}"
+                        alt="Profile photo"
+                        style="
+                            width:100%;
+                            height:100%;
+                            object-fit:cover;
+                        "
+                    >`
+                    :
+                    "👤"
+                }
+            </div>
 
-        else if (panel === "missions") {
+            <h2 style="
+                margin:5px 0 8px;
+                color:white;
+            ">
+                ${p?.full_name || "PLAYER"}
+            </h2>
 
-            PNGPD.openPanel(
-                "🎯 Missions",
-                `
-                <p>
-                Complete academic, exploration and
-                challenge missions to earn XP and
-                fictional coins.
-                </p>
-                `
-            );
+            <p style="
+                color:#9bb0c2;
+                margin-bottom:20px;
+            ">
+                ${p?.email || ""}
+            </p>
 
-        }
+            <p>⭐ Level: ${p?.level || 1}</p>
 
-        else if (panel === "ranks") {
+            <p style="margin-top:8px">
+                ⭐ XP: ${p?.xp || 0}
+            </p>
 
-            PNGPD.openPanel(
-                "🏆 Rankings",
-                `
-                <p>
-                Global PNGPD leaderboard will be
-                connected to the Supabase database.
-                </p>
-                `
-            );
+            <p style="margin-top:8px">
+                🎓 Academic Rating:
+                ${p?.academic_rating || 0}
+            </p>
 
-        }
+            <p style="margin-top:8px">
+                💰 Coins:
+                ${PNGPD.moneyFormat(p?.coins || 0)}
+            </p>
 
-        else if (panel === "items") {
+            <button
+                class="btn primary"
+                onclick="PNGPDProfile.openPhotoPicker()"
+            >
+                📷 CHANGE PROFILE PHOTO
+            </button>
 
-            PNGPD.openPanel(
-                "🎒 Inventory",
-                `
-                <p>
-                Your equipment, academic kits,
-                properties and vehicles will appear here.
-                </p>
-                `
-            );
+        </div>
+        `
+    );
 
-        }
-
-        else if (panel === "menu") {
-
-            PNGPD.openPanel(
-                "☰ Menu",
-                `
-                <button
-                    class="btn secondary"
-                    onclick="PNGPD.logout()"
-                >
-                    LOG OUT
-                </button>
-                `
-            );
-
-        }
-
-    });
-
-});
+}
 
 
 /* ===============================
