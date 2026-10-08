@@ -1,560 +1,749 @@
-y<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PNGPD LIFE</title>
 
-    <meta name="theme-color" content="#06172b">
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
 
-    <title>PNGPD LIVE</title>
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#06111d;
+    color:#fff;
+}
 
-    <link rel="stylesheet" href="style.css">
+button,input{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+.screen{
+    width:100%;
+    height:100vh;
+}
+
+.hidden{
+    display:none!important;
+}
+
+/* ================= SPLASH ================= */
+
+#splashScreen{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    background:
+        radial-gradient(circle at center,rgba(0,200,150,.18),transparent 45%),
+        linear-gradient(145deg,#020811,#061827);
+}
+
+.splash-box{
+    width:90%;
+    max-width:500px;
+}
+
+.splash-icon{
+    font-size:60px;
+    margin-bottom:10px;
+}
+
+.splash-title{
+    font-size:clamp(40px,10vw,70px);
+    font-weight:900;
+    color:#00d49b;
+}
+
+.splash-subtitle{
+    margin-top:10px;
+    color:#9bb0c2;
+    letter-spacing:2px;
+}
+
+.splash-loading{
+    margin-top:35px;
+    color:#00d49b;
+    font-size:14px;
+}
+
+/* ================= START ================= */
+
+#startScreen,
+#registrationScreen{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:
+        radial-gradient(circle at center,rgba(0,200,150,.12),transparent 45%),
+        #06111d;
+}
+
+.card{
+    width:min(440px,100%);
+    background:#0d1d2d;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:22px;
+    padding:28px;
+    box-shadow:0 20px 50px rgba(0,0,0,.4);
+}
+
+.logo{
+    text-align:center;
+    font-size:50px;
+    margin-bottom:5px;
+}
+
+.title{
+    text-align:center;
+    font-size:36px;
+    font-weight:900;
+    color:#00d49b;
+}
+
+.subtitle{
+    text-align:center;
+    color:#9bb0c2;
+    margin:8px 0 25px;
+}
+
+.btn{
+    width:100%;
+    border:0;
+    border-radius:12px;
+    padding:15px;
+    margin-top:10px;
+    font-weight:800;
+}
+
+.primary{
+    background:#00d49b;
+    color:#00150f;
+}
+
+.secondary{
+    background:#172a3d;
+    color:#fff;
+}
+
+.input{
+    width:100%;
+    padding:14px;
+    margin-top:7px;
+    margin-bottom:13px;
+    border-radius:10px;
+    border:1px solid rgba(255,255,255,.1);
+    background:#071522;
+    color:#fff;
+    outline:none;
+}
+
+.label{
+    color:#a7b8c7;
+    font-size:13px;
+}
+
+/* ================= ASSESSMENT ================= */
+
+#assessmentScreen{
+    overflow:auto;
+    background:#06111d;
+    padding:20px;
+}
+
+.assessment-wrap{
+    width:min(850px,100%);
+    margin:auto;
+}
+
+.assessment-top{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.stat{
+    background:#0d1d2d;
+    padding:10px 14px;
+    border-radius:10px;
+    border:1px solid rgba(255,255,255,.07);
+}
+
+.progress{
+    width:100%;
+    height:7px;
+    background:#172b3e;
+    border-radius:10px;
+    overflow:hidden;
+    margin:15px 0;
+}
+
+.progress div{
+    width:0%;
+    height:100%;
+    background:#00d49b;
+    transition:.3s;
+}
+
+.question-card{
+    background:#0d1d2d;
+    border-radius:18px;
+    padding:25px;
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.question-number{
+    color:#00d49b;
+    font-weight:800;
+}
+
+.question{
+    font-size:21px;
+    line-height:1.5;
+    margin:18px 0;
+}
+
+.option{
+    width:100%;
+    padding:15px;
+    margin-top:10px;
+    text-align:left;
+    color:#fff;
+    background:#162b3e;
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:11px;
+}
+
+.option.selected{
+    background:rgba(0,212,155,.18);
+    border-color:#00d49b;
+}
+
+.controls{
+    display:flex;
+    gap:10px;
+    margin-top:15px;
+}
+
+.controls button{
+    flex:1;
+    padding:13px;
+    border-radius:10px;
+    border:0;
+    background:#172a3d;
+    color:#fff;
+}
+
+/* ================= RESULT ================= */
+
+#assessmentResultScreen{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:#06111d;
+}
+
+.result{
+    width:min(500px,100%);
+    text-align:center;
+    background:#0d1d2d;
+    border-radius:22px;
+    padding:30px;
+}
+
+.result-score{
+    font-size:65px;
+    color:#00d49b;
+    font-weight:900;
+    margin:15px;
+}
+
+/* ================= GAME ================= */
+
+#gameScreen{
+    position:relative;
+    overflow:hidden;
+    background:#174936;
+}
+
+#gameHUD{
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    z-index:20;
+    min-height:70px;
+    padding:9px;
+    background:rgba(4,14,24,.95);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
+}
+
+.player-info{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.avatar{
+    width:43px;
+    height:43px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:#00d49b;
+    color:#00150f;
+    font-weight:900;
+}
+
+.name{
+    font-weight:800;
+}
+
+.mini{
+    font-size:11px;
+    color:#8fa5b8;
+}
+
+.hud-stats{
+    display:flex;
+    gap:5px;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+}
+
+.hud-stat{
+    padding:7px 9px;
+    border-radius:8px;
+    background:#102437;
+    font-size:11px;
+}
+
+.coins{
+    color:#ffc857;
+}
+
+/* ================= WORLD ================= */
+
+#gameWorld{
+    position:absolute;
+    inset:0;
+    overflow:auto;
+    padding-top:70px;
+    padding-bottom:80px;
+}
+
+.world{
+    position:relative;
+    width:1200px;
+    height:850px;
+    background:
+        linear-gradient(rgba(30,100,67,.7),rgba(30,100,67,.7)),
+        repeating-linear-gradient(
+            0deg,
+            transparent 0,
+            transparent 49px,
+            rgba(255,255,255,.035) 50px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent 0,
+            transparent 49px,
+            rgba(255,255,255,.035) 50px
+        );
+}
+
+.world-title{
+    position:absolute;
+    top:30px;
+    left:40px;
+    font-size:28px;
+    font-weight:900;
+}
+
+.world-subtitle{
+    position:absolute;
+    top:67px;
+    left:42px;
+    color:#c0d2c9;
+}
+
+.location{
+    position:absolute;
+    min-width:135px;
+    min-height:85px;
+    border-radius:15px;
+    background:#0d1d2d;
+    color:#fff;
+    border:2px solid rgba(255,255,255,.1);
+    box-shadow:0 8px 20px rgba(0,0,0,.3);
+    font-weight:800;
+    padding:10px;
+}
+
+.location:hover{
+    border-color:#00d49b;
+    transform:translateY(-3px);
+}
+
+.location span{
+    display:block;
+    font-size:28px;
+    margin-bottom:5px;
+}
+
+/* positions */
+
+.department{left:100px;top:170px}
+.library{left:370px;top:150px}
+.lab{left:650px;top:170px}
+.hostel{left:930px;top:150px}
+.cafeteria{left:180px;top:400px}
+.arena{left:470px;top:400px}
+.bank{left:760px;top:400px}
+.shop{left:1000px;top:390px}
+.properties{left:330px;top:620px}
+.garage{left:650px;top:620px}
+.tournaments{left:900px;top:610px}
+
+/* ================= PLAYER ================= */
+
+#playerCharacter{
+    position:absolute;
+    left:570px;
+    top:310px;
+    z-index:10;
+    width:52px;
+    height:52px;
+    border-radius:50%;
+    background:#00d49b;
+    border:3px solid white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#00150f;
+    font-weight:900;
+}
+
+#worldPlayerName{
+    position:absolute;
+    left:560px;
+    top:365px;
+    z-index:11;
+    font-size:11px;
+    font-weight:800;
+}
+
+/* ================= BOTTOM NAV ================= */
+
+.bottom-nav{
+    position:absolute;
+    bottom:8px;
+    left:8px;
+    right:8px;
+    z-index:30;
+    min-height:62px;
+    background:rgba(4,14,24,.96);
+    border-radius:17px;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+}
+
+.bottom-nav button{
+    background:none;
+    color:#9aabba;
+    border:0;
+    font-size:11px;
+}
+
+.bottom-nav button span{
+    display:block;
+    font-size:22px;
+    margin-bottom:3px;
+}
+
+/* ================= PANELS ================= */
+
+#gamePanel{
+    position:fixed;
+    inset:0;
+    z-index:100;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:15px;
+    background:rgba(0,0,0,.72);
+}
+
+.panel{
+    width:min(600px,100%);
+    max-height:85vh;
+    overflow:auto;
+    background:#0d1d2d;
+    border-radius:20px;
+    padding:22px;
+}
+
+.panel-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px;
+}
+
+.close{
+    width:35px;
+    height:35px;
+    border:0;
+    border-radius:50%;
+    background:#172a3d;
+    color:#fff;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:600px){
+
+    #gameHUD{
+        min-height:64px;
+    }
+
+    .hud-stat{
+        padding:5px 6px;
+        font-size:10px;
+    }
+
+    .avatar{
+        width:37px;
+        height:37px;
+    }
+
+    .world{
+        width:1100px;
+    }
+
+    .question{
+        font-size:18px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-<!-- =========================================================
-     SPLASH SCREEN
-========================================================= -->
+<!-- =====================================================
+     SPLASH
+===================================================== -->
 
-<section id="splashScreen" class="screen splash-screen">
-
-    <div class="splash-content">
-
-        <div class="game-logo-large">
-            ⛽
-        </div>
-
-        <h1>PNGPD LIVE</h1>
-
-        <p class="splash-subtitle">
+<section id="splashScreen" class="screen">
+    <div class="splash-box">
+        <div class="splash-icon">⛽</div>
+        <div class="splash-title">PNGPD LIFE</div>
+        <div class="splash-subtitle">
             PETROLEUM & NATURAL GAS PROCESSING TECHNOLOGY
-        </p>
-
-        <p class="splash-tagline">
-            Study • Earn • Build • Compete
-        </p>
-
-        <div class="loading-container">
-            <div
-                id="loadingProgress"
-                class="loading-progress"
-            ></div>
         </div>
-
-        <small>
+        <div class="splash-loading">
             Initializing PNGPD Virtual Campus...
-        </small>
-
+        </div>
     </div>
-
 </section>
 
 
-<!-- =========================================================
-     START SCREEN
-========================================================= -->
+<!-- =====================================================
+     START
+===================================================== -->
 
 <section id="startScreen" class="screen hidden">
-
-    <div class="start-wrapper">
-
-        <div class="game-logo-large">
-            ⛽
+    <div class="card">
+        <div class="logo">⛽</div>
+        <div class="title">PNGPD LIFE</div>
+        <div class="subtitle">
+            Study • Earn • Build • Compete
         </div>
 
-        <h1>
-            PNGPD LIVE
-        </h1>
-
-        <p class="game-tagline">
-            Your Department. Your World.
-        </p>
-
-
-        <div class="feature-grid">
-
-            <div class="feature-card">
-                <span>📚</span>
-                <strong>STUDY</strong>
-                <small>
-                    Master your courses
-                </small>
-            </div>
-
-            <div class="feature-card">
-                <span>💰</span>
-                <strong>EARN</strong>
-                <small>
-                    Build your virtual wealth
-                </small>
-            </div>
-
-            <div class="feature-card">
-                <span>🏠</span>
-                <strong>BUILD</strong>
-                <small>
-                    Own properties & vehicles
-                </small>
-            </div>
-
-            <div class="feature-card">
-                <span>⚔️</span>
-                <strong>COMPETE</strong>
-                <small>
-                    Battle other students
-                </small>
-            </div>
-
-            <div class="feature-card">
-                <span>🏆</span>
-                <strong>RANK</strong>
-                <small>
-                    Climb the leaderboard
-                </small>
-            </div>
-
-            <div class="feature-card">
-                <span>👥</span>
-                <strong>SOCIAL</strong>
-                <small>
-                    Build your student network
-                </small>
-            </div>
-
-        </div>
-
-
-        <button
-            id="startGameBtn"
-            class="primary-btn large-btn"
-        >
-            ENTER PNGPD LIVE
+        <button class="btn primary" id="showRegisterBtn">
+            REGISTER
         </button>
 
-
-        <p class="fiction-notice">
-            ⚠️ All currency, properties and transactions in PNGPD LIVE
-            are fictional and have no real-world monetary value.
-        </p>
-
+        <button class="btn secondary" id="showLoginBtn">
+            LOGIN
+        </button>
     </div>
-
 </section>
 
 
-<!-- =========================================================
-     PLAYER REGISTRATION
-========================================================= -->
+<!-- =====================================================
+     REGISTER
+===================================================== -->
 
-<section
-    id="registrationScreen"
-    class="screen hidden"
->
+<section id="registrationScreen" class="screen hidden">
+    <div class="card">
 
-    <div class="form-card">
-
-        <div class="form-header">
-
-            <div class="form-icon">
-                👨🏽‍🎓
-            </div>
-
-            <h1>
-                CREATE PLAYER
-            </h1>
-
-            <p>
-                Build your identity in PNGPD LIVE.
-            </p>
-
+        <div class="title">Create Account</div>
+        <div class="subtitle">
+            Start your PNGPD LIFE
         </div>
 
+        <label class="label">Full Name</label>
+        <input
+            id="registerFullName"
+            class="input"
+            type="text"
+            placeholder="Enter your full name"
+        >
 
-        <form id="registrationForm">
+        <label class="label">Gmail / Email</label>
+        <input
+            id="registerEmail"
+            class="input"
+            type="email"
+            placeholder="example@gmail.com"
+        >
 
-            <div class="form-group">
+        <label class="label">Password</label>
+        <input
+            id="registerPassword"
+            class="input"
+            type="password"
+            placeholder="Create a password"
+        >
 
-                <label for="playerName">
-                    Full Name
-                </label>
+        <button class="btn primary" id="registerBtn">
+            CREATE ACCOUNT
+        </button>
 
-                <input
-                    id="playerName"
-                    type="text"
-                    placeholder="Enter your full name"
-                    required
-                >
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label for="playerEmail">
-                    Email Address
-                </label>
-
-                <input
-                    id="playerEmail"
-                    type="email"
-                    placeholder="Enter your email"
-                    required
-                >
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label for="playerNickname">
-                    Player Nickname
-                </label>
-
-                <input
-                    id="playerNickname"
-                    type="text"
-                    placeholder="Choose your nickname"
-                    maxlength="20"
-                    required
-                >
-
-            </div>
-
-
-            <div class="avatar-selection">
-
-                <label>
-                    Choose Avatar
-                </label>
-
-                <div class="avatar-options">
-
-                    <button
-                        type="button"
-                        class="avatar-choice selected"
-                        data-avatar="👨🏽‍🎓"
-                    >
-                        👨🏽‍🎓
-                    </button>
-
-                    <button
-                        type="button"
-                        class="avatar-choice"
-                        data-avatar="👨🏾‍🎓"
-                    >
-                        👨🏾‍🎓
-                    </button>
-
-                    <button
-                        type="button"
-                        class="avatar-choice"
-                        data-avatar="👩🏽‍🎓"
-                    >
-                        👩🏽‍🎓
-                    </button>
-
-                    <button
-                        type="button"
-                        class="avatar-choice"
-                        data-avatar="👩🏾‍🎓"
-                    >
-                        👩🏾‍🎓
-                    </button>
-
-                    <button
-                        type="button"
-                        class="avatar-choice"
-                        data-avatar="🧑🏽‍🔬"
-                    >
-                        🧑🏽‍🔬
-                    </button>
-
-                    <button
-                        type="button"
-                        class="avatar-choice"
-                        data-avatar="👨🏽‍🔧"
-                    >
-                        👨🏽‍🔧
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <button
-                type="submit"
-                class="primary-btn large-btn"
-            >
-                START ASSESSMENT
-            </button>
-
-        </form>
+        <button class="btn secondary" id="backToStartBtn">
+            BACK
+        </button>
 
     </div>
-
 </section>
 
 
-<!-- =========================================================
-     PGP 122 CBT ASSESSMENT
-========================================================= -->
+<!-- =====================================================
+     LOGIN
+===================================================== -->
 
-<section
-    id="assessmentScreen"
-    class="screen hidden"
->
+<section id="loginScreen" class="screen hidden">
+    <div class="card">
 
-    <div class="cbt-wrapper">
+        <div class="title">Welcome Back</div>
+        <div class="subtitle">
+            Login to PNGPD LIFE
+        </div>
+
+        <label class="label">Email</label>
+        <input
+            id="loginEmail"
+            class="input"
+            type="email"
+            placeholder="Your email"
+        >
+
+        <label class="label">Password</label>
+        <input
+            id="loginPassword"
+            class="input"
+            type="password"
+            placeholder="Your password"
+        >
+
+        <button class="btn primary" id="loginBtn">
+            LOGIN
+        </button>
+
+        <button class="btn secondary" id="backFromLoginBtn">
+            BACK
+        </button>
+
+    </div>
+</section>
 
 
-        <!-- CBT HEADER -->
+<!-- =====================================================
+     ASSESSMENT
+===================================================== -->
 
-        <header class="cbt-header">
+<section id="assessmentScreen" class="screen hidden">
 
-            <div class="cbt-brand">
+    <div class="assessment-wrap">
 
-                <div class="cbt-logo">
-                    ⛽
-                </div>
+        <div class="assessment-top">
 
-                <div>
-
-                    <h2>
-                        PNGPD LIVE
-                    </h2>
-
-                    <p>
-                        PGP 122 COMPUTER BASED TEST
-                    </p>
-
-                </div>
-
+            <div class="stat">
+                Question:
+                <strong id="assessmentQuestionNumber">1</strong>
             </div>
 
-
-            <div class="cbt-exam-info">
-
-                <span>
-                    50 QUESTIONS
-                </span>
-
-                <span>
-                    60 MINUTES
-                </span>
-
+            <div class="stat">
+                Answered:
+                <strong id="assessmentAnsweredCount">0</strong>
             </div>
 
-
-            <div class="cbt-timer-box">
-
-                <small>
-                    TIME REMAINING
-                </small>
-
-                <strong id="assessmentTimer">
-                    60:00
-                </strong>
-
-            </div>
-
-        </header>
-
-
-        <!-- CBT STATISTICS -->
-
-        <div class="cbt-stat-bar">
-
-            <div>
-                <span>
-                    Answered
-                </span>
-
-                <strong id="assessmentAnsweredCount">
-                    0
-                </strong>
-            </div>
-
-
-            <div>
-                <span>
-                    Unanswered
-                </span>
-
-                <strong id="assessmentUnansweredCount">
-                    50
-                </strong>
-            </div>
-
-
-            <div>
-                <span>
-                    Marked
-                </span>
-
-                <strong id="assessmentMarkedCount">
-                    0
-                </strong>
+            <div class="stat">
+                Time:
+                <strong id="assessmentTimer">20:00</strong>
             </div>
 
         </div>
 
-
-        <!-- PROGRESS -->
-
-        <div class="assessment-progress">
-
-            <div
-                id="assessmentProgressBar"
-                class="assessment-progress-fill"
-            ></div>
-
+        <div class="progress">
+            <div id="assessmentProgressBar"></div>
         </div>
 
+        <div class="question-card">
 
-        <!-- CBT BODY -->
+            <div class="question-number" id="assessmentQuestionTopic">
+                PNGPD ASSESSMENT
+            </div>
 
-        <div class="cbt-layout">
+            <div class="question" id="assessmentQuestion">
+                Loading assessment...
+            </div>
 
+            <div id="assessmentOptions"></div>
 
-            <!-- QUESTION PANEL -->
+            <div class="controls">
 
-            <main class="cbt-question-card">
-
-                <div class="question-header">
-
-                    <div>
-
-                        <span
-                            id="assessmentQuestionNumber"
-                            class="question-number"
-                        >
-                            Question 1 of 50
-                        </span>
-
-                        <span
-                            id="assessmentQuestionTopic"
-                            class="question-topic"
-                        >
-                            Filtration
-                        </span>
-
-                    </div>
-
-
-                    <span
-                        id="assessmentQuestionDifficulty"
-                        class="difficulty-badge"
-                    >
-                        Medium
-                    </span>
-
-                </div>
-
-
-                <div class="question-body">
-
-                    <h3 id="assessmentQuestion">
-                        Question will appear here.
-                    </h3>
-
-                    <div
-                        id="assessmentOptions"
-                        class="cbt-options"
-                    ></div>
-
-                </div>
-
-
-                <!-- CBT CONTROLS -->
-
-                <div class="cbt-controls">
-
-                    <button
-                        id="prevAssessment"
-                        type="button"
-                        class="secondary-btn"
-                    >
-                        ← Previous
-                    </button>
-
-
-                    <button
-                        id="markAssessment"
-                        type="button"
-                        class="mark-btn"
-                    >
-                        ☆ Mark for Review
-                    </button>
-
-
-                    <button
-                        id="nextAssessment"
-                        type="button"
-                        class="primary-btn"
-                    >
-                        Next →
-                    </button>
-
-                </div>
-
-            </main>
-
-
-            <!-- QUESTION PALETTE -->
-
-            <aside class="cbt-sidebar">
-
-                <h3>
-                    QUESTION PAPER
-                </h3>
-
-                <p>
-                    Select any question to jump to it.
-                </p>
-
-
-                <div
-                    id="assessmentPalette"
-                    class="question-palette"
-                ></div>
-
-
-                <div class="palette-legend">
-
-                    <div>
-                        <span class="legend-box current"></span>
-                        Current
-                    </div>
-
-                    <div>
-                        <span class="legend-box answered"></span>
-                        Answered
-                    </div>
-
-                    <div>
-                        <span class="legend-box marked"></span>
-                        Marked
-                    </div>
-
-                    <div>
-                        <span class="legend-box unanswered"></span>
-                        Unanswered
-                    </div>
-
-                </div>
-
-
-                <button
-                    id="submitAssessment"
-                    type="button"
-                    class="submit-exam-btn"
-                >
-                    SUBMIT EXAM
+                <button id="prevAssessment">
+                    ← Previous
                 </button>
 
-            </aside>
+                <button id="markAssessment">
+                    Mark
+                </button>
+
+                <button id="nextAssessment">
+                    Next →
+                </button>
+
+            </div>
+
+            <button
+                id="submitAssessment"
+                class="btn primary"
+                style="margin-top:15px"
+            >
+                SUBMIT ASSESSMENT
+            </button>
 
         </div>
 
@@ -563,99 +752,53 @@ y<!DOCTYPE html>
 </section>
 
 
-<!-- =========================================================
-     ASSESSMENT RESULT
-========================================================= -->
+<!-- =====================================================
+     RESULT
+===================================================== -->
 
-<section
-    id="assessmentResultScreen"
-    class="screen hidden"
->
+<section id="assessmentResultScreen" class="screen hidden">
 
-    <div class="result-card">
+    <div class="result">
 
-        <div class="result-icon">
-            🏆
+        <h2>Assessment Complete</h2>
+
+        <div
+            id="assessmentResultScore"
+            class="result-score"
+        >
+            0
         </div>
 
-        <h1>
-            ASSESSMENT COMPLETE
-        </h1>
-
-        <p>
-            Welcome to PNGPD LIVE.
+        <p id="assessmentResultPercentage">
+            0%
         </p>
 
+        <p
+            id="assessmentResultRating"
+            style="margin-top:10px"
+        >
+            Academic Rating
+        </p>
 
-        <div class="result-score">
+        <p
+            id="assessmentResultCapital"
+            style="margin-top:10px;color:#ffc857"
+        >
+            ₦0
+        </p>
 
-            <strong id="assessmentResultScore">
-                0 / 50
-            </strong>
-
-            <span id="assessmentResultPercentage">
-                0%
-            </span>
-
-        </div>
-
-
-        <div class="result-details">
-
-            <div class="result-stat">
-                <span>
-                    Academic Rating
-                </span>
-
-                <strong id="assessmentResultRating">
-                    Rookie
-                </strong>
-            </div>
-
-
-            <div class="result-stat">
-                <span>
-                    Starting Capital
-                </span>
-
-                <strong id="assessmentResultCapital">
-                    ₦0
-                </strong>
-            </div>
-
-
-            <div class="result-stat">
-                <span>
-                    Time Used
-                </span>
-
-                <strong id="assessmentTimeUsed">
-                    00:00
-                </strong>
-            </div>
-
-        </div>
-
-
-        <div class="result-message">
-
-            <h3>
-                Your PNGPD journey begins now.
-            </h3>
-
-            <p>
-                Study harder, earn more, build your empire
-                and climb the PNGPD leaderboard.
-            </p>
-
-        </div>
-
+        <p
+            id="assessmentTimeUsed"
+            style="margin-top:10px;color:#9bb0c2"
+        >
+            Time Used: --
+        </p>
 
         <button
             id="enterGameFromResult"
-            class="primary-btn large-btn"
+            class="btn primary"
         >
-            ENTER CAMPUS
+            ENTER PNGPD LIFE
         </button>
 
     </div>
@@ -663,520 +806,163 @@ y<!DOCTYPE html>
 </section>
 
 
-<!-- =========================================================
-     MAIN GAME
-========================================================= -->
+<!-- =====================================================
+     GAME
+===================================================== -->
 
-<section
-    id="gameScreen"
-    class="screen hidden"
->
+<section id="gameScreen" class="screen hidden">
 
+    <header id="gameHUD">
 
-    <!-- =====================================================
-         GAME TOP HUD
-    ====================================================== -->
+        <div class="player-info">
 
-    <header class="game-hud">
-
-
-        <!-- PLAYER -->
-
-        <div class="player-hud">
-
-            <div
-                id="hudAvatar"
-                class="hud-avatar"
-            >
+            <div id="hudAvatar" class="avatar">
                 👨🏽‍🎓
             </div>
 
-            <div class="hud-player-info">
+            <div>
+                <div
+                    id="hudPlayerName"
+                    class="name"
+                >
+                    PLAYER
+                </div>
 
-                <strong id="hudPlayerName">
-                    Player
-                </strong>
-
-                <span id="hudRating">
-                    Rookie
-                </span>
-
+                <div class="mini">
+                    Level <span id="hudLevel">1</span>
+                    • Rating <span id="hudRating">0</span>
+                </div>
             </div>
 
         </div>
 
+        <div class="hud-stats">
 
-        <!-- LEVEL -->
+            <div class="hud-stat coins">
+                💰 <span id="hudCoins">₦0</span>
+            </div>
 
-        <div class="hud-stat level-stat">
+            <div class="hud-stat">
+                ⭐ <span id="hudXP">0</span> XP
+            </div>
 
-            <small>
-                LEVEL
-            </small>
-
-            <strong id="hudLevel">
-                1
-            </strong>
-
-        </div>
-
-
-        <!-- MONEY -->
-
-        <div class="hud-stat money-stat">
-
-            <small>
-                💰 CASH
-            </small>
-
-            <strong id="hudCoins">
-                ₦0
-            </strong>
+            <div class="hud-stat">
+                ⚡ <span id="hudEnergy">100</span>
+            </div>
 
         </div>
-
-
-        <!-- ENERGY -->
-
-        <div class="hud-stat">
-
-            <small>
-                ⚡ ENERGY
-            </small>
-
-            <strong id="hudEnergy">
-                100
-            </strong>
-
-        </div>
-
-
-        <!-- NOTIFICATION -->
-
-        <button
-            id="notificationBtn"
-            class="hud-icon-btn"
-        >
-            🔔
-        </button>
-
-
-        <!-- MENU -->
-
-        <button
-            id="gameMenuBtn"
-            class="hud-icon-btn"
-        >
-            ☰
-        </button>
 
     </header>
 
 
-    <!-- =====================================================
-         XP BAR
-    ====================================================== -->
+    <main id="gameWorld">
 
-    <div class="xp-container">
+        <div class="world">
 
-        <div class="xp-label">
+            <div class="world-title">
+                🏫 PNGPD VIRTUAL CAMPUS
+            </div>
 
-            <span>
-                EXPERIENCE
-            </span>
-
-            <span id="hudXP">
-                0 / 1000 XP
-            </span>
-
-        </div>
-
-        <div class="xp-bar">
-
-            <div
-                id="xpProgress"
-                class="xp-progress"
-            ></div>
-
-        </div>
-
-    </div>
-
-
-    <!-- =====================================================
-         CAMPUS WORLD
-    ====================================================== -->
-
-    <main
-        id="gameWorld"
-        class="game-world"
-    >
-
-        <div class="campus-background">
-
-
-            <!-- SKY / DECORATION -->
-
-            <div class="campus-title">
-                <strong>
-                    PTI • PNGPD CAMPUS
-                </strong>
-
-                <span>
-                    Effurun Virtual Campus
-                </span>
+            <div class="world-subtitle">
+                Explore • Study • Earn • Compete
             </div>
 
 
-            <!-- ROADS -->
-
-            <div class="road road-horizontal"></div>
-
-            <div class="road road-vertical"></div>
-
-            <div class="road road-diagonal"></div>
-
-
-            <!-- =================================================
-                 DEPARTMENT
-            ================================================== -->
-
             <button
-                class="building department-building"
+                class="location department"
                 data-location="department"
             >
-
-                <span class="building-icon">
-                    🏢
-                </span>
-
-                <strong>
-                    PNGPD
-                </strong>
-
-                <small>
-                    Department
-                </small>
-
+                <span>🏫</span>
+                PNGPD Department
             </button>
 
-
-            <!-- =================================================
-                 LIBRARY
-            ================================================== -->
-
             <button
-                class="building library-building"
+                class="location library"
                 data-location="library"
             >
-
-                <span class="building-icon">
-                    📚
-                </span>
-
-                <strong>
-                    LIBRARY
-                </strong>
-
-                <small>
-                    Study & CBT
-                </small>
-
+                <span>📚</span>
+                Library
             </button>
 
-
-            <!-- =================================================
-                 LAB
-            ================================================== -->
-
             <button
-                class="building lab-building"
+                class="location lab"
                 data-location="lab"
             >
-
-                <span class="building-icon">
-                    🧪
-                </span>
-
-                <strong>
-                    LABORATORY
-                </strong>
-
-                <small>
-                    Practical
-                </small>
-
+                <span>🧪</span>
+                Laboratory
             </button>
 
-
-            <!-- =================================================
-                 HOSTEL
-            ================================================== -->
-
             <button
-                class="building hostel-building"
+                class="location hostel"
                 data-location="hostel"
             >
-
-                <span class="building-icon">
-                    🏠
-                </span>
-
-                <strong>
-                    HOSTEL
-                </strong>
-
-                <small>
-                    Rest
-                </small>
-
+                <span>🏠</span>
+                Hostel
             </button>
 
-
-            <!-- =================================================
-                 CAFETERIA
-            ================================================== -->
-
             <button
-                class="building cafeteria-building"
+                class="location cafeteria"
                 data-location="cafeteria"
             >
-
-                <span class="building-icon">
-                    🍛
-                </span>
-
-                <strong>
-                    CAFETERIA
-                </strong>
-
-                <small>
-                    Food & Energy
-                </small>
-
+                <span>☕</span>
+                Cafeteria
             </button>
 
-
-            <!-- =================================================
-                 ARENA
-            ================================================== -->
-
             <button
-                class="building arena-building"
+                class="location arena"
                 data-location="arena"
             >
-
-                <span class="building-icon">
-                    ⚔️
-                </span>
-
-                <strong>
-                    ARENA
-                </strong>
-
-                <small>
-                    PvP Battles
-                </small>
-
+                <span>🏟️</span>
+                Arena
             </button>
 
-
-            <!-- =================================================
-                 BANK
-            ================================================== -->
-
             <button
-                class="building bank-building"
+                class="location bank"
                 data-location="bank"
             >
-
-                <span class="building-icon">
-                    🏦
-                </span>
-
-                <strong>
-                    BANK
-                </strong>
-
-                <small>
-                    Finance
-                </small>
-
+                <span>🏦</span>
+                Bank
             </button>
 
-
-            <!-- =================================================
-                 SHOP
-            ================================================== -->
-
             <button
-                class="building shop-building"
+                class="location shop"
                 data-location="shop"
             >
-
-                <span class="building-icon">
-                    🛒
-                </span>
-
-                <strong>
-                    SHOP
-                </strong>
-
-                <small>
-                    Items & Gear
-                </small>
-
+                <span>🛒</span>
+                Shop
             </button>
 
-
-            <!-- =================================================
-                 PROPERTY DISTRICT
-            ================================================== -->
-
             <button
-                class="building property-building"
+                class="location properties"
                 data-location="properties"
             >
-
-                <span class="building-icon">
-                    🏘️
-                </span>
-
-                <strong>
-                    PROPERTY
-                </strong>
-
-                <small>
-                    Houses & Estates
-                </small>
-
+                <span>🏡</span>
+                Properties
             </button>
 
-
-            <!-- =================================================
-                 VEHICLE GARAGE
-            ================================================== -->
-
             <button
-                class="building garage-building"
+                class="location garage"
                 data-location="garage"
             >
-
-                <span class="building-icon">
-                    🚗
-                </span>
-
-                <strong>
-                    GARAGE
-                </strong>
-
-                <small>
-                    Vehicles
-                </small>
-
+                <span>🚗</span>
+                Garage
             </button>
-
-
-            <!-- =================================================
-                 TOURNAMENT CENTER
-            ================================================== -->
 
             <button
-                class="building tournament-building"
+                class="location tournaments"
                 data-location="tournaments"
             >
-
-                <span class="building-icon">
-                    🏆
-                </span>
-
-                <strong>
-                    TOURNAMENT
-                </strong>
-
-                <small>
-                    Competitions
-                </small>
-
+                <span>🏆</span>
+                Tournaments
             </button>
 
 
-            <!-- =================================================
-                 PLAYER CHARACTER
-            ================================================== -->
-
-            <div
-                id="playerCharacter"
-                class="player-character"
-            >
-
-                <div class="player-shadow"></div>
-
-                <div
-                    id="worldPlayerAvatar"
-                    class="player-avatar"
-                >
-                    👨🏽‍🎓
-                </div>
-
-                <span id="worldPlayerName">
-                    Player
-                </span>
-
+            <div id="playerCharacter">
+                👨🏽‍🎓
             </div>
 
-
-            <!-- =================================================
-                 CAMPAIGN BANNERS
-            ================================================== -->
-
-            <div class="campaign-banner banner-one">
-
-                🗳️
-
-                <strong>
-                    VOTE PATRICK
-                    FOR VICE PRESIDENT
-                </strong>
-
-            </div>
-
-
-            <div class="campaign-banner banner-two">
-
-                ⭐
-                PATRICK FOR VICE PRESIDENT
-                ⭐
-
-            </div>
-
-
-            <div class="campaign-banner banner-three">
-
-                🗳️
-
-                YOUR VOICE.
-                YOUR CHOICE.
-
-            </div>
-
-
-            <!-- CAMPUS DECOR -->
-
-            <div class="campus-tree tree-one">
-                🌳
-            </div>
-
-            <div class="campus-tree tree-two">
-                🌴
-            </div>
-
-            <div class="campus-tree tree-three">
-                🌳
-            </div>
-
-            <div class="campus-tree tree-four">
-                🌴
+            <div id="worldPlayerName">
+                PLAYER
             </div>
 
         </div>
@@ -1184,156 +970,31 @@ y<!DOCTYPE html>
     </main>
 
 
-    <!-- =====================================================
-         LOCATION NOTIFICATION
-    ====================================================== -->
-
-    <div
-        id="locationNotification"
-        class="location-notification hidden"
-    >
-
-        <span id="locationIcon">
-            📍
-        </span>
-
-        <div>
-
-            <strong id="locationName">
-                Location
-            </strong>
-
-            <p id="locationDescription">
-                Description
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <!-- =====================================================
-         QUICK ACTION BAR
-    ====================================================== -->
-
-    <div class="quick-actions">
-
-        <button
-            data-panel="missions"
-            class="quick-action"
-        >
-            🎯
-            <span>
-                Missions
-            </span>
-        </button>
-
-        <button
-            data-panel="ranks"
-            class="quick-action"
-        >
-            🏆
-            <span>
-                Rankings
-            </span>
-        </button>
-
-        <button
-            data-panel="profile"
-            class="quick-action"
-        >
-            👤
-            <span>
-                Profile
-            </span>
-        </button>
-
-    </div>
-
-
-    <!-- =====================================================
-         BOTTOM NAVIGATION
-    ====================================================== -->
-
     <nav class="bottom-nav">
 
-        <button
-            data-panel="profile"
-            class="nav-btn"
-        >
-
-            <span>
-                👤
-            </span>
-
-            <small>
-                Profile
-            </small>
-
+        <button data-panel="profile">
+            <span>👤</span>
+            Profile
         </button>
 
-
-        <button
-            data-panel="missions"
-            class="nav-btn"
-        >
-
-            <span>
-                🎯
-            </span>
-
-            <small>
-                Missions
-            </small>
-
+        <button data-panel="missions">
+            <span>🎯</span>
+            Missions
         </button>
 
-
-        <button
-            data-panel="ranks"
-            class="nav-btn"
-        >
-
-            <span>
-                🏆
-            </span>
-
-            <small>
-                Ranks
-            </small>
-
+        <button data-panel="ranks">
+            <span>🏆</span>
+            Rankings
         </button>
 
-
-        <button
-            data-panel="items"
-            class="nav-btn"
-        >
-
-            <span>
-                🎒
-            </span>
-
-            <small>
-                Inventory
-            </small>
-
+        <button data-panel="items">
+            <span>🎒</span>
+            Items
         </button>
 
-
-        <button
-            data-panel="menu"
-            class="nav-btn"
-        >
-
-            <span>
-                ☰
-            </span>
-
-            <small>
-                Menu
-            </small>
-
+        <button data-panel="menu">
+            <span>☰</span>
+            Menu
         </button>
 
     </nav>
@@ -1341,747 +1002,31 @@ y<!DOCTYPE html>
 </section>
 
 
-<!-- =========================================================
-     GENERAL MODAL
-========================================================= -->
+<!-- =====================================================
+     SIMPLE GAME PANEL
+===================================================== -->
 
-<div
-    id="modalOverlay"
-    class="modal-overlay hidden"
->
+<div id="gamePanel">
 
-    <div
-        id="generalModal"
-        class="modal"
-    >
+    <div class="panel">
 
-        <button
-            id="closeModal"
-            class="modal-close"
-        >
-            ×
-        </button>
+        <div class="panel-head">
 
-        <div id="modalContent"></div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     QUESTION MODAL
-========================================================= -->
-
-<div
-    id="questionModal"
-    class="modal-overlay hidden"
->
-
-    <div class="modal question-modal">
-
-        <button
-            id="closeQuestionModal"
-            class="modal-close"
-        >
-            ×
-        </button>
-
-
-        <div class="question-modal-header">
-
-            <span id="questionModalTopic">
-                PGP 122
-            </span>
-
-            <span
-                id="questionDifficulty"
-                class="difficulty-badge"
-            >
-                Medium
-            </span>
-
-        </div>
-
-
-        <h2 id="questionModalText">
-            Question
-        </h2>
-
-
-        <div
-            id="questionModalOptions"
-            class="modal-options"
-        ></div>
-
-
-        <div
-            id="questionExplanation"
-            class="question-explanation hidden"
-        ></div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     PROFILE PANEL
-========================================================= -->
-
-<div
-    id="profilePanel"
-    class="panel hidden"
->
-
-    <div class="panel-header">
-
-        <h2>
-            👤 PLAYER PROFILE
-        </h2>
-
-        <button class="close-panel">
-            ×
-        </button>
-
-    </div>
-
-
-    <div class="profile-card">
-
-        <div
-            id="profileAvatar"
-            class="profile-avatar"
-        >
-            👨🏽‍🎓
-        </div>
-
-        <h2 id="profileName">
-            Player
-        </h2>
-
-        <p id="profileNickname">
-            @player
-        </p>
-
-        <span id="profileRating">
-            Rookie
-        </span>
-
-    </div>
-
-
-    <div class="profile-stats">
-
-        <div>
-            <span>
-                Level
-            </span>
-
-            <strong id="profileLevel">
-                1
-            </strong>
-        </div>
-
-        <div>
-            <span>
-                XP
-            </span>
-
-            <strong id="profileXP">
-                0
-            </strong>
-        </div>
-
-        <div>
-            <span>
-                Questions
-            </span>
-
-            <strong id="profileQuestions">
-                0
-            </strong>
-        </div>
-
-        <div>
-            <span>
-                Correct
-            </span>
-
-            <strong id="profileCorrect">
-                0
-            </strong>
-        </div>
-
-        <div>
-            <span>
-                Streak
-            </span>
-
-            <strong id="profileStreak">
-                0 🔥
-            </strong>
-        </div>
-
-        <div>
-            <span>
-                Missions
-            </span>
-
-            <strong id="profileMissions">
-                0
-            </strong>
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     MISSIONS PANEL
-========================================================= -->
-
-<div
-    id="missionsPanel"
-    class="panel hidden"
->
-
-    <div class="panel-header">
-
-        <h2>
-            🎯 MISSIONS
-        </h2>
-
-        <button class="close-panel">
-            ×
-        </button>
-
-    </div>
-
-
-    <div
-        id="missionsList"
-        class="missions-list"
-    ></div>
-
-</div>
-
-
-<!-- =========================================================
-     RANKINGS PANEL
-========================================================= -->
-
-<div
-    id="ranksPanel"
-    class="panel hidden"
->
-
-    <div class="panel-header">
-
-        <h2>
-            🏆 LEADERBOARD
-        </h2>
-
-        <button class="close-panel">
-            ×
-        </button>
-
-    </div>
-
-
-    <div class="leaderboard-tabs">
-
-        <button class="active">
-            Overall
-        </button>
-
-        <button>
-            Academic
-        </button>
-
-        <button>
-            Wealth
-        </button>
-
-        <button>
-            Battles
-        </button>
-
-    </div>
-
-
-    <div
-        id="leaderboardList"
-        class="leaderboard-list"
-    >
-
-        <div class="leaderboard-row">
-
-            <span>
-                🥇
-            </span>
-
-            <strong>
-                PNGPD Legend
-            </strong>
-
-            <b>
-                10,000 XP
-            </b>
-
-        </div>
-
-
-        <div class="leaderboard-row">
-
-            <span>
-                🥈
-            </span>
-
-            <strong>
-                Top Student
-            </strong>
-
-            <b>
-                8,500 XP
-            </b>
-
-        </div>
-
-
-        <div class="leaderboard-row">
-
-            <span>
-                🥉
-            </span>
-
-            <strong>
-                Academic King
-            </strong>
-
-            <b>
-                7,900 XP
-            </b>
-
-        </div>
-
-
-        <div
-            id="playerRankRow"
-            class="leaderboard-row player-rank"
-        >
-
-            <span>
-                #
-            </span>
-
-            <strong>
-                You
-            </strong>
-
-            <b>
-                0 XP
-            </b>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     INVENTORY PANEL
-========================================================= -->
-
-<div
-    id="itemsPanel"
-    class="panel hidden"
->
-
-    <div class="panel-header">
-
-        <h2>
-            🎒 INVENTORY
-        </h2>
-
-        <button class="close-panel">
-            ×
-        </button>
-
-    </div>
-
-
-    <div class="inventory-tabs">
-
-        <button class="active">
-            Items
-        </button>
-
-        <button>
-            Properties
-        </button>
-
-        <button>
-            Vehicles
-        </button>
-
-    </div>
-
-
-    <div
-        id="inventoryGrid"
-        class="inventory-grid"
-    >
-
-        <div class="empty-inventory">
-
-            <span>
-                🎒
-            </span>
-
-            <h3>
-                Your inventory is empty
-            </h3>
-
-            <p>
-                Visit the Shop to purchase your first item.
-            </p>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     MENU PANEL
-========================================================= -->
-
-<div
-    id="menuPanel"
-    class="panel hidden"
->
-
-    <div class="panel-header">
-
-        <h2>
-            ☰ GAME MENU
-        </h2>
-
-        <button class="close-panel">
-            ×
-        </button>
-
-    </div>
-
-
-    <div class="menu-grid">
-
-        <button data-menu="bank">
-            🏦
-            <strong>
-                Bank
-            </strong>
-            <small>
-                Manage your money
-            </small>
-        </button>
-
-
-        <button data-menu="shop">
-            🛒
-            <strong>
-                Shop
-            </strong>
-            <small>
-                Buy items
-            </small>
-        </button>
-
-
-        <button data-menu="properties">
-            🏠
-            <strong>
-                Properties
-            </strong>
-            <small>
-                Buy houses
-            </small>
-        </button>
-
-
-        <button data-menu="garage">
-            🚗
-            <strong>
-                Vehicles
-            </strong>
-            <small>
-                Buy vehicles
-            </small>
-        </button>
-
-
-        <button data-menu="tournaments">
-            🏆
-            <strong>
-                Tournaments
-            </strong>
-            <small>
-                Enter competitions
-            </small>
-        </button>
-
-
-        <button data-menu="transfers">
-            🔄
-            <strong>
-                Transfers
-            </strong>
-            <small>
-                Player marketplace
-            </small>
-        </button>
-
-
-        <button data-menu="friends">
-            👥
-            <strong>
-                Students
-            </strong>
-            <small>
-                Social network
-            </small>
-        </button>
-
-
-        <button data-menu="settings">
-            ⚙️
-            <strong>
-                Settings
-            </strong>
-            <small>
-                Game settings
-            </small>
-        </button>
-
-
-        <button data-menu="admin">
-            🛡️
-            <strong>
-                Admin
-            </strong>
-            <small>
-                Administration
-            </small>
-        </button>
-
-
-        <button data-menu="help">
-            ❓
-            <strong>
-                Help
-            </strong>
-            <small>
-                How to play
-            </small>
-        </button>
-
-    </div>
-
-
-    <div class="menu-danger-zone">
-
-        <button
-            id="resetPlayerBtn"
-            class="danger-btn"
-        >
-            🔄 Reset Player Data
-        </button>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     BANK PANEL CONTENT
-========================================================= -->
-
-<div
-    id="bankPanel"
-    class="panel hidden"
->
-
-    <div class="panel-header">
-
-        <h2>
-            🏦 PNGPD BANK
-        </h2>
-
-        <button class="close-panel">
-            ×
-        </button>
-
-    </div>
-
-
-    <div class="bank-balance-card">
-
-        <span>
-            Available Cash
-        </span>
-
-        <strong id="bankCash">
-            ₦0
-        </strong>
-
-        <small>
-            Virtual currency
-        </small>
-
-    </div>
-
-
-    <div class="bank-actions">
-
-        <button id="depositBtn">
-            💰 Deposit
-        </button>
-
-        <button id="withdrawBtn">
-            💸 Withdraw
-        </button>
-
-    </div>
-
-
-    <div class="bank-info">
-
-        <h3>
-            Financial Status
-        </h3>
-
-        <p>
-            Build your virtual wealth through academic
-            performance, missions and competitions.
-        </p>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     SHOP PANEL
-========================================================= -->
-
-<div
-    id="shopPanel"
-    class="panel hidden"
->
-
-    <div class="panel-header">
-
-        <h2>
-            🛒 PNGPD SHOP
-        </h2>
-
-        <button class="close-panel">
-            ×
-        </button>
-
-    </div>
-
-
-    <div
-        id="shopItems"
-        class="shop-grid"
-    >
-
-        <div class="shop-item">
-
-            <span>
-                📚
-            </span>
-
-            <h3>
-                Study Pack
-            </h3>
-
-            <p>
-                Restores study energy.
-            </p>
-
-            <strong>
-                ₦250,000
-            </strong>
+            <h2 id="panelTitle">
+                PNGPD LIFE
+            </h2>
 
             <button
-                data-item="study-pack"
-                data-price="250000"
+                id="closePanel"
+                class="close"
             >
-                BUY
+                ✕
             </button>
 
         </div>
 
-
-        <div class="shop-item">
-
-            <span>
-                ⚡
-            </span>
-
-            <h3>
-                Energy Drink
-            </h3>
-
-            <p>
-                Restores 25 energy.
-            </p>
-
-            <strong>
-                ₦100,000
-            </strong>
-
-            <button
-                data-item="energy-drink"
-                data-price="100000"
-            >
-                BUY
-            </button>
-
-        </div>
-
-
-        <div class="shop-item">
-
-            <span>
-                🎓
-            </span>
-
-            <h3>
-                Academic Kit
-            </h3>
-
-            <p>
-                A student essential.
-            </p>
-
-            <strong>
-                ₦500,000
-            </strong>
-
-            <button
-                data-item="academic-kit"
-                data-price="500000"
-            >
-                BUY
-            </button>
-
+        <div id="panelContent">
+            Welcome to PNGPD LIFE.
         </div>
 
     </div>
@@ -2089,968 +1034,818 @@ y<!DOCTYPE html>
 </div>
 
 
-<!-- =========================================================
-     PROPERTY PANEL
-========================================================= -->
-
-<div
-    id="propertyPanel"
-    class="panel hidden"
->
-
-    <div class="panel-header">
-
-        <h2>
-            🏠 PROPERTY MARKET
-        </h2>
-
-        <button class="close-panel">
-            ×
-        </button>
-
-    </div>
-
-
-    <div class="market-grid">
-
-        <div class="market-card">
-
-            <span>
-                🛏️
-            </span>
-
-            <h3>
-                Student Room
-            </h3>
-
-            <p>
-                Your first personal property.
-            </p>
-
-            <strong>
-                ₦2,000,000
-            </strong>
-
-            <button>
-                BUY
-            </button>
-
-        </div>
-
-
-        <div class="market-card">
-
-            <span>
-                🏠
-            </span>
-
-            <h3>
-                Starter House
-            </h3>
-
-            <p>
-                A comfortable virtual home.
-            </p>
-
-            <strong>
-                ₦10,000,000
-            </strong>
-
-            <button>
-                BUY
-            </button>
-
-        </div>
-
-
-        <div class="market-card">
-
-            <span>
-                🏡
-            </span>
-
-            <h3>
-                Executive Estate
-            </h3>
-
-            <p>
-                A premium PNGPD residence.
-            </p>
-
-            <strong>
-                ₦50,000,000
-            </strong>
-
-            <button>
-                BUY
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     GARAGE / VEHICLE PANEL
-========================================================= -->
-
-<div
-    id="garagePanel"
-    class="panel hidden"
->
-
-    <div class="panel-header">
-
-        <h2>
-            🚗 VEHICLE GARAGE
-        </h2>
-
-        <button class="close-panel">
-            ×
-        </button>
-
-    </div>
-
-
-    <div class="market-grid">
-
-        <div class="market-card">
-
-            <span>
-                🛵
-            </span>
-
-            <h3>
-                Student Bike
-            </h3>
-
-            <strong>
-                ₦3,000,000
-            </strong>
-
-            <button>
-                BUY
-            </button>
-
-        </div>
-
-
-        <div class="market-card">
-
-            <span>
-                🚗
-            </span>
-
-            <h3>
-                Campus Car
-            </h3>
-
-            <strong>
-                ₦15,000,000
-            </strong>
-
-            <button>
-                BUY
-            </button>
-
-        </div>
-
-
-        <div class="market-card">
-
-            <span>
-                🚙
-            </span>
-
-            <h3>
-                Executive SUV
-            </h3>
-
-            <strong>
-                ₦40,000,000
-            </strong>
-
-            <button>
-                BUY
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     TOURNAMENT PANEL
-========================================================= -->
-
-<div
-    id="tournamentPanel"
-    class="panel hidden"
->
-
-    <div class="panel-header">
-
-        <h2>
-            🏆 TOURNAMENTS
-        </h2>
-
-        <button class="close-panel">
-            ×
-        </button>
-
-    </div>
-
-
-    <div class="tournament-card">
-
-        <div class="tournament-icon">
-            🧠
-        </div>
-
-        <div>
-
-            <h3>
-                PGP 122 Knowledge Cup
-            </h3>
-
-            <p>
-                Compete against other PNGPD students.
-            </p>
-
-            <small>
-                Entry: 500 XP
-            </small>
-
-        </div>
-
-        <button>
-            ENTER
-        </button>
-
-    </div>
-
-
-    <div class="tournament-card">
-
-        <div class="tournament-icon">
-            ⚔️
-        </div>
-
-        <div>
-
-            <h3>
-                PNGPD Battle Championship
-            </h3>
-
-            <p>
-                Academic PvP tournament.
-            </p>
-
-            <small>
-                Entry: 1,000 XP
-            </small>
-
-        </div>
-
-        <button>
-            ENTER
-        </button>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     PLAYER TRANSFER PANEL
-========================================================= -->
-
-<div
-    id="transferPanel"
-    class="panel hidden"
->
-
-    <div class="panel-header">
-
-        <h2>
-            🔄 PLAYER TRANSFERS
-        </h2>
-
-        <button class="close-panel">
-            ×
-        </button>
-
-    </div>
-
-
-    <div class="transfer-info">
-
-        <h3>
-            Student Marketplace
-        </h3>
-
-        <p>
-            This system will allow players to trade
-            fictional items, vehicles and other game assets.
-        </p>
-
-    </div>
-
-
-    <div class="transfer-search">
-
-        <input
-            type="text"
-            placeholder="Search player..."
-        >
-
-        <button>
-            SEARCH
-        </button>
-
-    </div>
-
-
-    <div
-        id="transferList"
-        class="transfer-list"
-    >
-
-        <div class="empty-state">
-
-            <span>
-                🔄
-            </span>
-
-            <p>
-                No transfer offers yet.
-            </p>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     STUDENT SOCIAL PANEL
-========================================================= -->
-
-<div
-    id="friendsPanel"
-    class="panel hidden"
->
-
-    <div class="panel-header">
-
-        <h2>
-            👥 PNGPD STUDENTS
-        </h2>
-
-        <button class="close-panel">
-            ×
-        </button>
-
-    </div>
-
-
-    <div class="student-search">
-
-        <input
-            type="text"
-            placeholder="Search students..."
-        >
-
-        <button>
-            SEARCH
-        </button>
-
-    </div>
-
-
-    <div
-        id="studentsList"
-        class="students-list"
-    >
-
-        <div class="empty-state">
-
-            <span>
-                👥
-            </span>
-
-            <p>
-                Student network coming soon.
-            </p>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     SETTINGS PANEL
-========================================================= -->
-
-<div
-    id="settingsPanel"
-    class="panel hidden"
->
-
-    <div class="panel-header">
-
-        <h2>
-            ⚙️ SETTINGS
-        </h2>
-
-        <button class="close-panel">
-            ×
-        </button>
-
-    </div>
-
-
-    <div class="settings-list">
-
-        <div class="setting-row">
-
-            <div>
-
-                <strong>
-                    Sound Effects
-                </strong>
-
-                <small>
-                    Game sounds
-                </small>
-
-            </div>
-
-            <input
-                type="checkbox"
-                checked
-            >
-
-        </div>
-
-
-        <div class="setting-row">
-
-            <div>
-
-                <strong>
-                    Notifications
-                </strong>
-
-                <small>
-                    Game notifications
-                </small>
-
-            </div>
-
-            <input
-                type="checkbox"
-                checked
-            >
-
-        </div>
-
-
-        <div class="setting-row">
-
-            <div>
-
-                <strong>
-                    Confirm Purchases
-                </strong>
-
-                <small>
-                    Prevent accidental purchases
-                </small>
-
-            </div>
-
-            <input
-                type="checkbox"
-                checked
-            >
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     ADMIN DASHBOARD
-========================================================= -->
-
-<div
-    id="adminPanel"
-    class="panel hidden"
->
-
-    <div class="panel-header">
-
-        <h2>
-            🛡️ ADMIN DASHBOARD
-        </h2>
-
-        <button class="close-panel">
-            ×
-        </button>
-
-    </div>
-
-
-    <div class="admin-warning">
-
-        ⚠️
-        <strong>
-            Administrative Area
-        </strong>
-
-        <p>
-            Administrative controls will require authentication
-            before they can modify the game.
-        </p>
-
-    </div>
-
-
-    <div class="admin-grid">
-
-        <div>
-            <span>
-                👥
-            </span>
-
-            <strong>
-                Players
-            </strong>
-
-            <small>
-                Manage students
-            </small>
-        </div>
-
-
-        <div>
-            <span>
-                📚
-            </span>
-
-            <strong>
-                Questions
-            </strong>
-
-            <small>
-                Manage question bank
-            </small>
-        </div>
-
-
-        <div>
-            <span>
-                🎯
-            </span>
-
-            <strong>
-                Missions
-            </strong>
-
-            <small>
-                Create missions
-            </small>
-        </div>
-
-
-        <div>
-            <span>
-                🏆
-            </span>
-
-            <strong>
-                Tournaments
-            </strong>
-
-            <small>
-                Manage competitions
-            </small>
-        </div>
-
-
-        <div>
-            <span>
-                💰
-            </span>
-
-            <strong>
-                Economy
-            </strong>
-
-            <small>
-                Monitor virtual economy
-            </small>
-        </div>
-
-
-        <div>
-            <span>
-                📢
-            </span>
-
-            <strong>
-                Announcements
-            </strong>
-
-            <small>
-                Broadcast messages
-            </small>
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     HELP PANEL
-========================================================= -->
-
-<div
-    id="helpPanel"
-    class="panel hidden"
->
-
-    <div class="panel-header">
-
-        <h2>
-            ❓ HOW TO PLAY
-        </h2>
-
-        <button class="close-panel">
-            ×
-        </button>
-
-    </div>
-
-
-    <div class="help-content">
-
-        <div class="help-item">
-
-            <span>
-                📚
-            </span>
-
-            <div>
-
-                <h3>
-                    Study
-                </h3>
-
-                <p>
-                    Visit the Library and other academic
-                    locations to answer questions.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="help-item">
-
-            <span>
-                💰
-            </span>
-
-            <div>
-
-                <h3>
-                    Earn
-                </h3>
-
-                <p>
-                    Correct answers and completed missions
-                    reward you with fictional game currency.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="help-item">
-
-            <span>
-                ⚡
-            </span>
-
-            <div>
-
-                <h3>
-                    Manage Energy
-                </h3>
-
-                <p>
-                    Your activities consume energy.
-                    Rest and use the cafeteria to recover.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="help-item">
-
-            <span>
-                ⚔️
-            </span>
-
-            <div>
-
-                <h3>
-                    Compete
-                </h3>
-
-                <p>
-                    Battle other students and participate
-                    in academic tournaments.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="help-item">
-
-            <span>
-                🏠
-            </span>
-
-            <div>
-
-                <h3>
-                    Build
-                </h3>
-
-                <p>
-                    Buy properties, vehicles and items
-                    as the game economy expands.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="help-item">
-
-            <span>
-                🏆
-            </span>
-
-            <div>
-
-                <h3>
-                    Become Number One
-                </h3>
-
-                <p>
-                    Gain XP, maintain streaks, complete missions
-                    and climb the PNGPD leaderboard.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     NOTIFICATION PANEL
-========================================================= -->
-
-<div
-    id="notificationPanel"
-    class="panel hidden"
->
-
-    <div class="panel-header">
-
-        <h2>
-            🔔 NOTIFICATIONS
-        </h2>
-
-        <button class="close-panel">
-            ×
-        </button>
-
-    </div>
-
-
-    <div
-        id="notificationList"
-        class="notification-list"
-    >
-
-        <div class="notification-item">
-
-            <span>
-                🎓
-            </span>
-
-            <div>
-
-                <strong>
-                    Welcome to PNGPD LIVE
-                </strong>
-
-                <p>
-                    Your virtual campus journey has begun.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     LOCATION / GENERAL MODAL
-========================================================= -->
-
-<div
-    id="modalOverlay"
-    class="modal-overlay hidden"
->
-
-    <div
-        id="generalModal"
-        class="modal"
-    >
-
-        <button
-            id="closeModal"
-            class="modal-close"
-        >
-            ×
-        </button>
-
-        <div id="modalContent"></div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     QUESTION MODAL
-========================================================= -->
-
-<div
-    id="questionModal"
-    class="modal-overlay hidden"
->
-
-    <div class="modal question-modal">
-
-        <button
-            id="closeQuestionModal"
-            class="modal-close"
-        >
-            ×
-        </button>
-
-
-        <div class="question-modal-header">
-
-            <span id="questionModalTopic">
-                PGP 122
-            </span>
-
-            <span
-                id="questionDifficulty"
-                class="difficulty-badge"
-            >
-                Medium
-            </span>
-
-        </div>
-
-
-        <h2 id="questionModalText">
-            Question
-        </h2>
-
-
-        <div
-            id="questionModalOptions"
-            class="modal-options"
-        ></div>
-
-
-        <div
-            id="questionExplanation"
-            class="question-explanation hidden"
-        ></div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     TOAST CONTAINER
-========================================================= -->
-
-<div
-    id="toastContainer"
-    class="toast-container"
-></div>
-
-
-<!-- =========================================================
-     JAVASCRIPT FILES
-========================================================= -->
+<!-- =====================================================
+     EXISTING DATA
+===================================================== -->
 
 <script src="data/questions.js"></script>
-
 <script src="data/locations.js"></script>
 
-<script src="game/player.js"></script>
 
-<script src="game/economy.js"></script>
+<!-- =====================================================
+     SUPABASE
+===================================================== -->
 
-<script src="game/missions.js"></script>
-
-<script src="game/battles.js"></script>
-
-<script src="game/world.js"></script>
-
-<script src="script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="supabase.js"></script>
-<script src="auth.js"></script>
-<script src="session.js"></script>
+
+<script>
+const SUPABASE_URL =
+    "https://xlylxyxjsvhvrnjrcvrf.supabase.co";
+
+const SUPABASE_KEY =
+    "sb_publishable_UNIyxQ_8WvQzR2t2fCjKtQ_MNcIJ7T9";
+
+let pngpdSupabase = null;
+
+try {
+    pngpdSupabase =
+        window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_KEY
+        );
+
+    window.pngpdSupabase =
+        pngpdSupabase;
+
+    console.log("PNGPD Supabase connected.");
+} catch(error) {
+    console.error(
+        "Supabase connection failed:",
+        error
+    );
+}
+</script>
+
+
+<!-- =====================================================
+     PNGPD LIFE CORE
+===================================================== -->
+
+<script>
+
+const PNGPD = {
+
+    player: null,
+
+    show(id){
+
+        document
+            .querySelectorAll(".screen")
+            .forEach(screen =>
+                screen.classList.add("hidden")
+            );
+
+        const screen =
+            document.getElementById(id);
+
+        if(screen){
+            screen.classList.remove("hidden");
+        }
+
+    },
+
+    moneyFormat(amount){
+
+        return "₦" +
+            Number(amount || 0)
+            .toLocaleString();
+
+    },
+
+    async register(){
+
+        const fullName =
+            document
+            .getElementById("registerFullName")
+            .value
+            .trim();
+
+        const email =
+            document
+            .getElementById("registerEmail")
+            .value
+            .trim();
+
+        const password =
+            document
+            .getElementById("registerPassword")
+            .value;
+
+        if(!fullName || !email || !password){
+
+            alert(
+                "Please fill in all the fields."
+            );
+
+            return;
+
+        }
+
+        if(password.length < 6){
+
+            alert(
+                "Password must be at least 6 characters."
+            );
+
+            return;
+
+        }
+
+        if(!pngpdSupabase){
+
+            alert(
+                "Supabase is not connected."
+            );
+
+            return;
+
+        }
+
+        const button =
+            document.getElementById(
+                "registerBtn"
+            );
+
+        button.disabled = true;
+        button.textContent =
+            "CREATING ACCOUNT...";
+
+        try{
+
+            const {
+                data,
+                error
+            } =
+                await pngpdSupabase.auth.signUp({
+
+                    email,
+                    password,
+
+                    options:{
+                        data:{
+                            full_name:
+                                fullName
+                        }
+                    }
+
+                });
+
+            if(error)
+                throw error;
+
+
+            if(data.user){
+
+                const {
+                    error:
+                    profileError
+                } =
+                    await pngpdSupabase
+                    .from("players")
+                    .upsert({
+
+                        id:data.user.id,
+
+                        full_name:
+                            fullName,
+
+                        email:
+
+                            email,
+
+                        nickname:
+                            fullName
+                            .split(" ")[0],
+
+                        level:1,
+
+                        xp:0,
+
+                        coins:0,
+
+                        bank_balance:0,
+
+                        energy:100,
+
+                        max_energy:100,
+
+                        academic_rating:0,
+
+                        assessment_score:0
+
+                    });
+
+
+                if(profileError){
+
+                    console.error(
+                        profileError
+                    );
+
+                }
+
+            }
+
+
+            alert(
+                "Account created successfully. If email verification is enabled, check your email."
+            );
+
+            PNGPD.show(
+                "loginScreen"
+            );
+
+        }
+        catch(error){
+
+            console.error(error);
+
+            alert(
+                error.message ||
+                "Registration failed."
+            );
+
+        }
+        finally{
+
+            button.disabled =
+                false;
+
+            button.textContent =
+                "CREATE ACCOUNT";
+
+        }
+
+    },
+
+
+    async login(){
+
+        const email =
+            document
+            .getElementById("loginEmail")
+            .value
+            .trim();
+
+        const password =
+            document
+            .getElementById("loginPassword")
+            .value;
+
+        if(!email || !password){
+
+            alert(
+                "Enter your email and password."
+            );
+
+            return;
+
+        }
+
+        const button =
+            document.getElementById(
+                "loginBtn"
+            );
+
+        button.disabled = true;
+        button.textContent =
+            "LOGGING IN...";
+
+        try{
+
+            const {
+                data,
+                error
+            } =
+                await pngpdSupabase.auth
+                .signInWithPassword({
+
+                    email,
+                    password
+
+                });
+
+            if(error)
+                throw error;
+
+            await PNGPD.loadPlayer(
+                data.user.id
+            );
+
+            PNGPD.show(
+                "gameScreen"
+            );
+
+            PNGPD.updateHUD();
+
+        }
+        catch(error){
+
+            console.error(error);
+
+            alert(
+                error.message ||
+                "Login failed."
+            );
+
+        }
+        finally{
+
+            button.disabled =
+                false;
+
+            button.textContent =
+                "LOGIN";
+
+        }
+
+    },
+
+
+    async loadPlayer(id){
+
+        const {
+            data,
+            error
+        } =
+            await pngpdSupabase
+            .from("players")
+            .select("*")
+            .eq("id",id)
+            .single();
+
+        if(error){
+
+            console.error(error);
+
+            return;
+
+        }
+
+        this.player = data;
+
+        window.pngpdPlayer =
+            data;
+
+    },
+
+
+    updateHUD(){
+
+        if(!this.player)
+            return;
+
+        const p =
+            this.player;
+
+        const name =
+            p.nickname ||
+            p.full_name ||
+            "PLAYER";
+
+        document
+        .getElementById(
+            "hudPlayerName"
+        )
+        .textContent =
+            name;
+
+        document
+        .getElementById(
+            "worldPlayerName"
+        )
+        .textContent =
+            name;
+
+        document
+        .getElementById(
+            "hudLevel"
+        )
+        .textContent =
+            p.level || 1;
+
+        document
+        .getElementById(
+            "hudRating"
+        )
+        .textContent =
+            p.academic_rating || 0;
+
+        document
+        .getElementById(
+            "hudCoins"
+        )
+        .textContent =
+            this.moneyFormat(
+                p.coins
+            );
+
+        document
+        .getElementById(
+            "hudXP"
+        )
+        .textContent =
+            p.xp || 0;
+
+        document
+        .getElementById(
+            "hudEnergy"
+        )
+        .textContent =
+            p.energy ?? 100;
+
+    },
+
+
+    openPanel(title,content){
+
+        document
+        .getElementById(
+            "panelTitle"
+        )
+        .textContent =
+            title;
+
+        document
+        .getElementById(
+            "panelContent"
+        )
+        .innerHTML =
+            content;
+
+        document
+        .getElementById(
+            "gamePanel"
+        )
+        .style.display =
+            "flex";
+
+    }
+
+};
+
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+document
+.getElementById("showRegisterBtn")
+.onclick = () =>
+    PNGPD.show(
+        "registrationScreen"
+    );
+
+
+document
+.getElementById("showLoginBtn")
+.onclick = () =>
+    PNGPD.show(
+        "loginScreen"
+    );
+
+
+document
+.getElementById("backToStartBtn")
+.onclick = () =>
+    PNGPD.show(
+        "startScreen"
+    );
+
+
+document
+.getElementById("backFromLoginBtn")
+.onclick = () =>
+    PNGPD.show(
+        "startScreen"
+    );
+
+
+document
+.getElementById("registerBtn")
+.onclick = () =>
+    PNGPD.register();
+
+
+document
+.getElementById("loginBtn")
+.onclick = () =>
+    PNGPD.login();
+
+
+document
+.getElementById("closePanel")
+.onclick = () => {
+
+    document
+    .getElementById(
+        "gamePanel"
+    )
+    .style.display =
+        "none";
+
+};
+
+
+/* =====================================================
+   WORLD LOCATIONS
+===================================================== */
+
+document
+.querySelectorAll(
+    ".location"
+)
+.forEach(button => {
+
+    button.addEventListener(
+        "click",
+        () => {
+
+            const location =
+                button.dataset.location;
+
+            const names = {
+
+                department:
+                    "🏫 PNGPD Department",
+
+                library:
+                    "📚 Library",
+
+                lab:
+                    "🧪 Laboratory",
+
+                hostel:
+                    "🏠 Hostel",
+
+                cafeteria:
+                    "☕ Cafeteria",
+
+                arena:
+                    "🏟️ Arena",
+
+                bank:
+                    "🏦 Bank",
+
+                shop:
+                    "🛒 Shop",
+
+                properties:
+                    "🏡 Properties",
+
+                garage:
+                    "🚗 Garage",
+
+                tournaments:
+                    "🏆 Tournaments"
+
+            };
+
+            PNGPD.openPanel(
+
+                names[location] ||
+                "PNGPD LIFE",
+
+                `
+                <p style="color:#9bb0c2;line-height:1.6">
+                    You have entered
+                    <strong>
+                    ${names[location] || location}
+                    </strong>.
+                    <br><br>
+                    This location will receive
+                    its full gameplay system as
+                    PNGPD LIFE develops.
+                </p>
+                `
+
+            );
+
+        }
+    );
+
+});
+
+
+/* =====================================================
+   BOTTOM NAV
+===================================================== */
+
+document
+.querySelectorAll(
+    "[data-panel]"
+)
+.forEach(button => {
+
+    button.addEventListener(
+        "click",
+        () => {
+
+            const panel =
+                button.dataset.panel;
+
+            if(panel === "profile"){
+
+                const p =
+                    PNGPD.player;
+
+                PNGPD.openPanel(
+
+                    "👤 Player Profile",
+
+                    `
+                    <h3>
+                    ${p?.full_name || "Player"}
+                    </h3>
+
+                    <br>
+
+                    <p>Level:
+                    ${p?.level || 1}</p>
+
+                    <p>XP:
+                    ${p?.xp || 0}</p>
+
+                    <p>Academic Rating:
+                    ${p?.academic_rating || 0}</p>
+
+                    <p>Coins:
+                    ${PNGPD.moneyFormat(
+                        p?.coins || 0
+                    )}</p>
+                    `
+
+                );
+
+            }
+
+            else if(panel === "missions"){
+
+                PNGPD.openPanel(
+                    "🎯 Missions",
+                    `
+                    <p>
+                    Complete academic,
+                    exploration and challenge
+                    missions to earn XP and
+                    fictional coins.
+                    </p>
+                    `
+                );
+
+            }
+
+            else if(panel === "ranks"){
+
+                PNGPD.openPanel(
+                    "🏆 Rankings",
+                    `
+                    <p>
+                    Global PNGPD leaderboard
+                    will be connected to the
+                    Supabase database.
+                    </p>
+                    `
+                );
+
+            }
+
+            else if(panel === "items"){
+
+                PNGPD.openPanel(
+                    "🎒 Inventory",
+                    `
+                    <p>
+                    Your equipment,
+                    academic kits, properties
+                    and vehicles will appear here.
+                    </p>
+                    `
+                );
+
+            }
+
+            else if(panel === "menu"){
+
+                PNGPD.openPanel(
+                    "☰ Menu",
+                    `
+                    <button
+                        class="btn secondary"
+                        onclick="PNGPD.logout()"
+                    >
+                        LOG OUT
+                    </button>
+                    `
+                );
+
+            }
+
+        }
+    );
+
+});
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+PNGPD.logout =
+async function(){
+
+    if(pngpdSupabase){
+
+        await pngpdSupabase
+        .auth
+        .signOut();
+
+    }
+
+    this.player =
+        null;
+
+    this.show(
+        "startScreen"
+    );
+
+};
+
+
+/* =====================================================
+   SESSION CHECK
+===================================================== */
+
+async function initializePNGPD(){
+
+    /*
+       Splash is deliberately given a
+       guaranteed exit so a JavaScript
+       error cannot leave the user on
+       a blank screen.
+    */
+
+    setTimeout(
+        async () => {
+
+            try{
+
+                const {
+                    data
+                } =
+                    await pngpdSupabase
+                    .auth
+                    .getSession();
+
+                if(
+                    data &&
+                    data.session &&
+                    data.session.user
+                ){
+
+                    await PNGPD.loadPlayer(
+                        data.session.user.id
+                    );
+
+                    PNGPD.show(
+                        "gameScreen"
+                    );
+
+                    PNGPD.updateHUD();
+
+                }
+                else{
+
+                    PNGPD.show(
+                        "startScreen"
+                    );
+
+                }
+
+            }
+            catch(error){
+
+                console.error(
+                    "Startup error:",
+                    error
+                );
+
+                PNGPD.show(
+                    "startScreen"
+                );
+
+            }
+
+        },
+        1800
+    );
+
+}
+
+
+initializePNGPD();
+
+</script>
 
 </body>
 </html>
