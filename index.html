@@ -1382,38 +1382,288 @@ document.getElementById("closePanel").onclick = function() {
 
 document.querySelectorAll(".location").forEach(button => {
 
-    button.addEventListener("click", function() {
+    button.addEventListener("click", function () {
 
         const location = button.dataset.location;
 
-        const names = {
+        switch (location) {
 
-            department: "🏫 PNGPD Department",
-            library: "📚 Library",
-            lab: "🧪 Laboratory",
-            hostel: "🏠 Hostel",
-            cafeteria: "☕ Cafeteria",
-            arena: "🏟️ Arena",
-            bank: "🏦 Bank",
-            shop: "🛒 Shop",
-            properties: "🏡 Properties",
-            garage: "🚗 Garage",
-            tournaments: "🏆 Tournaments"
+            case "department":
 
-        };
+                PNGPD.openPanel(
+                    "🏫 PNGPD Department",
+                    `
+                    <h3>PNGPD Department</h3>
 
-        PNGPD.openPanel(
-            names[location] || "PNGPD LIFE",
-            `
-            <p style="color:#9bb0c2;line-height:1.6">
-                You have entered
-                <strong>${names[location] || location}</strong>.
-                <br><br>
-                This location will receive its full
-                gameplay system as PNGPD LIFE develops.
-            </p>
-            `
-        );
+                    <p style="margin-top:12px;color:#9bb0c2">
+                        Welcome to the Petroleum & Natural Gas
+                        Processing Technology Department.
+                    </p>
+
+                    <button
+                        class="btn primary"
+                        onclick="PNGPD.startStudy()"
+                    >
+                        📚 STUDY / ANSWER QUESTIONS
+                    </button>
+
+                    <button
+                        class="btn secondary"
+                        onclick="PNGPD.showCourses()"
+                    >
+                        🎓 VIEW COURSES
+                    </button>
+                    `
+                );
+
+                break;
+
+
+            case "library":
+
+                PNGPD.openPanel(
+                    "📚 Library",
+                    `
+                    <h3>PNGPD Library</h3>
+
+                    <p style="margin-top:12px;color:#9bb0c2">
+                        Study and improve your academic rating.
+                    </p>
+
+                    <button
+                        class="btn primary"
+                        onclick="PNGPD.startStudy()"
+                    >
+                        📖 START STUDY SESSION
+                    </button>
+                    `
+                );
+
+                break;
+
+
+            case "lab":
+
+                PNGPD.openPanel(
+                    "🧪 Laboratory",
+                    `
+                    <h3>Engineering Laboratory</h3>
+
+                    <p style="margin-top:12px;color:#9bb0c2">
+                        Technical challenges will be available here.
+                    </p>
+
+                    <button
+                        class="btn primary"
+                        onclick="PNGPD.labChallenge()"
+                    >
+                        🧪 START LAB CHALLENGE
+                    </button>
+                    `
+                );
+
+                break;
+
+
+            case "hostel":
+
+                PNGPD.openPanel(
+                    "🏠 Hostel",
+                    `
+                    <h3>Student Hostel</h3>
+
+                    <p style="margin-top:12px;color:#9bb0c2">
+                        Your personal room and student life
+                        activities are managed here.
+                    </p>
+
+                    <button
+                        class="btn primary"
+                        onclick="PNGPD.rest()"
+                    >
+                        🛏️ REST
+                    </button>
+                    `
+                );
+
+                break;
+
+
+            case "cafeteria":
+
+                PNGPD.openPanel(
+                    "☕ Cafeteria",
+                    `
+                    <h3>PNGPD Cafeteria</h3>
+
+                    <p style="margin-top:12px;color:#9bb0c2">
+                        Take a break and restore your energy.
+                    </p>
+
+                    <button
+                        class="btn primary"
+                        onclick="PNGPD.eat()"
+                    >
+                        🍛 EAT & RESTORE ENERGY
+                    </button>
+                    `
+                );
+
+                break;
+
+
+            case "arena":
+
+                PNGPD.openPanel(
+                    "🏟️ Arena",
+                    `
+                    <h3>PNGPD Arena</h3>
+
+                    <p style="margin-top:12px;color:#9bb0c2">
+                        Challenge other students in academic
+                        battles.
+                    </p>
+
+                    <button
+                        class="btn primary"
+                        onclick="PNGPD.battle()"
+                    >
+                        ⚔️ START BATTLE
+                    </button>
+                    `
+                );
+
+                break;
+
+
+            case "bank":
+
+                PNGPD.openPanel(
+                    "🏦 PNGPD Bank",
+                    `
+                    <h3>Student Bank</h3>
+
+                    <p style="margin-top:12px">
+                        💰 Coins:
+                        ${PNGPD.moneyFormat(
+                            PNGPD.player?.coins || 0
+                        )}
+                    </p>
+
+                    <p style="margin-top:8px">
+                        🏦 Bank:
+                        ${PNGPD.moneyFormat(
+                            PNGPD.player?.bank_balance || 0
+                        )}
+                    </p>
+
+                    <button
+                        class="btn primary"
+                        onclick="PNGPD.openBank()"
+                    >
+                        🏦 MANAGE MONEY
+                    </button>
+                    `
+                );
+
+                break;
+
+
+            case "shop":
+
+                PNGPD.openPanel(
+                    "🛒 PNGPD Shop",
+                    `
+                    <h3>Campus Shop</h3>
+
+                    <p style="margin-top:12px;color:#9bb0c2">
+                        Buy equipment and items for your
+                        PNGPD LIFE journey.
+                    </p>
+
+                    <button
+                        class="btn primary"
+                        onclick="PNGPD.openShop()"
+                    >
+                        🛒 OPEN SHOP
+                    </button>
+                    `
+                );
+
+                break;
+
+
+            case "properties":
+
+                PNGPD.openPanel(
+                    "🏡 Properties",
+                    `
+                    <h3>Properties</h3>
+
+                    <p style="margin-top:12px;color:#9bb0c2">
+                        Buy houses and properties as your
+                        wealth increases.
+                    </p>
+
+                    <button
+                        class="btn primary"
+                        onclick="PNGPD.openProperties()"
+                    >
+                        🏡 VIEW PROPERTIES
+                    </button>
+                    `
+                );
+
+                break;
+
+
+            case "garage":
+
+                PNGPD.openPanel(
+                    "🚗 Garage",
+                    `
+                    <h3>Vehicle Garage</h3>
+
+                    <p style="margin-top:12px;color:#9bb0c2">
+                        Manage vehicles you own.
+                    </p>
+
+                    <button
+                        class="btn primary"
+                        onclick="PNGPD.openGarage()"
+                    >
+                        🚗 OPEN GARAGE
+                    </button>
+                    `
+                );
+
+                break;
+
+
+            case "tournaments":
+
+                PNGPD.openPanel(
+                    "🏆 Tournaments",
+                    `
+                    <h3>PNGPD Tournaments</h3>
+
+                    <p style="margin-top:12px;color:#9bb0c2">
+                        Compete in major academic tournaments
+                        and earn rewards.
+                    </p>
+
+                    <button
+                        class="btn primary"
+                        onclick="PNGPD.openTournaments()"
+                    >
+                        🏆 VIEW TOURNAMENTS
+                    </button>
+                    `
+                );
+
+                break;
+
+        }
 
     });
 
