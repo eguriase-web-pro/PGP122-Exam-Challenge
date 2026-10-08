@@ -1,1 +1,163 @@
-y
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #08111f;
+    color: white;
+    min-height: 100vh;
+}
+
+header {
+    text-align: center;
+    padding: 40px 20px 25px;
+    background: linear-gradient(135deg, #101f3d, #172b50);
+}
+
+header h1 {
+    font-size: 45px;
+    margin: 0;
+}
+
+header p {
+    margin: 5px 0;
+    color: #b8c7df;
+}
+
+header span {
+    display: inline-block;
+    margin-top: 12px;
+    background: #7357ff;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+main {
+    width: 92%;
+    max-width: 800px;
+    margin: auto;
+    padding: 30px 0;
+}
+
+h2 {
+    text-align: center;
+}
+
+.menu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+    margin-top: 25px;
+}
+
+button {
+    border: none;
+    padding: 16px;
+    border-radius: 12px;
+    background: #7357ff;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+.menu button {
+    min-height: 90px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.top button {
+    padding: 10px 14px;
+}
+
+.progress {
+    height: 8px;
+    background: #26334b;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#progressBar {
+    height: 100%;
+    width: 0%;
+    background: #7357ff;
+    transition: width 0.3s;
+}
+
+#questionNumber {
+    color: #9eabc2;
+}
+
+.question-box {
+    background: #121e33;
+    padding: 25px;
+    border-radius: 18px;
+    margin-top: 15px;
+}
+
+#question {
+    text-align: left;
+    line-height: 1.5;
+}
+
+.answer {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    text-align: left;
+    background: #1e2c46;
+}
+
+.answer.correct {
+    background: #087f4f;
+}
+
+.answer.wrong {
+    background: #a92d45;
+}
+
+#feedback {
+    margin-top: 15px;
+    padding: 12px;
+    line-height: 1.5;
+}
+
+#nextButton {
+    margin-top: 15px;
+}
+
+.result-box {
+    text-align: center;
+    background: #121e33;
+    padding: 40px 20px;
+    border-radius: 20px;
+}
+
+.result-box h1 {
+    font-size: 50px;
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    color: #71809b;
+    font-size: 13px;
+}
