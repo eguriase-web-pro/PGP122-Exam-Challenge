@@ -1440,6 +1440,136 @@ const PNGPD = {
     }
 
 }
+startStudy() {
+
+    this.openPanel(
+        "📚 Study Session",
+        `
+        <h3>PNGPD Study Session</h3>
+
+        <p style="
+            margin-top:12px;
+            color:#9bb0c2;
+            line-height:1.6;
+        ">
+            Choose a subject to begin your academic
+            challenge.
+        </p>
+
+        <button
+            class="btn primary"
+            onclick="PNGPD.startQuiz('PGP 122')"
+        >
+            🛢️ PGP 122
+        </button>
+
+        <button
+            class="btn secondary"
+            onclick="PNGPD.startQuiz('Mathematics')"
+        >
+            📐 Mathematics
+        </button>
+
+        <button
+            class="btn secondary"
+            onclick="PNGPD.startQuiz('Engineering')"
+        >
+            ⚙️ Engineering
+        </button>
+        `
+    );
+
+},
+
+
+showCourses() {
+
+    this.openPanel(
+        "🎓 PNGPD Courses",
+        `
+        <h3>PNGPD Current Semester Courses</h3>
+
+        <p style="margin-top:12px">
+            🛢️ PGP 121
+        </p>
+
+        <p style="margin-top:8px">
+            🛢️ PGP 122
+        </p>
+
+        <p style="margin-top:8px">
+            🛢️ PGP 123
+        </p>
+
+        <p style="margin-top:8px">
+            🛢️ PGP 124
+        </p>
+
+        <p style="margin-top:8px">
+            🛢️ PGP 125
+        </p>
+
+        <p style="margin-top:8px">
+            🛢️ PGP 126
+        </p>
+
+        <p style="margin-top:8px">
+            🛢️ PGP 127
+        </p>
+
+        <p style="margin-top:8px">
+            ⚙️ GLT
+        </p>
+
+        <p style="margin-top:8px">
+            🧪 CHE
+        </p>
+
+        <p style="margin-top:8px">
+            📚 GNS 102
+        </p>
+        `
+    );
+
+},
+
+
+startQuiz(subject) {
+
+    this.openPanel(
+        "📝 " + subject,
+        `
+        <h3>${subject} Challenge</h3>
+
+        <p style="
+            margin-top:12px;
+            color:#9bb0c2;
+            line-height:1.6;
+        ">
+            Your academic challenge system will
+            load questions from the PNGPD question
+            database here.
+        </p>
+
+        <button
+            class="btn primary"
+            onclick="PNGPD.closeCurrentPanel()"
+        >
+            ← BACK
+        </button>
+        `
+    );
+
+},
+
+
+closeCurrentPanel() {
+
+    document.getElementById(
+        "gamePanel"
+    ).style.display = "none";
+
+},
 
 
 /* ===============================
