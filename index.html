@@ -1288,59 +1288,158 @@ const PNGPD = {
 
     updateHUD() {
 
-        if (!this.player) {
-            return;
-        }
-
-        const p = this.player;
-
-        const name =
-            p.nickname ||
-            p.full_name ||
-            "PLAYER";
-
-        document.getElementById("hudPlayerName").textContent = name;
-        document.getElementById("worldPlayerName").textContent = name;
-
-        document.getElementById("hudLevel").textContent =
-            p.level || 1;
-
-        document.getElementById("hudRating").textContent =
-            p.academic_rating || 0;
-
-        document.getElementById("hudCoins").textContent =
-            this.moneyFormat(p.coins);
-
-        document.getElementById("hudXP").textContent =
-            p.xp || 0;
-
-        document.getElementById("hudEnergy").textContent =
-            p.energy ?? 100;
-    },
+    if (!this.player) return;
 
 
-    openPanel(title, content) {
+    /* PLAYER NAME */
 
-        document.getElementById("panelTitle").textContent = title;
-
-        document.getElementById("panelContent").innerHTML = content;
-
-        document.getElementById("gamePanel").style.display = "flex";
-    },
+    const playerName =
+        this.player.full_name ||
+        this.player.name ||
+        "PLAYER";
 
 
-    logout: async function() {
+    const hudName =
+        document.getElementById(
+            "hudPlayerName"
+        );
 
-        if (pngpdSupabase) {
-            await pngpdSupabase.auth.signOut();
-        }
+    if (hudName) {
 
-        this.player = null;
+        hudName.textContent =
+            playerName.toUpperCase();
 
-        this.show("startScreen");
     }
 
-};
+
+    const worldName =
+        document.getElementById(
+            "worldPlayerName"
+        );
+
+    if (worldName) {
+
+        worldName.textContent =
+            playerName;
+
+    }
+
+
+    /* LEVEL */
+
+    const level =
+        document.getElementById(
+            "hudLevel"
+        );
+
+    if (level) {
+
+        level.textContent =
+            "Level " +
+            (this.player.level || 1);
+
+    }
+
+
+    /* RATING */
+
+    const rating =
+        document.getElementById(
+            "hudRating"
+        );
+
+    if (rating) {
+
+        rating.textContent =
+            "Rating " +
+            (this.player.academic_rating || 0);
+
+    }
+
+
+    /* COINS */
+
+    const coins =
+        document.getElementById(
+            "hudCoins"
+        );
+
+    if (coins) {
+
+        coins.textContent =
+            this.moneyFormat(
+                this.player.coins || 0
+            );
+
+    }
+
+
+    /* XP */
+
+    const xp =
+        document.getElementById(
+            "hudXP"
+        );
+
+    if (xp) {
+
+        xp.textContent =
+            (this.player.xp || 0) +
+            " XP";
+
+    }
+
+
+    /* ENERGY */
+
+    const energy =
+        document.getElementById(
+            "hudEnergy"
+        );
+
+    if (energy) {
+
+        energy.textContent =
+            "Energy " +
+            (this.player.energy ?? 100);
+
+    }
+
+
+    /* PROFILE PHOTO */
+
+    const avatar =
+        document.getElementById(
+            "hudAvatar"
+        );
+
+    if (avatar) {
+
+        if (this.player.avatar_url) {
+
+            avatar.innerHTML = `
+                <img
+                    src="${this.player.avatar_url}"
+                    alt="Profile photo"
+                    style="
+                        width:100%;
+                        height:100%;
+                        object-fit:cover;
+                        border-radius:50%;
+                        display:block;
+                    "
+                >
+            `;
+
+        } else {
+
+            avatar.innerHTML = "👤";
+
+        }
+
+    }
+
+}
 
 
 /* ===============================
