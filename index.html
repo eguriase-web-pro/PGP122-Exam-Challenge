@@ -1,370 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>PGP 122 LIFE</title>
-
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PNGPD LIVE</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- =========================
-     HEADER
-========================= -->
+  <!-- SPLASH -->
+  <section id="splash" class="screen active">
+    <div class="logo">⚙️</div>
+    <h1>PNGPD <span>LIVE</span></h1>
+    <p>Study. Build. Earn. Rise.</p>
+    <button onclick="showScreen('auth')">START GAME</button>
+  </section>
 
-<header>
+  <!-- REGISTRATION -->
+  <section id="auth" class="screen">
+    <div class="card auth-card">
+      <div class="mini-logo">⚙️</div>
 
-    <div class="logo">
-        ⚗️ PGP 122 LIFE
+      <h2>Welcome to PNGPD LIVE</h2>
+      <p>Create your player account</p>
+
+      <input id="playerName" type="text" placeholder="Enter your name">
+
+      <input
+        id="playerEmail"
+        type="email"
+        placeholder="Enter Gmail address"
+      >
+
+      <button onclick="startRegistration()">CREATE PLAYER</button>
+
+      <small>
+        Your account will later be connected to Supabase.
+      </small>
+    </div>
+  </section>
+
+  <!-- ASSESSMENT -->
+  <section id="assessment" class="screen">
+
+    <div class="top-bar">
+      <b>STARTER ASSESSMENT</b>
+      <span id="assessmentCount">1/10</span>
     </div>
 
-    <div class="player-money">
-        💰 <span id="money">0</span>
+    <div class="assessment-box">
+
+      <div class="brain">🧠</div>
+
+      <h2 id="assessmentQuestion">Question</h2>
+
+      <div id="assessmentAnswers"></div>
+
+      <button id="nextAssessment"
+              onclick="nextAssessment()"
+              disabled>
+        NEXT
+      </button>
+
     </div>
+  </section>
 
-</header>
+  <!-- MAIN GAME -->
+  <section id="game" class="screen">
 
+    <!-- HUD -->
+    <header class="hud">
 
-<!-- =========================
-     HOME
-========================= -->
-
-<main id="home">
-
-    <div class="player-card">
+      <div class="profile-mini">
 
         <div class="avatar">
-            👨🏽‍🎓
+          👨🏽‍🎓
         </div>
 
         <div>
-
-            <h2 id="playerName">
-                Player
-            </h2>
-
-            <p>
-                Level <span id="level">1</span>
-            </p>
-
-            <div class="xp-bar">
-
-                <div id="xpBar"></div>
-
-            </div>
-
-            <small>
-                XP: <span id="xp">0</span>
-            </small>
-
+          <strong id="hudName">Player</strong>
+          <small>
+            Level <span id="hudLevel">1</span>
+          </small>
         </div>
 
-    </div>
+      </div>
+
+      <div class="stat">
+        💰 <span id="coins">0</span>
+      </div>
+
+      <div class="stat">
+        ⭐ <span id="xp">0</span>
+      </div>
+
+    </header>
 
 
-    <div class="welcome">
+    <!-- WORLD -->
+    <main class="world">
 
-        <h1>
-            SEPARATION WARS
-        </h1>
-
-        <p>
-            Study PGP 122. Earn money. Level up. Become the boss.
-        </p>
-
-    </div>
+      <div class="map-title">
+        <h1>PNGPD LIVE CAMPUS</h1>
+        <p>Choose where you want to go</p>
+      </div>
 
 
-    <!-- GAME MODES -->
+      <div class="map">
 
-    <h2 class="section-title">
-        🎮 GAME MODES
-    </h2>
+        <!-- CAMPAIGN BANNERS -->
+
+        <div class="campaign-banner banner-1">
+          🗳️ VOTE PATRICK FOR VICE PRESIDENT
+        </div>
+
+        <div class="campaign-banner banner-2">
+          ⭐ PATRICK FOR VICE PRESIDENT ⭐
+        </div>
+
+        <div class="campaign-banner banner-3">
+          🗳️ YOUR VOICE. YOUR CHOICE. VOTE PATRICK!
+        </div>
+
+        <div class="campaign-banner banner-4">
+          🚩 VOTE PATRICK — FOR A BETTER PNGPD
+        </div>
 
 
-    <div class="mode-grid">
+        <!-- BUILDINGS -->
 
         <button
-            class="mode"
-            onclick="startGame('mixed')">
+          class="building department"
+          onclick="openLocation('department')">
 
-            <span>⚡</span>
-
-            <strong>QUICK PLAY</strong>
-
-            <small>
-                Mixed PGP 122 questions
-            </small>
-
-        </button>
-
-
-        <button
-            class="mode"
-            onclick="startGame('survival')">
-
-            <span>❤️</span>
-
-            <strong>SURVIVAL</strong>
-
-            <small>
-                Three lives. Don't fail.
-            </small>
+          <span>🏫</span>
+          <b>PNGPD</b>
+          <small>Department</small>
 
         </button>
 
 
         <button
-            class="mode"
-            onclick="startGame('coin')">
+          class="building library"
+          onclick="openLocation('library')">
 
-            <span>💰</span>
-
-            <strong>COIN RUSH</strong>
-
-            <small>
-                Harder questions = more money
-            </small>
+          <span>📚</span>
+          <b>LIBRARY</b>
+          <small>Study Zone</small>
 
         </button>
 
 
         <button
-            class="mode boss"
-            onclick="startGame('boss')">
+          class="building lab"
+          onclick="openLocation('lab')">
 
-            <span>👑</span>
-
-            <strong>BOSS MODE</strong>
-
-            <small>
-                Lecturer-style challenge
-            </small>
+          <span>🧪</span>
+          <b>LAB</b>
+          <small>Practical</small>
 
         </button>
 
-    </div>
-
-
-    <!-- PLAYER STATS -->
-
-    <div class="stats">
-
-        <div>
-            🔥
-            <strong id="streak">0</strong>
-            <small>Streak</small>
-        </div>
-
-        <div>
-            🏆
-            <strong id="bestScore">0</strong>
-            <small>Best Score</small>
-        </div>
-
-        <div>
-            💰
-            <strong id="totalEarned">0</strong>
-            <small>Earned</small>
-        </div>
-
-    </div>
-
-
-    <!-- DAILY REWARD -->
-
-    <button
-        class="daily"
-        onclick="claimDailyReward()">
-
-        🎁 CLAIM DAILY REWARD
-
-    </button>
-
-
-    <!-- LEADERBOARD -->
-
-    <section class="leaderboard">
-
-        <h2>
-            🏆 LOCAL LEADERBOARD
-        </h2>
-
-        <div id="leaderboardList"></div>
-
-    </section>
-
-</main>
-
-
-
-<!-- =========================
-     GAME SCREEN
-========================= -->
-
-<section
-    id="game"
-    class="hidden">
-
-    <div class="game-header">
-
-        <button onclick="goHome()">
-            🏠
-        </button>
-
-        <span>
-            💰 <strong id="gameMoney">0</strong>
-        </span>
-
-        <span>
-            ⭐ <strong id="gameXP">0</strong>
-        </span>
-
-        <span>
-            ⏱️ <strong id="timer">60</strong>
-        </span>
-
-    </div>
-
-
-    <div class="game-info">
-
-        <span id="modeName">
-            QUICK PLAY
-        </span>
-
-        <span id="questionNumber">
-            Question 1
-        </span>
-
-    </div>
-
-
-    <div class="progress">
-
-        <div id="progressBar"></div>
-
-    </div>
-
-
-    <div class="lives">
-
-        ❤️ <span id="lives">3</span>
-
-    </div>
-
-
-    <div class="question-card">
-
-        <div class="difficulty"
-             id="difficulty">
-            MEDIUM
-        </div>
-
-        <h2 id="question">
-            Question
-        </h2>
-
-        <div id="answers"></div>
-
-    </div>
-
-
-    <div
-        id="feedback"
-        class="feedback hidden">
-    </div>
-
-
-    <button
-        id="nextButton"
-        class="next hidden"
-        onclick="nextQuestion()">
-
-        NEXT QUESTION ➡️
-
-    </button>
-
-</section>
-
-
-
-<!-- =========================
-     RESULT
-========================= -->
-
-<section
-    id="result"
-    class="hidden result">
-
-    <div class="result-card">
-
-        <div class="trophy">
-            🏆
-        </div>
-
-        <h1>
-            ROUND COMPLETE
-        </h1>
-
-        <h2 id="finalScore">
-            0 / 0
-        </h2>
-
-        <p id="resultMessage">
-            Good work.
-        </p>
-
-
-        <div class="reward-box">
-
-            <div>
-                💰
-                <strong id="earnedMoney">
-                    0
-                </strong>
-
-                <small>
-                    Coins earned
-                </small>
-            </div>
-
-            <div>
-                ⭐
-                <strong id="earnedXP">
-                    0
-                </strong>
-
-                <small>
-                    XP earned
-                </small>
-            </div>
-
-        </div>
-
-
-        <button onclick="startGame(lastMode)">
-            🔄 PLAY AGAIN
-        </button>
 
         <button
-            class="secondary"
-            onclick="goHome()">
+          class="building hostel"
+          onclick="openLocation('hostel')">
 
-            🏠 HOME
+          <span>🏠</span>
+          <b>HOSTEL</b>
+          <small>Rest</small>
 
         </button>
 
-    </div>
 
-</section>
+        <button
+          class="building cafe"
+          onclick="openLocation('cafe')">
 
-
-<script src="script.js"></script>
-
-</body>
-</html>
+          <span>🍔</span>
+          <b>CAF
