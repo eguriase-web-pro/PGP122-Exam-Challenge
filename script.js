@@ -1,4 +1,4 @@
-8// PNGPD LIVE - Main Game Controller
+// PNGPD LIVE - Main Game Controller
 
 document.addEventListener("DOMContentLoaded", () => {
     initialiseGame();
