@@ -1,147 +1,370 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>PGP 122 Exam Challenge</title>
+    <title>PGP 122 LIFE</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <header>
-        <h1>PGP 122</h1>
-        <p>SEPARATION PROCESSES I</p>
-        <span>🎮 EXAM CHALLENGE</span>
-    </header>
+<!-- =========================
+     HEADER
+========================= -->
 
-    <main>
+<header>
 
-        <!-- HOME SCREEN -->
-        <section id="home">
+    <div class="logo">
+        ⚗️ PGP 122 LIFE
+    </div>
 
-            <h2>Choose Your Challenge</h2>
+    <div class="player-money">
+        💰 <span id="money">0</span>
+    </div>
 
-            <div class="menu">
-
-                <button onclick="startGame('mixed')">
-                    🎯 Mixed Challenge
-                </button>
-
-                <button onclick="startGame('filtration')">
-                    🧪 Filtration
-                </button>
-
-                <button onclick="startGame('evaporation')">
-                    ♨️ Evaporation
-                </button>
-
-                <button onclick="startGame('membrane')">
-                    🫧 Membrane Separation
-                </button>
-
-                <button onclick="startGame('mixing')">
-                    ⚙️ Mixing & Agitation
-                </button>
-
-                <button onclick="startGame('leaching')">
-                    🧴 Leaching & Extraction
-                </button>
-
-                <button onclick="startGame('boss')">
-                    👹 BOSS MODE
-                </button>
-
-            </div>
-
-        </section>
+</header>
 
 
-        <!-- GAME SCREEN -->
-        <section id="game" class="hidden">
+<!-- =========================
+     HOME
+========================= -->
 
-            <div class="top">
+<main id="home">
 
-                <button onclick="goHome()">← Menu</button>
+    <div class="player-card">
 
-                <div>
-                    Score:
-                    <strong id="score">0</strong>
-                </div>
+        <div class="avatar">
+            👨🏽‍🎓
+        </div>
 
-                <div>
-                    ⏱️ <strong id="timer">60</strong>
-                </div>
+        <div>
+
+            <h2 id="playerName">
+                Player
+            </h2>
+
+            <p>
+                Level <span id="level">1</span>
+            </p>
+
+            <div class="xp-bar">
+
+                <div id="xpBar"></div>
 
             </div>
 
-            <div class="progress">
-                <div id="progressBar"></div>
-            </div>
+            <small>
+                XP: <span id="xp">0</span>
+            </small>
 
-            <p id="questionNumber"></p>
+        </div>
 
-            <div class="question-box">
-
-                <h2 id="question"></h2>
-
-                <div id="answers"></div>
-
-                <div id="feedback"></div>
-
-                <button id="nextButton"
-                        class="hidden"
-                        onclick="nextQuestion()">
-                    Next Question →
-                </button>
-
-            </div>
-
-        </section>
+    </div>
 
 
-        <!-- RESULT SCREEN -->
-        <section id="result" class="hidden">
+    <div class="welcome">
 
-            <div class="result-box">
-
-                <h2>🏆 Challenge Complete!</h2>
-
-                <h1 id="finalScore"></h1>
-
-                <p id="resultMessage"></p>
-
-                <button onclick="goHome()">
-                    Return to Menu
-                </button>
-
-                <button onclick="startGame(lastMode)">
-                    🔄 Try Again
-                </button>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <footer>
+        <h1>
+            SEPARATION WARS
+        </h1>
 
         <p>
-            PGP 122 • PNGPD • Separation Processes I
+            Study PGP 122. Earn money. Level up. Become the boss.
         </p>
 
-        <p>
-            Built for exam preparation
+    </div>
+
+
+    <!-- GAME MODES -->
+
+    <h2 class="section-title">
+        🎮 GAME MODES
+    </h2>
+
+
+    <div class="mode-grid">
+
+        <button
+            class="mode"
+            onclick="startGame('mixed')">
+
+            <span>⚡</span>
+
+            <strong>QUICK PLAY</strong>
+
+            <small>
+                Mixed PGP 122 questions
+            </small>
+
+        </button>
+
+
+        <button
+            class="mode"
+            onclick="startGame('survival')">
+
+            <span>❤️</span>
+
+            <strong>SURVIVAL</strong>
+
+            <small>
+                Three lives. Don't fail.
+            </small>
+
+        </button>
+
+
+        <button
+            class="mode"
+            onclick="startGame('coin')">
+
+            <span>💰</span>
+
+            <strong>COIN RUSH</strong>
+
+            <small>
+                Harder questions = more money
+            </small>
+
+        </button>
+
+
+        <button
+            class="mode boss"
+            onclick="startGame('boss')">
+
+            <span>👑</span>
+
+            <strong>BOSS MODE</strong>
+
+            <small>
+                Lecturer-style challenge
+            </small>
+
+        </button>
+
+    </div>
+
+
+    <!-- PLAYER STATS -->
+
+    <div class="stats">
+
+        <div>
+            🔥
+            <strong id="streak">0</strong>
+            <small>Streak</small>
+        </div>
+
+        <div>
+            🏆
+            <strong id="bestScore">0</strong>
+            <small>Best Score</small>
+        </div>
+
+        <div>
+            💰
+            <strong id="totalEarned">0</strong>
+            <small>Earned</small>
+        </div>
+
+    </div>
+
+
+    <!-- DAILY REWARD -->
+
+    <button
+        class="daily"
+        onclick="claimDailyReward()">
+
+        🎁 CLAIM DAILY REWARD
+
+    </button>
+
+
+    <!-- LEADERBOARD -->
+
+    <section class="leaderboard">
+
+        <h2>
+            🏆 LOCAL LEADERBOARD
+        </h2>
+
+        <div id="leaderboardList"></div>
+
+    </section>
+
+</main>
+
+
+
+<!-- =========================
+     GAME SCREEN
+========================= -->
+
+<section
+    id="game"
+    class="hidden">
+
+    <div class="game-header">
+
+        <button onclick="goHome()">
+            🏠
+        </button>
+
+        <span>
+            💰 <strong id="gameMoney">0</strong>
+        </span>
+
+        <span>
+            ⭐ <strong id="gameXP">0</strong>
+        </span>
+
+        <span>
+            ⏱️ <strong id="timer">60</strong>
+        </span>
+
+    </div>
+
+
+    <div class="game-info">
+
+        <span id="modeName">
+            QUICK PLAY
+        </span>
+
+        <span id="questionNumber">
+            Question 1
+        </span>
+
+    </div>
+
+
+    <div class="progress">
+
+        <div id="progressBar"></div>
+
+    </div>
+
+
+    <div class="lives">
+
+        ❤️ <span id="lives">3</span>
+
+    </div>
+
+
+    <div class="question-card">
+
+        <div class="difficulty"
+             id="difficulty">
+            MEDIUM
+        </div>
+
+        <h2 id="question">
+            Question
+        </h2>
+
+        <div id="answers"></div>
+
+    </div>
+
+
+    <div
+        id="feedback"
+        class="feedback hidden">
+    </div>
+
+
+    <button
+        id="nextButton"
+        class="next hidden"
+        onclick="nextQuestion()">
+
+        NEXT QUESTION ➡️
+
+    </button>
+
+</section>
+
+
+
+<!-- =========================
+     RESULT
+========================= -->
+
+<section
+    id="result"
+    class="hidden result">
+
+    <div class="result-card">
+
+        <div class="trophy">
+            🏆
+        </div>
+
+        <h1>
+            ROUND COMPLETE
+        </h1>
+
+        <h2 id="finalScore">
+            0 / 0
+        </h2>
+
+        <p id="resultMessage">
+            Good work.
         </p>
 
-    </footer>
+
+        <div class="reward-box">
+
+            <div>
+                💰
+                <strong id="earnedMoney">
+                    0
+                </strong>
+
+                <small>
+                    Coins earned
+                </small>
+            </div>
+
+            <div>
+                ⭐
+                <strong id="earnedXP">
+                    0
+                </strong>
+
+                <small>
+                    XP earned
+                </small>
+            </div>
+
+        </div>
 
 
-    <script src="script.js"></script>
+        <button onclick="startGame(lastMode)">
+            🔄 PLAY AGAIN
+        </button>
+
+        <button
+            class="secondary"
+            onclick="goHome()">
+
+            🏠 HOME
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<script src="script.js"></script>
 
 </body>
 </html>
