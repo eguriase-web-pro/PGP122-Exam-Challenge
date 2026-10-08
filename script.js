@@ -1,4 +1,4 @@
-// PNGPD LIVE - Main Game Controller
+8// PNGPD LIVE - Main Game Controller
 
 document.addEventListener("DOMContentLoaded", () => {
     initialiseGame();
@@ -965,3 +965,115 @@ window.pngpdGame = {
     closeQuestionModal,
     updateMainUI
 };
+/* =========================================================
+   PNGPD LIFE — SUPABASE AUTH CONNECTION
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const registerBtn =
+        document.querySelector("#registerBtn") ||
+        document.querySelector('[data-action="register"]');
+
+    const loginBtn =
+        document.querySelector("#loginBtn") ||
+        document.querySelector('[data-action="login"]');
+
+    if (registerBtn) {
+        registerBtn.addEventListener("click", async () => {
+
+            const fullName =
+                document.querySelector("#fullName")?.value.trim();
+
+            const email =
+                document.querySelector("#email")?.value.trim();
+
+            const password =
+                document.querySelector("#password")?.value;
+
+            if (!fullName || !email || !password) {
+                alert("Please fill in your full name, email and password.");
+                return;
+            }
+
+            try {
+
+                registerBtn.disabled = true;
+                registerBtn.textContent = "Creating account...";
+
+                await window.PNGPDAuth.register(
+                    fullName,
+                    email,
+                    password
+                );
+
+                alert(
+                    "Account created successfully! Check your email if verification is required."
+                );
+
+            } catch (error) {
+
+                console.error(error);
+
+                alert(
+                    error.message || "Registration failed."
+                );
+
+            } finally {
+
+                registerBtn.disabled = false;
+                registerBtn.textContent = "Register";
+
+            }
+        });
+    }
+
+
+    if (loginBtn) {
+        loginBtn.addEventListener("click", async () => {
+
+            const email =
+                document.querySelector("#loginEmail")?.value.trim() ||
+                document.querySelector("#email")?.value.trim();
+
+            const password =
+                document.querySelector("#loginPassword")?.value ||
+                document.querySelector("#password")?.value;
+
+            if (!email || !password) {
+                alert("Enter your email and password.");
+                return;
+            }
+
+            try {
+
+                loginBtn.disabled = true;
+                loginBtn.textContent = "Logging in...";
+
+                await window.PNGPDAuth.login(
+                    email,
+                    password
+                );
+
+                alert("Login successful!");
+
+                location.reload();
+
+            } catch (error) {
+
+                console.error(error);
+
+                alert(
+                    error.message || "Login failed."
+                );
+
+            } finally {
+
+                loginBtn.disabled = false;
+                loginBtn.textContent = "Login";
+
+            }
+        });
+    }
+
+});
