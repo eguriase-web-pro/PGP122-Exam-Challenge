@@ -1087,763 +1087,507 @@ const PNGPD = {
 
     player: null,
 
-    show(id){
+    show(id) {
 
-        document
-            .querySelectorAll(".screen")
-            .forEach(screen =>
-                screen.classList.add("hidden")
-            );
+        document.querySelectorAll(".screen").forEach(screen => {
+            screen.classList.add("hidden");
+        });
 
-        const screen =
-            document.getElementById(id);
+        const screen = document.getElementById(id);
 
-        if(screen){
+        if (screen) {
             screen.classList.remove("hidden");
         }
-
     },
 
-    moneyFormat(amount){
-
-        return "₦" +
-            Number(amount || 0)
-            .toLocaleString();
-
+    moneyFormat(amount) {
+        return "₦" + Number(amount || 0).toLocaleString();
     },
 
-    async register(){
+    async register() {
 
-        const fullName =
-            document
+        const fullName = document
             .getElementById("registerFullName")
-            .value
-            .trim();
+            .value.trim();
 
-        const email =
-            document
+        const email = document
             .getElementById("registerEmail")
-            .value
-            .trim();
+            .value.trim();
 
-        const password =
-            document
+        const password = document
             .getElementById("registerPassword")
             .value;
 
-        if(!fullName || !email || !password){
-
-            alert(
-                "Please fill in all the fields."
-            );
-
+        if (!fullName || !email || !password) {
+            alert("Please fill in all the fields.");
             return;
-
         }
 
-        if(password.length < 6){
-
-            alert(
-                "Password must be at least 6 characters."
-            );
-
+        if (password.length < 6) {
+            alert("Password must be at least 6 characters.");
             return;
-
         }
 
-        if(!pngpdSupabase){
-
-            alert(
-                "Supabase is not connected."
-            );
-
+        if (!pngpdSupabase) {
+            alert("Supabase is not connected.");
             return;
-
         }
 
-        const button =
-            document.getElementById(
-                "registerBtn"
-            );
+        const button = document.getElementById("registerBtn");
 
         button.disabled = true;
-        button.textContent =
-            "CREATING ACCOUNT...";
+        button.textContent = "CREATING ACCOUNT...";
 
-        try{
+        try {
 
-            const {
-                data,
-                error
-            } =
+            const { data, error } =
                 await pngpdSupabase.auth.signUp({
-
-                    email,
-                    password,
-
-                    options:{
-                        data:{
-                            full_name:
-                                fullName
+                    email: email,
+                    password: password,
+                    options: {
+                        data: {
+                            full_name: fullName
                         }
                     }
-
                 });
 
-            if(error)
+            if (error) {
                 throw error;
-
-
-            if(data.user){
-
-                const {
-                    error:
-                    profileError
-                } =
-                    await pngpdSupabase
-                    .from("players")
-                    .upsert({
-
-                        id:data.user.id,
-
-                        full_name:
-                            fullName,
-
-                        email:
-
-                            email,
-
-                        nickname:
-                            fullName
-                            .split(" ")[0],
-
-                        level:1,
-
-                        xp:0,
-
-                        coins:0,
-
-                        bank_balance:0,
-
-                        energy:100,
-
-                        max_energy:100,
-
-                        academic_rating:0,
-
-                        assessment_score:0
-
-                    });
-
-
-                if(profileError){
-
-                    console.error(
-                        profileError
-                    );
-
-                }
-
             }
 
+            if (data.user) {
+
+                const { error: profileError } =
+                    await pngpdSupabase
+                        .from("players")
+                        .upsert({
+                            id: data.user.id,
+                            full_name: fullName,
+                            email: email,
+                            nickname: fullName.split(" ")[0],
+                            level: 1,
+                            xp: 0,
+                            coins: 0,
+                            bank_balance: 0,
+                            energy: 100,
+                            max_energy: 100,
+                            academic_rating: 0,
+                            assessment_score: 0
+                        });
+
+                if (profileError) {
+                    console.error(profileError);
+                }
+            }
 
             alert(
                 "Account created successfully. If email verification is enabled, check your email."
             );
 
-            PNGPD.show(
-                "loginScreen"
-            );
+            PNGPD.show("loginScreen");
 
-        }
-        catch(error){
+        } catch (error) {
 
             console.error(error);
 
             alert(
-                error.message ||
-                "Registration failed."
+                error.message || "Registration failed."
             );
 
-        }
-        finally{
+        } finally {
 
-            button.disabled =
-                false;
-
-            button.textContent =
-                "CREATE ACCOUNT";
+            button.disabled = false;
+            button.textContent = "CREATE ACCOUNT";
 
         }
-
     },
 
 
-    async login(){
+    async login() {
 
-        const email =
-            document
+        const email = document
             .getElementById("loginEmail")
-            .value
-            .trim();
+            .value.trim();
 
-        const password =
-            document
+        const password = document
             .getElementById("loginPassword")
             .value;
 
-        if(!email || !password){
-
-            alert(
-                "Enter your email and password."
-            );
-
+        if (!email || !password) {
+            alert("Enter your email and password.");
             return;
-
         }
 
-        const button =
-            document.getElementById(
-                "loginBtn"
-            );
+        if (!pngpdSupabase) {
+            alert("Supabase is not connected.");
+            return;
+        }
+
+        const button = document.getElementById("loginBtn");
 
         button.disabled = true;
-        button.textContent =
-            "LOGGING IN...";
+        button.textContent = "LOGGING IN...";
 
-        try{
+        try {
 
-            const {
-                data,
-                error
-            } =
-                await pngpdSupabase.auth
-                .signInWithPassword({
-
-                    email,
-                    password
-
+            const { data, error } =
+                await pngpdSupabase.auth.signInWithPassword({
+                    email: email,
+                    password: password
                 });
 
-            if(error)
+            if (error) {
                 throw error;
+            }
 
-            await PNGPD.loadPlayer(
-                data.user.id
-            );
+            await PNGPD.loadPlayer(data.user.id);
 
-            PNGPD.show(
-                "gameScreen"
-            );
-
+            PNGPD.show("gameScreen");
             PNGPD.updateHUD();
 
-        }
-        catch(error){
+        } catch (error) {
 
             console.error(error);
 
             alert(
-                error.message ||
-                "Login failed."
+                error.message || "Login failed."
             );
 
-        }
-        finally{
+        } finally {
 
-            button.disabled =
-                false;
-
-            button.textContent =
-                "LOGIN";
+            button.disabled = false;
+            button.textContent = "LOGIN";
 
         }
-
     },
 
 
-    async loadPlayer(id){
+    async loadPlayer(id) {
 
-        const {
-            data,
-            error
-        } =
-            await pngpdSupabase
-            .from("players")
-            .select("*")
-            .eq("id",id)
-            .single();
-
-        if(error){
-
-            console.error(error);
-
+        if (!pngpdSupabase) {
             return;
+        }
 
+        const { data, error } =
+            await pngpdSupabase
+                .from("players")
+                .select("*")
+                .eq("id", id)
+                .single();
+
+        if (error) {
+            console.error(error);
+            return;
         }
 
         this.player = data;
-
-        window.pngpdPlayer =
-            data;
-
+        window.pngpdPlayer = data;
     },
 
 
-    updateHUD(){
+    updateHUD() {
 
-        if(!this.player)
+        if (!this.player) {
             return;
+        }
 
-        const p =
-            this.player;
+        const p = this.player;
 
         const name =
             p.nickname ||
             p.full_name ||
             "PLAYER";
 
-        document
-        .getElementById(
-            "hudPlayerName"
-        )
-        .textContent =
-            name;
+        document.getElementById("hudPlayerName").textContent = name;
+        document.getElementById("worldPlayerName").textContent = name;
 
-        document
-        .getElementById(
-            "worldPlayerName"
-        )
-        .textContent =
-            name;
-
-        document
-        .getElementById(
-            "hudLevel"
-        )
-        .textContent =
+        document.getElementById("hudLevel").textContent =
             p.level || 1;
 
-        document
-        .getElementById(
-            "hudRating"
-        )
-        .textContent =
+        document.getElementById("hudRating").textContent =
             p.academic_rating || 0;
 
-        document
-        .getElementById(
-            "hudCoins"
-        )
-        .textContent =
-            this.moneyFormat(
-                p.coins
-            );
+        document.getElementById("hudCoins").textContent =
+            this.moneyFormat(p.coins);
 
-        document
-        .getElementById(
-            "hudXP"
-        )
-        .textContent =
+        document.getElementById("hudXP").textContent =
             p.xp || 0;
 
-        document
-        .getElementById(
-            "hudEnergy"
-        )
-        .textContent =
+        document.getElementById("hudEnergy").textContent =
             p.energy ?? 100;
-
     },
 
 
-    openPanel(title,content){
+    openPanel(title, content) {
 
-        document
-        .getElementById(
-            "panelTitle"
-        )
-        .textContent =
-            title;
+        document.getElementById("panelTitle").textContent = title;
 
-        document
-        .getElementById(
-            "panelContent"
-        )
-        .innerHTML =
-            content;
+        document.getElementById("panelContent").innerHTML = content;
 
-        document
-        .getElementById(
-            "gamePanel"
-        )
-        .style.display =
-            "flex";
+        document.getElementById("gamePanel").style.display = "flex";
+    },
 
+
+    logout: async function() {
+
+        if (pngpdSupabase) {
+            await pngpdSupabase.auth.signOut();
+        }
+
+        this.player = null;
+
+        this.show("startScreen");
     }
 
 };
 
 
-/* =====================================================
-   BUTTONS
-===================================================== */
+/* ===============================
+   START BUTTONS
+================================ */
 
-document
-.getElementById("showRegisterBtn")
-.onclick = () =>
-    PNGPD.show(
-        "registrationScreen"
-    );
+document.getElementById("showRegisterBtn").onclick = function() {
+    PNGPD.show("registrationScreen");
+};
 
+document.getElementById("showLoginBtn").onclick = function() {
+    PNGPD.show("loginScreen");
+};
 
-document
-.getElementById("showLoginBtn")
-.onclick = () =>
-    PNGPD.show(
-        "loginScreen"
-    );
+document.getElementById("backToStartBtn").onclick = function() {
+    PNGPD.show("startScreen");
+};
 
+document.getElementById("backFromLoginBtn").onclick = function() {
+    PNGPD.show("startScreen");
+};
 
-document
-.getElementById("backToStartBtn")
-.onclick = () =>
-    PNGPD.show(
-        "startScreen"
-    );
-
-
-document
-.getElementById("backFromLoginBtn")
-.onclick = () =>
-    PNGPD.show(
-        "startScreen"
-    );
-
-
-document
-.getElementById("registerBtn")
-.onclick = () =>
+document.getElementById("registerBtn").onclick = function() {
     PNGPD.register();
+};
 
-
-document
-.getElementById("loginBtn")
-.onclick = () =>
+document.getElementById("loginBtn").onclick = function() {
     PNGPD.login();
+};
 
-
-document
-.getElementById("closePanel")
-.onclick = () => {
-
-    document
-    .getElementById(
-        "gamePanel"
-    )
-    .style.display =
-        "none";
-
+document.getElementById("closePanel").onclick = function() {
+    document.getElementById("gamePanel").style.display = "none";
 };
 
 
-/* =====================================================
+/* ===============================
    WORLD LOCATIONS
-===================================================== */
+================================ */
 
-document
-.querySelectorAll(
-    ".location"
-)
-.forEach(button => {
+document.querySelectorAll(".location").forEach(button => {
 
-    button.addEventListener(
-        "click",
-        () => {
+    button.addEventListener("click", function() {
 
-            const location =
-                button.dataset.location;
+        const location = button.dataset.location;
 
-            const names = {
+        const names = {
 
-                department:
-                    "🏫 PNGPD Department",
+            department: "🏫 PNGPD Department",
+            library: "📚 Library",
+            lab: "🧪 Laboratory",
+            hostel: "🏠 Hostel",
+            cafeteria: "☕ Cafeteria",
+            arena: "🏟️ Arena",
+            bank: "🏦 Bank",
+            shop: "🛒 Shop",
+            properties: "🏡 Properties",
+            garage: "🚗 Garage",
+            tournaments: "🏆 Tournaments"
 
-                library:
-                    "📚 Library",
+        };
 
-                lab:
-                    "🧪 Laboratory",
+        PNGPD.openPanel(
+            names[location] || "PNGPD LIFE",
+            `
+            <p style="color:#9bb0c2;line-height:1.6">
+                You have entered
+                <strong>${names[location] || location}</strong>.
+                <br><br>
+                This location will receive its full
+                gameplay system as PNGPD LIFE develops.
+            </p>
+            `
+        );
 
-                hostel:
-                    "🏠 Hostel",
+    });
 
-                cafeteria:
-                    "☕ Cafeteria",
+});
 
-                arena:
-                    "🏟️ Arena",
 
-                bank:
-                    "🏦 Bank",
+/* ===============================
+   BOTTOM NAVIGATION
+================================ */
 
-                shop:
-                    "🛒 Shop",
+document.querySelectorAll("[data-panel]").forEach(button => {
 
-                properties:
-                    "🏡 Properties",
+    button.addEventListener("click", function() {
 
-                garage:
-                    "🚗 Garage",
+        const panel = button.dataset.panel;
 
-                tournaments:
-                    "🏆 Tournaments"
+        if (panel === "profile") {
 
-            };
+            const p = PNGPD.player;
 
             PNGPD.openPanel(
-
-                names[location] ||
-                "PNGPD LIFE",
-
+                "👤 Player Profile",
                 `
-                <p style="color:#9bb0c2;line-height:1.6">
-                    You have entered
-                    <strong>
-                    ${names[location] || location}
-                    </strong>.
-                    <br><br>
-                    This location will receive
-                    its full gameplay system as
-                    PNGPD LIFE develops.
-                </p>
+                <h3>${p?.full_name || "Player"}</h3>
+                <br>
+                <p>Level: ${p?.level || 1}</p>
+                <p>XP: ${p?.xp || 0}</p>
+                <p>Academic Rating: ${p?.academic_rating || 0}</p>
+                <p>Coins: ${PNGPD.moneyFormat(p?.coins || 0)}</p>
                 `
-
             );
 
         }
-    );
 
-});
+        else if (panel === "missions") {
 
-
-/* =====================================================
-   BOTTOM NAV
-===================================================== */
-
-document
-.querySelectorAll(
-    "[data-panel]"
-)
-.forEach(button => {
-
-    button.addEventListener(
-        "click",
-        () => {
-
-            const panel =
-                button.dataset.panel;
-
-            if(panel === "profile"){
-
-                const p =
-                    PNGPD.player;
-
-                PNGPD.openPanel(
-
-                    "👤 Player Profile",
-
-                    `
-                    <h3>
-                    ${p?.full_name || "Player"}
-                    </h3>
-
-                    <br>
-
-                    <p>Level:
-                    ${p?.level || 1}</p>
-
-                    <p>XP:
-                    ${p?.xp || 0}</p>
-
-                    <p>Academic Rating:
-                    ${p?.academic_rating || 0}</p>
-
-                    <p>Coins:
-                    ${PNGPD.moneyFormat(
-                        p?.coins || 0
-                    )}</p>
-                    `
-
-                );
-
-            }
-
-            else if(panel === "missions"){
-
-                PNGPD.openPanel(
-                    "🎯 Missions",
-                    `
-                    <p>
-                    Complete academic,
-                    exploration and challenge
-                    missions to earn XP and
-                    fictional coins.
-                    </p>
-                    `
-                );
-
-            }
-
-            else if(panel === "ranks"){
-
-                PNGPD.openPanel(
-                    "🏆 Rankings",
-                    `
-                    <p>
-                    Global PNGPD leaderboard
-                    will be connected to the
-                    Supabase database.
-                    </p>
-                    `
-                );
-
-            }
-
-            else if(panel === "items"){
-
-                PNGPD.openPanel(
-                    "🎒 Inventory",
-                    `
-                    <p>
-                    Your equipment,
-                    academic kits, properties
-                    and vehicles will appear here.
-                    </p>
-                    `
-                );
-
-            }
-
-            else if(panel === "menu"){
-
-                PNGPD.openPanel(
-                    "☰ Menu",
-                    `
-                    <button
-                        class="btn secondary"
-                        onclick="PNGPD.logout()"
-                    >
-                        LOG OUT
-                    </button>
-                    `
-                );
-
-            }
+            PNGPD.openPanel(
+                "🎯 Missions",
+                `
+                <p>
+                Complete academic, exploration and
+                challenge missions to earn XP and
+                fictional coins.
+                </p>
+                `
+            );
 
         }
-    );
+
+        else if (panel === "ranks") {
+
+            PNGPD.openPanel(
+                "🏆 Rankings",
+                `
+                <p>
+                Global PNGPD leaderboard will be
+                connected to the Supabase database.
+                </p>
+                `
+            );
+
+        }
+
+        else if (panel === "items") {
+
+            PNGPD.openPanel(
+                "🎒 Inventory",
+                `
+                <p>
+                Your equipment, academic kits,
+                properties and vehicles will appear here.
+                </p>
+                `
+            );
+
+        }
+
+        else if (panel === "menu") {
+
+            PNGPD.openPanel(
+                "☰ Menu",
+                `
+                <button
+                    class="btn secondary"
+                    onclick="PNGPD.logout()"
+                >
+                    LOG OUT
+                </button>
+                `
+            );
+
+        }
+
+    });
 
 });
 
 
-/* =====================================================
-   LOGOUT
-===================================================== */
+/* ===============================
+   GUARANTEED STARTUP
+================================ */
 
-PNGPD.logout =
-async function(){
-
-    if(pngpdSupabase){
-
-        await pngpdSupabase
-        .auth
-        .signOut();
-
-    }
-
-    this.player =
-        null;
-
-    this.show(
-        "startScreen"
-    );
-
-};
-
-
-/* =====================================================
-   SESSION CHECK
-===================================================== */
-
-async function initializePNGPD(){
+function initializePNGPD() {
 
     /*
-       Splash is deliberately given a
-       guaranteed exit so a JavaScript
-       error cannot leave the user on
-       a blank screen.
+       IMPORTANT:
+       The START SCREEN is shown first.
+       Supabase/session checking happens AFTER.
     */
 
-    setTimeout(
-        async () => {
+    PNGPD.show("startScreen");
 
-            try{
+    setTimeout(async function() {
 
-                const {
-                    data
-                } =
-                    await pngpdSupabase
-                    .auth
-                    .getSession();
+        try {
 
-                if(
-                    data &&
-                    data.session &&
-                    data.session.user
-                ){
+            if (!pngpdSupabase) {
+                return;
+            }
 
-                    await PNGPD.loadPlayer(
-                        data.session.user.id
-                    );
+            const {
+                data,
+                error
+            } = await pngpdSupabase.auth.getSession();
 
-                    PNGPD.show(
-                        "gameScreen"
-                    );
+            if (error) {
+                console.error(error);
+                return;
+            }
 
+            if (
+                data &&
+                data.session &&
+                data.session.user
+            ) {
+
+                await PNGPD.loadPlayer(
+                    data.session.user.id
+                );
+
+                if (PNGPD.player) {
+
+                    PNGPD.show("gameScreen");
                     PNGPD.updateHUD();
 
                 }
-                else{
-
-                    PNGPD.show(
-                        "startScreen"
-                    );
-
-                }
-
-            }
-            catch(error){
-
-                console.error(
-                    "Startup error:",
-                    error
-                );
-
-                PNGPD.show(
-                    "startScreen"
-                );
 
             }
 
-        },
-        1800
-    );
+        } catch (error) {
+
+            console.error(
+                "Session check failed:",
+                error
+            );
+
+            /*
+               Do NOTHING here.
+               The START SCREEN is already visible.
+            */
+
+        }
+
+    }, 1800);
 
 }
 
 
+/* ===============================
+   START PNGPD LIFE
+================================ */
+
 initializePNGPD();
+
+</script>
 
 </script>
 
