@@ -1,183 +1,159 @@
 const PNGPD_QUESTIONS = [
 
-    {
-        question: "What is the main purpose of filtration?",
-        options: [
-            "To separate a solid from a fluid",
-            "To increase pressure",
-            "To increase temperature",
-            "To produce gas"
-        ],
-        answer: 0,
-        explanation: "Filtration separates suspended solid particles from a fluid by passing the mixture through a porous medium."
-    },
+{
+id:1,
+topic:"Filtration",
+difficulty:"Medium",
+question:"A slurry is passed through a filter under constant pressure. As filtration continues, the thickness of the filter cake increases. What is the most likely effect on the rate of filtration?",
+options:[
+"The rate continuously increases",
+"The rate continuously decreases",
+"The rate remains exactly constant",
+"The rate first decreases and then becomes infinite"
+],
+answer:1,
+explanation:"As cake thickness increases, resistance to liquid flow increases, causing the filtration rate to decrease."
+},
 
-    {
-        question: "The liquid that passes through a filter medium is called what?",
-        options: [
-            "Cake",
-            "Filtrate",
-            "Residue",
-            "Slurry"
-        ],
-        answer: 1,
-        explanation: "The liquid that passes through the filter medium is the filtrate."
-    },
+{
+id:2,
+topic:"Filtration",
+difficulty:"Easy",
+question:"During solid-liquid filtration, the liquid that passes through the filter medium and leaves the filtration unit is known as the:",
+options:[
+"Filter cake",
+"Slurry",
+"Filtrate",
+"Filter aid"
+],
+answer:2,
+explanation:"The liquid that passes through the filter medium is called the filtrate."
+},
 
-    {
-        question: "The solid retained on a filter medium is called the:",
-        options: [
-            "Filtrate",
-            "Solvent",
-            "Filter cake",
-            "Vapour"
-        ],
-        answer: 2,
-        explanation: "The solid retained by the filter forms the filter cake."
-    },
+{
+id:3,
+topic:"Filtration",
+difficulty:"Medium",
+question:"Which of the following best describes constant-pressure filtration?",
+options:[
+"The pressure difference is maintained approximately constant while filtration proceeds",
+"The pressure is increased continuously until all liquid is removed",
+"The filter operates without any pressure difference",
+"The cake thickness is maintained constant"
+],
+answer:0,
+explanation:"In constant-pressure filtration, the pressure difference across the filter is maintained approximately constant."
+},
 
-    {
-        question: "Which of the following is a pressure-driven membrane separation process?",
-        options: [
-            "Distillation",
-            "Reverse osmosis",
-            "Crystallization",
-            "Drying"
-        ],
-        answer: 1,
-        explanation: "Reverse osmosis uses pressure as the main driving force for membrane separation."
-    },
+{
+id:4,
+topic:"Filtration",
+difficulty:"Medium",
+question:"A filter cake becomes thicker during filtration. Which resistance becomes increasingly important as filtration proceeds?",
+options:[
+"Resistance of the feed tank",
+"Resistance of the filter cake",
+"Resistance of the pump motor",
+"Resistance of the atmosphere"
+],
+answer:1,
+explanation:"The deposited cake adds resistance to liquid flow, and this resistance increases with cake thickness."
+},
 
-    {
-        question: "What is the major purpose of baffles in a mixing tank?",
-        options: [
-            "To prevent vortex formation",
-            "To increase evaporation",
-            "To reduce liquid volume",
-            "To filter solids"
-        ],
-        answer: 0,
-        explanation: "Baffles reduce swirling and vortex formation and improve mixing."
-    },
+{
+id:5,
+topic:"Filtration",
+difficulty:"Hard",
+question:"For a filtration process operated at constant pressure, the pressure difference across the filter is increased while all other conditions remain approximately unchanged. What generally happens to the initial filtration rate?",
+options:[
+"It increases",
+"It decreases to zero",
+"It remains unchanged",
+"It becomes independent of the filter medium"
+],
+answer:0,
+explanation:"A larger pressure driving force generally produces a higher initial filtration rate."
+},
 
-    {
-        question: "An impeller is mainly used in a mixing vessel to:",
-        options: [
-            "Heat the liquid",
-            "Provide agitation",
-            "Filter the mixture",
-            "Remove vapour"
-        ],
-        answer: 1,
-        explanation: "The impeller transfers mechanical energy to the fluid and produces agitation."
-    },
+{
+id:6,
+topic:"Filtration",
+difficulty:"Medium",
+question:"What is the primary function of a filter medium in a filtration operation?",
+options:[
+"To dissolve the solid particles",
+"To retain the solid particles while allowing the liquid to pass",
+"To increase the temperature of the slurry",
+"To evaporate the liquid"
+],
+answer:1,
+explanation:"The filter medium allows the liquid to pass while retaining the solid particles."
+},
 
-    {
-        question: "Leaching involves the removal of a soluble component from a solid using a:",
-        options: [
-            "Solvent",
-            "Catalyst only",
-            "Gas",
-            "Filter cloth"
-        ],
-        answer: 0,
-        explanation: "Leaching extracts a soluble constituent from a solid using a suitable solvent."
-    },
+{
+id:7,
+topic:"Filtration",
+difficulty:"Medium",
+question:"A filter aid is added to a slurry mainly to:",
+options:[
+"Increase the viscosity of the filtrate",
+"Improve cake permeability and filtration performance",
+"Prevent all liquid from passing through the filter",
+"Increase the boiling point of the liquid"
+],
+answer:1,
+explanation:"Filter aids can form a more permeable cake and improve filtration performance."
+},
 
-    {
-        question: "In a falling-film evaporator, liquid flows mainly as a:",
-        options: [
-            "Thick stationary layer",
-            "Thin film",
-            "Gas cloud",
-            "Solid bed"
-        ],
-        answer: 1,
-        explanation: "The feed flows downward along the heating surface as a thin film."
-    },
+{
+id:8,
+topic:"Filtration",
+difficulty:"Medium",
+question:"After filtration, the filter cake is washed with clean liquid. The main purpose of cake washing is to:",
+options:[
+"Increase the amount of unwanted dissolved material remaining in the cake",
+"Remove soluble material trapped within the cake",
+"Increase cake thickness",
+"Convert the cake into vapour"
+],
+answer:1,
+explanation:"Cake washing removes soluble substances retained within the wet filter cake."
+},
 
-    {
-        question: "Evaporation is primarily used to:",
-        options: [
-            "Remove solvent by vaporization",
-            "Increase solid particle size",
-            "Separate only gases",
-            "Create a filter cake"
-        ],
-        answer: 0,
-        explanation: "Evaporation removes a volatile solvent by vaporization, concentrating the remaining solution."
-    },
+{
+id:9,
+topic:"Filtration",
+difficulty:"Hard",
+question:"A compressible filter cake is formed during filtration. Increasing the applied pressure may cause the cake to become denser. What is the consequence?",
+options:[
+"The cake resistance may increase significantly",
+"The cake resistance becomes zero",
+"The filtrate becomes a solid",
+"The filter medium disappears"
+],
+answer:0,
+explanation:"Compressible cakes can become denser under higher pressure, increasing resistance to flow."
+},
 
-    {
-        question: "Which factor generally increases filtration rate?",
-        options: [
-            "Lower pressure difference",
-            "Higher resistance",
-            "Greater pressure difference",
-            "Thicker cake only"
-        ],
-        answer: 2,
-        explanation: "Increasing the pressure difference across the filter generally increases the filtration driving force."
-    },
+{
+id:10,
+topic:"Filtration",
+difficulty:"Easy",
+question:"Which of the following is normally the feed to a filtration unit?",
+options:[
+"Pure gas",
+"Slurry",
+"Dry filter cake only",
+"Pure vapour"
+],
+answer:1,
+explanation:"Filtration commonly separates a solid-liquid slurry into filter cake and filtrate."
+},
 
-    {
-        question: "In constant-pressure filtration, the pressure difference is:",
-        options: [
-            "Constant",
-            "Always zero",
-            "Continuously decreasing",
-            "Unknown"
-        ],
-        answer: 0,
-        explanation: "Constant-pressure filtration operates at a maintained pressure difference."
-    },
-
-    {
-        question: "Which equipment is commonly used for mechanical agitation?",
-        options: [
-            "Impeller",
-            "Condenser",
-            "Filter cloth",
-            "Distillation tray"
-        ],
-        answer: 0,
-        explanation: "An impeller is a rotating device used to agitate and mix fluids."
-    },
-
-    {
-        question: "The driving force for reverse osmosis is mainly:",
-        options: [
-            "Pressure difference",
-            "Gravity only",
-            "Temperature only",
-            "Particle size"
-        ],
-        answer: 0,
-        explanation: "Reverse osmosis uses pressure greater than the osmotic pressure to force solvent through a membrane."
-    },
-
-    {
-        question: "In solid-liquid extraction, the desired soluble material is transferred from the solid into the:",
-        options: [
-            "Solvent",
-            "Filter cake",
-            "Impeller",
-            "Baffle"
-        ],
-        answer: 0,
-        explanation: "During leaching, the soluble component transfers from the solid phase into the solvent."
-    },
-
-    {
-        question: "Which operation is commonly used to concentrate a solution by removing water?",
-        options: [
-            "Evaporation",
-            "Filtration",
-            "Mixing",
-            "Leaching"
-        ],
-        answer: 0,
-        explanation: "Evaporation removes part of the solvent, commonly water, to concentrate a solution."
-    }
-
-];
+{
+id:11,
+topic:"Evaporation",
+difficulty:"Easy",
+question:"The principal purpose of evaporation in chemical processing is to:",
+options:[
+"Remove a solvent from
