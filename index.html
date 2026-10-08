@@ -1,182 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PNGPD LIVE</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PNGPD LIVE</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- SPLASH -->
-  <section id="splash" class="screen active">
-    <div class="logo">⚙️</div>
-    <h1>PNGPD <span>LIVE</span></h1>
-    <p>Study. Build. Earn. Rise.</p>
-    <button onclick="showScreen('auth')">START GAME</button>
-  </section>
-
-  <!-- REGISTRATION -->
-  <section id="auth" class="screen">
-    <div class="card auth-card">
-      <div class="mini-logo">⚙️</div>
-
-      <h2>Welcome to PNGPD LIVE</h2>
-      <p>Create your player account</p>
-
-      <input id="playerName" type="text" placeholder="Enter your name">
-
-      <input
-        id="playerEmail"
-        type="email"
-        placeholder="Enter Gmail address"
-      >
-
-      <button onclick="startRegistration()">CREATE PLAYER</button>
-
-      <small>
-        Your account will later be connected to Supabase.
-      </small>
-    </div>
-  </section>
-
-  <!-- ASSESSMENT -->
-  <section id="assessment" class="screen">
-
-    <div class="top-bar">
-      <b>STARTER ASSESSMENT</b>
-      <span id="assessmentCount">1/10</span>
-    </div>
-
-    <div class="assessment-box">
-
-      <div class="brain">🧠</div>
-
-      <h2 id="assessmentQuestion">Question</h2>
-
-      <div id="assessmentAnswers"></div>
-
-      <button id="nextAssessment"
-              onclick="nextAssessment()"
-              disabled>
-        NEXT
-      </button>
-
-    </div>
-  </section>
-
-  <!-- MAIN GAME -->
-  <section id="game" class="screen">
-
-    <!-- HUD -->
-    <header class="hud">
-
-      <div class="profile-mini">
-
-        <div class="avatar">
-          👨🏽‍🎓
+    <!-- ================= SPLASH SCREEN ================= -->
+    <section id="splashScreen" class="screen splash-screen">
+        <div class="logo-box">
+            <div class="logo-icon">⚙️</div>
+            <h1>PNGPD LIVE</h1>
+            <p>Study • Earn • Compete • Rise</p>
         </div>
 
-        <div>
-          <strong id="hudName">Player</strong>
-          <small>
-            Level <span id="hudLevel">1</span>
-          </small>
+        <div class="loading-box">
+            <div class="loading-bar">
+                <div id="loadingProgress"></div>
+            </div>
+            <p id="loadingText">Loading PNGPD LIVE...</p>
+        </div>
+    </section>
+
+
+    <!-- ================= START SCREEN ================= -->
+    <section id="startScreen" class="screen hidden">
+        <div class="start-container">
+
+            <div class="game-logo">
+                <span>⚙️</span>
+                <h1>PNGPD LIVE</h1>
+                <p>THE PNGPD CAMPUS SIMULATION</p>
+            </div>
+
+            <div class="welcome-card">
+                <h2>Welcome to PNGPD LIVE</h2>
+
+                <p>
+                    Build your academic career, make money,
+                    complete missions and become one of the
+                    top players in PNGPD.
+                </p>
+
+                <button id="startGameBtn" class="primary-btn">
+                    START GAME
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ================= REGISTRATION ================= -->
+    <section id="registrationScreen" class="screen hidden">
+
+        <div class="form-card">
+
+            <div class="form-header">
+                <span>👤</span>
+                <h2>Create Your Player</h2>
+                <p>Your PNGPD LIVE journey starts here.</p>
+            </div>
+
+            <label for="playerName">Player Name</label>
+            <input
+                type="text"
+                id="playerName"
+                placeholder="Enter your name"
+                maxlength="20"
+            >
+
+            <label for="playerEmail">Email</label>
+            <input
+                type="email"
+                id="playerEmail"
+                placeholder="Enter your email"
+            >
+
+            <label for="playerNickname">Nickname</label>
+            <input
+                type="text"
+                id="playerNickname"
+                placeholder="Choose a nickname"
+                maxlength="15"
+            >
+
+            <button id="continueRegistration" class="primary-btn">
+                CONTINUE
+            </button>
+
+            <p id="registrationError" class="error-text"></p>
+
         </div>
 
-      </div>
-
-      <div class="stat">
-        💰 <span id="coins">0</span>
-      </div>
-
-      <div class="stat">
-        ⭐ <span id="xp">0</span>
-      </div>
-
-    </header>
+    </section>
 
 
-    <!-- WORLD -->
-    <main class="world">
+    <!-- ================= ASSESSMENT ================= -->
+    <section id="assessmentScreen" class="screen hidden">
 
-      <div class="map-title">
-        <h1>PNGPD LIVE CAMPUS</h1>
-        <p>Choose where you want to go</p>
-      </div>
+        <div class="assessment-container">
 
+            <div class="assessment-header">
+                <span>🧠</span>
+                <h2>PNGPD ENTRY ASSESSMENT</h2>
+                <p>
+                    Your score determines your starting academic
+                    rating and starting fictional capital.
+                </p>
+            </div>
 
-      <div class="map">
+            <div class="assessment-progress">
+                <div id="assessmentProgress"></div>
+            </div>
 
-        <!-- CAMPAIGN BANNERS -->
+            <div class="question-number">
+                Question <span id="assessmentNumber">1</span>
+                / <span id="assessmentTotal">15</span>
+            </div>
 
-        <div class="campaign-banner banner-1">
-          🗳️ VOTE PATRICK FOR VICE PRESIDENT
+            <div class="assessment-question-card">
+
+                <h3 id="assessmentQuestion">
+                    Question loading...
+                </h3>
+
+                <div id="assessmentOptions" class="options-container"></div>
+
+            </div>
+
+            <button
+                id="nextAssessment"
+                class="primary-btn"
+                disabled
+            >
+                NEXT
+            </button>
+
         </div>
 
-        <div class="campaign-banner banner-2">
-          ⭐ PATRICK FOR VICE PRESIDENT ⭐
-        </div>
-
-        <div class="campaign-banner banner-3">
-          🗳️ YOUR VOICE. YOUR CHOICE. VOTE PATRICK!
-        </div>
-
-        <div class="campaign-banner banner-4">
-          🚩 VOTE PATRICK — FOR A BETTER PNGPD
-        </div>
+    </section>
 
 
-        <!-- BUILDINGS -->
+    <!-- ================= ASSESSMENT RESULT ================= -->
+    <section id="assessmentResultScreen" class="screen hidden">
 
-        <button
-          class="building department"
-          onclick="openLocation('department')">
+        <div class="result-card">
 
-          <span>🏫</span>
-          <b>PNGPD</b>
-          <small>Department</small>
+            <div class="result-icon">🏆</div>
 
-        </button>
+            <h1>Assessment Complete!</h1>
 
+            <p>Your PNGPD LIVE starting profile:</p>
 
-        <button
-          class="building library"
-          onclick="openLocation('library')">
+            <div class="result-stats">
 
-          <span>📚</span>
-          <b>LIBRARY</b>
-          <small>Study Zone</small>
-
-        </button>
-
-
-        <button
-          class="building lab"
-          onclick="openLocation('lab')">
-
-          <span>🧪</span>
-          <b>LAB</b>
-          <small>Practical</small>
-
-        </button>
-
-
-        <button
-          class="building hostel"
-          onclick="openLocation('hostel')">
-
-          <span>🏠</span>
-          <b>HOSTEL</b>
-          <small>Rest</small>
-
-        </button>
-
-
-        <button
-          class="building cafe"
-          onclick="openLocation('cafe')">
-
-          <span>🍔</span>
-          <b>CAF
+                <div class="result-stat">
+                    <span>Score</span>
+                    <
