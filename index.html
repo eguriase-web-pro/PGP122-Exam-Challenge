@@ -237,6 +237,27 @@ button{font:inherit;cursor:pointer;border:0}
 .correct{color:#087f23;font-weight:900}
 .wrong{color:#c62828;font-weight:900}
 
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+    gap:10px;
+    margin-top:15px;
+}
+.info-box{
+    padding:14px;
+    border-radius:15px;
+    background:#f5f5f5;
+}
+.formula{
+    margin:10px 0;
+    padding:12px;
+    border-radius:12px;
+    background:#212121;
+    color:#fff;
+    font-weight:900;
+    overflow:auto;
+}
+
 @media(max-width:650px){
     .logo{font-size:40px}
     #campaign{font-size:11px;top:65px}
@@ -288,15 +309,8 @@ button{font:inherit;cursor:pointer;border:0}
             <div class="road vertical" style="left:500px"></div>
             <div class="road vertical" style="left:1150px"></div>
 
-            <div
-                class="path"
-                style="left:500px;top:390px;width:650px;height:35px"
-            ></div>
-
-            <div
-                class="path"
-                style="left:500px;top:870px;width:650px;height:35px"
-            ></div>
+            <div class="path" style="left:500px;top:390px;width:650px;height:35px"></div>
+            <div class="path" style="left:500px;top:870px;width:650px;height:35px"></div>
 
             <div class="tree" style="left:40px;top:70px"></div>
             <div class="tree" style="left:620px;top:90px"></div>
@@ -385,9 +399,7 @@ button{font:inherit;cursor:pointer;border:0}
         <div class="panel-header">
             <span id="panelTitle"></span>
 
-            <button class="close-btn" onclick="closePanel()">
-                ×
-            </button>
+            <button class="close-btn" onclick="closePanel()">×</button>
         </div>
 
         <div class="panel-body" id="panelBody"></div>
@@ -395,11 +407,18 @@ button{font:inherit;cursor:pointer;border:0}
     </div>
 </div>
 
-<!-- IMPORTANT: keep your existing files -->
 <script src="data/questions.js"></script>
-<script src="game/actions.js" defer></script>
 
 <script>
+/* =========================================================
+   PNGPD LIFE 2.0
+   CORE GAME
+   ========================================================= */
+
+
+/* =========================================================
+   BUILT-IN SHORT REVISION NOTES
+   ========================================================= */
 
 window.PNGPD_STUDY_MATERIALS = [
 
@@ -409,9 +428,8 @@ sections:[
 {
 title:"💧 Fluid Kinematics",
 content:`
-<b>Fluid Kinematics</b> is the study of the motion of
-fluid particles, including velocity and acceleration,
-without considering the forces causing the motion.
+<b>Fluid Kinematics</b> is the study of fluid motion without
+considering the forces causing the motion.
 
 <br><br>
 
@@ -427,67 +445,41 @@ without considering the forces causing the motion.
 {
 title:"📐 Flow Rate & Continuity",
 content:`
-The volumetric rate of flow is:
+The volumetric flow rate is:
 
-<br><br>
-
-<b>Q = AV</b>
-
-<br><br>
-
-Q = volumetric flow rate<br>
-A = cross-sectional area<br>
-V = average velocity
-
-<br><br>
+<div class="formula">Q = AV</div>
 
 For incompressible flow:
 
-<br><br>
+<div class="formula">A₁V₁ = A₂V₂</div>
 
-<b>A₁V₁ = A₂V₂</b>
-
-<br><br>
-
-This is based on conservation of mass.
+This follows from conservation of mass.
 `
 },
 {
 title:"⚡ Fluid Head",
 content:`
-<b>Potential head = z</b><br>
-<b>Velocity head = V² / 2g</b><br>
-<b>Pressure head = p / γ</b>
+<b>Potential head:</b> z<br>
+<b>Velocity head:</b> V²/2g<br>
+<b>Pressure head:</b> p/γ
 
-<br><br>
-
-Total head:
-
-<br><br>
-
-<b>H = z + V²/(2g) + p/γ</b>
+<div class="formula">H = z + V²/(2g) + p/γ</div>
 `
 },
 {
 title:"🔬 Bernoulli's Equation",
 content:`
-Bernoulli's equation relates pressure, velocity and
-elevation for ideal, incompressible, steady flow.
+For ideal, incompressible, steady flow:
 
-<br><br>
+<div class="formula">p/γ + V²/(2g) + z = constant</div>
 
-<b>p/γ + V²/(2g) + z = constant</b>
-
-<br><br>
-
-Applications include Venturimeter and Pitot tube.
+Applications include the Venturimeter and Pitot tube.
 `
 },
 {
 title:"📏 Venturimeter & Pitot Tube",
 content:`
-<b>Venturimeter:</b> Used to determine flow rate through
-a pipe.
+<b>Venturimeter:</b> determines flow rate through a pipe.
 
 <br><br>
 
@@ -498,8 +490,8 @@ Main parts:<br>
 
 <br><br>
 
-<b>Pitot tube:</b> Used to measure fluid velocity at a
-particular point.
+<b>Pitot tube:</b> measures fluid velocity at a particular
+point.
 `
 }
 ]
@@ -511,16 +503,16 @@ sections:[
 {
 title:"⚙️ Separation",
 content:`
-<b>Separation</b> is the process of dividing a mixture
-into two or more distinct components or phases based on
-differences in physical or chemical properties.
+<b>Separation</b> is the process of dividing a mixture into
+two or more distinct components or phases based on differences
+in physical or chemical properties.
 `
 },
 {
 title:"🔄 Mixing",
 content:`
-Mixing reduces non-uniformity in concentration,
-temperature and other properties.
+Mixing reduces non-uniformity in concentration, temperature
+and other properties.
 
 <br><br>
 
@@ -528,14 +520,14 @@ Types include liquid/fluid mixing and solid/powder mixing.
 
 <br><br>
 
-Tumbling mixers include double-cone and twin-shell
-or V-blender arrangements.
+Tumbling mixers include double-cone and twin-shell/V-blender
+arrangements.
 
 <br><br>
 
-Double-cone mixers are suitable for free-flowing dry
-powders. Typical batch filling is about 50–60% and
-mixing may take about 5–20 minutes.
+Double-cone mixers are suitable for free-flowing dry powders.
+Typical batch filling is about 50–60%, and mixing may take
+about 5–20 minutes.
 `
 },
 {
@@ -554,7 +546,9 @@ using a filtering medium.
 
 <br><br>
 
-Filtration rate can be expressed as <b>dV/dt</b>.
+Filtration rate can be expressed as:
+
+<div class="formula">dV/dt</div>
 `
 },
 {
@@ -565,34 +559,34 @@ components.
 
 <br><br>
 
-It may depend on molecular size, solubility, diffusivity
-and pressure difference.
+Separation can depend on molecular size, solubility,
+diffusivity and pressure difference.
 `
 },
 {
 title:"⛏️ Leaching",
 content:`
-<b>Leaching</b> is a solid-liquid extraction process in
-which a solvent removes a soluble constituent from a solid.
+<b>Leaching</b> is a solid-liquid extraction process in which
+a solvent removes a soluble constituent from a solid.
 
 <br><br>
 
-Stages:<br>
+Main stages:<br>
 1. Contacting<br>
 2. Solute transfer<br>
 3. Separation
 
 <br><br>
 
-Factors include particle size, solvent properties,
+Important factors include particle size, solvent properties,
 temperature, contact time and agitation.
 `
 },
 {
 title:"🔥 Evaporation",
 content:`
-<b>Evaporation</b> concentrates a solution by vaporising
-part of its solvent.
+<b>Evaporation</b> concentrates a solution by vaporising part
+of its solvent.
 
 <br><br>
 
@@ -609,13 +603,13 @@ sections:[
 {
 title:"💧 Boiler Feed Water",
 content:`
-Important boiler-water quality considerations include
-hardness, dissolved oxygen and silica.
+Important boiler-water quality considerations include hardness,
+dissolved oxygen and silica.
 
 <br><br>
 
-Hardness from calcium and magnesium should be controlled
-because it can cause scale formation.
+Hardness from calcium and magnesium should be controlled because
+it can cause scale formation.
 
 <br><br>
 
@@ -625,21 +619,19 @@ Dissolved oxygen can contribute to corrosion.
 {
 title:"🚰 Drinking Water Quality",
 content:`
-Important drinking-water parameters include pH,
-conductivity, TDS, turbidity, calcium, magnesium and
-microbiological quality.
+Important parameters include pH, conductivity, TDS, turbidity,
+calcium, magnesium and microbiological quality.
 
 <br><br>
 
-Typical Nigerian/WHO reference values in the course
-material include pH around 6.5–8.5 and total coliform
-of 0.
+The course material gives a typical pH reference range of
+<b>6.5–8.5</b> and total coliform of <b>0</b>.
 `
 },
 {
 title:"♻️ Wastewater Treatment",
 content:`
-Main stages may include:
+Main treatment stages include:
 
 <br>
 • Preliminary treatment<br>
@@ -658,9 +650,8 @@ sections:[
 {
 title:"📐 Calculus",
 content:`
-Calculus deals mainly with limits, continuity,
-differentiation, integration and applications of
-derivatives.
+Calculus deals mainly with limits, continuity, differentiation,
+integration and applications of derivatives.
 `
 },
 {
@@ -669,18 +660,10 @@ content:`
 Differentiation determines the rate at which one quantity
 changes with respect to another.
 
-<br><br>
+<div class="formula">If y = xⁿ, then dy/dx = nxⁿ⁻¹</div>
 
-If <b>y = xⁿ</b>:
-
-<br><br>
-
-<b>dy/dx = nxⁿ⁻¹</b>
-
-<br><br>
-
-Applications include gradients, rates of change,
-maximum and minimum values.
+Applications include gradients, rates of change, maximum and
+minimum values.
 `
 },
 {
@@ -688,11 +671,7 @@ title:"∫ Integration",
 content:`
 Integration is the reverse process of differentiation.
 
-<br><br>
-
-<b>∫xⁿ dx = xⁿ⁺¹/(n+1) + C</b>
-
-<br><br>
+<div class="formula">∫xⁿ dx = xⁿ⁺¹/(n+1) + C</div>
 
 C is the constant of integration.
 `
@@ -706,57 +685,45 @@ sections:[
 {
 title:"🛢️ Crude Oil Processing",
 content:`
-Crude processing combines physical separation and
-chemical conversion.
+Crude processing combines physical separation and chemical
+conversion.
 
 <br><br>
 
 Important processes include distillation, absorption,
-adsorption, cracking, reforming, alkylation and
-isomerization.
+adsorption, cracking, reforming, alkylation and isomerization.
 `
 },
 {
 title:"🔥 Atmospheric Distillation",
 content:`
-Atmospheric distillation separates crude oil mainly
-according to boiling range and volatility.
+Atmospheric distillation separates crude oil mainly according
+to boiling range and volatility.
 
 <br><br>
 
-Lighter components generally have higher vapour pressure
-and lower boiling points.
+Lighter components generally have higher vapour pressure and
+lower boiling points.
 `
 },
 {
 title:"⚗️ Petroleum Properties",
 content:`
-Important petroleum properties include density,
-specific gravity, molecular weight, viscosity and
-fractional composition.
+Important petroleum properties include density, specific
+gravity, molecular weight, viscosity and fractional composition.
 
-<br><br>
+<div class="formula">SG = density of petroleum liquid / density of water</div>
 
-<b>SG = density of petroleum liquid / density of water</b>
-
-<br><br>
-
-<b>API = (141.5/SG) − 131.5</b>
+<div class="formula">API = (141.5 / SG) − 131.5</div>
 `
 },
 {
 title:"📊 API Classification",
 content:`
-Light crude: above 31.1 API
-
-<br>
-Medium crude: 22.3–31.1 API
-
-<br>
-Heavy crude: 10–22.3 API
-
-<br>
-Extra-heavy crude: below 10 API
+<b>Light crude:</b> above 31.1 API<br><br>
+<b>Medium crude:</b> 22.3–31.1 API<br><br>
+<b>Heavy crude:</b> 10–22.3 API<br><br>
+<b>Extra-heavy crude:</b> below 10 API
 `
 }
 ]
@@ -768,14 +735,12 @@ sections:[
 {
 title:"⚖️ Engineering Relative Density",
 content:`
-Relative density compares the density of a substance
-with the density of a reference substance.
+Relative density compares the density of a substance with
+the density of a reference substance.
 
-<br><br>
-
-<b>RD = Density of substance / Density of reference substance</b>
-
-<br><br>
+<div class="formula">
+RD = Density of substance / Density of reference substance
+</div>
 
 Avoid trapped air bubbles and use clean apparatus.
 Temperature can affect density measurements.
@@ -784,22 +749,21 @@ Temperature can affect density measurements.
 {
 title:"🌡️ Pour Point",
 content:`
-<b>Pour point</b> is the lowest temperature at which oil
-remains sufficiently fluid to pour under specified
-test conditions.
+<b>Pour point</b> is the lowest temperature at which oil remains
+sufficiently fluid to pour under specified test conditions.
 
 <br><br>
 
-Apparatus includes a test jar, thermometer, cooling bath
+Common apparatus includes a test jar, thermometer, cooling bath
 and petroleum sample.
 `
 },
 {
 title:"🛢️ API Gravity",
 content:`
-<b>API = (141.5 / SG at 60°F/60°F) − 131.5</b>
-
-<br><br>
+<div class="formula">
+API = (141.5 / SG at 60°F/60°F) − 131.5
+</div>
 
 Higher API generally means lighter petroleum.
 Lower API generally means heavier petroleum.
@@ -834,13 +798,13 @@ methodology, results, discussion, conclusion and references.
 {
 title:"🎤 Oral Presentation",
 content:`
-A good technical presentation should be clear,
-organised, concise and technically accurate.
+A good technical presentation should be clear, organised,
+concise and technically accurate.
 
 <br><br>
 
-The presenter should understand the subject rather than
-simply memorising the material.
+The presenter should understand the subject rather than simply
+memorising the material.
 `
 }
 ]
@@ -858,22 +822,23 @@ titration and laboratory calculations.
 
 <br><br>
 
-Always use the correct apparatus and follow safe
-laboratory procedures.
+Always use the correct apparatus and follow safe laboratory
+procedures.
 `
 }
 ]
-
 };
 
 
-/* ================= PLAYER DATA ================= */
+/* =========================================================
+   PLAYER DATA
+   ========================================================= */
 
 const state={
-name:localStorage.getItem("pngpd_name")||"Patrick",
-money:Number(localStorage.getItem("pngpd_money")||5000),
-energy:Number(localStorage.getItem("pngpd_energy")||100),
-xp:Number(localStorage.getItem("pngpd_xp")||0)
+    name:localStorage.getItem("pngpd_name")||"Patrick",
+    money:Number(localStorage.getItem("pngpd_money")||5000),
+    energy:Number(localStorage.getItem("pngpd_energy")||100),
+    xp:Number(localStorage.getItem("pngpd_xp")||0)
 };
 
 let currentCourse="";
@@ -882,7 +847,9 @@ let quizIndex=0;
 let quizScore=0;
 
 
-/* ================= BASIC ================= */
+/* =========================================================
+   BASIC
+   ========================================================= */
 
 function showAuth(){
     document.getElementById("splash").style.display="none";
@@ -948,11 +915,12 @@ function escapeText(text){
     return String(text)
         .replace(/\\/g,"\\\\")
         .replace(/'/g,"\\'");
-
 }
 
 
-/* ================= PROFILE ================= */
+/* =========================================================
+   PROFILE
+   ========================================================= */
 
 function openProfile(){
 
@@ -966,12 +934,38 @@ function openProfile(){
             <p>💰 ₦${state.money}</p>
             <p>⚡ ${state.energy}/100 Energy</p>
         </div>
+
+        <div class="info-grid">
+
+            <div class="info-box">
+                <b>📚 Courses</b>
+                <br><br>${getCourses().length}
+            </div>
+
+            <div class="info-box">
+                <b>⭐ XP</b>
+                <br><br>${state.xp}
+            </div>
+
+            <div class="info-box">
+                <b>⚡ Energy</b>
+                <br><br>${state.energy}/100
+            </div>
+
+            <div class="info-box">
+                <b>💰 Money</b>
+                <br><br>₦${state.money}
+            </div>
+
+        </div>
         `
     );
 }
 
 
-/* ================= HOSTEL ================= */
+/* =========================================================
+   HOSTEL
+   ========================================================= */
 
 function openHostel(){
 
@@ -980,7 +974,11 @@ function openHostel(){
         `
         <div class="note">
             <h2>🛏️ Rest</h2>
-            <p>Rest and recover your energy before heading back into campus.</p>
+
+            <p>
+                Rest and recover your energy before heading
+                back into campus.
+            </p>
 
             <button class="next-btn" onclick="restPlayer()">
                 😴 REST +30 ENERGY
@@ -1000,7 +998,9 @@ function restPlayer(){
 }
 
 
-/* ================= CAMPAIGN ================= */
+/* =========================================================
+   CAMPAIGN
+   ========================================================= */
 
 function openCampaign(){
 
@@ -1014,6 +1014,7 @@ function openCampaign(){
             color:white;
             background:linear-gradient(135deg,#b71c1c,#f44336,#ffca28);
         ">
+
             <div style="font-size:45px">🗳️</div>
 
             <h1>VOTE PATRICK</h1>
@@ -1029,15 +1030,19 @@ function openCampaign(){
             </p>
 
             <strong>
-                Let's make PNGPD NSChE stronger, more active and more connected.
+                Let's make PNGPD NSChE stronger, more active
+                and more connected.
             </strong>
+
         </div>
         `
     );
 }
 
 
-/* ================= COURSE SYSTEM ================= */
+/* =========================================================
+   COURSE SYSTEM
+   ========================================================= */
 
 function getCourses(){
 
@@ -1057,14 +1062,24 @@ function getCourses(){
     ]);
 
     if(window.PNGPD_STUDY_MATERIALS){
+
         window.PNGPD_STUDY_MATERIALS.forEach(item=>{
-            if(item.course) courses.add(item.course);
+
+            if(item.course){
+                courses.add(item.course);
+            }
+
         });
     }
 
-    if(window.PNGPD_QUESTIONS){
+    if(Array.isArray(window.PNGPD_QUESTIONS)){
+
         window.PNGPD_QUESTIONS.forEach(item=>{
-            if(item.course) courses.add(item.course);
+
+            if(item.course){
+                courses.add(item.course);
+            }
+
         });
     }
 
@@ -1072,7 +1087,9 @@ function getCourses(){
 }
 
 
-/* ================= LIBRARY ================= */
+/* =========================================================
+   LIBRARY
+   ========================================================= */
 
 function openClassroom(){
     openLibrary();
@@ -1084,6 +1101,7 @@ function openLibrary(){
 
     let html=`
         <div class="note">
+
             <b>📖 QUICK REVISION LIBRARY</b>
 
             <br><br>
@@ -1097,6 +1115,7 @@ function openLibrary(){
             📌 Formulas<br>
             📌 Practical facts<br>
             📌 Practice questions
+
         </div>
 
         <div class="course-grid">
@@ -1129,13 +1148,14 @@ function openLibrary(){
 }
 
 
-/* ================= COURSE MATERIAL ================= */
+/* =========================================================
+   COURSE MATERIAL
+   ========================================================= */
 
 function getCourseMaterial(course){
 
-    return (
-        window.PNGPD_STUDY_MATERIALS||[]
-    ).find(item=>item.course===course);
+    return (window.PNGPD_STUDY_MATERIALS||[])
+        .find(item=>item.course===course);
 }
 
 function openCourse(course){
@@ -1158,7 +1178,8 @@ function openCourse(course){
             <p><b>QUICK REVISION NOTES</b></p>
 
             <p>
-                Read the key points and formulas before attempting the practice.
+                Read the key points and formulas before
+                attempting the practice.
             </p>
 
         </div>
@@ -1185,7 +1206,15 @@ function openCourse(course){
 
         html+=`
             <div class="note">
-                No short-note material has been loaded for ${course} yet.
+
+                <h3>📌 ${course}</h3>
+
+                <p>
+                    The course is available in the library.
+                    Short notes for this course have not yet
+                    been added.
+                </p>
+
             </div>
         `;
     }
@@ -1220,7 +1249,9 @@ function openCourse(course){
 }
 
 
-/* ================= QUIZ ================= */
+/* =========================================================
+   QUIZ
+   ========================================================= */
 
 function startQuiz(course){
 
@@ -1241,7 +1272,15 @@ function startQuiz(course){
             "📝 PRACTICE",
             `
             <div class="note">
-                No questions are loaded for ${course} yet.
+
+                <h3>No questions loaded</h3>
+
+                <p>
+                    The short notes for ${course} are available,
+                    but the question bank does not currently
+                    contain questions for this course.
+                </p>
+
             </div>
             `
         );
@@ -1261,6 +1300,18 @@ function renderQuestion(){
             ${q.question}
         </div>
     `;
+
+    if(!Array.isArray(q.options)){
+
+        html+=`
+            <div class="note">
+                Invalid question format.
+            </div>
+        `;
+
+        openPanel(`📝 ${currentCourse}`,html);
+        return;
+    }
 
     q.options.forEach((option,index)=>{
 
@@ -1292,6 +1343,7 @@ function answerQuiz(selected){
     const correct=selected===Number(q.answer);
 
     if(correct){
+
         quizScore++;
         state.xp+=5;
     }
@@ -1301,6 +1353,7 @@ function answerQuiz(selected){
         : `<div class="wrong">❌ Incorrect.</div>`;
 
     if(q.explanation){
+
         feedback+=`
             <br>
             <small>${q.explanation}</small>
@@ -1323,13 +1376,21 @@ function nextQuestion(){
     quizIndex++;
 
     if(quizIndex<quizQuestions.length){
+
         renderQuestion();
+
     }else{
+
         finishQuiz();
+
     }
 }
 
 function finishQuiz(){
+
+    const percentage=Math.round(
+        (quizScore/quizQuestions.length)*100
+    );
 
     openPanel(
         "🏆 RESULT",
@@ -1341,6 +1402,8 @@ function finishQuiz(){
             <h1>
                 ${quizScore}/${quizQuestions.length}
             </h1>
+
+            <h3>${percentage}%</h3>
 
             <p>
                 ⭐ +${quizScore*5} XP
@@ -1361,7 +1424,9 @@ function finishQuiz(){
 }
 
 
-/* ================= CANTEEN ================= */
+/* =========================================================
+   CANTEEN
+   ========================================================= */
 
 function openCanteen(){
 
@@ -1376,12 +1441,14 @@ function openCanteen(){
 
     let html=`
         <div class="note">
+
             🍽️ Choose your food.
 
             <br><br>
 
             Each food has a different price and restores
             a different amount of energy.
+
         </div>
 
         <div class="food-grid">
@@ -1403,7 +1470,7 @@ function openCanteen(){
                 </div>
 
                 <button onclick="
-                    buyFood(${food[2]},${food[3]},'${food[1]}')
+                    buyFood(${food[2]},${food[3]},'${escapeText(food[1])}')
                 ">
                     BUY
                 </button>
@@ -1420,6 +1487,7 @@ function openCanteen(){
 function buyFood(price,energy,foodName){
 
     if(state.money<price){
+
         toast("Not enough money 💸");
         return;
     }
@@ -1437,7 +1505,9 @@ function buyFood(price,energy,foodName){
 }
 
 
-/* ================= PGP 126 LAB ================= */
+/* =========================================================
+   PGP 126 LABORATORY
+   ========================================================= */
 
 const labPracticals=[
 
@@ -1482,7 +1552,7 @@ function openLab(){
             <br><br>
 
             Each practical contains its formula,
-            apparatus, principle, practical focus and quiz.
+            apparatus, practical focus and quiz.
 
         </div>
 
@@ -1769,7 +1839,9 @@ function labQuiz(index){
 }
 
 
-/* ================= ARENA ================= */
+/* =========================================================
+   ARENA
+   ========================================================= */
 
 function openArena(){
 
@@ -1790,7 +1862,8 @@ function openArena(){
             <h2>🔥 Academic Battle Arena</h2>
 
             <p>
-                Challenge another PNGPD student in an academic quiz battle.
+                Challenge another PNGPD student in an academic
+                quiz battle.
             </p>
 
             <p>
@@ -1899,7 +1972,9 @@ function openLocalArena(){
 }
 
 
-/* ================= CAMPUS PANNING ================= */
+/* =========================================================
+   CAMPUS PANNING
+   ========================================================= */
 
 let panX=0;
 let panY=0;
@@ -1924,7 +1999,9 @@ function centerWorld(){
 }
 
 
-/* ================= DRAG ================= */
+/* =========================================================
+   DRAG / MAP MOVEMENT
+   ========================================================= */
 
 const viewport=document.getElementById("viewport");
 
@@ -1934,12 +2011,20 @@ viewport.addEventListener("pointerdown",event=>{
         return;
     }
 
+    if(event.target.closest("#hud") ||
+       event.target.closest("#hud-buttons") ||
+       event.target.closest("#campaign")){
+        return;
+    }
+
     dragging=true;
 
     lastX=event.clientX;
     lastY=event.clientY;
 
-    viewport.setPointerCapture(event.pointerId);
+    try{
+        viewport.setPointerCapture(event.pointerId);
+    }catch(error){}
 });
 
 viewport.addEventListener("pointermove",event=>{
@@ -1958,15 +2043,21 @@ viewport.addEventListener("pointermove",event=>{
 });
 
 viewport.addEventListener("pointerup",()=>{
+
     dragging=false;
+
 });
 
 viewport.addEventListener("pointercancel",()=>{
+
     dragging=false;
+
 });
 
 
-/* ================= WHEEL ================= */
+/* =========================================================
+   WHEEL / TRACKPAD
+   ========================================================= */
 
 viewport.addEventListener(
     "wheel",
@@ -1984,7 +2075,9 @@ viewport.addEventListener(
 );
 
 
-/* ================= RESIZE ================= */
+/* =========================================================
+   RESIZE
+   ========================================================= */
 
 window.addEventListener("resize",()=>{
 
@@ -1995,9 +2088,51 @@ window.addEventListener("resize",()=>{
     ){
 
         centerWorld();
+
     }
 
 });
+
+
+/* =========================================================
+   LOAD OPTIONAL ARENA MODULE
+   =========================================================
+
+   The main game is allowed to open even if game/actions.js
+   is missing or has a problem. The local Arena still works.
+   ========================================================= */
+
+(function loadArenaModule(){
+
+    const script=document.createElement("script");
+
+    script.src="game/actions.js";
+    script.async=true;
+
+    script.onload=function(){
+
+        console.log("PNGPD Arena module loaded.");
+
+    };
+
+    script.onerror=function(){
+
+        console.log(
+            "Optional Arena module not available. Local Arena enabled."
+        );
+
+    };
+
+    document.head.appendChild(script);
+
+})();
+
+
+/* =========================================================
+   STARTUP
+   ========================================================= */
+
+document.getElementById("playerName").value=state.name;
 
 </script>
 
