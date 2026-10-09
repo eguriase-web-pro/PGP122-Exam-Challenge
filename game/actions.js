@@ -878,3 +878,4 @@ window.findArenaOpponent = findArenaOpponent;
 window.loadArenaInvitations = loadArenaInvitations;
 window.acceptArenaChallenge = acceptArenaChallenge;
 window.declineArenaChallenge = declineArenaChallenge;;
+window.startArenaMatch = startArenaMatch;
