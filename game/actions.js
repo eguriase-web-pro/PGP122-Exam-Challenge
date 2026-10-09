@@ -557,3 +557,5 @@ function openArenaRecord() {
         `
     );
 }
+window.sendArenaChallenge = sendArenaChallenge;
+window.findArenaOpponent = findArenaOpponent;
