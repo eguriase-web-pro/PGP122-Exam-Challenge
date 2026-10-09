@@ -200,51 +200,188 @@ function createArenaChallenge() {
    PLACEHOLDER — MULTIPLAYER CONNECTION
    ========================================================= */
 
-function sendArenaChallenge(course) {
+async function sendArenaChallenge(course) {
 
-    showGeneralPanel(
-        "⚔️ Challenge Ready",
-        `
-            <div class="panel-card">
+    try {
 
-                <h3>🎯 ${course} Battle</h3>
+        if (!window.supabaseClient) {
+            showGeneralPanel(
+                "⚠️ Arena",
+                `<div class="panel-card">
+                    <p>Supabase is not connected.</p>
+                </div>`
+            );
+            return;
+        }
 
-                <p>
-                    Your challenge has been prepared.
-                </p>
+        const {
+            data: { user },
+            error: userError
+        } = await window.supabaseClient.auth.getUser();
 
-                <p>
-                    The multiplayer invitation system will
-                    connect you with another PNGPD student.
-                </p>
+        if (userError || !user) {
+            showGeneralPanel(
+                "🔐 Login Required",
+                `<div class="panel-card">
+                    <p>You must be logged in to challenge another student.</p>
+                </div>`
+            );
+            return;
+        }
 
-                <span class="badge">
-                    🧠 ${course}
-                </span>
+        showGeneralPanel(
+            "🎯 Choose Opponent",
+            `
+                <div class="panel-card">
 
-            </div>
-        `
-    );
+                    <h3>⚔️ ${course} Battle</h3>
+
+                    <p>
+                        Enter the username of the PNGPD student
+                        you want to challenge.
+                    </p>
+
+                    <input
+                        id="arenaOpponentUsername"
+                        type="text"
+                        placeholder="Enter username"
+                        style="
+                            width:100%;
+                            padding:12px;
+                            margin-top:12px;
+                            border-radius:8px;
+                            border:1px solid var(--border);
+                            background:var(--card);
+                            color:inherit;
+                            box-sizing:border-box;
+                        "
+                    >
+
+                    <button
+                        class="btn btn-primary btn-block"
+                        style="margin-top:12px"
+                        onclick="findArenaOpponent('${course}')"
+                    >
+                        🔎 Find Player
+                    </button>
+
+                </div>
+            `
+        );
+
+    } catch (error) {
+
+        console.error("Arena challenge error:", error);
+
+        showGeneralPanel(
+            "⚠️ Arena Error",
+            `<div class="panel-card">
+                <p>Something went wrong. Please try again.</p>
+            </div>`
+        );
+    }
 }
+async function findArenaOpponent(course) {
 
+    const input = document.getElementById("arenaOpponentUsername");
 
-function loadArenaInvitations() {
+    if (!input) return;
 
-    showGeneralPanel(
-        "📨 Battle Invitations",
-        `
-            <div class="panel-card">
+    const username = input.value.trim();
 
-                <h3>No Invitations Yet</h3>
+    if (!username) {
+        alert("Enter a username first.");
+        return;
+    }
 
-                <p>
-                    When another student challenges you,
-                    their invitation will appear here.
-                </p>
+    try {
 
-            </div>
-        `
-    );
+        const {
+            data: { user },
+            error: userError
+        } = await window.supabaseClient.auth.getUser();
+
+        if (userError || !user) {
+            alert("Please log in first.");
+            return;
+        }
+
+        const { data: players, error } =
+            await window.supabaseClient
+                .from("arena_profiles")
+                .select("user_id, username")
+                .ilike("username", username)
+                .limit(1);
+
+        if (error) {
+            console.error(error);
+            alert("Could not search for player.");
+            return;
+        }
+
+        if (!players || players.length === 0) {
+            alert("Player not found.");
+            return;
+        }
+
+        const opponent = players[0];
+
+        if (opponent.user_id === user.id) {
+            alert("You cannot challenge yourself.");
+            return;
+        }
+
+        const { data: match, error: matchError } =
+            await window.supabaseClient
+                .from("arena_matches")
+                .insert({
+                    challenger_id: user.id,
+                    opponent_id: opponent.user_id,
+                    course: course,
+                    status: "pending"
+                })
+                .select()
+                .single();
+
+        if (matchError) {
+            console.error(matchError);
+            alert("Could not send challenge.");
+            return;
+        }
+
+        showGeneralPanel(
+            "⚔️ Challenge Sent",
+            `
+                <div class="panel-card">
+
+                    <h3>🎯 Challenge Sent!</h3>
+
+                    <p>
+                        Your ${course} battle invitation
+                        has been sent to:
+                    </p>
+
+                    <div class="badge" style="margin-top:10px">
+                        👤 ${opponent.username}
+                    </div>
+
+                    <p style="
+                        margin-top:15px;
+                        color:var(--muted);
+                    ">
+                        Waiting for the player to accept...
+                    </p>
+
+                </div>
+            `
+        );
+
+    } catch (error) {
+
+        console.error("Challenge error:", error);
+
+        alert("Something went wrong.");
+    }
 }
 
 
