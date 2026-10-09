@@ -635,7 +635,7 @@ window.PNGPD_QUESTIONS = [
         explanation: "Anaerobic microorganisms stabilize organic matter in the absence of oxygen and can produce biogas containing methane."
     },
 
-    {
+        {
         id: 40,
         course: "PGP 123",
         topic: "Steam",
@@ -649,7 +649,8 @@ window.PNGPD_QUESTIONS = [
         ],
         answer: 3,
         explanation: "Sensible heat is calculated using Q = mCp(Tf - Ti), where m is mass, Cp is specific heat capacity, and Tf - Ti is the temperature change."
-    }
+    },
+
     // =====================================================
     // PGP 123 — INDUSTRIAL UTILITIES
     // BATCH 2: STEAM, ENERGY, FUELS AND COMBUSTION
@@ -959,7 +960,7 @@ window.PNGPD_QUESTIONS = [
         explanation: "Theoretical air is the calculated quantity of air required to supply the stoichiometric oxygen for complete combustion of the fuel."
     },
 
-    {
+        {
         id: 60,
         course: "PGP 123",
         topic: "Combustion",
@@ -973,7 +974,8 @@ window.PNGPD_QUESTIONS = [
         ],
         answer: 2,
         explanation: "Excess air helps provide sufficient oxygen for more complete combustion despite imperfect mixing and operating variations."
-    }
+    },
+
     // =====================================================
     // PGP 122 — SEPARATION PROCESS I
     // BATCH: LEACHING, EXTRACTION, FILTRATION, MEMBRANES
@@ -1459,7 +1461,7 @@ window.PNGPD_QUESTIONS = [
         answer: 1,
         explanation: "Membrane flux is commonly expressed as permeate volume per membrane area per unit time."
     },
-    {
+        {
         id: 116,
         course: "PGP 122",
         topic: "Membrane Separation",
@@ -1471,7 +1473,7 @@ window.PNGPD_QUESTIONS = [
             "4 L/(m²·h)",
             "12 L/(m²·h)"
         ],
-        answer: 0,
+        answer: 2,
         explanation: "Flux = permeate volume/(area × time) = 24/(3 × 2) = 4 L/(m²·h)."
     },
     {
