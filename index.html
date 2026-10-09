@@ -2,1932 +2,2002 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <title>PNGPD LIFE 2.0</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-  -webkit-tap-highlight-color:transparent;
-}
-
+*{box-sizing:border-box}
 html,body{
-  width:100%;
-  height:100%;
-  overflow:hidden;
-  font-family:Arial,Helvetica,sans-serif;
-  background:#101525;
-  color:white;
+    margin:0;width:100%;height:100%;overflow:hidden;
+    font-family:Arial,sans-serif;background:#111;
 }
-
-button{
-  font:inherit;
-  cursor:pointer;
-  border:0;
-}
-
-.hidden{
-  display:none!important;
-}
-
-/* ================= SPLASH ================= */
+button{font:inherit;cursor:pointer;border:0}
+.screen{position:fixed;inset:0}
 
 #splash{
-  position:fixed;
-  inset:0;
-  z-index:9999;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  background:
-    radial-gradient(circle at 20% 20%,#ff3b3b 0,transparent 25%),
-    radial-gradient(circle at 80% 20%,#ffd43b 0,transparent 25%),
-    radial-gradient(circle at 50% 90%,#00d4ff 0,transparent 30%),
-    linear-gradient(135deg,#32105f,#081426);
+    display:flex;align-items:center;justify-content:center;
+    text-align:center;color:white;
+    background:linear-gradient(135deg,#ff1744,#ff6d00,#7b1fa2);
 }
-
-.splash-box{
-  width:min(90%,520px);
-}
-
+.splash-box{padding:35px}
 .logo{
-  width:110px;
-  height:110px;
-  margin:auto;
-  border-radius:30px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:45px;
-  font-weight:1000;
-  background:linear-gradient(135deg,#ff2d55,#ff9f0a);
-  box-shadow:0 15px 50px #0008;
-  transform:rotate(-5deg);
+    font-size:55px;font-weight:900;letter-spacing:3px;
+    text-shadow:0 6px 15px #0006;
 }
-
-.splash-box h1{
-  font-size:clamp(38px,10vw,70px);
-  margin-top:25px;
-  font-weight:1000;
-}
-
-.splash-box p{
-  margin-top:10px;
-  color:#dce8ff;
-}
-
+.subtitle{margin-top:8px;font-size:16px}
 .start-btn{
-  margin-top:30px;
-  padding:16px 42px;
-  border-radius:50px;
-  background:linear-gradient(135deg,#ff1744,#ff8f00);
-  color:white;
-  font-size:18px;
-  font-weight:900;
-  box-shadow:0 10px 30px #ff174466;
+    margin-top:30px;padding:15px 36px;border-radius:30px;
+    background:white;color:#e91e63;font-weight:900;font-size:17px;
 }
-
-/* ================= AUTH ================= */
 
 #auth{
-  position:fixed;
-  inset:0;
-  z-index:9000;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-  background:
-    radial-gradient(circle at 10% 10%,#ff1744 0,transparent 25%),
-    radial-gradient(circle at 90% 90%,#00c853 0,transparent 25%),
-    linear-gradient(135deg,#131b3a,#210b30);
+    display:none;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,#ff1744,#ff9100);
 }
-
 .auth-card{
-  width:min(94%,430px);
-  padding:28px;
-  border-radius:28px;
-  background:#11182eee;
-  border:2px solid #ffffff18;
-  box-shadow:0 25px 70px #0009;
-  backdrop-filter:blur(15px);
+    width:min(92%,400px);background:white;padding:25px;
+    border-radius:25px;box-shadow:0 25px 70px #0006;
 }
-
-.auth-card h2{
-  font-size:30px;
-  margin-bottom:8px;
-}
-
-.auth-card p{
-  color:#aebbd5;
-  margin-bottom:22px;
-}
-
+.auth-card h2{color:#d81b60;margin-top:0}
 .auth-card input{
-  width:100%;
-  padding:15px;
-  margin-bottom:12px;
-  border-radius:14px;
-  border:1px solid #ffffff18;
-  outline:none;
-  background:#080d1c;
-  color:white;
+    width:100%;padding:14px;margin:7px 0;
+    border:2px solid #eee;border-radius:12px;outline:none;
+}
+.auth-btn{
+    width:100%;padding:14px;margin-top:10px;border-radius:12px;
+    background:#e91e63;color:white;font-weight:900;
 }
 
-.auth-card button{
-  width:100%;
-  padding:15px;
-  border-radius:14px;
-  color:white;
-  font-weight:900;
-  background:linear-gradient(135deg,#ff1744,#ff8f00);
-}
-
-/* ================= GAME ================= */
-
-#game{
-  position:fixed;
-  inset:0;
-  overflow:hidden;
-  background:#202a34;
-}
-
+#game{display:none;background:#78c84a}
 #viewport{
-  position:absolute;
-  inset:0;
-  overflow:hidden;
-  touch-action:none;
-  cursor:grab;
+    position:absolute;inset:0;overflow:hidden;
+    touch-action:none;background:#78c84a;
 }
-
-#viewport.dragging{
-  cursor:grabbing;
-}
-
 #world{
-  position:absolute;
-  width:1800px;
-  height:1200px;
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%);
-  background:
-    radial-gradient(circle at 15% 20%,#76c893 0 5%,transparent 5.3%),
-    radial-gradient(circle at 80% 75%,#52b788 0 6%,transparent 6.3%),
-    #69b578;
-  overflow:hidden;
+    position:absolute;width:1800px;height:1200px;
+    left:0;top:0;transform-origin:0 0;background:#78c84a;
+}
+.grass{
+    position:absolute;inset:0;
+    background:radial-gradient(circle,#ffffff22 0 2px,transparent 3px);
+    background-size:35px 35px;
 }
 
-/* grass texture */
-#world:before{
-  content:"";
-  position:absolute;
-  inset:0;
-  opacity:.18;
-  background-image:
-    radial-gradient(#fff 1px,transparent 1px);
-  background-size:32px 32px;
-  pointer-events:none;
+.road{position:absolute;background:#777}
+.road.horizontal{width:100%;height:120px}
+.road.vertical{height:100%;width:120px}
+.road.horizontal::after{
+    content:"";position:absolute;left:0;right:0;top:57px;
+    height:6px;background:#ffd740;
+}
+.road.vertical::after{
+    content:"";position:absolute;top:0;bottom:0;left:57px;
+    width:6px;background:#ffd740;
 }
 
-/* ================= ROADS ================= */
-
-.road{
-  position:absolute;
-  background:#444c57;
-  box-shadow:inset 0 0 0 5px #343b44;
-}
-
-.road.horizontal{
-  height:115px;
-  left:0;
-  width:100%;
-}
-
-.road.vertical{
-  width:115px;
-  top:0;
-  height:100%;
-}
-
-.road:after{
-  content:"";
-  position:absolute;
-  background:repeating-linear-gradient(
-    90deg,
-    #ffd740 0 40px,
-    transparent 40px 75px
-  );
-  opacity:.8;
-}
-
-.road.horizontal:after{
-  height:5px;
-  left:0;
-  right:0;
-  top:55px;
-}
-
-.road.vertical:after{
-  width:5px;
-  top:0;
-  bottom:0;
-  left:55px;
-  background:repeating-linear-gradient(
-    0deg,
-    #ffd740 0 40px,
-    transparent 40px 75px
-  );
-}
-
-/* paths */
 .path{
-  position:absolute;
-  background:#d8b978;
-  border-radius:30px;
+    position:absolute;background:#d8b57a;border-radius:30px;
 }
-
-/* ================= TREES ================= */
 
 .tree{
-  position:absolute;
-  width:55px;
-  height:70px;
+    position:absolute;width:48px;height:48px;border-radius:50%;
+    background:#188038;border:6px solid #0b5d2a;
+    box-shadow:0 8px 0 #795548;
 }
-
-.tree:before{
-  content:"";
-  position:absolute;
-  width:24px;
-  height:35px;
-  bottom:0;
-  left:16px;
-  border-radius:5px;
-  background:#74472b;
+.tree::after{
+    content:"";position:absolute;width:12px;height:20px;
+    left:12px;top:34px;background:#795548;
 }
-
-.tree:after{
-  content:"";
-  position:absolute;
-  width:55px;
-  height:55px;
-  top:0;
-  left:0;
-  border-radius:50%;
-  background:#168447;
-  box-shadow:
-    -15px 12px 0 #21a354,
-    15px 12px 0 #0e733e;
-}
-
-/* ================= BUILDINGS ================= */
 
 .building{
-  position:absolute;
-  width:235px;
-  height:165px;
-  border-radius:22px;
-  border:5px solid #ffffffaa;
-  box-shadow:0 15px 25px #0005;
-  overflow:visible;
-  transition:.2s;
-  z-index:10;
+    position:absolute;width:240px;height:180px;
+    display:flex;flex-direction:column;align-items:center;
+    justify-content:center;border:7px solid white;
+    border-radius:25px;color:white;text-align:center;
+    box-shadow:0 12px 25px #0005;cursor:pointer;
+    user-select:none;transition:.15s;
 }
-
-.building:hover{
-  transform:translateY(-5px) scale(1.02);
-}
-
-.building .roof{
-  position:absolute;
-  left:-8px;
-  right:-8px;
-  top:-30px;
-  height:42px;
-  border-radius:20px 20px 8px 8px;
-  background:#b71c1c;
-  border:5px solid #ffffffaa;
-}
-
-.building .door{
-  position:absolute;
-  width:42px;
-  height:65px;
-  bottom:0;
-  left:calc(50% - 21px);
-  background:#4e342e;
-  border:4px solid #222;
-  border-bottom:0;
-}
-
-.building .window{
-  position:absolute;
-  width:34px;
-  height:34px;
-  top:65px;
-  background:#72e5ff;
-  border:4px solid #263238;
-}
-
-.building .window.left{
-  left:28px;
-}
-
-.building .window.right{
-  right:28px;
-}
-
-.building-label{
-  position:absolute;
-  left:50%;
-  transform:translateX(-50%);
-  top:-75px;
-  white-space:nowrap;
-  padding:8px 14px;
-  border-radius:20px;
-  background:#111c;
-  color:#fff;
-  font-size:15px;
-  font-weight:1000;
-  box-shadow:0 5px 15px #0005;
-}
-
-/* building colors */
+.building:hover{transform:scale(1.04)}
+.building b{font-size:25px;text-shadow:0 3px 5px #0007}
+.building span{margin-top:8px;font-size:13px}
 
 .library{
-  left:170px;
-  top:210px;
-  background:#e53935;
+    left:150px;top:170px;
+    background:linear-gradient(135deg,#e53935,#ff9800);
 }
-
 .classroom{
-  left:680px;
-  top:180px;
-  background:#ff9800;
+    left:780px;top:170px;
+    background:linear-gradient(135deg,#ff9800,#fdd835);
 }
-
 .arena{
-  left:1160px;
-  top:220px;
-  background:#8e24aa;
+    left:1410px;top:170px;
+    background:linear-gradient(135deg,#7b1fa2,#e040fb);
 }
-
 .hostel{
-  left:180px;
-  top:760px;
-  background:#1976d2;
+    left:150px;top:690px;
+    background:linear-gradient(135deg,#0288d1,#00acc1);
 }
-
 .canteen{
-  left:700px;
-  top:760px;
-  background:#f4511e;
+    left:780px;top:690px;
+    background:linear-gradient(135deg,#f4511e,#ff1744);
 }
-
 .lab{
-  left:1190px;
-  top:730px;
-  background:#00897b;
+    left:1410px;top:690px;
+    background:linear-gradient(135deg,#00897b,#43a047);
 }
-
-/* ================= PLAYER ================= */
 
 #player{
-  position:absolute;
-  left:875px;
-  top:500px;
-  width:55px;
-  height:70px;
-  z-index:100;
-  pointer-events:none;
+    position:absolute;left:875px;top:500px;
+    width:60px;height:75px;z-index:20;text-align:center;
+    font-size:40px;
+    filter:drop-shadow(0 5px 4px #0006);
+    pointer-events:none;
 }
-
-.player-head{
-  position:absolute;
-  width:34px;
-  height:34px;
-  left:10px;
-  top:0;
-  border-radius:50%;
-  background:#8d5524;
-  border:3px solid #222;
+#player-name{
+    display:block;background:white;border-radius:8px;
+    padding:2px 5px;font-size:11px;font-weight:900;
 }
-
-.player-body{
-  position:absolute;
-  width:44px;
-  height:38px;
-  left:5px;
-  top:30px;
-  border-radius:12px 12px 5px 5px;
-  background:#ff1744;
-  border:3px solid #222;
-}
-
-.player-name{
-  position:absolute;
-  top:-25px;
-  left:50%;
-  transform:translateX(-50%);
-  white-space:nowrap;
-  font-size:12px;
-  font-weight:bold;
-  background:#111c;
-  padding:4px 8px;
-  border-radius:8px;
-}
-
-/* ================= HUD ================= */
 
 #hud{
-  position:fixed;
-  z-index:500;
-  top:15px;
-  left:15px;
-  right:15px;
-  display:flex;
-  justify-content:space-between;
-  pointer-events:none;
+    position:fixed;z-index:50;left:12px;top:12px;
+    min-width:230px;padding:13px 16px;background:#fffffff0;
+    border-radius:18px;box-shadow:0 8px 25px #0004;
+}
+.hud-name{color:#d81b60;font-weight:900}
+.stats{margin-top:5px;font-size:13px}
+
+#hud-buttons{
+    position:fixed;z-index:51;right:12px;top:12px;
+    display:flex;gap:8px;
+}
+.round-btn{
+    width:46px;height:46px;border-radius:50%;background:white;
+    font-size:21px;box-shadow:0 7px 18px #0004;
 }
 
-.hud-left{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
+#campaign{
+    position:fixed;z-index:52;left:50%;top:12px;
+    transform:translateX(-50%);padding:10px 18px;
+    border:3px solid white;border-radius:18px;color:white;
+    text-align:center;font-weight:900;
+    background:linear-gradient(135deg,#b71c1c,#f44336,#ffca28);
+    box-shadow:0 8px 25px #0006;cursor:pointer;
 }
-
-.stat{
-  padding:9px 13px;
-  border-radius:15px;
-  background:#101827eF;
-  border:2px solid #ffffff15;
-  box-shadow:0 5px 20px #0004;
-  font-size:13px;
-  font-weight:900;
-}
-
-.money{color:#69f0ae;}
-.energy{color:#ffd740;}
-.score{color:#40c4ff;}
-
-.hud-right{
-  display:flex;
-  gap:8px;
-  pointer-events:auto;
-}
-
-.hud-btn{
-  width:46px;
-  height:46px;
-  border-radius:50%;
-  background:#111827ee;
-  color:white;
-  font-size:21px;
-  border:2px solid #ffffff20;
-}
-
-/* ================= HELP ================= */
-
-.map-hint{
-  position:fixed;
-  z-index:400;
-  bottom:15px;
-  left:50%;
-  transform:translateX(-50%);
-  padding:10px 17px;
-  border-radius:20px;
-  background:#101827dd;
-  color:#dce7ff;
-  font-size:12px;
-  pointer-events:none;
-}
-
-/* ================= PANEL ================= */
 
 #panel{
-  position:fixed;
-  z-index:1000;
-  left:50%;
-  bottom:15px;
-  transform:translate(-50%,120%);
-  width:min(94%,650px);
-  max-height:78vh;
-  overflow:auto;
-  padding:22px;
-  border-radius:25px;
-  background:#101827f5;
-  border:2px solid #ffffff18;
-  box-shadow:0 25px 70px #0009;
-  transition:.3s;
+    position:fixed;z-index:90;inset:0;display:none;
+    align-items:center;justify-content:center;padding:15px;
+    background:#0008;
+}
+.panel-box{
+    width:min(94%,750px);max-height:90vh;overflow:auto;
+    background:white;border-radius:24px;
+    box-shadow:0 25px 80px #0008;
+}
+.panel-header{
+    position:sticky;top:0;z-index:5;padding:18px 20px;
+    color:white;font-size:22px;font-weight:900;
+    background:linear-gradient(135deg,#e91e63,#ff5722);
+}
+.close-btn{
+    float:right;width:35px;height:35px;border-radius:50%;
+    background:#ffffff33;color:white;font-weight:900;
+}
+.panel-body{padding:18px}
+
+.note{
+    margin:10px 0;padding:15px;border-left:6px solid #ff9800;
+    border-radius:14px;background:#fff8e1;
+}
+.course-grid,.food-grid,.lab-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+    gap:12px;
+}
+.card{
+    min-height:120px;padding:17px;border-radius:18px;color:white;
+    font-weight:900;box-shadow:0 7px 16px #0003;
+}
+.card:nth-child(6n+1){background:#e53935}
+.card:nth-child(6n+2){background:#8e24aa}
+.card:nth-child(6n+3){background:#00897b}
+.card:nth-child(6n+4){background:#fb8c00}
+.card:nth-child(6n+5){background:#1e88e5}
+.card:nth-child(6n){background:#6d4c41}
+.card button{
+    margin-top:12px;padding:9px 13px;border-radius:10px;
+    background:white;color:#222;font-weight:900;
 }
 
-#panel.open{
-  transform:translate(-50%,0);
+.quiz-question{
+    margin-bottom:15px;font-size:19px;font-weight:900;
 }
-
-.panel-close{
-  position:absolute;
-  right:15px;
-  top:12px;
-  width:36px;
-  height:36px;
-  border-radius:50%;
-  background:#ff1744;
-  color:white;
-  font-weight:1000;
+.option{
+    display:block;width:100%;margin:8px 0;padding:13px;
+    border-radius:12px;background:#f1f3f4;text-align:left;
 }
-
-#panel h2{
-  margin-right:45px;
-  font-size:27px;
+.option:hover{background:#ffd6e2}
+.next-btn{
+    margin-top:10px;padding:12px 18px;border-radius:12px;
+    background:#e91e63;color:white;font-weight:900;
 }
-
-.panel-sub{
-  margin-top:7px;
-  color:#aebbd5;
+.study-btn{
+    width:100%;margin-top:10px;padding:13px;border-radius:12px;
+    background:#ff9800;color:white;font-weight:900;
 }
-
-.course-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
-  gap:10px;
-  margin-top:18px;
+.practice-btn{
+    width:100%;margin-top:10px;padding:13px;border-radius:12px;
+    background:#e91e63;color:white;font-weight:900;
 }
-
-.course-btn{
-  min-height:75px;
-  padding:12px;
-  border-radius:15px;
-  background:linear-gradient(135deg,#263b72,#412060);
-  color:white;
-  font-weight:900;
-  text-align:left;
-  border:2px solid #ffffff12;
+#toast{
+    position:fixed;z-index:100;bottom:20px;left:50%;
+    transform:translateX(-50%);display:none;padding:12px 18px;
+    border-radius:12px;background:#222;color:white;
 }
+.correct{color:#087f23;font-weight:900}
+.wrong{color:#c62828;font-weight:900}
 
-.course-btn:hover{
-  background:linear-gradient(135deg,#e91e63,#ff6d00);
-}
-
-.note-box{
-  margin-top:18px;
-  padding:17px;
-  border-radius:18px;
-  background:#080d18;
-  border-left:5px solid #ff1744;
-}
-
-.note-box h3{
-  margin-bottom:10px;
-  color:#ffd740;
-}
-
-.note-box p,
-.note-box li{
-  color:#dce5f5;
-  line-height:1.55;
-}
-
-.note-box ul{
-  padding-left:20px;
-}
-
-.action-btn{
-  margin-top:15px;
-  width:100%;
-  padding:14px;
-  border-radius:14px;
-  background:linear-gradient(135deg,#ff1744,#ff8f00);
-  color:white;
-  font-weight:1000;
-}
-
-/* ================= FOOD ================= */
-
-.food-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:10px;
-  margin-top:18px;
-}
-
-.food{
-  padding:15px;
-  border-radius:16px;
-  background:#1c2940;
-}
-
-.food strong{
-  display:block;
-  margin-bottom:6px;
-}
-
-.food small{
-  color:#9fb0c9;
-}
-
-.food button{
-  margin-top:10px;
-  padding:8px 12px;
-  border-radius:10px;
-  background:#00c853;
-  color:white;
-  font-weight:bold;
-}
-
-/* ================= PROFILE ================= */
-
-.profile-stat{
-  display:flex;
-  justify-content:space-between;
-  padding:13px;
-  margin-top:8px;
-  border-radius:12px;
-  background:#182238;
-}
-
-/* ================= MOBILE ================= */
-
-@media(max-width:600px){
-  #world{
-    width:1800px;
-    height:1200px;
-  }
-
-  .building{
-    width:210px;
-    height:150px;
-  }
-
-  .hud-left{
-    max-width:70%;
-  }
-
-  .stat{
-    padding:7px 9px;
-    font-size:11px;
-  }
-
-  .map-hint{
-    bottom:8px;
-    font-size:10px;
-  }
-
-  #panel{
-    max-height:82vh;
-  }
+@media(max-width:650px){
+    .logo{font-size:40px}
+    #campaign{font-size:11px;top:65px}
+    .building{width:210px;height:155px}
+    .course-grid,.food-grid,.lab-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
 
 <body>
 
-<!-- ================= SPLASH ================= -->
-
-<section id="splash">
-  <div class="splash-box">
-    <div class="logo">P</div>
-    <h1>PNGPD LIFE</h1>
-    <p>Petroleum & Natural Gas Processing Technology</p>
-    <button class="start-btn" onclick="startGame()">START GAME</button>
-  </div>
-</section>
-
-<!-- ================= AUTH ================= -->
-
-<section id="auth">
-  <div class="auth-card">
-    <h2>Welcome to PNGPD LIFE</h2>
-    <p>Create your student profile to enter campus.</p>
-
-    <input id="playerNameInput" type="text" placeholder="Your name">
-
-    <button onclick="enterCampus()">ENTER CAMPUS</button>
-  </div>
-</section>
-
-<!-- ================= GAME ================= -->
-
-<section id="game" class="hidden">
-
-  <div id="viewport">
-
-    <div id="world">
-
-      <!-- ROADS -->
-
-      <div class="road horizontal" style="top:455px;"></div>
-      <div class="road horizontal" style="top:655px;"></div>
-      <div class="road vertical" style="left:520px;"></div>
-      <div class="road vertical" style="left:1050px;"></div>
-
-      <!-- PATHS -->
-
-      <div class="path" style="left:390px;top:350px;width:300px;height:28px;"></div>
-      <div class="path" style="left:900px;top:350px;width:300px;height:28px;"></div>
-      <div class="path" style="left:390px;top:690px;width:300px;height:28px;"></div>
-      <div class="path" style="left:900px;top:690px;width:300px;height:28px;"></div>
-
-      <!-- TREES -->
-
-      <div class="tree" style="left:60px;top:80px;"></div>
-      <div class="tree" style="left:400px;top:90px;"></div>
-      <div class="tree" style="left:900px;top:80px;"></div>
-      <div class="tree" style="left:1450px;top:90px;"></div>
-      <div class="tree" style="left:1560px;top:350px;"></div>
-      <div class="tree" style="left:80px;top:530px;"></div>
-      <div class="tree" style="left:420px;top:600px;"></div>
-      <div class="tree" style="left:900px;top:560px;"></div>
-      <div class="tree" style="left:1450px;top:580px;"></div>
-      <div class="tree" style="left:70px;top:950px;"></div>
-      <div class="tree" style="left:500px;top:1030px;"></div>
-      <div class="tree" style="left:1000px;top:1010px;"></div>
-      <div class="tree" style="left:1550px;top:960px;"></div>
-
-      <!-- LIBRARY -->
-
-      <div class="building library" onclick="openLibrary()">
-        <div class="roof"></div>
-        <div class="building-label">📚 LIBRARY</div>
-        <div class="window left"></div>
-        <div class="window right"></div>
-        <div class="door"></div>
-      </div>
-
-      <!-- CLASSROOM -->
-
-      <div class="building classroom" onclick="openClassroom()">
-        <div class="roof"></div>
-        <div class="building-label">🎓 CLASSROOM</div>
-        <div class="window left"></div>
-        <div class="window right"></div>
-        <div class="door"></div>
-      </div>
-
-      <!-- ARENA -->
-
-      <div class="building arena" onclick="openArena()">
-        <div class="roof"></div>
-        <div class="building-label">⚔️ ARENA</div>
-        <div class="window left"></div>
-        <div class="window right"></div>
-        <div class="door"></div>
-      </div>
-
-      <!-- HOSTEL -->
-
-      <div class="building hostel" onclick="openHostel()">
-        <div class="roof"></div>
-        <div class="building-label">🏠 HOSTEL</div>
-        <div class="window left"></div>
-        <div class="window right"></div>
-        <div class="door"></div>
-      </div>
-
-      <!-- CANTEEN -->
-
-      <div class="building canteen" onclick="openCanteen()">
-        <div class="roof"></div>
-        <div class="building-label">🍲 CANTEEN</div>
-        <div class="window left"></div>
-        <div class="window right"></div>
-        <div class="door"></div>
-      </div>
-
-      <!-- LAB -->
-
-      <div class="building lab" onclick="openLab()">
-        <div class="roof"></div>
-        <div class="building-label">🧪 LABORATORY</div>
-        <div class="window left"></div>
-        <div class="window right"></div>
-        <div class="door"></div>
-      </div>
-
-      <!-- PLAYER -->
-
-      <div id="player">
-        <div class="player-name" id="playerName">Student</div>
-        <div class="player-head"></div>
-        <div class="player-body"></div>
-      </div>
-
+<div id="splash" class="screen">
+    <div class="splash-box">
+        <div class="logo">PNGPD LIFE</div>
+        <div class="subtitle">Your Campus. Your Choices. Your Future.</div>
+        <button class="start-btn" onclick="showAuth()">START GAME 🚀</button>
     </div>
-  </div>
+</div>
 
-  <!-- HUD -->
+<div id="auth" class="screen">
+    <div class="auth-card">
+        <h2>🎓 PNGPD LIFE</h2>
 
-  <div id="hud">
+        <input id="playerName" placeholder="Enter your name">
 
-    <div class="hud-left">
-      <div class="stat">👤 <span id="hudName">Student</span></div>
-      <div class="stat money">₦<span id="money">5000</span></div>
-      <div class="stat energy">⚡ <span id="energy">100</span></div>
-      <div class="stat score">⭐ <span id="score">0</span></div>
+        <input
+            id="playerEmail"
+            type="email"
+            placeholder="Email (optional)"
+        >
+
+        <button class="auth-btn" onclick="enterGame()">
+            ENTER CAMPUS
+        </button>
+    </div>
+</div>
+
+<div id="game" class="screen">
+
+    <div id="viewport">
+
+        <div id="world">
+
+            <div class="grass"></div>
+
+            <div class="road horizontal" style="top:420px"></div>
+            <div class="road horizontal" style="top:900px"></div>
+
+            <div class="road vertical" style="left:500px"></div>
+            <div class="road vertical" style="left:1150px"></div>
+
+            <div
+                class="path"
+                style="left:500px;top:390px;width:650px;height:35px"
+            ></div>
+
+            <div
+                class="path"
+                style="left:500px;top:870px;width:650px;height:35px"
+            ></div>
+
+            <div class="tree" style="left:40px;top:70px"></div>
+            <div class="tree" style="left:620px;top:90px"></div>
+            <div class="tree" style="left:1220px;top:80px"></div>
+            <div class="tree" style="left:1690px;top:120px"></div>
+
+            <div class="tree" style="left:50px;top:500px"></div>
+            <div class="tree" style="left:650px;top:560px"></div>
+            <div class="tree" style="left:1220px;top:520px"></div>
+            <div class="tree" style="left:1690px;top:550px"></div>
+
+            <div class="tree" style="left:50px;top:1050px"></div>
+            <div class="tree" style="left:650px;top:1080px"></div>
+            <div class="tree" style="left:1220px;top:1050px"></div>
+            <div class="tree" style="left:1690px;top:1030px"></div>
+
+            <div class="building library" onclick="openLibrary()">
+                <b>📚 LIBRARY</b>
+                <span>Study • Notes • Practice</span>
+            </div>
+
+            <div class="building classroom" onclick="openClassroom()">
+                <b>🏫 CLASSROOM</b>
+                <span>Courses • Revision • Exams</span>
+            </div>
+
+            <div class="building arena" onclick="openArena()">
+                <b>⚔️ ARENA</b>
+                <span>Academic 1v1 Battles</span>
+            </div>
+
+            <div class="building hostel" onclick="openHostel()">
+                <b>🏠 HOSTEL</b>
+                <span>Rest • Energy • Profile</span>
+            </div>
+
+            <div class="building canteen" onclick="openCanteen()">
+                <b>🍔 CANTEEN</b>
+                <span>Food • Prices • Energy</span>
+            </div>
+
+            <div class="building lab" onclick="openLab()">
+                <b>🧪 LABORATORY</b>
+                <span>PGP 126 Practicals</span>
+            </div>
+
+            <div id="player">
+                🧑🏾‍🎓
+                <small id="player-name">Patrick</small>
+            </div>
+
+        </div>
     </div>
 
-    <div class="hud-right">
-      <button class="hud-btn" onclick="openProfile()">👤</button>
-      <button class="hud-btn" onclick="openLibrary()">📚</button>
+    <div id="hud">
+        <div class="hud-name" id="hudName">Patrick</div>
+
+        <div class="stats">
+            💰 ₦<span id="money">5000</span>
+            &nbsp;
+            ⚡ <span id="energy">100</span>
+            &nbsp;
+            ⭐ <span id="xp">0</span> XP
+        </div>
     </div>
 
-  </div>
+    <div id="hud-buttons">
+        <button class="round-btn" onclick="openProfile()">👤</button>
+        <button class="round-btn" onclick="openLibrary()">📚</button>
+    </div>
 
-  <div class="map-hint">
-    👆 Drag the campus to look around • Tap a building to enter
-  </div>
+    <div id="campaign" onclick="openCampaign()">
+        🗳️ VOTE PATRICK
+        <br>
+        <span style="font-size:12px">
+            FOR VICE PRESIDENT • NSChE
+        </span>
+    </div>
 
-  <!-- PANEL -->
+    <div id="toast"></div>
+</div>
 
-  <div id="panel">
+<div id="panel">
+    <div class="panel-box">
 
-    <button class="panel-close" onclick="closePanel()">×</button>
+        <div class="panel-header">
+            <span id="panelTitle"></span>
 
-    <div id="panelContent"></div>
+            <button class="close-btn" onclick="closePanel()">
+                ×
+            </button>
+        </div>
 
-  </div>
+        <div class="panel-body" id="panelBody"></div>
 
-</section>
+    </div>
+</div>
+
+<!-- IMPORTANT: keep your existing files -->
+<script src="data/questions.js"></script>
+<script src="game/actions.js" defer></script>
 
 <script>
-/* =========================================================
-   PNGPD LIFE 2.0
-   SELF-CONTAINED STARTUP
-   External files are optional and CANNOT stop the game.
-========================================================= */
 
-"use strict";
+window.PNGPD_STUDY_MATERIALS = [
 
-/* ================= GAME STATE ================= */
+{
+course:"PGP 121",
+sections:[
+{
+title:"💧 Fluid Kinematics",
+content:`
+<b>Fluid Kinematics</b> is the study of the motion of
+fluid particles, including velocity and acceleration,
+without considering the forces causing the motion.
 
-const gameState = {
-  name:"Student",
-  money:5000,
-  energy:100,
-  score:0,
-  level:1,
-  questionsAnswered:0
-};
+<br><br>
 
-/* ================= STUDY MATERIALS ================= */
+<b>Important classifications:</b><br>
+• Steady flow<br>
+• Unsteady flow<br>
+• Compressible flow<br>
+• Incompressible flow<br>
+• Laminar flow<br>
+• Turbulent flow
+`
+},
+{
+title:"📐 Flow Rate & Continuity",
+content:`
+The volumetric rate of flow is:
 
-const STUDY = {
+<br><br>
 
-"PGP 121":{
-title:"Fluid Mechanics",
-notes:[
-"Fluid kinematics describes fluid motion without directly considering the forces causing the motion.",
-"Steady flow: fluid properties at a point do not change with time.",
-"Unsteady flow: fluid properties at a point change with time.",
-"Laminar flow is orderly; turbulent flow contains irregular fluctuations.",
-"Flow rate: Q = AV.",
-"For incompressible flow: A₁V₁ = A₂V₂.",
-"Pressure head = p/γ.",
-"Velocity head = V²/(2g).",
-"Potential/elevation head = z.",
-"Total head: H = z + V²/(2g) + p/γ.",
-"Bernoulli's equation applies to ideal steady incompressible flow along a streamline.",
-"Venturimeter is used to determine fluid flow rate.",
-"Pitot tube measures point velocity using stagnation pressure."
-]},
+<b>Q = AV</b>
 
-"PGP 122":{
-title:"Separation Process I",
-notes:[
-"Separation is the division of a mixture into two or more distinct components or phases.",
-"Mixing reduces non-uniformity and concentration or temperature gradients.",
-"Tumbling mixers are commonly used for free-flowing dry powders.",
-"Double-cone mixers are suitable for free-flowing dry powders.",
-"Filtration separates solid particles from a fluid using a filtering medium.",
-"The solid retained during filtration is called the cake or residue.",
-"The liquid passing through the filter is the filtrate.",
-"Filtration rate can be represented by dV/dt.",
-"Leaching is a solid-liquid extraction process in which a solvent removes a soluble component from a solid.",
-"Important leaching factors include particle size, solvent properties, temperature, contact time and agitation.",
-"Evaporation concentrates a solution by vaporising part of its solvent.",
-"Evaporators may be single-effect or multiple-effect.",
-"Membrane separation depends on selective transport through a membrane."
-]},
+<br><br>
 
-"PGP 123":{
-title:"Water & Wastewater Technology",
-notes:[
-"Boiler feed water should have very low hardness because calcium and magnesium cause scale.",
-"Boiler feed water dissolved oxygen should be extremely low to reduce corrosion.",
-"Silica is controlled because it can cause deposits in boilers and turbines.",
-"Drinking water pH is commonly controlled around 6.5–8.5.",
-"Turbidity indicates the cloudiness of water caused by suspended particles.",
-"Total coliform should be absent from properly treated drinking water.",
-"Wastewater treatment may involve preliminary, primary, secondary and tertiary treatment.",
-"Sludge treatment deals with the solids produced during wastewater treatment.",
-"Domestic, municipal and industrial wastewater have different characteristics and treatment requirements."
-]},
+Q = volumetric flow rate<br>
+A = cross-sectional area<br>
+V = average velocity
 
-"PGP 124":{
-title:"Calculus",
-notes:[
-"Calculus deals mainly with limits, continuity, differentiation and integration.",
-"A limit describes the value a function approaches as the independent variable approaches a particular value.",
-"A function is continuous at a point when its limit equals its function value at that point.",
-"Differentiation determines the rate of change of a quantity.",
-"The derivative can be used to find gradients, velocity and other rates of change.",
-"Applications of derivatives include maxima, minima and optimization.",
-"Integration is used to determine accumulated quantities and areas.",
-"Definite integration gives a numerical value over an interval.",
-"Differential equations involve derivatives of unknown functions."
-]},
+<br><br>
 
-"PGP 125":{
-title:"Petroleum Chemistry",
-notes:[
-"Crude oil processing combines physical separation and chemical conversion.",
-"Atmospheric distillation separates crude oil according to boiling range and volatility.",
-"Lighter petroleum components generally have higher vapour pressure and lower boiling points.",
-"A crude distillation unit preheats and heats desalted/dehydrated crude before fractionation.",
-"Common conversion processes include thermal cracking, catalytic cracking, reforming, alkylation and isomerization.",
-"Raoult's law relates vapour-liquid equilibrium to liquid composition and vapour pressure.",
-"Specific gravity = density of petroleum liquid / density of water at the same reference temperature.",
-"API gravity = (141.5/SG at 60°F/60°F) − 131.5.",
-"Light crude is above about 31.1 API; medium is about 22.3–31.1 API; heavy is about 10–22.3 API.",
-"Vacuum residue may be processed by visbreaking, coking, solvent deasphalting, residue hydrocracking or used as heavy fuel oil.",
-"Naphthenic acids can contribute to corrosion."
-]},
+For incompressible flow:
 
-"PGP 126":{
-title:"Petroleum Laboratory Practical",
-notes:[
-"Relative density = density of the substance / density of the reference substance.",
-"Relative density is commonly determined using a hydrometer or density bottle depending on the method.",
-"Pour point is the lowest temperature at which an oil remains sufficiently fluid to pour under specified test conditions.",
-"Pour point testing uses a test jar, thermometer and controlled cooling bath.",
-"API gravity is determined using an API hydrometer and hydrometer cylinder.",
-"API gravity formula: API = (141.5/SG at 60°F/60°F) − 131.5.",
-"Relative density practical apparatus can include a hydrometer, density bottle, balance, measuring cylinder and thermometer."
-]},
+<br><br>
 
-"PGP 127":{
-title:"Technical Report Writing",
-notes:[
-"A technical report presents technical information in a structured and understandable form.",
-"Research involves systematic investigation of a problem or question.",
-"A good research project should be objective, precise, properly designed and verifiable.",
-"Research objectives state what the investigation intends to achieve.",
-"A literature review examines relevant existing work.",
-"Primary data is collected directly by the researcher.",
-"Secondary data comes from existing sources.",
-"Citation gives credit to sources used in academic work.",
-"Referencing allows readers to identify the sources used.",
-"Plagiarism is presenting another person's work or ideas as one's own.",
-"Oral presentation requires clear organization and effective communication."
-]},
+<b>A₁V₁ = A₂V₂</b>
 
-"GLT":{
-title:"General Laboratory Technology",
-notes:[
-"Laboratory safety prevents injury, contamination and damage to equipment.",
-"Always identify laboratory apparatus before use.",
-"Measurements should be recorded with appropriate units.",
-"Errors may arise from instruments, observation, environment or procedure.",
-"Titration determines an unknown concentration using a standard solution.",
-"Filtration separates insoluble solids from liquids.",
-"Distillation separates liquids based mainly on differences in volatility or boiling point.",
-"Accurate calculations and proper significant figures are important in laboratory work."
-]},
+<br><br>
 
-"CHE":{
-title:"Chemistry",
-notes:[
-"Chemistry studies matter, its properties and the changes it undergoes.",
-"Atoms consist of protons, neutrons and electrons.",
-"Chemical reactions involve rearrangement of atoms.",
-"Acids and bases can be described using hydrogen-ion concentration and related concepts.",
-"Moles provide a way of counting chemical particles quantitatively."
-]},
+This is based on conservation of mass.
+`
+},
+{
+title:"⚡ Fluid Head",
+content:`
+<b>Potential head = z</b><br>
+<b>Velocity head = V² / 2g</b><br>
+<b>Pressure head = p / γ</b>
 
-"GNS":{
-title:"General Studies",
-notes:[
-"Effective communication requires a sender, message, channel, receiver and feedback.",
-"Feedback confirms whether a message has been received and understood.",
-"Clear communication reduces misunderstanding and conflict.",
-"Academic writing should be clear, organized and properly referenced."
-]},
+<br><br>
 
-"MTH 101":{
-title:"Mathematics",
-notes:[
-"Algebra deals with mathematical symbols and relationships.",
-"Functions describe relationships between input and output variables.",
-"Graphs provide visual representations of mathematical relationships.",
-"Careful substitution and simplification are essential when solving equations."
-]},
+Total head:
 
-"MTH 112":{
-title:"Mathematics II",
-notes:[
-"Calculus uses limits, derivatives and integrals to study changing quantities.",
-"Differentiation gives rates of change.",
-"Integration can determine accumulated quantities and area.",
-"Differential equations contain derivatives of an unknown function."
-]}
+<br><br>
 
-};
+<b>H = z + V²/(2g) + p/γ</b>
+`
+},
+{
+title:"🔬 Bernoulli's Equation",
+content:`
+Bernoulli's equation relates pressure, velocity and
+elevation for ideal, incompressible, steady flow.
 
-/* ================= QUESTION FALLBACK ================= */
+<br><br>
 
-const LOCAL_QUESTIONS = {
-"PGP 121":[
- {
-  q:"Which equation represents continuity for incompressible flow?",
-  options:["A₁V₁ = A₂V₂","P = ρgh","Q = m/t","H = z + p"],
-  answer:0
- },
- {
-  q:"What does a Pitot tube measure?",
-  options:["Temperature","Point fluid velocity","Density only","Viscosity"],
-  answer:1
- }
-],
+<b>p/γ + V²/(2g) + z = constant</b>
 
-"PGP 122":[
- {
-  q:"What is filtration?",
-  options:[
-   "Separating solid particles from a fluid using a filtering medium",
-   "Increasing fluid temperature",
-   "Converting liquid to gas",
-   "Mixing two liquids"
-  ],
-  answer:0
- },
- {
-  q:"Leaching is primarily what type of extraction?",
-  options:[
-   "Gas-gas",
-   "Solid-liquid",
-   "Liquid-liquid only",
-   "Solid-gas"
-  ],
-  answer:1
- }
-],
+<br><br>
 
-"PGP 124":[
- {
-  q:"What does differentiation determine?",
-  options:[
-   "Rate of change",
-   "Density",
-   "Pressure only",
-   "Mass only"
-  ],
-  answer:0
- }
-],
+Applications include Venturimeter and Pitot tube.
+`
+},
+{
+title:"📏 Venturimeter & Pitot Tube",
+content:`
+<b>Venturimeter:</b> Used to determine flow rate through
+a pipe.
 
-"PGP 125":[
- {
-  q:"Atmospheric distillation separates crude mainly according to:",
-  options:[
-   "Boiling range and volatility",
-   "Colour",
-   "Shape",
-   "Electrical charge"
-  ],
-  answer:0
- }
-],
+<br><br>
 
-"PGP 126":[
- {
-  q:"Which instrument can be used to determine API gravity?",
-  options:[
-   "API hydrometer",
-   "Stopwatch",
-   "Burette only",
-   "Microscope"
-  ],
-  answer:0
- }
-],
+Main parts:<br>
+• Converging section<br>
+• Throat<br>
+• Diverging section
 
-"PGP 127":[
- {
-  q:"What is plagiarism?",
-  options:[
-   "Presenting another person's work or ideas as your own",
-   "Writing a report",
-   "Collecting primary data",
-   "Giving an oral presentation"
-  ],
-  answer:0
- }
+<br><br>
+
+<b>Pitot tube:</b> Used to measure fluid velocity at a
+particular point.
+`
+}
 ]
+},
+
+{
+course:"PGP 122",
+sections:[
+{
+title:"⚙️ Separation",
+content:`
+<b>Separation</b> is the process of dividing a mixture
+into two or more distinct components or phases based on
+differences in physical or chemical properties.
+`
+},
+{
+title:"🔄 Mixing",
+content:`
+Mixing reduces non-uniformity in concentration,
+temperature and other properties.
+
+<br><br>
+
+Types include liquid/fluid mixing and solid/powder mixing.
+
+<br><br>
+
+Tumbling mixers include double-cone and twin-shell
+or V-blender arrangements.
+
+<br><br>
+
+Double-cone mixers are suitable for free-flowing dry
+powders. Typical batch filling is about 50–60% and
+mixing may take about 5–20 minutes.
+`
+},
+{
+title:"🧹 Filtration",
+content:`
+<b>Filtration</b> separates solid particles from a fluid
+using a filtering medium.
+
+<br><br>
+
+<b>Filter cake:</b> solid retained by the filter.
+
+<br><br>
+
+<b>Filtrate:</b> fluid passing through the filter.
+
+<br><br>
+
+Filtration rate can be expressed as <b>dV/dt</b>.
+`
+},
+{
+title:"🧪 Membrane Separation",
+content:`
+Membrane separation uses a selective membrane to separate
+components.
+
+<br><br>
+
+It may depend on molecular size, solubility, diffusivity
+and pressure difference.
+`
+},
+{
+title:"⛏️ Leaching",
+content:`
+<b>Leaching</b> is a solid-liquid extraction process in
+which a solvent removes a soluble constituent from a solid.
+
+<br><br>
+
+Stages:<br>
+1. Contacting<br>
+2. Solute transfer<br>
+3. Separation
+
+<br><br>
+
+Factors include particle size, solvent properties,
+temperature, contact time and agitation.
+`
+},
+{
+title:"🔥 Evaporation",
+content:`
+<b>Evaporation</b> concentrates a solution by vaporising
+part of its solvent.
+
+<br><br>
+
+Important concepts include boiling point, heat transfer,
+steam economy, single-effect and multiple-effect evaporation.
+`
+}
+]
+},
+
+{
+course:"PGP 123",
+sections:[
+{
+title:"💧 Boiler Feed Water",
+content:`
+Important boiler-water quality considerations include
+hardness, dissolved oxygen and silica.
+
+<br><br>
+
+Hardness from calcium and magnesium should be controlled
+because it can cause scale formation.
+
+<br><br>
+
+Dissolved oxygen can contribute to corrosion.
+`
+},
+{
+title:"🚰 Drinking Water Quality",
+content:`
+Important drinking-water parameters include pH,
+conductivity, TDS, turbidity, calcium, magnesium and
+microbiological quality.
+
+<br><br>
+
+Typical Nigerian/WHO reference values in the course
+material include pH around 6.5–8.5 and total coliform
+of 0.
+`
+},
+{
+title:"♻️ Wastewater Treatment",
+content:`
+Main stages may include:
+
+<br>
+• Preliminary treatment<br>
+• Primary treatment<br>
+• Secondary treatment<br>
+• Tertiary treatment<br>
+• Sludge treatment
+`
+}
+]
+},
+
+{
+course:"PGP 124",
+sections:[
+{
+title:"📐 Calculus",
+content:`
+Calculus deals mainly with limits, continuity,
+differentiation, integration and applications of
+derivatives.
+`
+},
+{
+title:"📈 Differentiation",
+content:`
+Differentiation determines the rate at which one quantity
+changes with respect to another.
+
+<br><br>
+
+If <b>y = xⁿ</b>:
+
+<br><br>
+
+<b>dy/dx = nxⁿ⁻¹</b>
+
+<br><br>
+
+Applications include gradients, rates of change,
+maximum and minimum values.
+`
+},
+{
+title:"∫ Integration",
+content:`
+Integration is the reverse process of differentiation.
+
+<br><br>
+
+<b>∫xⁿ dx = xⁿ⁺¹/(n+1) + C</b>
+
+<br><br>
+
+C is the constant of integration.
+`
+}
+]
+},
+
+{
+course:"PGP 125",
+sections:[
+{
+title:"🛢️ Crude Oil Processing",
+content:`
+Crude processing combines physical separation and
+chemical conversion.
+
+<br><br>
+
+Important processes include distillation, absorption,
+adsorption, cracking, reforming, alkylation and
+isomerization.
+`
+},
+{
+title:"🔥 Atmospheric Distillation",
+content:`
+Atmospheric distillation separates crude oil mainly
+according to boiling range and volatility.
+
+<br><br>
+
+Lighter components generally have higher vapour pressure
+and lower boiling points.
+`
+},
+{
+title:"⚗️ Petroleum Properties",
+content:`
+Important petroleum properties include density,
+specific gravity, molecular weight, viscosity and
+fractional composition.
+
+<br><br>
+
+<b>SG = density of petroleum liquid / density of water</b>
+
+<br><br>
+
+<b>API = (141.5/SG) − 131.5</b>
+`
+},
+{
+title:"📊 API Classification",
+content:`
+Light crude: above 31.1 API
+
+<br>
+Medium crude: 22.3–31.1 API
+
+<br>
+Heavy crude: 10–22.3 API
+
+<br>
+Extra-heavy crude: below 10 API
+`
+}
+]
+},
+
+{
+course:"PGP 126",
+sections:[
+{
+title:"⚖️ Engineering Relative Density",
+content:`
+Relative density compares the density of a substance
+with the density of a reference substance.
+
+<br><br>
+
+<b>RD = Density of substance / Density of reference substance</b>
+
+<br><br>
+
+Avoid trapped air bubbles and use clean apparatus.
+Temperature can affect density measurements.
+`
+},
+{
+title:"🌡️ Pour Point",
+content:`
+<b>Pour point</b> is the lowest temperature at which oil
+remains sufficiently fluid to pour under specified
+test conditions.
+
+<br><br>
+
+Apparatus includes a test jar, thermometer, cooling bath
+and petroleum sample.
+`
+},
+{
+title:"🛢️ API Gravity",
+content:`
+<b>API = (141.5 / SG at 60°F/60°F) − 131.5</b>
+
+<br><br>
+
+Higher API generally means lighter petroleum.
+Lower API generally means heavier petroleum.
+
+<br><br>
+
+Common apparatus:<br>
+• API hydrometer<br>
+• Hydrometer cylinder<br>
+• Thermometer<br>
+• Petroleum sample
+`
+}
+]
+},
+
+{
+course:"PGP 127",
+sections:[
+{
+title:"📝 Technical Report Writing",
+content:`
+A technical report presents technical information in an
+organised and understandable manner.
+
+<br><br>
+
+Common sections include title, introduction, objectives,
+methodology, results, discussion, conclusion and references.
+`
+},
+{
+title:"🎤 Oral Presentation",
+content:`
+A good technical presentation should be clear,
+organised, concise and technically accurate.
+
+<br><br>
+
+The presenter should understand the subject rather than
+simply memorising the material.
+`
+}
+]
+},
+
+{
+course:"GLT",
+sections:[
+{
+title:"🧪 General Laboratory Technology",
+content:`
+Important laboratory areas include laboratory safety,
+measurement, glassware, errors, filtration, distillation,
+titration and laboratory calculations.
+
+<br><br>
+
+Always use the correct apparatus and follow safe
+laboratory procedures.
+`
+}
+]
+
 };
 
-/* ================= STARTUP ================= */
 
-function startGame(){
-  document.getElementById("splash").style.display="none";
-  document.getElementById("auth").style.display="flex";
+/* ================= PLAYER DATA ================= */
+
+const state={
+name:localStorage.getItem("pngpd_name")||"Patrick",
+money:Number(localStorage.getItem("pngpd_money")||5000),
+energy:Number(localStorage.getItem("pngpd_energy")||100),
+xp:Number(localStorage.getItem("pngpd_xp")||0)
+};
+
+let currentCourse="";
+let quizQuestions=[];
+let quizIndex=0;
+let quizScore=0;
+
+
+/* ================= BASIC ================= */
+
+function showAuth(){
+    document.getElementById("splash").style.display="none";
+    document.getElementById("auth").style.display="flex";
 }
 
-function enterCampus(){
+function enterGame(){
 
-  const input=document.getElementById("playerNameInput");
+    const input=document.getElementById("playerName");
 
-  const name=(input.value || "").trim();
+    state.name=input.value.trim()||"Patrick";
 
-  gameState.name=name || "Student";
+    localStorage.setItem("pngpd_name",state.name);
 
-  document.getElementById("playerName").textContent=gameState.name;
-  document.getElementById("hudName").textContent=gameState.name;
+    document.getElementById("auth").style.display="none";
+    document.getElementById("game").style.display="block";
 
-  document.getElementById("auth").style.display="none";
-  document.getElementById("game").classList.remove("hidden");
+    document.getElementById("hudName").textContent=state.name;
+    document.getElementById("player-name").textContent=state.name;
 
-  centerWorld();
-
-  /* Load optional external files AFTER the game is already running. */
-  loadOptionalScripts();
+    updateHUD();
+    centerWorld();
 }
 
-/* ================= SAFE OPTIONAL SCRIPTS ================= */
+function updateHUD(){
 
-function loadOptionalScripts(){
+    document.getElementById("money").textContent=state.money;
+    document.getElementById("energy").textContent=state.energy;
+    document.getElementById("xp").textContent=state.xp;
 
-  loadScript("data/questions.js",function(){
-    console.log("PNGPD question bank loaded.");
-  });
-
-  loadScript("game/actions.js",function(){
-    console.log("PNGPD actions module loaded.");
-  });
+    localStorage.setItem("pngpd_money",state.money);
+    localStorage.setItem("pngpd_energy",state.energy);
+    localStorage.setItem("pngpd_xp",state.xp);
 }
 
-function loadScript(src,done){
+function toast(message){
 
-  const script=document.createElement("script");
+    const t=document.getElementById("toast");
 
-  script.src=src;
+    t.textContent=message;
+    t.style.display="block";
 
-  script.onload=function(){
-    if(done) done();
-  };
+    clearTimeout(window.toastTimer);
 
-  script.onerror=function(){
-    console.warn("Optional file unavailable:",src);
-  };
-
-  document.body.appendChild(script);
+    window.toastTimer=setTimeout(()=>{
+        t.style.display="none";
+    },2200);
 }
 
-/* ================= PAN / MAP ================= */
+function openPanel(title,html){
 
-const viewport=document.getElementById("viewport");
-const world=document.getElementById("world");
-
-let panX=0;
-let panY=0;
-let dragging=false;
-let startX=0;
-let startY=0;
-let startPanX=0;
-let startPanY=0;
-
-function centerWorld(){
-
-  const vw=window.innerWidth;
-  const vh=window.innerHeight;
-
-  panX=(vw-1800)/2;
-  panY=(vh-1200)/2;
-
-  applyPan();
-}
-
-function applyPan(){
-
-  world.style.transform=
-    "translate(calc(-50% + "+panX+"px),calc(-50% + "+panY+"px))";
-}
-
-viewport.addEventListener("pointerdown",function(e){
-
-  dragging=true;
-
-  viewport.classList.add("dragging");
-
-  startX=e.clientX;
-  startY=e.clientY;
-
-  startPanX=panX;
-  startPanY=panY;
-
-  viewport.setPointerCapture(e.pointerId);
-});
-
-viewport.addEventListener("pointermove",function(e){
-
-  if(!dragging)return;
-
-  panX=startPanX+(e.clientX-startX);
-  panY=startPanY+(e.clientY-startY);
-
-  applyPan();
-});
-
-viewport.addEventListener("pointerup",stopDragging);
-viewport.addEventListener("pointercancel",stopDragging);
-
-function stopDragging(){
-
-  dragging=false;
-  viewport.classList.remove("dragging");
-}
-
-window.addEventListener("resize",function(){
-
-  if(!dragging) centerWorld();
-
-});
-
-/* ================= PANEL ================= */
-
-function openPanel(html){
-
-  document.getElementById("panelContent").innerHTML=html;
-
-  document.getElementById("panel").classList.add("open");
+    document.getElementById("panelTitle").textContent=title;
+    document.getElementById("panelBody").innerHTML=html;
+    document.getElementById("panel").style.display="flex";
 }
 
 function closePanel(){
-
-  document.getElementById("panel").classList.remove("open");
+    document.getElementById("panel").style.display="none";
 }
 
-/* ================= LIBRARY ================= */
+function escapeText(text){
 
-function openLibrary(){
+    return String(text)
+        .replace(/\\/g,"\\\\")
+        .replace(/'/g,"\\'");
 
-  const courses=[
-    "PGP 121",
-    "PGP 122",
-    "PGP 123",
-    "PGP 124",
-    "PGP 125",
-    "PGP 126",
-    "PGP 127",
-    "GLT",
-    "CHE",
-    "GNS",
-    "MTH 101",
-    "MTH 112"
-  ];
-
-  let html=`
-    <h2>📚 PNGPD STUDY LIBRARY</h2>
-    <div class="panel-sub">
-      Quick notes, key definitions and exam practice.
-    </div>
-
-    <div class="course-grid">
-  `;
-
-  courses.forEach(function(course){
-
-    html+=`
-      <button class="course-btn"
-        onclick="openCourse('${course}')">
-        ${course}
-        <br>
-        <small>${getCourseQuestionCount(course)} questions</small>
-      </button>
-    `;
-
-  });
-
-  html+="</div>";
-
-  openPanel(html);
 }
 
-/* ================= COURSE ================= */
-
-function openCourse(course){
-
-  const material=STUDY[course];
-
-  if(!material){
-
-    openPanel(`
-      <h2>${course}</h2>
-      <div class="note-box">
-        <h3>📌 Notes</h3>
-        <p>No short notes have been added for this course yet.</p>
-      </div>
-    `);
-
-    return;
-  }
-
-  let list="";
-
-  material.notes.forEach(function(note){
-
-    list+="<li>"+escapeHTML(note)+"</li>";
-
-  });
-
-  openPanel(`
-    <h2>📖 ${course}</h2>
-
-    <div class="panel-sub">
-      ${escapeHTML(material.title)}
-    </div>
-
-    <div class="note-box">
-      <h3>⚡ KEY NOTES</h3>
-
-      <ul>
-        ${list}
-      </ul>
-    </div>
-
-    <button class="action-btn"
-      onclick="startPractice('${course}')">
-      📝 PRACTICE QUESTIONS
-      (${getCourseQuestionCount(course)})
-    </button>
-  `);
-}
-
-/* ================= QUESTION COUNT ================= */
-
-function getQuestions(course){
-
-  let result=[];
-
-  if(
-    window.PNGPD_QUESTIONS &&
-    Array.isArray(window.PNGPD_QUESTIONS[course])
-  ){
-    result=window.PNGPD_QUESTIONS[course];
-  }
-
-  if(!result.length && LOCAL_QUESTIONS[course]){
-    result=LOCAL_QUESTIONS[course];
-  }
-
-  return result;
-}
-
-function getCourseQuestionCount(course){
-
-  return getQuestions(course).length;
-}
-
-/* ================= PRACTICE ================= */
-
-function startPractice(course){
-
-  const questions=getQuestions(course);
-
-  if(!questions.length){
-
-    openPanel(`
-      <h2>📝 ${course} PRACTICE</h2>
-
-      <div class="note-box">
-        <h3>Question Bank</h3>
-        <p>
-          No questions have been added to this course yet.
-          Your study notes are still available above.
-        </p>
-      </div>
-
-      <button class="action-btn"
-        onclick="openCourse('${course}')">
-        ← BACK TO NOTES
-      </button>
-    `);
-
-    return;
-  }
-
-  const shuffled=[...questions]
-    .sort(function(){
-      return Math.random()-.5;
-    })
-    .slice(0,Math.min(10,questions.length));
-
-  let index=0;
-  let correct=0;
-
-  function showQuestion(){
-
-    const q=shuffled[index];
-
-    let options="";
-
-    q.options.forEach(function(option,i){
-
-      options+=`
-        <button
-          class="course-btn"
-          style="width:100%;margin-top:8px;"
-          onclick="answerPractice(${i})">
-          ${String.fromCharCode(65+i)}. ${escapeHTML(option)}
-        </button>
-      `;
-
-    });
-
-    openPanel(`
-      <h2>📝 ${course}</h2>
-
-      <div class="panel-sub">
-        Question ${index+1} of ${shuffled.length}
-      </div>
-
-      <div class="note-box">
-        <h3>${escapeHTML(q.q)}</h3>
-        ${options}
-      </div>
-    `);
-  }
-
-  window.answerPractice=function(choice){
-
-    const q=shuffled[index];
-
-    if(choice===q.answer){
-
-      correct++;
-      gameState.score+=10;
-      updateHUD();
-
-    }
-
-    index++;
-
-    if(index>=shuffled.length){
-
-      openPanel(`
-        <h2>🏆 PRACTICE COMPLETE</h2>
-
-        <div class="note-box">
-          <h3>Result</h3>
-
-          <p>
-            ${correct} / ${shuffled.length} correct
-          </p>
-
-          <p style="margin-top:10px;">
-            Score: ${correct*10} points
-          </p>
-        </div>
-
-        <button class="action-btn"
-          onclick="openCourse('${course}')">
-          📖 REVIEW NOTES
-        </button>
-      `);
-
-      return;
-    }
-
-    showQuestion();
-  };
-
-  showQuestion();
-}
-
-/* ================= CLASSROOM ================= */
-
-function openClassroom(){
-
-  openPanel(`
-    <h2>🎓 CLASSROOM</h2>
-
-    <div class="panel-sub">
-      Your academic base on campus.
-    </div>
-
-    <div class="note-box">
-      <h3>📚 What can you do here?</h3>
-      <ul>
-        <li>Review course notes.</li>
-        <li>Practice examination questions.</li>
-        <li>Prepare before entering the Arena.</li>
-        <li>Track your academic score.</li>
-      </ul>
-    </div>
-
-    <button class="action-btn" onclick="openLibrary()">
-      📚 OPEN STUDY LIBRARY
-    </button>
-  `);
-}
-
-/* ================= HOSTEL ================= */
-
-function openHostel(){
-
-  openPanel(`
-    <h2>🏠 HOSTEL</h2>
-
-    <div class="panel-sub">
-      Your student accommodation.
-    </div>
-
-    <div class="note-box">
-      <h3>🛏️ Student Life</h3>
-      <p>
-        Rest here to restore energy after studying,
-        eating or participating in campus activities.
-      </p>
-    </div>
-
-    <button class="action-btn" onclick="rest()">
-      😴 REST +20 ENERGY
-    </button>
-  `);
-}
-
-function rest(){
-
-  gameState.energy=Math.min(100,gameState.energy+20);
-
-  updateHUD();
-
-  openPanel(`
-    <h2>😴 RESTED</h2>
-
-    <div class="note-box">
-      <h3>Energy restored!</h3>
-      <p>Your energy is now ${gameState.energy}/100.</p>
-    </div>
-  `);
-}
-
-/* ================= CANTEEN ================= */
-
-function openCanteen(){
-
-  const foods=[
-    ["🍚 Rice & Stew",800,25],
-    ["🍝 Spaghetti",700,20],
-    ["🍲 Beans",600,20],
-    ["🍜 Noodles",500,15],
-    ["🥪 Bread & Egg",500,15],
-    ["🥤 Drink",300,10]
-  ];
-
-  let html=`
-    <h2>🍲 CANTEEN</h2>
-
-    <div class="panel-sub">
-      Eat to restore energy.
-    </div>
-
-    <div class="food-grid">
-  `;
-
-  foods.forEach(function(food){
-
-    html+=`
-      <div class="food">
-        <strong>${food[0]}</strong>
-        <small>₦${food[1].toLocaleString()} • +${food[2]} energy</small>
-
-        <button onclick="buyFood(${food[1]},${food[2]})">
-          BUY
-        </button>
-      </div>
-    `;
-
-  });
-
-  html+="</div>";
-
-  openPanel(html);
-}
-
-function buyFood(price,energy){
-
-  if(gameState.money<price){
-
-    alert("Not enough money.");
-
-    return;
-  }
-
-  gameState.money-=price;
-
-  gameState.energy=Math.min(
-    100,
-    gameState.energy+energy
-  );
-
-  updateHUD();
-
-  alert("Food purchased! +" + energy + " energy.");
-
-  openCanteen();
-}
-
-/* ================= LAB ================= */
-
-function openLab(){
-
-  openPanel(`
-    <h2>🧪 PGP 126 LABORATORY</h2>
-
-    <div class="panel-sub">
-      Petroleum laboratory practicals.
-    </div>
-
-    <div class="note-box">
-
-      <h3>1️⃣ Engineering Relative Density</h3>
-
-      <p>
-        Relative density =
-        density of substance /
-        density of reference substance.
-      </p>
-
-      <p style="margin-top:8px;">
-        Apparatus: hydrometer or density bottle,
-        balance, measuring cylinder and thermometer
-        depending on the method.
-      </p>
-
-    </div>
-
-    <div class="note-box">
-
-      <h3>2️⃣ Pour Point</h3>
-
-      <p>
-        Pour point is the lowest temperature at which
-        oil remains sufficiently fluid to pour under
-        specified test conditions.
-      </p>
-
-      <p style="margin-top:8px;">
-        Apparatus: test jar, thermometer and cooling bath.
-      </p>
-
-    </div>
-
-    <div class="note-box">
-
-      <h3>3️⃣ API Gravity</h3>
-
-      <p>
-        API = (141.5 / SG at 60°F/60°F) − 131.5
-      </p>
-
-      <p style="margin-top:8px;">
-        Apparatus: API hydrometer, hydrometer cylinder,
-        thermometer and petroleum sample.
-      </p>
-
-    </div>
-
-    <button class="action-btn"
-      onclick="startLabQuiz()">
-      🧪 LAB QUIZ
-    </button>
-  `);
-}
-
-/* ================= LAB QUIZ ================= */
-
-function startLabQuiz(){
-
-  const questions=[
-    {
-      q:"What does relative density compare?",
-      a:[
-        "Density of a substance with density of a reference substance",
-        "Temperature with pressure",
-        "Mass with time",
-        "Volume with colour"
-      ],
-      correct:0
-    },
-    {
-      q:"What is pour point?",
-      a:[
-        "Highest boiling temperature",
-        "Lowest temperature at which oil remains sufficiently fluid to pour",
-        "Density of crude oil",
-        "Flash point only"
-      ],
-      correct:1
-    },
-    {
-      q:"Which formula is used for API gravity?",
-      a:[
-        "API = 100 × SG",
-        "API = SG / 141.5",
-        "API = (141.5/SG) − 131.5",
-        "API = SG + 131.5"
-      ],
-      correct:2
-    }
-  ];
-
-  let current=0;
-  let correct=0;
-
-  function show(){
-
-    const q=questions[current];
-
-    let html="";
-
-    q.a.forEach(function(option,i){
-
-      html+=`
-        <button
-          class="course-btn"
-          style="width:100%;margin-top:8px;"
-          onclick="labAnswer(${i})">
-          ${String.fromCharCode(65+i)}. ${option}
-        </button>
-      `;
-
-    });
-
-    openPanel(`
-      <h2>🧪 LAB QUIZ</h2>
-
-      <div class="panel-sub">
-        Question ${current+1} of ${questions.length}
-      </div>
-
-      <div class="note-box">
-        <h3>${q.q}</h3>
-        ${html}
-      </div>
-    `);
-  }
-
-  window.labAnswer=function(answer){
-
-    if(answer===questions[current].correct){
-      correct++;
-      gameState.score+=10;
-      updateHUD();
-    }
-
-    current++;
-
-    if(current>=questions.length){
-
-      openPanel(`
-        <h2>🏆 LAB QUIZ COMPLETE</h2>
-
-        <div class="note-box">
-          <h3>Result</h3>
-          <p>${correct}/${questions.length} correct.</p>
-          <p style="margin-top:8px;">
-            +${correct*10} points
-          </p>
-        </div>
-      `);
-
-      return;
-    }
-
-    show();
-  };
-
-  show();
-}
-
-/* ================= ARENA ================= */
-
-function openArena(){
-
-  if(
-    window.PNGPD_ARENA &&
-    typeof window.PNGPD_ARENA.open==="function"
-  ){
-
-    window.PNGPD_ARENA.open();
-    return;
-  }
-
-  openPanel(`
-    <h2>⚔️ PNGPD ACADEMIC ARENA</h2>
-
-    <div class="panel-sub">
-      Challenge your classmates academically.
-    </div>
-
-    <div class="note-box">
-
-      <h3>🏆 Arena</h3>
-
-      <p>
-        The online multiplayer Arena system can be
-        connected here when the Arena module is enabled.
-      </p>
-
-      <p style="margin-top:10px;">
-        Current score: ${gameState.score}
-      </p>
-
-    </div>
-
-    <button class="action-btn"
-      onclick="openLibrary()">
-      📚 PRACTICE FIRST
-    </button>
-  `);
-}
 
 /* ================= PROFILE ================= */
 
 function openProfile(){
 
-  openPanel(`
-    <h2>👤 STUDENT PROFILE</h2>
-
-    <div class="panel-sub">
-      PNGPD LIFE student profile
-    </div>
-
-    <div class="profile-stat">
-      <span>Name</span>
-      <strong>${escapeHTML(gameState.name)}</strong>
-    </div>
-
-    <div class="profile-stat">
-      <span>Level</span>
-      <strong>${gameState.level}</strong>
-    </div>
-
-    <div class="profile-stat">
-      <span>Money</span>
-      <strong>₦${gameState.money.toLocaleString()}</strong>
-    </div>
-
-    <div class="profile-stat">
-      <span>Energy</span>
-      <strong>${gameState.energy}/100</strong>
-    </div>
-
-    <div class="profile-stat">
-      <span>Academic Score</span>
-      <strong>${gameState.score}</strong>
-    </div>
-  `);
+    openPanel(
+        "👤 Student Profile",
+        `
+        <div class="note">
+            <h2>${state.name}</h2>
+            <p>🎓 PNGPD Student</p>
+            <p>⭐ ${state.xp} XP</p>
+            <p>💰 ₦${state.money}</p>
+            <p>⚡ ${state.energy}/100 Energy</p>
+        </div>
+        `
+    );
 }
 
-/* ================= HUD ================= */
 
-function updateHUD(){
+/* ================= HOSTEL ================= */
 
-  document.getElementById("money").textContent=
-    gameState.money.toLocaleString();
+function openHostel(){
 
-  document.getElementById("energy").textContent=
-    gameState.energy;
+    openPanel(
+        "🏠 HOSTEL",
+        `
+        <div class="note">
+            <h2>🛏️ Rest</h2>
+            <p>Rest and recover your energy before heading back into campus.</p>
 
-  document.getElementById("score").textContent=
-    gameState.score;
-
-  document.getElementById("hudName").textContent=
-    gameState.name;
-
-  document.getElementById("playerName").textContent=
-    gameState.name;
+            <button class="next-btn" onclick="restPlayer()">
+                😴 REST +30 ENERGY
+            </button>
+        </div>
+        `
+    );
 }
 
-/* ================= SECURITY / TEXT ================= */
+function restPlayer(){
 
-function escapeHTML(value){
+    state.energy=Math.min(100,state.energy+30);
 
-  return String(value)
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+    updateHUD();
+
+    toast("You rested. +30 Energy ⚡");
 }
 
-/* ================= INITIALIZE ================= */
 
-updateHUD();
+/* ================= CAMPAIGN ================= */
+
+function openCampaign(){
+
+    openPanel(
+        "🗳️ VOTE PATRICK",
+        `
+        <div style="
+            text-align:center;
+            padding:25px;
+            border-radius:18px;
+            color:white;
+            background:linear-gradient(135deg,#b71c1c,#f44336,#ffca28);
+        ">
+            <div style="font-size:45px">🗳️</div>
+
+            <h1>VOTE PATRICK</h1>
+
+            <h2>FOR VICE PRESIDENT OF NSChE</h2>
+
+            <p>
+                Commitment • Integrity • Confidence • Accountability
+            </p>
+
+            <p>
+                Approachability • Responsiveness • Action
+            </p>
+
+            <strong>
+                Let's make PNGPD NSChE stronger, more active and more connected.
+            </strong>
+        </div>
+        `
+    );
+}
+
+
+/* ================= COURSE SYSTEM ================= */
+
+function getCourses(){
+
+    const courses=new Set([
+        "PGP 121",
+        "PGP 122",
+        "PGP 123",
+        "PGP 124",
+        "PGP 125",
+        "PGP 126",
+        "PGP 127",
+        "GLT",
+        "CHE",
+        "GNS",
+        "MTH 101",
+        "MTH 112"
+    ]);
+
+    if(window.PNGPD_STUDY_MATERIALS){
+        window.PNGPD_STUDY_MATERIALS.forEach(item=>{
+            if(item.course) courses.add(item.course);
+        });
+    }
+
+    if(window.PNGPD_QUESTIONS){
+        window.PNGPD_QUESTIONS.forEach(item=>{
+            if(item.course) courses.add(item.course);
+        });
+    }
+
+    return [...courses];
+}
+
+
+/* ================= LIBRARY ================= */
+
+function openClassroom(){
+    openLibrary();
+}
+
+function openLibrary(){
+
+    const courses=getCourses();
+
+    let html=`
+        <div class="note">
+            <b>📖 QUICK REVISION LIBRARY</b>
+
+            <br><br>
+
+            Choose a course to see:
+
+            <br><br>
+
+            📌 Definitions<br>
+            📌 Key points<br>
+            📌 Formulas<br>
+            📌 Practical facts<br>
+            📌 Practice questions
+        </div>
+
+        <div class="course-grid">
+    `;
+
+    courses.forEach(course=>{
+
+        html+=`
+            <div class="card">
+
+                <div style="font-size:21px">
+                    ${course}
+                </div>
+
+                <div style="margin-top:7px;font-size:12px">
+                    SHORT NOTES + PRACTICE
+                </div>
+
+                <button onclick="openCourse('${escapeText(course)}')">
+                    OPEN COURSE
+                </button>
+
+            </div>
+        `;
+    });
+
+    html+=`</div>`;
+
+    openPanel("📚 PNGPD LIBRARY",html);
+}
+
+
+/* ================= COURSE MATERIAL ================= */
+
+function getCourseMaterial(course){
+
+    return (
+        window.PNGPD_STUDY_MATERIALS||[]
+    ).find(item=>item.course===course);
+}
+
+function openCourse(course){
+
+    currentCourse=course;
+
+    const material=getCourseMaterial(course);
+
+    const questions=(window.PNGPD_QUESTIONS||[])
+        .filter(q=>q.course===course);
+
+    let html=`
+        <div class="note" style="
+            border-left-color:#e91e63;
+            background:linear-gradient(135deg,#fff3e0,#ffe0b2);
+        ">
+
+            <h2>📖 ${course}</h2>
+
+            <p><b>QUICK REVISION NOTES</b></p>
+
+            <p>
+                Read the key points and formulas before attempting the practice.
+            </p>
+
+        </div>
+    `;
+
+    if(material&&material.sections){
+
+        material.sections.forEach(section=>{
+
+            html+=`
+                <div class="note">
+
+                    <h3>${section.title}</h3>
+
+                    <div style="line-height:1.7;color:#333">
+                        ${section.content}
+                    </div>
+
+                </div>
+            `;
+        });
+
+    }else{
+
+        html+=`
+            <div class="note">
+                No short-note material has been loaded for ${course} yet.
+            </div>
+        `;
+    }
+
+    html+=`
+        <div style="
+            margin-top:18px;
+            padding:18px;
+            border-radius:18px;
+            background:linear-gradient(135deg,#e91e63,#ff5722);
+            color:white;
+            text-align:center;
+        ">
+
+            <h3>🧠 TEST YOUR KNOWLEDGE</h3>
+
+            <p>
+                ${questions.length} practice questions available.
+            </p>
+
+            <button
+                class="practice-btn"
+                onclick="startQuiz('${escapeText(course)}')"
+            >
+                📝 START PRACTICE
+            </button>
+
+        </div>
+    `;
+
+    openPanel("📖 "+course,html);
+}
+
+
+/* ================= QUIZ ================= */
+
+function startQuiz(course){
+
+    currentCourse=course;
+
+    const all=(window.PNGPD_QUESTIONS||[])
+        .filter(q=>q.course===course);
+
+    all.sort(()=>Math.random()-0.5);
+
+    quizQuestions=all.slice(0,30);
+    quizIndex=0;
+    quizScore=0;
+
+    if(!quizQuestions.length){
+
+        openPanel(
+            "📝 PRACTICE",
+            `
+            <div class="note">
+                No questions are loaded for ${course} yet.
+            </div>
+            `
+        );
+
+        return;
+    }
+
+    renderQuestion();
+}
+
+function renderQuestion(){
+
+    const q=quizQuestions[quizIndex];
+
+    let html=`
+        <div class="quiz-question">
+            ${q.question}
+        </div>
+    `;
+
+    q.options.forEach((option,index)=>{
+
+        html+=`
+            <button
+                class="option"
+                onclick="answerQuiz(${index})"
+            >
+                ${String.fromCharCode(65+index)}. ${option}
+            </button>
+        `;
+    });
+
+    html+=`<div id="feedback"></div>`;
+
+    openPanel(
+        `📝 ${currentCourse} • ${quizIndex+1}/${quizQuestions.length}`,
+        html
+    );
+}
+
+function answerQuiz(selected){
+
+    const q=quizQuestions[quizIndex];
+
+    document.querySelectorAll(".option")
+        .forEach(button=>button.disabled=true);
+
+    const correct=selected===Number(q.answer);
+
+    if(correct){
+        quizScore++;
+        state.xp+=5;
+    }
+
+    let feedback=correct
+        ? `<div class="correct">✅ Correct!</div>`
+        : `<div class="wrong">❌ Incorrect.</div>`;
+
+    if(q.explanation){
+        feedback+=`
+            <br>
+            <small>${q.explanation}</small>
+        `;
+    }
+
+    feedback+=`
+        <button class="next-btn" onclick="nextQuestion()">
+            CONTINUE
+        </button>
+    `;
+
+    document.getElementById("feedback").innerHTML=feedback;
+
+    updateHUD();
+}
+
+function nextQuestion(){
+
+    quizIndex++;
+
+    if(quizIndex<quizQuestions.length){
+        renderQuestion();
+    }else{
+        finishQuiz();
+    }
+}
+
+function finishQuiz(){
+
+    openPanel(
+        "🏆 RESULT",
+        `
+        <div class="note" style="text-align:center">
+
+            <h2>${currentCourse}</h2>
+
+            <h1>
+                ${quizScore}/${quizQuestions.length}
+            </h1>
+
+            <p>
+                ⭐ +${quizScore*5} XP
+            </p>
+
+            <button
+                class="next-btn"
+                onclick="openCourse('${escapeText(currentCourse)}')"
+            >
+                BACK TO COURSE
+            </button>
+
+        </div>
+        `
+    );
+
+    updateHUD();
+}
+
+
+/* ================= CANTEEN ================= */
+
+function openCanteen(){
+
+    const foods=[
+        ["🍚","Jollof Rice",800,25],
+        ["🍝","Spaghetti",700,22],
+        ["🍗","Chicken & Rice",1200,35],
+        ["🥪","Sandwich",500,15],
+        ["🍜","Noodles & Egg",650,20],
+        ["🥤","Soft Drink",300,8]
+    ];
+
+    let html=`
+        <div class="note">
+            🍽️ Choose your food.
+
+            <br><br>
+
+            Each food has a different price and restores
+            a different amount of energy.
+        </div>
+
+        <div class="food-grid">
+    `;
+
+    foods.forEach(food=>{
+
+        html+=`
+            <div class="card">
+
+                <div style="font-size:35px">
+                    ${food[0]}
+                </div>
+
+                <div>${food[1]}</div>
+
+                <div style="margin-top:7px">
+                    ₦${food[2]} • +${food[3]} Energy
+                </div>
+
+                <button onclick="
+                    buyFood(${food[2]},${food[3]},'${food[1]}')
+                ">
+                    BUY
+                </button>
+
+            </div>
+        `;
+    });
+
+    html+=`</div>`;
+
+    openPanel("🍔 CANTEEN",html);
+}
+
+function buyFood(price,energy,foodName){
+
+    if(state.money<price){
+        toast("Not enough money 💸");
+        return;
+    }
+
+    state.money-=price;
+
+    state.energy=Math.min(
+        100,
+        state.energy+energy
+    );
+
+    updateHUD();
+
+    toast(foodName+" bought! 🍽️");
+}
+
+
+/* ================= PGP 126 LAB ================= */
+
+const labPracticals=[
+
+{
+title:"Engineering Relative Density",
+formula:"RD = density of substance ÷ density of reference substance.",
+apparatus:"Hydrometer or density bottle, balance, measuring cylinder and clean sample.",
+focus:"Revise the formula, apparatus, correct reading technique, temperature effects, sample handling and sources of error."
+},
+
+{
+title:"Pour Point",
+formula:"Pour point is the lowest temperature at which the oil remains sufficiently fluid to pour under specified test conditions.",
+apparatus:"Pour-point test jar, thermometer, cooling bath and petroleum sample.",
+focus:"Revise controlled cooling, thermometer readings, observation of movement and practical interpretation."
+},
+
+{
+title:"API Gravity",
+formula:"API = (141.5 ÷ SG at 60°F/60°F) − 131.5.",
+apparatus:"API hydrometer, hydrometer cylinder, thermometer and petroleum sample.",
+focus:"Revise the formula, specific-gravity relationship, apparatus, reading technique and interpretation."
+}
+
+];
+
+function openLab(){
+
+    let html=`
+        <div class="note">
+
+            <b>🧪 PGP 126 PRACTICAL REVISION</b>
+
+            <br><br>
+
+            Practicals:
+
+            <br>• Engineering Relative Density
+            <br>• Pour Point
+            <br>• API Gravity
+
+            <br><br>
+
+            Each practical contains its formula,
+            apparatus, principle, practical focus and quiz.
+
+        </div>
+
+        <div class="lab-grid">
+    `;
+
+    labPracticals.forEach((practical,index)=>{
+
+        html+=`
+            <div class="card">
+
+                <div>${practical.title}</div>
+
+                <button onclick="labNotes(${index})">
+                    PRACTICAL NOTES
+                </button>
+
+                <button onclick="labQuiz(${index})">
+                    QUIZ ME
+                </button>
+
+            </div>
+        `;
+    });
+
+    html+=`</div>`;
+
+    openPanel("🧪 PGP 126 LABORATORY",html);
+}
+
+function labNotes(index){
+
+    const p=labPracticals[index];
+
+    openPanel(
+        "🧪 "+p.title,
+        `
+        <div class="note">
+
+            <h3>📐 Formula / Principle</h3>
+
+            <p>${p.formula}</p>
+
+        </div>
+
+        <div class="note">
+
+            <h3>🧰 Apparatus</h3>
+
+            <p>${p.apparatus}</p>
+
+        </div>
+
+        <div class="note">
+
+            <h3>🔬 Practical Focus</h3>
+
+            <p>${p.focus}</p>
+
+        </div>
+        `
+    );
+}
+
+function labQuiz(index){
+
+    const p=labPracticals[index];
+
+    const questionSets=[
+
+    [
+        {
+            q:"Which formula is used for API gravity?",
+            options:[
+                "(141.5/SG) − 131.5",
+                "SG × 141.5",
+                "131.5 − SG",
+                "SG / 141.5"
+            ],
+            answer:0
+        },
+        {
+            q:"If specific gravity decreases, API gravity generally:",
+            options:[
+                "Increases",
+                "Decreases",
+                "Becomes zero",
+                "Does not change"
+            ],
+            answer:0
+        },
+        {
+            q:"Which apparatus is commonly used to measure API gravity?",
+            options:[
+                "API hydrometer",
+                "Burette",
+                "Condenser",
+                "Crucible"
+            ],
+            answer:0
+        },
+        {
+            q:"API gravity is mainly used to describe:",
+            options:[
+                "Petroleum density/lightness",
+                "Petroleum pH",
+                "Water hardness",
+                "Steam pressure"
+            ],
+            answer:0
+        }
+    ],
+
+    [
+        {
+            q:"Pour point testing mainly involves:",
+            options:[
+                "Heating until boiling",
+                "Controlled cooling and checking fluid movement",
+                "Measuring pH",
+                "Filtering solids"
+            ],
+            answer:1
+        },
+        {
+            q:"A thermometer is required in pour point testing mainly to:",
+            options:[
+                "Measure sample temperature",
+                "Measure density",
+                "Measure pressure",
+                "Weigh the sample"
+            ],
+            answer:0
+        },
+        {
+            q:"Which apparatus is associated with pour point testing?",
+            options:[
+                "Pour-point test jar",
+                "Burette",
+                "Pipette only",
+                "Volumetric flask only"
+            ],
+            answer:0
+        },
+        {
+            q:"During pour point testing the petroleum sample is:",
+            options:[
+                "Controlled and cooled",
+                "Burned",
+                "Distilled completely",
+                "Neutralised with acid"
+            ],
+            answer:0
+        }
+    ],
+
+    [
+        {
+            q:"Relative density compares the density of a substance with:",
+            options:[
+                "Its mass",
+                "A reference substance",
+                "Its viscosity",
+                "Its temperature only"
+            ],
+            answer:1
+        },
+        {
+            q:"Which can cause poor density measurement?",
+            options:[
+                "Clean apparatus",
+                "Trapped air",
+                "Correct temperature",
+                "Proper reading"
+            ],
+            answer:1
+        },
+        {
+            q:"Why should the apparatus be clean during density measurement?",
+            options:[
+                "To reduce contamination and measurement error",
+                "To increase the mass",
+                "To change the sample colour",
+                "To increase pressure"
+            ],
+            answer:0
+        },
+        {
+            q:"Temperature can affect density measurement because:",
+            options:[
+                "Density can vary with temperature",
+                "Temperature has no possible effect",
+                "It changes the name of the sample",
+                "It removes all solids"
+            ],
+            answer:0
+        }
+    ]
+
+    ];
+
+    const questions=questionSets[index];
+
+    let questionIndex=0;
+    let score=0;
+
+    function showLabQuestion(){
+
+        if(questionIndex>=questions.length){
+
+            openPanel(
+                "🏆 LAB RESULT",
+                `
+                <div class="note" style="text-align:center">
+
+                    <h2>${p.title}</h2>
+
+                    <h1>
+                        ${score}/${questions.length}
+                    </h1>
+
+                    <p>
+                        ${
+                            score===questions.length
+                            ? "🔥 Excellent practical knowledge!"
+                            : "📚 Review the practical notes and try again."
+                        }
+                    </p>
+
+                </div>
+                `
+            );
+
+            return;
+        }
+
+        const q=questions[questionIndex];
+
+        let html=`
+            <div class="quiz-question">
+                ${q.q}
+            </div>
+        `;
+
+        q.options.forEach((option,i)=>{
+
+            html+=`
+                <button
+                    class="option"
+                    onclick="labAnswer(${i})"
+                >
+                    ${String.fromCharCode(65+i)}. ${option}
+                </button>
+            `;
+        });
+
+        openPanel("🧪 "+p.title,html);
+    }
+
+    window.labAnswer=function(selected){
+
+        const q=questions[questionIndex];
+
+        if(selected===q.answer){
+
+            score++;
+            state.xp+=5;
+            updateHUD();
+
+            toast("Correct! +5 XP ⭐");
+
+        }else{
+
+            toast("Not quite. Keep studying 📚");
+
+        }
+
+        questionIndex++;
+
+        showLabQuestion();
+    };
+
+    showLabQuestion();
+}
+
+
+/* ================= ARENA ================= */
+
+function openArena(){
+
+    if(
+        window.PNGPD_ARENA &&
+        typeof window.PNGPD_ARENA.open==="function"
+    ){
+
+        window.PNGPD_ARENA.open();
+        return;
+    }
+
+    openPanel(
+        "⚔️ ARENA",
+        `
+        <div class="note">
+
+            <h2>🔥 Academic Battle Arena</h2>
+
+            <p>
+                Challenge another PNGPD student in an academic quiz battle.
+            </p>
+
+            <p>
+                The online Arena system will appear here when
+                the Supabase Arena module is available.
+            </p>
+
+            <button class="next-btn" onclick="openLocalArena()">
+                ENTER PRACTICE BATTLE
+            </button>
+
+        </div>
+        `
+    );
+}
+
+function openLocalArena(){
+
+    const pool=[...(window.PNGPD_QUESTIONS||[])]
+        .sort(()=>Math.random()-0.5)
+        .slice(0,10);
+
+    if(!pool.length){
+
+        openPanel(
+            "⚔️ ARENA",
+            `
+            <div class="note">
+                No Arena questions are loaded yet.
+            </div>
+            `
+        );
+
+        return;
+    }
+
+    let index=0;
+    let score=0;
+
+    function showArenaQuestion(){
+
+        if(index>=pool.length){
+
+            openPanel(
+                "🏆 ARENA RESULT",
+                `
+                <div class="note" style="text-align:center">
+
+                    <h1>${score}/${pool.length}</h1>
+
+                    <p>
+                        Academic battle completed.
+                    </p>
+
+                </div>
+                `
+            );
+
+            return;
+        }
+
+        const q=pool[index];
+
+        let html=`
+            <div class="quiz-question">
+                ${q.question}
+            </div>
+        `;
+
+        q.options.forEach((option,i)=>{
+
+            html+=`
+                <button
+                    class="option"
+                    onclick="arenaAnswer(${i})"
+                >
+                    ${String.fromCharCode(65+i)}. ${option}
+                </button>
+            `;
+        });
+
+        openPanel(
+            `⚔️ BATTLE ${index+1}/${pool.length}`,
+            html
+        );
+    }
+
+    window.arenaAnswer=function(selected){
+
+        if(
+            selected===
+            Number(pool[index].answer)
+        ){
+
+            score++;
+            state.xp+=5;
+            updateHUD();
+        }
+
+        index++;
+
+        showArenaQuestion();
+    };
+
+    showArenaQuestion();
+}
+
+
+/* ================= CAMPUS PANNING ================= */
+
+let panX=0;
+let panY=0;
+let dragging=false;
+let lastX=0;
+let lastY=0;
+
+function applyPan(){
+
+    document.getElementById("world").style.transform=
+        `translate(${panX}px,${panY}px)`;
+}
+
+function centerWorld(){
+
+    const viewport=document.getElementById("viewport");
+
+    panX=(viewport.clientWidth-1800)/2;
+    panY=(viewport.clientHeight-1200)/2;
+
+    applyPan();
+}
+
+
+/* ================= DRAG ================= */
+
+const viewport=document.getElementById("viewport");
+
+viewport.addEventListener("pointerdown",event=>{
+
+    if(event.target.closest(".building")){
+        return;
+    }
+
+    dragging=true;
+
+    lastX=event.clientX;
+    lastY=event.clientY;
+
+    viewport.setPointerCapture(event.pointerId);
+});
+
+viewport.addEventListener("pointermove",event=>{
+
+    if(!dragging){
+        return;
+    }
+
+    panX+=event.clientX-lastX;
+    panY+=event.clientY-lastY;
+
+    lastX=event.clientX;
+    lastY=event.clientY;
+
+    applyPan();
+});
+
+viewport.addEventListener("pointerup",()=>{
+    dragging=false;
+});
+
+viewport.addEventListener("pointercancel",()=>{
+    dragging=false;
+});
+
+
+/* ================= WHEEL ================= */
+
+viewport.addEventListener(
+    "wheel",
+    event=>{
+
+        event.preventDefault();
+
+        panX-=event.deltaX;
+        panY-=event.deltaY;
+
+        applyPan();
+
+    },
+    {passive:false}
+);
+
+
+/* ================= RESIZE ================= */
+
+window.addEventListener("resize",()=>{
+
+    if(
+        document.getElementById("game").style.display==="block"
+        &&
+        !dragging
+    ){
+
+        centerWorld();
+    }
+
+});
 
 </script>
 
