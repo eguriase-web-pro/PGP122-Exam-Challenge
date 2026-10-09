@@ -39,10 +39,10 @@ button{
     position:fixed;
     inset:0;
     background:
-        radial-gradient(circle at 20% 30%,#ff334f 0 15%,transparent 50%),
-        radial-gradient(circle at 80% 20%,#ff9f1c 0 10%,transparent 50%),
-        radial-gradient(circle at 50% 80%,#8b2cff 0 12%,transparent 40%),
-        linear-gradient(135deg,#4a0b3c,#101c4d 50%,#062d2a);
+        radial-gradient(circle at 15% 20%,#ff1744 0 10%,transparent 32%),
+        radial-gradient(circle at 85% 15%,#ffb703 0 8%,transparent 28%),
+        radial-gradient(circle at 50% 90%,#7c25e8 0 12%,transparent 35%),
+        linear-gradient(135deg,#410c38,#17245b 55%,#063c34);
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -77,11 +77,6 @@ button{
     font-size:20px;
     font-weight:900;
     box-shadow:0 8px 0 #a9002a,0 15px 30px rgba(0,0,0,.4);
-}
-
-.start-btn:active{
-    transform:translateY(4px);
-    box-shadow:0 2px 0 #a9002a;
 }
 
 /* =========================
@@ -131,10 +126,6 @@ button{
     outline:none;
 }
 
-.auth-card input:focus{
-    border-color:#ff244f;
-}
-
 .auth-main{
     width:100%;
     padding:16px;
@@ -170,7 +161,7 @@ button{
     inset:0;
     display:none;
     overflow:hidden;
-    background:#6fbd48;
+    background:#73c94d;
 }
 
 #world{
@@ -179,10 +170,39 @@ button{
     height:1200px;
     left:50%;
     top:50%;
-    transform:translate(-50%,-50%);
     background:
         linear-gradient(45deg,#86d95d 0,#68bd45 60%);
     overflow:hidden;
+}
+
+/* =========================
+   CAMPUS DECOR
+========================= */
+
+.campus-title{
+    position:absolute;
+    left:690px;
+    top:25px;
+    font-size:42px;
+    font-weight:900;
+    color:#fff;
+    text-shadow:4px 4px 0 #08752d;
+    z-index:3;
+}
+
+.campus-sign{
+    position:absolute;
+    left:670px;
+    top:75px;
+    width:460px;
+    padding:12px;
+    border-radius:20px;
+    background:#fff;
+    border:5px solid #222;
+    text-align:center;
+    font-weight:900;
+    color:#222;
+    z-index:3;
 }
 
 /* =========================
@@ -193,33 +213,34 @@ button{
     position:absolute;
     background:#49494f;
     border:10px solid #37373c;
-    box-shadow:inset 0 0 0 4px rgba(255,255,255,.05);
 }
 
 .road.horizontal{
     width:100%;
     height:100px;
     left:0;
+    top:550px;
 }
 
 .road.vertical{
     width:100px;
     height:100%;
     top:0;
+    left:850px;
 }
 
 .road.horizontal::after{
     content:"";
     position:absolute;
-    top:45px;
+    top:35px;
     left:0;
     width:100%;
     height:10px;
     background:repeating-linear-gradient(
         90deg,
-        transparent 0 40px,
-        #ffd84a 40px 65px,
-        transparent 65px 105px
+        transparent 0 35px,
+        #ffd84a 35px 70px,
+        transparent 70px 110px
     );
 }
 
@@ -227,14 +248,14 @@ button{
     content:"";
     position:absolute;
     top:0;
-    left:45px;
+    left:35px;
     width:10px;
     height:100%;
     background:repeating-linear-gradient(
         0deg,
-        transparent 0 40px,
-        #ffd84a 40px 65px,
-        transparent 65px 105px
+        transparent 0 35px,
+        #ffd84a 35px 70px,
+        transparent 70px 110px
     );
 }
 
@@ -247,6 +268,34 @@ button{
     background:#e6c58c;
     border:5px solid #c9a36a;
     border-radius:20px;
+}
+
+.path.p1{
+    width:500px;
+    height:35px;
+    left:370px;
+    top:315px;
+}
+
+.path.p2{
+    width:500px;
+    height:35px;
+    left:930px;
+    top:315px;
+}
+
+.path.p3{
+    width:500px;
+    height:35px;
+    left:370px;
+    top:795px;
+}
+
+.path.p4{
+    width:500px;
+    height:35px;
+    left:930px;
+    top:795px;
 }
 
 /* =========================
@@ -288,10 +337,10 @@ button{
 
 .building{
     position:absolute;
-    width:230px;
-    height:150px;
-    border-radius:15px;
-    border:7px solid rgba(0,0,0,.2);
+    width:240px;
+    height:160px;
+    border-radius:18px;
+    border:7px solid rgba(0,0,0,.25);
     box-shadow:
         0 12px 0 rgba(0,0,0,.15),
         0 20px 30px rgba(0,0,0,.22);
@@ -303,6 +352,11 @@ button{
     color:#fff;
     text-shadow:2px 2px 0 rgba(0,0,0,.3);
     z-index:4;
+    transition:.15s;
+}
+
+.building:active{
+    transform:translateY(5px);
 }
 
 .building .icon{
@@ -314,40 +368,46 @@ button{
     margin-top:6px;
 }
 
+.building .hint{
+    font-size:11px;
+    margin-top:4px;
+    opacity:.9;
+}
+
 .library{
-    left:270px;
-    top:240px;
+    left:260px;
+    top:150px;
     background:linear-gradient(135deg,#ef1747,#ff5a36);
 }
 
 .classroom{
-    left:900px;
-    top:240px;
+    left:780px;
+    top:150px;
     background:linear-gradient(135deg,#ff8c00,#ffd23f);
     color:#542000;
 }
 
 .arena{
-    left:1530px;
-    top:240px;
+    left:1300px;
+    top:150px;
     background:linear-gradient(135deg,#7c25e8,#c142ff);
 }
 
 .hostel{
-    left:270px;
-    top:720px;
+    left:260px;
+    top:850px;
     background:linear-gradient(135deg,#0077ff,#00c6ff);
 }
 
 .canteen{
-    left:900px;
-    top:720px;
+    left:780px;
+    top:850px;
     background:linear-gradient(135deg,#ff1744,#ff7b00);
 }
 
 .lab{
-    left:1530px;
-    top:720px;
+    left:1300px;
+    top:850px;
     background:linear-gradient(135deg,#008cff,#00a86b);
 }
 
@@ -359,9 +419,9 @@ button{
     position:absolute;
     width:50px;
     height:60px;
-    z-index:6;
+    z-index:8;
     left:875px;
-    top:570px;
+    top:620px;
 }
 
 .player-body{
@@ -442,17 +502,9 @@ button{
     font-size:14px;
 }
 
-.stat.money{
-    color:#008a3a;
-}
-
-.stat.xp{
-    color:#6c1cff;
-}
-
-.stat.energy{
-    color:#ff1744;
-}
+.stat.money{color:#008a3a}
+.stat.xp{color:#6c1cff}
+.stat.energy{color:#ff1744}
 
 .hud-right{
     display:flex;
@@ -493,30 +545,10 @@ button{
     box-shadow:0 5px 0 rgba(0,0,0,.3);
 }
 
-.move-btn:active{
-    transform:translateY(4px);
-    box-shadow:0 1px 0 rgba(0,0,0,.3);
-}
-
-.up{
-    grid-column:2;
-    grid-row:1;
-}
-
-.left{
-    grid-column:1;
-    grid-row:2;
-}
-
-.down{
-    grid-column:2;
-    grid-row:2;
-}
-
-.right{
-    grid-column:3;
-    grid-row:2;
-}
+.up{grid-column:2;grid-row:1}
+.left{grid-column:1;grid-row:2}
+.down{grid-column:2;grid-row:2}
+.right{grid-column:3;grid-row:2}
 
 /* =========================
    INTERACT
@@ -545,19 +577,19 @@ button{
 #panel{
     position:fixed;
     inset:0;
-    background:rgba(12,8,30,.65);
+    background:rgba(12,8,30,.7);
     display:none;
     align-items:center;
     justify-content:center;
-    padding:20px;
+    padding:15px;
     backdrop-filter:blur(5px);
     z-index:20;
 }
 
 .panel-card{
     background:#fff;
-    width:min(700px,100%);
-    max-height:90vh;
+    width:min(850px,100%);
+    max-height:92vh;
     overflow:auto;
     border-radius:25px;
     border:6px solid #222;
@@ -598,6 +630,60 @@ button{
 }
 
 /* =========================
+   ACADEMIC HOME
+========================= */
+
+.academic-banner{
+    background:
+        linear-gradient(135deg,#35106b,#7c25e8,#ef1747);
+    color:#fff;
+    padding:20px;
+    border-radius:20px;
+    margin-bottom:18px;
+}
+
+.academic-banner h2{
+    font-size:27px;
+    margin-bottom:7px;
+}
+
+.academic-banner p{
+    line-height:1.5;
+}
+
+.academic-actions{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+    margin-bottom:18px;
+}
+
+.academic-action{
+    padding:18px;
+    border-radius:18px;
+    color:#fff;
+    text-align:left;
+    font-weight:900;
+    border:4px solid #222;
+    min-height:100px;
+}
+
+.academic-action:nth-child(1){background:#ff1744}
+.academic-action:nth-child(2){background:#008cff}
+.academic-action:nth-child(3){background:#00a86b}
+.academic-action:nth-child(4){background:#ff8c00}
+
+.academic-action strong{
+    display:block;
+    font-size:19px;
+    margin-bottom:7px;
+}
+
+.academic-action small{
+    line-height:1.35;
+}
+
+/* =========================
    COURSES
 ========================= */
 
@@ -608,38 +694,21 @@ button{
 }
 
 .course-card{
-    background:#112217;
     color:#fff;
     border-radius:20px;
-    padding:12px;
+    padding:14px;
     text-align:left;
     font-weight:900;
     border:4px solid #222;
+    min-height:110px;
 }
 
-.course-card:nth-child(6n+1){
-    background:#ff1744;
-}
-
-.course-card:nth-child(6n+2){
-    background:#ff7b00;
-}
-
-.course-card:nth-child(6n+3){
-    background:#7c25e8;
-}
-
-.course-card:nth-child(6n+4){
-    background:#008cff;
-}
-
-.course-card:nth-child(6n+5){
-    background:#00a86b;
-}
-
-.course-card:nth-child(6n+6){
-    background:#e91e63;
-}
+.course-card:nth-child(6n+1){background:#ff1744}
+.course-card:nth-child(6n+2){background:#ff7b00}
+.course-card:nth-child(6n+3){background:#7c25e8}
+.course-card:nth-child(6n+4){background:#008cff}
+.course-card:nth-child(6n+5){background:#00a86b}
+.course-card:nth-child(6n+6){background:#e91e63}
 
 .course-card strong{
     font-size:18px;
@@ -647,14 +716,101 @@ button{
 }
 
 .course-card small{
+    display:block;
     font-size:12px;
     margin-top:6px;
-    opacity:.9;
+    opacity:.95;
+}
+
+.course-card .mastery{
+    margin-top:9px;
+    height:8px;
+    border-radius:8px;
+    background:rgba(255,255,255,.3);
+    overflow:hidden;
+}
+
+.course-card .mastery span{
+    display:block;
+    height:100%;
+    background:#fff;
+}
+
+/* =========================
+   STUDY MENU
+========================= */
+
+.study-menu{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+}
+
+.study-btn{
+    padding:17px;
+    border-radius:18px;
+    border:4px solid #222;
+    color:#fff;
+    font-weight:900;
+    text-align:left;
+    min-height:105px;
+}
+
+.study-btn:nth-child(1){background:#ff1744}
+.study-btn:nth-child(2){background:#7c25e8}
+.study-btn:nth-child(3){background:#008cff}
+.study-btn:nth-child(4){background:#00a86b}
+
+.study-btn strong{
+    display:block;
+    font-size:18px;
+    margin-bottom:6px;
+}
+
+/* =========================
+   NOTES
+========================= */
+
+.note{
+    padding:15px;
+    border-radius:17px;
+    background:#fff7d5;
+    border-left:7px solid #ffb703;
+    margin:10px 0;
+    line-height:1.5;
+}
+
+.note h3{
+    color:#e00032;
+    margin-bottom:6px;
+}
+
+.note ul{
+    padding-left:20px;
+}
+
+.topic-chip{
+    display:inline-block;
+    padding:8px 12px;
+    border-radius:20px;
+    margin:4px;
+    background:#eee;
+    border:2px solid #ccc;
+    font-weight:800;
 }
 
 /* =========================
    QUIZ
 ========================= */
+
+.quiz-meta{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    margin-bottom:10px;
+    font-weight:900;
+    color:#555;
+}
 
 .quiz-progress{
     height:14px;
@@ -680,17 +836,19 @@ button{
     font-size:20px;
     color:#222;
     margin-bottom:12px;
+    line-height:1.4;
 }
 
 .option{
     width:100%;
-    padding:12px;
+    padding:14px;
     margin:6px 0;
     border-radius:15px;
     background:#f4f4f7;
     border:3px solid #ddd;
     text-align:left;
     font-weight:800;
+    line-height:1.4;
 }
 
 .option:hover{
@@ -708,9 +866,18 @@ button{
     border-color:#e00032;
 }
 
+.feedback{
+    margin-top:12px;
+    padding:14px;
+    border-radius:15px;
+    background:#eef4ff;
+    border-left:6px solid #008cff;
+    line-height:1.5;
+}
+
 .next-btn{
     width:100%;
-    padding:12px;
+    padding:14px;
     margin-top:12px;
     border-radius:15px;
     background:#6c1cff;
@@ -720,20 +887,21 @@ button{
 }
 
 /* =========================
-   NOTES
+   RESULTS
 ========================= */
 
-.note{
-    padding:15px;
-    border-radius:17px;
-    background:#fff7d5;
-    border-left:7px solid #ffb703;
-    margin:10px 0;
+.result-score{
+    text-align:center;
+    font-size:55px;
+    font-weight:900;
+    color:#ef1747;
 }
 
-.note h3{
-    color:#e00032;
-    margin-bottom:5px;
+.result-grade{
+    text-align:center;
+    font-size:25px;
+    font-weight:900;
+    margin:8px 0 18px;
 }
 
 /* =========================
@@ -768,15 +936,26 @@ button{
 @media(max-width:600px){
 
     #world{
-        transform:translate(-50%,-50%) scale(.8);
+        transform:none;
+    }
+
+    .campus-title{
+        font-size:30px;
+        left:650px;
+    }
+
+    .campus-sign{
+        left:640px;
+        width:400px;
     }
 
     .building{
-        transform:scale(.8);
+        width:220px;
+        height:145px;
     }
 
     .building .icon{
-        font-size:36px;
+        font-size:38px;
     }
 
     .building .name{
@@ -790,6 +969,11 @@ button{
 
     .hud-right{
         display:none;
+    }
+
+    .academic-actions,
+    .study-menu{
+        grid-template-columns:1fr;
     }
 }
 </style>
@@ -808,13 +992,10 @@ button{
     </div>
 
     <div class="tagline">
-        2.0 YOUR CAMPUS. YOUR STORY. YOUR GAME.
+        YOUR CAMPUS. YOUR STORY. YOUR GAME.
     </div>
 
-    <button
-        class="start-btn"
-        onclick="showAuth()"
-    >
+    <button class="start-btn" onclick="showAuth()">
         PLAY NOW 🚀
     </button>
 
@@ -837,41 +1018,21 @@ button{
             Enter PNGPD LIFE and start your campus journey.
         </p>
 
-        <input
-            id="username"
-            placeholder="Username"
-        >
+        <input id="username" placeholder="Username">
 
-        <input
-            id="email"
-            type="email"
-            placeholder="Email"
-        >
+        <input id="email" type="email" placeholder="Email">
 
-        <input
-            id="password"
-            type="password"
-            placeholder="Password"
-        >
+        <input id="password" type="password" placeholder="Password">
 
-        <button
-            class="auth-main"
-            onclick="enterGame()"
-        >
+        <button class="auth-main" onclick="enterGame()">
             ENTER PNGPD LIFE 🎮
         </button>
 
-        <button
-            class="auth-switch"
-            onclick="toggleAuth()"
-        >
+        <button class="auth-switch" onclick="toggleAuth()">
             Create a new account
         </button>
 
-        <div
-            class="auth-error"
-            id="authError"
-        ></div>
+        <div class="auth-error" id="authError"></div>
 
     </div>
 
@@ -886,72 +1047,40 @@ button{
 
     <div id="world">
 
-        <!-- ROADS -->
+        <div class="campus-title">
+            PNGPD CAMPUS
+        </div>
 
-        <div
-            class="road horizontal"
-            style="top:45%;"
-        ></div>
+        <div class="campus-sign">
+            PETROLEUM & NATURAL GAS PROCESSING TECHNOLOGY
+        </div>
 
-        <div
-            class="road vertical"
-            style="left:45%;"
-        ></div>
+        <div class="road horizontal"></div>
+        <div class="road vertical"></div>
 
-
-        <!-- PATHS -->
-
-        <div
-            class="path"
-            style="
-                width:300px;
-                height:40px;
-                left:450px;
-                top:230px;
-            "
-        ></div>
-
-        <div
-            class="path"
-            style="
-                width:300px;
-                height:40px;
-                left:450px;
-                top:710px;
-            "
-        ></div>
-
+        <div class="path p1"></div>
+        <div class="path p2"></div>
+        <div class="path p3"></div>
+        <div class="path p4"></div>
 
         <!-- TREES -->
 
-        <div
-            class="tree"
-            style="left:30px;top:30px;"
-        >
+        <div class="tree" style="left:30px;top:30px;">
             <div class="leaf"></div>
             <div class="trunk"></div>
         </div>
 
-        <div
-            class="tree"
-            style="left:1750px;top:30px;"
-        >
+        <div class="tree" style="left:1730px;top:30px;">
             <div class="leaf"></div>
             <div class="trunk"></div>
         </div>
 
-        <div
-            class="tree"
-            style="left:30px;top:1100px;"
-        >
+        <div class="tree" style="left:30px;top:1080px;">
             <div class="leaf"></div>
             <div class="trunk"></div>
         </div>
 
-        <div
-            class="tree"
-            style="left:1750px;top:1100px;"
-        >
+        <div class="tree" style="left:1730px;top:1080px;">
             <div class="leaf"></div>
             <div class="trunk"></div>
         </div>
@@ -959,70 +1088,55 @@ button{
 
         <!-- BUILDINGS -->
 
-        <div
-            class="building library"
-            onclick="enterLocation('library')"
-        >
+        <div class="building library"
+             onclick="enterLocation('library')">
             <div class="icon">📚</div>
             <div class="name">LIBRARY</div>
+            <div class="hint">REVISION • NOTES</div>
         </div>
 
-
-        <div
-            class="building classroom"
-            onclick="enterLocation('classroom')"
-        >
+        <div class="building classroom"
+             onclick="enterLocation('classroom')">
             <div class="icon">🏫</div>
-            <div class="name">CLASSROOM</div>
+            <div class="name">ACADEMIC CENTRE</div>
+            <div class="hint">COURSES • PRACTICE • EXAMS</div>
         </div>
 
-
-        <div
-            class="building arena"
-            onclick="enterLocation('arena')"
-        >
+        <div class="building arena"
+             onclick="enterLocation('arena')">
             <div class="icon">⚔️</div>
-            <div class="name">ARENA</div>
+            <div class="name">ACADEMIC ARENA</div>
+            <div class="hint">1V1 • CHAMPIONSHIP</div>
         </div>
 
-
-        <div
-            class="building hostel"
-            onclick="enterLocation('hostel')"
-        >
+        <div class="building hostel"
+             onclick="enterLocation('hostel')">
             <div class="icon">🏠</div>
             <div class="name">HOSTEL</div>
+            <div class="hint">REST • ENERGY</div>
         </div>
 
-
-        <div
-            class="building canteen"
-            onclick="enterLocation('canteen')"
-        >
+        <div class="building canteen"
+             onclick="enterLocation('canteen')">
             <div class="icon">🍔</div>
             <div class="name">CANTEEN</div>
+            <div class="hint">FOOD • ENERGY</div>
         </div>
 
-
-        <div
-            class="building lab"
-            onclick="enterLocation('lab')"
-        >
+        <div class="building lab"
+             onclick="enterLocation('lab')">
             <div class="icon">🧪</div>
             <div class="name">LABORATORY</div>
+            <div class="hint">PRACTICALS</div>
         </div>
 
 
         <!-- PLAYER -->
 
         <div id="player">
-
             <div class="player-head"></div>
-
             <div class="player-body"></div>
-
             <div class="player-shadow"></div>
-
         </div>
 
     </div>
@@ -1035,49 +1149,30 @@ button{
         <div class="hud-left">
 
             <div class="stat">
-                👤
-                <span id="playerName">
-                    Student
-                </span>
+                👤 <span id="playerName">Student</span>
             </div>
 
             <div class="stat money">
-                💰 ₦
-                <span id="money">
-                    5000
-                </span>
+                💰 ₦<span id="money">5000</span>
             </div>
 
             <div class="stat xp">
-                ⭐ XP
-                <span id="xp">
-                    0
-                </span>
+                ⭐ XP <span id="xp">0</span>
             </div>
 
             <div class="stat energy">
-                ❤️
-                <span id="energy">
-                    100
-                </span>
+                ❤️ <span id="energy">100</span>
             </div>
 
         </div>
 
-
         <div class="hud-right">
 
-            <button
-                class="round-btn"
-                onclick="openProfile()"
-            >
+            <button class="round-btn" onclick="openProfile()">
                 👤
             </button>
 
-            <button
-                class="round-btn"
-                onclick="openLibrary()"
-            >
+            <button class="round-btn" onclick="openLibrary()">
                 📚
             </button>
 
@@ -1090,43 +1185,30 @@ button{
 
     <div id="controls">
 
-        <button
-            class="move-btn up"
-            onpointerdown="move('up')"
-        >
+        <button class="move-btn up"
+                onpointerdown="move('up')">
             ⬆️
         </button>
 
-        <button
-            class="move-btn left"
-            onpointerdown="move('left')"
-        >
+        <button class="move-btn left"
+                onpointerdown="move('left')">
             ⬅️
         </button>
 
-        <button
-            class="move-btn down"
-            onpointerdown="move('down')"
-        >
+        <button class="move-btn down"
+                onpointerdown="move('down')">
             ⬇️
         </button>
 
-        <button
-            class="move-btn right"
-            onpointerdown="move('right')"
-        >
+        <button class="move-btn right"
+                onpointerdown="move('right')">
             ➡️
         </button>
 
     </div>
 
 
-    <!-- INTERACT -->
-
-    <button
-        id="interact"
-        onclick="interact()"
-    >
+    <button id="interact" onclick="interact()">
         ENTER LOCATION 🚪
     </button>
 
@@ -1147,73 +1229,62 @@ button{
                 PNGPD LIFE
             </h2>
 
-            <button
-                class="close"
-                onclick="closePanel()"
-            >
+            <button class="close" onclick="closePanel()">
                 ×
             </button>
 
         </div>
 
-        <div
-            class="panel-body"
-            id="panelBody"
-        ></div>
+        <div class="panel-body" id="panelBody"></div>
 
     </div>
 
 </div>
 
 
-<!-- TOAST -->
-
 <div id="toast"></div>
 
-
-<!-- QUESTION BANK -->
 
 <script src="data/questions.js"></script>
 
 
 <script>
-/* =========================
-   GAME STATE
-========================= */
+/* =========================================================
+   PNGPD LIFE 2.0
+   ACADEMIC-CENTRED GAME ENGINE
+========================================================= */
 
 let player = {
     name:"Student",
-    money:5000,
-    xp:0,
-    energy:100
+    money:Number(localStorage.getItem("pngpd_money")) || 5000,
+    xp:Number(localStorage.getItem("pngpd_xp")) || 0,
+    energy:Number(localStorage.getItem("pngpd_energy")) || 100
 };
 
-let currentLocation = null;
-
 let posX = 875;
-let posY = 570;
+let posY = 620;
+
+let currentLocation = null;
 
 const speed = 18;
 
 
-/* =========================
+/* =========================================================
    AUTH
-========================= */
+========================================================= */
 
 let authRegister = false;
 
 function showAuth(){
 
-    document.getElementById("splash").style.display = "none";
-
-    document.getElementById("auth").style.display = "flex";
+    document.getElementById("splash").style.display="none";
+    document.getElementById("auth").style.display="flex";
 
 }
 
-
 function toggleAuth(){
 
-    authRegister = !authRegister;
+    authRegister=!authRegister;
 
     document.getElementById("authTitle").textContent =
         authRegister
@@ -1236,359 +1307,259 @@ function toggleAuth(){
         : "Create a new account";
 }
 
-
 function enterGame(){
 
     const name =
         document.getElementById("username").value.trim()
         || "Student";
 
-    player.name = name;
+    player.name=name;
 
-    document.getElementById("auth").style.display = "none";
+    localStorage.setItem("pngpd_name",name);
 
-    document.getElementById("game").style.display = "block";
+    document.getElementById("auth").style.display="none";
+    document.getElementById("game").style.display="block";
 
     updateHUD();
+    camera();
 
-    toast(
-        "Welcome to PNGPD LIFE, "
-        + name
-        + "!"
-    );
+    toast("Welcome to PNGPD LIFE, "+name+"! 🎮");
 
 }
 
 
-/* =========================
+/* =========================================================
    HUD
-========================= */
+========================================================= */
 
 function updateHUD(){
 
-    document.getElementById("playerName").textContent =
-        player.name;
-
-    document.getElementById("money").textContent =
+    document.getElementById("playerName").textContent=player.name;
+    document.getElementById("money").textContent=
         player.money.toLocaleString();
-
-    document.getElementById("xp").textContent =
-        player.xp;
-
-    document.getElementById("energy").textContent =
-        player.energy;
+    document.getElementById("xp").textContent=player.xp;
+    document.getElementById("energy").textContent=player.energy;
 
 }
 
 
-/* =========================
+/* =========================================================
    MOVEMENT
-========================= */
+========================================================= */
 
 function move(dir){
 
-    if(dir === "up")
-        posY -= speed;
+    if(dir==="up") posY-=speed;
+    if(dir==="down") posY+=speed;
+    if(dir==="left") posX-=speed;
+    if(dir==="right") posX+=speed;
 
-    if(dir === "down")
-        posY += speed;
+    posX=Math.max(25,Math.min(1725,posX));
+    posY=Math.max(25,Math.min(1130,posY));
 
-    if(dir === "left")
-        posX -= speed;
+    const p=document.getElementById("player");
 
-    if(dir === "right")
-        posX += speed;
-
-
-    posX = Math.max(
-        30,
-        Math.min(1770,posX)
-    );
-
-    posY = Math.max(
-        30,
-        Math.min(1110,posY)
-    );
-
-
-    const p =
-        document.getElementById("player");
-
-    p.style.left =
-        posX + "px";
-
-    p.style.top =
-        posY + "px";
-
+    p.style.left=posX+"px";
+    p.style.top=posY+"px";
 
     camera();
-
     checkNearby();
 
 }
 
 
-/* =========================
+/* =========================================================
    CAMERA
-========================= */
+========================================================= */
 
 function camera(){
 
-    const world =
-        document.getElementById("world");
+    const world=document.getElementById("world");
 
-    const vw =
-        window.innerWidth;
+    const vw=window.innerWidth;
+    const vh=window.innerHeight;
 
-    const vh =
-        window.innerHeight;
+    let left=-(posX-vw/2);
+    let top=-(posY-vh/2);
 
+    left=Math.min(0,Math.max(vw-1800,left));
+    top=Math.min(0,Math.max(vh-1200,top));
 
-    let left =
-        -(posX - vw / 2);
-
-    let top =
-        -(posY - vh / 2);
-
-
-    left =
-        Math.min(
-            0,
-            Math.max(
-                vw - 1800,
-                left
-            )
-        );
-
-
-    top =
-        Math.min(
-            0,
-            Math.max(
-                vh - 1200,
-                top
-            )
-        );
-
-
-    world.style.left =
-        (vw / 2 + left) + "px";
-
-    world.style.top =
-        (vh / 2 + top) + "px";
+    world.style.left=(vw/2+left)+"px";
+    world.style.top=(vh/2+top)+"px";
 
 }
 
 
-/* =========================
+/* =========================================================
    KEYBOARD
-========================= */
+========================================================= */
 
-document.addEventListener(
-    "keydown",
-    e => {
+document.addEventListener("keydown",e=>{
 
-        if(
-            document.getElementById("game")
-            .style.display !== "block"
-        )
-            return;
+    if(document.getElementById("game").style.display!=="block")
+        return;
 
+    if(e.key==="ArrowUp" || e.key.toLowerCase()==="w")
+        move("up");
 
-        if(
-            e.key === "ArrowUp" ||
-            e.key.toLowerCase() === "w"
-        )
-            move("up");
+    if(e.key==="ArrowDown" || e.key.toLowerCase()==="s")
+        move("down");
 
+    if(e.key==="ArrowLeft" || e.key.toLowerCase()==="a")
+        move("left");
 
-        if(
-            e.key === "ArrowDown" ||
-            e.key.toLowerCase() === "s"
-        )
-            move("down");
+    if(e.key==="ArrowRight" || e.key.toLowerCase()==="d")
+        move("right");
+
+    if(e.key==="Enter")
+        interact();
+
+});
 
 
-        if(
-            e.key === "ArrowLeft" ||
-            e.key.toLowerCase() === "a"
-        )
-            move("left");
-
-
-        if(
-            e.key === "ArrowRight" ||
-            e.key.toLowerCase() === "d"
-        )
-            move("right");
-
-
-        if(e.key === "Enter")
-            interact();
-
-    }
-);
-
-
-/* =========================
+/* =========================================================
    BUILDING DETECTION
-========================= */
+   IMPORTANT: USE WORLD COORDINATES
+========================================================= */
+
+const buildingData={
+
+    library:{
+        x:260,
+        y:150,
+        w:240,
+        h:160
+    },
+
+    classroom:{
+        x:780,
+        y:150,
+        w:240,
+        h:160
+    },
+
+    arena:{
+        x:1300,
+        y:150,
+        w:240,
+        h:160
+    },
+
+    hostel:{
+        x:260,
+        y:850,
+        w:240,
+        h:160
+    },
+
+    canteen:{
+        x:780,
+        y:850,
+        w:240,
+        h:160
+    },
+
+    lab:{
+        x:1300,
+        y:850,
+        w:240,
+        h:160
+    }
+
+};
 
 function checkNearby(){
 
-    currentLocation = null;
+    let nearest=null;
+    let nearestDistance=Infinity;
 
-    const buildings = [
+    const playerCenterX=posX+25;
+    const playerCenterY=posY+30;
 
-        ["library","Library"],
+    Object.keys(buildingData).forEach(key=>{
 
-        ["classroom","Classroom"],
+        const b=buildingData[key];
 
-        ["hostel","Hostel"],
+        const centerX=b.x+b.w/2;
+        const centerY=b.y+b.h/2;
 
-        ["canteen","Canteen"],
-
-        ["lab","Laboratory"],
-
-        ["arena","Arena"]
-
-    ];
-
-
-    let nearestDist = Infinity;
-
-    let nearestName = null;
-
-
-    buildings.forEach(
-        ([key,label]) => {
-
-            const el =
-                document.querySelector(
-                    `.building.${key}`
-                );
-
-            if(!el)
-                return;
-
-
-            const rect =
-                el.getBoundingClientRect();
-
-
-            const centerX =
-                rect.left +
-                rect.width / 2;
-
-
-            const centerY =
-                rect.top +
-                rect.height / 2;
-
-
-            const dx =
-                centerX -
-                (posX + 25);
-
-
-            const dy =
-                centerY -
-                (posY + 30);
-
-
-            const dist =
-                Math.hypot(dx,dy);
-
-
-            if(dist < nearestDist){
-
-                nearestDist = dist;
-
-                nearestName = key;
-
-            }
-
-        }
-    );
-
-
-    if(nearestDist < 180){
-
-        currentLocation =
-            nearestName;
-
-        enterLocation(
-            nearestName
+        const distance=Math.hypot(
+            centerX-playerCenterX,
+            centerY-playerCenterY
         );
 
-    }
-    else{
+        if(distance<nearestDistance){
 
-        document.getElementById(
-            "interact"
-        ).style.display = "none";
+            nearestDistance=distance;
+            nearest=key;
+
+        }
+
+    });
+
+    const button=document.getElementById("interact");
+
+    if(nearest && nearestDistance<220){
+
+        currentLocation=nearest;
+
+        const names={
+            library:"ENTER LIBRARY 📚",
+            classroom:"ENTER ACADEMIC CENTRE 🏫",
+            arena:"ENTER ACADEMIC ARENA ⚔️",
+            hostel:"ENTER HOSTEL 🏠",
+            canteen:"ENTER CANTEEN 🍔",
+            lab:"ENTER LABORATORY 🧪"
+        };
+
+        button.textContent=names[nearest];
+        button.style.display="block";
+
+    }else{
+
+        currentLocation=null;
+        button.style.display="none";
 
     }
 
 }
 
 
-/* =========================
+/* =========================================================
    LOCATION
-========================= */
+========================================================= */
 
 function enterLocation(loc){
 
-    const names = {
+    currentLocation=loc;
 
-        library:
-            "📚 PNGPD Library",
+    const names={
 
-        classroom:
-            "🏫 Classroom Block",
-
-        hostel:
-            "🏠 Student Hostel",
-
-        canteen:
-            "🍔 Campus Canteen",
-
-        lab:
-            "🧪 Process Lab",
-
-        arena:
-            "⚔️ PNGPD Arena"
+        library:"ENTER LIBRARY 📚",
+        classroom:"ENTER ACADEMIC CENTRE 🏫",
+        arena:"ENTER ACADEMIC ARENA ⚔️",
+        hostel:"ENTER HOSTEL 🏠",
+        canteen:"ENTER CANTEEN 🍔",
+        lab:"ENTER LABORATORY 🧪"
 
     };
 
+    const button=document.getElementById("interact");
 
-    const button =
-        document.getElementById(
-            "interact"
-        );
-
-
-    button.textContent =
-        `ENTER ${names[loc] || ""}`;
-
-    button.style.display =
-        "block";
+    button.textContent=names[loc];
+    button.style.display="block";
 
 }
-
 
 function interact(){
 
     if(!currentLocation){
 
-        alert(
-            "Walk near a building to enter."
-        );
+        toast("Walk near a building first.");
 
         return;
-
     }
-
 
     switch(currentLocation){
 
@@ -1621,375 +1592,827 @@ function interact(){
 }
 
 
-/* =========================
+/* =========================================================
    PANEL
-========================= */
+========================================================= */
 
-function openPanel(
-    title,
-    content
-){
+function openPanel(title,content){
 
-    document.getElementById(
-        "panelTitle"
-    ).textContent = title;
-
-
-    document.getElementById(
-        "panelBody"
-    ).innerHTML = content;
-
-
-    document.getElementById(
-        "panel"
-    ).style.display = "flex";
+    document.getElementById("panelTitle").textContent=title;
+    document.getElementById("panelBody").innerHTML=content;
+    document.getElementById("panel").style.display="flex";
 
 }
-
 
 function closePanel(){
 
-    document.getElementById(
-        "panel"
-    ).style.display = "none";
-
-
-    document.getElementById(
-        "panelBody"
-    ).innerHTML = "";
+    document.getElementById("panel").style.display="none";
+    document.getElementById("panelBody").innerHTML="";
 
 }
 
 
-/* =========================
-   LIBRARY
-========================= */
+/* =========================================================
+   QUESTION BANK HELPERS
+========================================================= */
 
-function openLibrary(){
+function getQuestions(){
 
-    let questions =
-        window.PNGPD_QUESTIONS || [];
+    return (window.PNGPD_QUESTIONS || []).filter(q=>
+        q &&
+        q.question &&
+        Array.isArray(q.options) &&
+        q.options.length>=2
+    );
 
+}
 
-    questions =
-        questions.filter(
-            q =>
-                q &&
-                q.question &&
-                Array.isArray(q.options) &&
-                q.options.length >= 2
-        );
+function getCourses(){
 
-
-    let courses =
-        [
-            ...new Set(
-                questions.map(
-                    q =>
-                        (
-                            q.course ||
-                            q.subject ||
-                            q.code ||
-                            ""
-                        ).trim()
-                )
+    return [
+        ...new Set(
+            getQuestions()
+            .map(q=>
+                String(
+                    q.course ||
+                    q.subject ||
+                    q.code ||
+                    ""
+                ).trim()
             )
-        ];
+        )
+    ]
+    .filter(Boolean)
+    .sort();
+
+}
+
+function courseQuestions(course){
+
+    return getQuestions().filter(q=>
+        String(
+            q.course ||
+            q.subject ||
+            q.code ||
+            ""
+        ).trim()===course
+    );
+
+}
+
+function shuffle(array){
+
+    const a=array.slice();
+
+    for(let i=a.length-1;i>0;i--){
+
+        const j=Math.floor(Math.random()*(i+1));
+
+        [a[i],a[j]]=[a[j],a[i]];
+
+    }
+
+    return a;
+
+}
 
 
-    courses =
-        courses
-        .filter(c => c)
-        .sort();
+/* =========================================================
+   ACADEMIC PROGRESS
+========================================================= */
+
+function getProgress(course){
+
+    return JSON.parse(
+        localStorage.getItem(
+            "pngpd_progress_"+course
+        ) || JSON.stringify({
+            attempted:0,
+            correct:0,
+            wrong:0,
+            topics:{},
+            weakTopics:[]
+        })
+    );
+
+}
+
+function saveProgress(course,data){
+
+    localStorage.setItem(
+        "pngpd_progress_"+course,
+        JSON.stringify(data)
+    );
+
+}
+
+function recordAcademicResult(course,q,correct){
+
+    const data=getProgress(course);
+
+    data.attempted++;
+
+    if(correct)
+        data.correct++;
+    else
+        data.wrong++;
+
+    const topic=q.topic || "General";
+
+    if(!data.topics[topic])
+        data.topics[topic]={
+            attempted:0,
+            correct:0
+        };
+
+    data.topics[topic].attempted++;
+
+    if(correct)
+        data.topics[topic].correct++;
+
+    data.weakTopics=Object.keys(data.topics)
+        .filter(topic=>{
+            const t=data.topics[topic];
+            return t.attempted>=2 &&
+                (t.correct/t.attempted)<0.6;
+        });
+
+    saveProgress(course,data);
+
+}
 
 
-    let html = `
+/* =========================================================
+   ACADEMIC CENTRE
+========================================================= */
 
-        <p
-            style="
-                font-weight:800;
-                margin-bottom:15px;
-            "
-        >
-            📚 Welcome to the Library!
-            Select a course:
-        </p>
+function openClassroom(){
+
+    const courses=getCourses();
+
+    let html=`
+
+        <div class="academic-banner">
+
+            <h2>🎓 PNGPD ACADEMIC CENTRE</h2>
+
+            <p>
+                This is the academic heart of PNGPD LIFE.
+                Choose your course, study the material,
+                practise questions and prepare for your exams.
+            </p>
+
+        </div>
+
+        <div class="academic-actions">
+
+            <button class="academic-action"
+                    onclick="showCourseSelector('study')">
+
+                <strong>📖 STUDY</strong>
+
+                <small>
+                    Learn key definitions, formulas,
+                    processes, concepts and important
+                    examination points.
+                </small>
+
+            </button>
+
+            <button class="academic-action"
+                    onclick="showCourseSelector('practice')">
+
+                <strong>🧠 PRACTICE</strong>
+
+                <small>
+                    Random questions from your course.
+                    Build understanding through retrieval.
+                </small>
+
+            </button>
+
+            <button class="academic-action"
+                    onclick="showCourseSelector('exam')">
+
+                <strong>🔥 EXAM MODE</strong>
+
+                <small>
+                    Hard mixed questions with a proper
+                    examination-style challenge.
+                </small>
+
+            </button>
+
+            <button class="academic-action"
+                    onclick="showCourseSelector('weak')">
+
+                <strong>⚠️ WEAK AREAS</strong>
+
+                <small>
+                    Revisit topics where your previous
+                    answers show you need more work.
+                </small>
+
+            </button>
+
+        </div>
+
+        <h3 style="margin-bottom:10px;">
+            📚 Your Courses
+        </h3>
 
         <div class="course-grid">
 
     `;
 
+    if(!courses.length){
 
-    if(courses.length === 0){
+        html+=`
 
-        html += `
+            <div class="note">
 
-            <div
-                style="
-                    padding:20px;
-                    border-radius:15px;
-                    background:#ffe5eb;
-                    color:#d00035;
-                    font-weight:900;
-                    grid-column:1/-1;
-                "
-            >
-                Question bank not found.
-                Load
-                <b>data/questions.js</b>.
+                <h3>Question bank unavailable</h3>
+
+                <p>
+                    Make sure
+                    <b>data/questions.js</b>
+                    is loaded.
+                </p>
+
             </div>
 
         `;
 
-    }
-    else{
+    }else{
 
-        courses.forEach(
-            course => {
+        courses.forEach(course=>{
 
-                const count =
-                    questions.filter(
-                        q =>
-                            (
-                                q.course ||
-                                q.subject ||
-                                q.code
-                            ) === course
-                    ).length;
+            const count=courseQuestions(course).length;
+            const progress=getProgress(course);
 
+            const mastery=progress.attempted
+                ? Math.round(
+                    progress.correct/
+                    progress.attempted*100
+                )
+                : 0;
 
-                html += `
+            html+=`
 
-                    <button
-                        class="course-card"
-                        onclick="
-                            selectCourse(
-                                '${encodeURIComponent(course)}'
-                            )
-                        "
-                    >
+                <button class="course-card"
+                        onclick="openCourseHub('${encodeURIComponent(course)}')">
 
-                        <strong>
-                            ${course}
-                        </strong>
+                    <strong>${escapeHTML(course)}</strong>
 
-                        <small>
-                            ${count} questions
-                        </small>
+                    <small>
+                        ${count} questions
+                    </small>
 
-                        <small>
-                            ▶ START
-                        </small>
+                    <small>
+                        Mastery: ${mastery}%
+                    </small>
 
-                    </button>
+                    <div class="mastery">
+                        <span style="width:${mastery}%"></span>
+                    </div>
 
-                `;
+                </button>
 
-            }
-        );
+            `;
+
+        });
 
     }
 
+    html+=`</div>`;
 
-    html += `
-        </div>
-    `;
-
-
-    openPanel(
-        "📚 PNGPD Library",
-        html
-    );
+    openPanel("🏫 Academic Centre",html);
 
 }
 
 
-/* =========================
-   QUIZ
-========================= */
+/* =========================================================
+   COURSE SELECTOR
+========================================================= */
 
-let quizQuestions = [];
+let pendingAcademicMode="practice";
 
-let quizIndex = 0;
+function showCourseSelector(mode){
 
-let quizScore = 0;
+    pendingAcademicMode=mode;
 
-let quizAnswered = false;
+    const courses=getCourses();
 
-let currentCourse = "";
+    let html=`
+
+        <div class="note">
+
+            <h3>
+                ${
+                    mode==="study"
+                    ?"📖 Choose a course to study"
+                    :mode==="practice"
+                    ?"🧠 Choose a course to practise"
+                    :mode==="exam"
+                    ?"🔥 Choose an exam course"
+                    :"⚠️ Choose a course to review"
+                }
+            </h3>
+
+            <p>
+                Select the course you want to work on.
+            </p>
+
+        </div>
+
+        <div class="course-grid">
+
+    `;
+
+    courses.forEach(course=>{
+
+        html+=`
+
+            <button class="course-card"
+                    onclick="startAcademicMode('${encodeURIComponent(course)}','${mode}')">
+
+                <strong>${escapeHTML(course)}</strong>
+
+                <small>
+                    ${courseQuestions(course).length} questions
+                </small>
+
+                <small>
+                    ▶ SELECT
+                </small>
+
+            </button>
+
+        `;
+
+    });
+
+    html+=`</div>`;
+
+    openPanel("📚 Select Course",html);
+
+}
 
 
-function selectCourse(encoded){
+/* =========================================================
+   COURSE HUB
+========================================================= */
 
-    const course =
-        decodeURIComponent(encoded);
+function openCourseHub(encoded){
+
+    const course=decodeURIComponent(encoded);
+
+    const questions=courseQuestions(course);
+    const progress=getProgress(course);
+
+    const topics=[
+        ...new Set(
+            questions.map(q=>q.topic || "General")
+        )
+    ];
+
+    const mastery=progress.attempted
+        ? Math.round(
+            progress.correct/
+            progress.attempted*100
+        )
+        : 0;
+
+    let html=`
+
+        <div class="academic-banner">
+
+            <h2>📘 ${escapeHTML(course)}</h2>
+
+            <p>
+                Master this course through study,
+                practice and examination.
+            </p>
+
+        </div>
+
+        <div class="note">
+
+            <h3>📊 Your Progress</h3>
+
+            <p>
+                Questions attempted:
+                <b>${progress.attempted}</b>
+            </p>
+
+            <p>
+                Correct:
+                <b>${progress.correct}</b>
+                |
+                Wrong:
+                <b>${progress.wrong}</b>
+            </p>
+
+            <p>
+                Current mastery:
+                <b>${mastery}%</b>
+            </p>
+
+        </div>
+
+        <h3 style="margin:15px 0 8px;">
+            Available Topics
+        </h3>
+
+        <div>
+
+    `;
+
+    topics.forEach(topic=>{
+
+        html+=`
+            <span class="topic-chip">
+                ${escapeHTML(topic)}
+            </span>
+        `;
+
+    });
+
+    html+=`
+
+        </div>
+
+        <div class="study-menu" style="margin-top:18px;">
+
+            <button class="study-btn"
+                    style="background:#ff1744"
+                    onclick="startAcademicMode('${encodeURIComponent(course)}','study')">
+
+                <strong>📖 STUDY NOTES</strong>
+
+                Review definitions,
+                formulas, concepts and
+                examination points.
+
+            </button>
+
+            <button class="study-btn"
+                    style="background:#7c25e8"
+                    onclick="startAcademicMode('${encodeURIComponent(course)}','practice')">
+
+                <strong>🧠 PRACTICE</strong>
+
+                Random course questions
+                with instant feedback.
+
+            </button>
+
+            <button class="study-btn"
+                    style="background:#ff8c00"
+                    onclick="startAcademicMode('${encodeURIComponent(course)}','exam')">
+
+                <strong>🔥 EXAM MODE</strong>
+
+                Hard mixed questions.
+                Treat it like the real thing.
+
+            </button>
+
+            <button class="study-btn"
+                    style="background:#00a86b"
+                    onclick="startAcademicMode('${encodeURIComponent(course)}','weak')">
+
+                <strong>⚠️ WEAK AREAS</strong>
+
+                Practise topics where
+                you have struggled before.
+
+            </button>
+
+        </div>
+
+    `;
+
+    openPanel("📘 "+course,html);
+
+}
 
 
-    const available =
-        (
-            window.PNGPD_QUESTIONS || []
-        ).filter(
-            q =>
-                (
-                    q.course ||
-                    q.subject ||
-                    q.code
-                ) === course
-        );
+/* =========================================================
+   STUDY NOTES
+========================================================= */
+
+function openStudyNotes(course){
+
+    const questions=courseQuestions(course);
+
+    const topics={};
+
+    questions.forEach(q=>{
+
+        const topic=q.topic || "General";
+
+        if(!topics[topic])
+            topics[topic]=[];
+
+        topics[topic].push(q);
+
+    });
+
+    let html=`
+
+        <div class="academic-banner">
+
+            <h2>📖 ${escapeHTML(course)} — Study Room</h2>
+
+            <p>
+                Study first. Then test yourself.
+            </p>
+
+        </div>
+
+    `;
+
+    Object.keys(topics).forEach(topic=>{
+
+        const qs=topics[topic];
+
+        html+=`
+
+            <div class="note">
+
+                <h3>
+                    ${escapeHTML(topic)}
+                </h3>
+
+        `;
+
+        /*
+         * The question bank itself becomes the
+         * source of concise revision points.
+         */
+
+        const shown=qs.slice(0,6);
+
+        shown.forEach(q=>{
+
+            let answerIndex=Number(q.answer);
+
+            if(Number.isNaN(answerIndex)){
+
+                answerIndex=
+                    "ABCD".indexOf(
+                        String(q.answer)
+                        .trim()
+                        .toUpperCase()
+                    );
+
+            }
+
+            const answer=
+                q.options[answerIndex] || "See course material.";
+
+            html+=`
+
+                <p style="margin:10px 0;">
+
+                    <b>Key question:</b>
+                    ${escapeHTML(q.question)}
+
+                    <br>
+
+                    <b>Answer:</b>
+                    ${escapeHTML(answer)}
+
+                </p>
+
+            `;
+
+        });
+
+        html+=`</div>`;
+
+    });
+
+    html+=`
+
+        <button class="next-btn"
+                onclick="startAcademicMode('${encodeURIComponent(course)}','practice')">
+
+            🧠 NOW TEST MYSELF
+
+        </button>
+
+    `;
+
+    openPanel("📖 Study Room",html);
+
+}
 
 
-    if(available.length === 0){
+/* =========================================================
+   ACADEMIC QUIZ
+========================================================= */
+
+let quizQuestions=[];
+let quizIndex=0;
+let quizScore=0;
+let quizAnswered=false;
+let currentCourse="";
+let currentAcademicMode="practice";
+
+
+function startAcademicMode(encoded,mode){
+
+    const course=decodeURIComponent(encoded);
+
+    if(mode==="study"){
+
+        openStudyNotes(course);
+        return;
+
+    }
+
+    let available=courseQuestions(course);
+
+    if(mode==="weak"){
+
+        const progress=getProgress(course);
+
+        const weak=progress.weakTopics || [];
+
+        if(weak.length){
+
+            const weakQuestions=
+                available.filter(q=>
+                    weak.includes(q.topic || "General")
+                );
+
+            if(weakQuestions.length)
+                available=weakQuestions;
+
+        }else{
+
+            openPanel(
+                "⚠️ Weak Areas",
+                `
+
+                    <div class="note">
+
+                        <h3>No weak areas yet</h3>
+
+                        <p>
+                            You need to answer some
+                            questions first. Then PNGPD LIFE
+                            will identify the topics where
+                            you need more practice.
+                        </p>
+
+                    </div>
+
+                    <button class="next-btn"
+                            onclick="startAcademicMode('${encoded}','practice')">
+
+                        START PRACTICE 🧠
+
+                    </button>
+
+                `
+            );
+
+            return;
+
+        }
+
+    }
+
+    if(!available.length){
 
         openPanel(
             "❌ No Questions",
-            `
-                <div class="note">
-                    No questions found for
-                    <b>${course}</b>.
-                </div>
-            `
+            `<div class="note">
+                No questions are available for
+                <b>${escapeHTML(course)}</b>.
+            </div>`
         );
 
         return;
 
     }
 
+    currentCourse=course;
+    currentAcademicMode=mode;
 
-    quizQuestions =
-        available.slice();
+    let amount;
 
+    if(mode==="exam")
+        amount=Math.min(30,available.length);
+    else
+        amount=Math.min(20,available.length);
 
-    for(
-        let i = quizQuestions.length - 1;
-        i > 0;
-        i--
-    ){
+    quizQuestions=shuffle(available).slice(0,amount);
 
-        const j =
-            Math.floor(
-                Math.random() * (i + 1)
-            );
-
-
-        [
-            quizQuestions[i],
-            quizQuestions[j]
-        ] =
-        [
-            quizQuestions[j],
-            quizQuestions[i]
-        ];
-
-    }
-
-
-    quizQuestions =
-        quizQuestions.slice(
-            0,
-            Math.min(
-                30,
-                quizQuestions.length
-            )
-        );
-
-
-    quizIndex = 0;
-
-    quizScore = 0;
-
-    quizAnswered = false;
-
-    currentCourse = course;
-
+    quizIndex=0;
+    quizScore=0;
+    quizAnswered=false;
 
     renderQuiz();
 
 }
 
 
+/* =========================================================
+   QUIZ RENDER
+========================================================= */
+
 function renderQuiz(){
 
-    const q =
-        quizQuestions[quizIndex];
+    const q=quizQuestions[quizIndex];
 
+    const percent=Math.round(
+        quizIndex/
+        quizQuestions.length*
+        100
+    );
 
-    const percent =
-        Math.round(
-            (
-                quizIndex /
-                quizQuestions.length
-            ) * 100
-        );
+    const modeName=
+        currentAcademicMode==="exam"
+        ?"🔥 EXAM MODE"
+        :currentAcademicMode==="weak"
+        ?"⚠️ WEAK AREA"
+        :"🧠 PRACTICE";
 
+    let html=`
 
-    let html = `
+        <div class="quiz-meta">
+
+            <span>${escapeHTML(currentCourse)}</span>
+
+            <span>${modeName}</span>
+
+        </div>
 
         <div class="quiz-progress">
 
-            <span
-                style="
-                    width:${percent}%;
-                "
-            ></span>
+            <span style="width:${percent}%"></span>
 
         </div>
 
+        <div style="
+            font-weight:900;
+            color:#e00032;
+            margin-bottom:10px;
+        ">
 
-        <div
-            style="
-                font-weight:900;
-                color:#e00032;
-                margin-bottom:8px;
-            "
-        >
-            ${currentCourse}
-            • Question
-            ${quizIndex + 1}
+            Question
+            ${quizIndex+1}
             /
             ${quizQuestions.length}
+
+            ${
+                q.topic
+                ? " • "+escapeHTML(q.topic)
+                : ""
+            }
+
         </div>
 
-
         <div class="question">
-            ${q.question}
+            ${escapeHTML(q.question)}
         </div>
 
     `;
 
+    q.options.forEach((opt,i)=>{
 
-    q.options.forEach(
-        (opt,i) => {
+        html+=`
 
-            html += `
+            <button
+                class="option"
+                id="opt${i}"
+                onclick="answerQuestion(${i})"
+            >
 
-                <button
-                    class="option"
-                    id="opt${i}"
-                    onclick="
-                        answerQuestion(${i})
-                    "
-                >
+                <b>
+                    ${String.fromCharCode(65+i)}.
+                </b>
 
-                    <b>
-                        ${String.fromCharCode(65+i)}.
-                    </b>
+                ${escapeHTML(opt)}
 
-                    ${opt}
+            </button>
 
-                </button>
+        `;
 
-            `;
+    });
 
-        }
-    );
+    html+=`
 
-
-    html += `
+        <div id="feedback"></div>
 
         <button
             id="nextQuestion"
             class="next-btn"
-            style="display:none;"
+            style="display:none"
             onclick="nextQuestion()"
         >
             NEXT ➜
@@ -1997,131 +2420,149 @@ function renderQuiz(){
 
     `;
 
-
     openPanel(
-        "🧠 Course Challenge",
+        currentAcademicMode==="exam"
+        ?"🔥 Examination"
+        :"🧠 "+currentCourse,
         html
     );
 
 }
 
 
+/* =========================================================
+   ANSWER
+========================================================= */
+
 function answerQuestion(index){
 
     if(quizAnswered)
         return;
 
+    quizAnswered=true;
 
-    quizAnswered = true;
+    const q=quizQuestions[quizIndex];
 
+    let correct=Number(q.answer);
 
-    const q =
-        quizQuestions[quizIndex];
+    if(Number.isNaN(correct)){
 
-
-    let correct =
-        Number(q.answer);
-
-
-    if(isNaN(correct)){
-
-        const letAns =
-            (q.answer || "")
-            .toString()
-            .trim()
-            .toUpperCase();
-
-
-        correct =
+        correct=
             "ABCD".indexOf(
-                letAns
+                String(q.answer)
+                .trim()
+                .toUpperCase()
             );
 
     }
 
+    const buttons=document.querySelectorAll(".option");
 
-    const buttons =
-        document.querySelectorAll(
-            ".option"
-        );
+    buttons.forEach((btn,i)=>{
 
+        btn.disabled=true;
 
-    buttons.forEach(
-        (btn,i) => {
+        if(i===correct)
+            btn.classList.add("correct");
 
-            btn.disabled = true;
+        if(i===index && i!==correct)
+            btn.classList.add("wrong");
 
+    });
 
-            if(i === correct)
-                btn.classList.add(
-                    "correct"
-                );
+    const isCorrect=index===correct;
 
-
-            if(
-                i === index &&
-                i !== correct
-            )
-                btn.classList.add(
-                    "wrong"
-                );
-
-        }
-    );
-
-
-    if(index === correct){
+    if(isCorrect){
 
         quizScore++;
 
-        player.xp += 10;
+        player.xp+=10;
 
-        localStorage.setItem(
-            "pngpd_xp",
-            player.xp
-        );
+        toast("🔥 CORRECT! +10 XP");
 
-        updateHUD();
+    }else{
 
-        toast(
-            "🔥 CORRECT! +10 XP"
-        );
-
-    }
-    else{
-
-        toast(
-            "❌ Try again!"
-        );
+        toast("❌ Review the explanation.");
 
     }
 
+    recordAcademicResult(
+        currentCourse,
+        q,
+        isCorrect
+    );
+
+    localStorage.setItem(
+        "pngpd_xp",
+        player.xp
+    );
+
+    updateHUD();
+
+    const correctAnswer=
+        q.options[correct] || "Unavailable.";
+
+    const feedback=document.getElementById("feedback");
+
+    feedback.innerHTML=`
+
+        <div class="feedback">
+
+            <b>
+                ${
+                    isCorrect
+                    ? "✅ Correct!"
+                    : "❌ Not quite."
+                }
+            </b>
+
+            <br><br>
+
+            <b>Correct answer:</b>
+            ${escapeHTML(correctAnswer)}
+
+            <br><br>
+
+            ${
+                q.explanation
+                ? `
+                    <b>Why:</b>
+                    ${escapeHTML(q.explanation)}
+                  `
+                : `
+                    <b>Study point:</b>
+                    Remember the correct concept
+                    and revisit this topic in the
+                    Study Room if necessary.
+                  `
+            }
+
+        </div>
+
+    `;
 
     document.getElementById(
         "nextQuestion"
-    ).style.display =
-        "block";
+    ).style.display="block";
 
 }
 
+
+/* =========================================================
+   NEXT
+========================================================= */
 
 function nextQuestion(){
 
     quizIndex++;
 
-
-    if(
-        quizIndex >=
-        quizQuestions.length
-    ){
+    if(quizIndex>=quizQuestions.length){
 
         finishQuiz();
 
-    }
-    else{
+    }else{
 
-        quizAnswered = false;
-
+        quizAnswered=false;
         renderQuiz();
 
     }
@@ -2129,375 +2570,134 @@ function nextQuestion(){
 }
 
 
+/* =========================================================
+   FINISH
+========================================================= */
+
 function finishQuiz(){
 
-    const total =
-        quizQuestions.length;
+    const total=quizQuestions.length;
 
+    const perc=Math.round(
+        quizScore/
+        total*
+        100
+    );
 
-    const perc =
-        Math.round(
-            (
-                quizScore /
-                total
-            ) * 100
-        );
+    const bonus=quizScore*20;
 
-
-    const bonus =
-        quizScore * 20;
-
-
-    player.money += bonus;
-
+    player.money+=bonus;
 
     localStorage.setItem(
         "pngpd_money",
         player.money
     );
 
-
     updateHUD();
 
+    let msg;
 
-    let msg =
-        "Keep studying!";
-
-
-    if(perc >= 80)
-        msg = "🏆 EXCELLENT!";
-
-    else if(perc >= 60)
-        msg = "👏 Good job!";
-
-    else if(perc >= 40)
-        msg = "💪 Keep practicing!";
-
+    if(perc>=80)
+        msg="🏆 Excellent performance!";
+    else if(perc>=70)
+        msg="👏 Very good. Keep pushing.";
+    else if(perc>=60)
+        msg="💪 Good start. More practice will improve you.";
     else
-        msg = "📖 Review and try again.";
+        msg="📖 You need more revision. Do not give up.";
 
+    let grade;
 
-    openPanel(
-        "🏁 Quiz Complete",
-        `
+    if(perc>=80)
+        grade="DISTINCTION LEVEL";
+    else if(perc>=70)
+        grade="STRONG";
+    else if(perc>=60)
+        grade="PASSING";
+    else
+        grade="NEEDS MORE WORK";
 
-            <div
-                style="
-                    text-align:center;
-                "
-            >
+    const progress=getProgress(currentCourse);
 
-                <div
-                    style="
-                        font-size:50px;
-                    "
-                >
-                    ${
-                        perc >= 70
-                        ? "🏆"
-                        : "📚"
-                    }
-                </div>
+    const weak=progress.weakTopics || [];
 
+    let weakHTML="";
 
-                <h2
-                    style="
-                        font-size:32px;
-                        color:#e00032;
-                    "
-                >
-                    ${quizScore}/${total}
-                </h2>
+    if(weak.length){
 
-
-                <p
-                    style="
-                        font-size:22px;
-                        font-weight:900;
-                    "
-                >
-                    ${perc}%
-                    -
-                    ${msg}
-                </p>
-
-
-                <div class="note">
-
-                    <h3>
-                        Reward:
-                    </h3>
-
-                    <p>
-                        💰
-                        ₦${bonus.toLocaleString()}
-                        earned!
-                    </p>
-
-                </div>
-
-
-                <button
-                    class="next-btn"
-                    onclick="openLibrary()"
-                >
-                    BACK TO LIBRARY 📚
-                </button>
-
-            </div>
-
-        `
-    );
-
-}
-
-
-/* =========================
-   CLASSROOM
-========================= */
-
-function openClassroom(){
-
-    player.xp += 20;
-
-
-    localStorage.setItem(
-        "pngpd_xp",
-        player.xp
-    );
-
-
-    openPanel(
-        "🏫 Classroom",
-        `
+        weakHTML=`
 
             <div class="note">
 
-                <h3>
-                    🎓 Lecture Time
-                </h3>
+                <h3>⚠️ Topics to revisit</h3>
 
                 <p>
-                    You attended a lecture
-                    and gained knowledge
-                    (+20 XP).
+                    ${weak.map(t=>
+                        `<span class="topic-chip">
+                            ${escapeHTML(t)}
+                        </span>`
+                    ).join("")}
                 </p>
 
             </div>
 
-        `
-    );
-
-
-    updateHUD();
-
-}
-
-
-/* =========================
-   HOSTEL
-========================= */
-
-function openHostel(){
-
-    player.energy =
-        Math.min(
-            100,
-            player.energy + 30
-        );
-
-
-    localStorage.setItem(
-        "pngpd_energy",
-        player.energy
-    );
-
-
-    openPanel(
-        "🏠 Hostel",
-        `
-
-            <div class="note">
-
-                <h3>
-                    😴 Rested
-                </h3>
-
-                <p>
-                    You had a good rest.
-                    Energy +30.
-                </p>
-
-            </div>
-
-        `
-    );
-
-
-    updateHUD();
-
-}
-
-
-/* =========================
-   CANTEEN
-========================= */
-
-function openCanteen(){
-
-    if(player.money < 300){
-
-        openPanel(
-            "🍔 Canteen",
-            `
-
-                <div class="note">
-
-                    <h3>
-                        💸 Not Enough ₦
-                    </h3>
-
-                    <p>
-                        You need
-                        ₦300
-                        for a meal.
-                    </p>
-
-                </div>
-
-            `
-        );
-
-    }
-    else{
-
-        player.money -= 300;
-
-        player.energy =
-            Math.min(
-                100,
-                player.energy + 30
-            );
-
-
-        localStorage.setItem(
-            "pngpd_money",
-            player.money
-        );
-
-
-        localStorage.setItem(
-            "pngpd_energy",
-            player.energy
-        );
-
-
-        openPanel(
-            "🍔 Canteen",
-            `
-
-                <div class="note">
-
-                    <h3>
-                        🍗 Delicious Meal
-                    </h3>
-
-                    <p>
-                        You enjoyed a meal.
-                        Energy +30.
-                        Money -₦300.
-                    </p>
-
-                </div>
-
-            `
-        );
-
-
-        updateHUD();
-
-
-        toast(
-            "🍔 Meal purchased! +30 Energy"
-        );
+        `;
 
     }
 
-}
-
-
-/* =========================
-   LAB
-========================= */
-
-function openLab(){
-
-    player.xp += 25;
-
-
-    localStorage.setItem(
-        "pngpd_xp",
-        player.xp
-    );
-
-
     openPanel(
-        "🧪 Laboratory",
+        "🏁 Study Session Complete",
         `
+
+            <div class="result-score">
+                ${quizScore}/${total}
+            </div>
+
+            <div class="result-grade">
+                ${perc}% — ${grade}
+            </div>
 
             <div class="note">
 
-                <h3>
-                    ⚗️ Practical Challenge
-                </h3>
+                <h3>${msg}</h3>
 
                 <p>
-                    You completed a lab
-                    exercise.
-                    +25 XP.
+                    Course:
+                    <b>${escapeHTML(currentCourse)}</b>
+                </p>
+
+                <p>
+                    Correct:
+                    <b>${quizScore}</b>
+                </p>
+
+                <p>
+                    Wrong:
+                    <b>${total-quizScore}</b>
+                </p>
+
+                <p>
+                    💰 Academic reward:
+                    <b>₦${bonus.toLocaleString()}</b>
                 </p>
 
             </div>
 
-        `
-    );
+            ${weakHTML}
 
+            <button class="next-btn"
+                    onclick="openCourseHub('${encodeURIComponent(currentCourse)}')">
 
-    updateHUD();
+                📘 BACK TO COURSE
 
-}
+            </button>
 
+            <button class="next-btn"
+                    style="background:#ff1744"
+                    onclick="startAcademicMode('${encodeURIComponent(currentCourse)}','exam')">
 
-/* =========================
-   ARENA
-========================= */
+                🔥 TAKE EXAM MODE
 
-function openArena(){
-
-    openPanel(
-        "⚔️ Arena",
-        `
-
-            <div class="note">
-
-                <h3>
-                    🔥 Arena Battle
-                </h3>
-
-                <p>
-                    Challenge another
-                    student in an academic
-                    quiz battle!
-                </p>
-
-            </div>
-
-
-            <button
-                class="next-btn"
-                onclick="openArenaSystem()"
-            >
-                ENTER ARENA ⚔️
             </button>
 
         `
@@ -2506,11 +2706,350 @@ function openArena(){
 }
 
 
+/* =========================================================
+   LIBRARY
+========================================================= */
+
+function openLibrary(){
+
+    const courses=getCourses();
+
+    let html=`
+
+        <div class="academic-banner"
+             style="background:linear-gradient(135deg,#ef1747,#ff5a36);">
+
+            <h2>📚 PNGPD LIBRARY</h2>
+
+            <p>
+                Your quiet revision area.
+                Choose a course and review what
+                you need before testing yourself.
+            </p>
+
+        </div>
+
+        <div class="course-grid">
+
+    `;
+
+    courses.forEach(course=>{
+
+        const progress=getProgress(course);
+
+        const mastery=progress.attempted
+            ? Math.round(
+                progress.correct/
+                progress.attempted*100
+            )
+            : 0;
+
+        html+=`
+
+            <button class="course-card"
+                    onclick="openStudyNotes('${encodeURIComponent(course)}')">
+
+                <strong>
+                    ${escapeHTML(course)}
+                </strong>
+
+                <small>
+                    📖 Study Notes
+                </small>
+
+                <small>
+                    Mastery: ${mastery}%
+                </small>
+
+            </button>
+
+        `;
+
+    });
+
+    html+=`</div>`;
+
+    openPanel("📚 Library",html);
+
+}
+
+
+/* =========================================================
+   HOSTEL
+========================================================= */
+
+function openHostel(){
+
+    player.energy=Math.min(
+        100,
+        player.energy+30
+    );
+
+    localStorage.setItem(
+        "pngpd_energy",
+        player.energy
+    );
+
+    updateHUD();
+
+    openPanel(
+        "🏠 Hostel",
+        `
+
+            <div class="note">
+
+                <h3>😴 Rested</h3>
+
+                <p>
+                    You rested in your hostel.
+                    Your energy increased by 30.
+                </p>
+
+            </div>
+
+        `
+    );
+
+}
+
+
+/* =========================================================
+   CANTEEN
+========================================================= */
+
+function openCanteen(){
+
+    if(player.money<300){
+
+        openPanel(
+            "🍔 Canteen",
+            `
+
+                <div class="note">
+
+                    <h3>💸 Not Enough Money</h3>
+
+                    <p>
+                        You need ₦300 for a meal.
+                    </p>
+
+                </div>
+
+            `
+        );
+
+        return;
+
+    }
+
+    player.money-=300;
+
+    player.energy=Math.min(
+        100,
+        player.energy+30
+    );
+
+    localStorage.setItem(
+        "pngpd_money",
+        player.money
+    );
+
+    localStorage.setItem(
+        "pngpd_energy",
+        player.energy
+    );
+
+    updateHUD();
+
+    openPanel(
+        "🍔 Canteen",
+        `
+
+            <div class="note">
+
+                <h3>🍗 Meal Purchased</h3>
+
+                <p>
+                    You ate a proper meal.
+                    Energy +30.
+                    Money -₦300.
+                </p>
+
+            </div>
+
+        `
+    );
+
+}
+
+
+/* =========================================================
+   LABORATORY
+========================================================= */
+
+function openLab(){
+
+    openPanel(
+        "🧪 Laboratory",
+        `
+
+            <div class="academic-banner"
+                 style="background:linear-gradient(135deg,#008cff,#00a86b);">
+
+                <h2>🧪 PROCESS LABORATORY</h2>
+
+                <p>
+                    Practical learning area.
+                    Laboratory challenges will connect
+                    your theoretical knowledge with
+                    engineering practice.
+                </p>
+
+            </div>
+
+            <div class="note">
+
+                <h3>⚗️ Practical Training</h3>
+
+                <p>
+                    Complete practical challenges,
+                    calculations, equipment identification
+                    and process-based problems here.
+                </p>
+
+            </div>
+
+            <button class="next-btn"
+                    onclick="openLabChallenge()">
+
+                START PRACTICAL CHALLENGE 🧪
+
+            </button>
+
+        `
+    );
+
+}
+
+function openLabChallenge(){
+
+    const questions=getQuestions()
+        .filter(q=>
+            /lab|equipment|filtration|distillation|process|safety|measurement|agitation/i
+            .test(
+                (q.topic||"")+" "+(q.question||"")
+            )
+        );
+
+    if(!questions.length){
+
+        toast("More practical challenges coming.");
+
+        return;
+
+    }
+
+    const q=shuffle(questions)[0];
+
+    const course=
+        q.course ||
+        q.subject ||
+        q.code ||
+        "GLT";
+
+    currentCourse=course;
+    currentAcademicMode="practice";
+
+    quizQuestions=[q];
+    quizIndex=0;
+    quizScore=0;
+    quizAnswered=false;
+
+    renderQuiz();
+
+}
+
+
+/* =========================================================
+   ARENA
+========================================================= */
+
+function openArena(){
+
+    openPanel(
+        "⚔️ Academic Arena",
+        `
+
+            <div class="academic-banner"
+                 style="background:linear-gradient(135deg,#35106b,#c142ff);">
+
+                <h2>⚔️ PNGPD ACADEMIC ARENA</h2>
+
+                <p>
+                    Test yourself against other PNGPD
+                    students. Knowledge is the weapon.
+                </p>
+
+            </div>
+
+            <div class="study-menu">
+
+                <button class="study-btn"
+                        style="background:#ff1744"
+                        onclick="openArenaSystem()">
+
+                    <strong>⚔️ 1V1 BATTLE</strong>
+
+                    Challenge another student
+                    academically.
+
+                </button>
+
+                <button class="study-btn"
+                        style="background:#ff8c00"
+                        onclick="openArenaSystem()">
+
+                    <strong>🏆 CHAMPIONSHIP</strong>
+
+                    Compete through academic
+                    tournament rounds.
+
+                </button>
+
+                <button class="study-btn"
+                        style="background:#008cff"
+                        onclick="openArenaSystem()">
+
+                    <strong>📊 LEADERBOARD</strong>
+
+                    See how you rank against
+                    other students.
+
+                </button>
+
+                <button class="study-btn"
+                        style="background:#00a86b"
+                        onclick="openArenaSystem()">
+
+                    <strong>📈 MY RECORD</strong>
+
+                    Track your academic battle
+                    performance.
+
+                </button>
+
+            </div>
+
+        `
+    );
+
+}
+
 function openArenaSystem(){
 
     if(
         window.PNGPD_ARENA &&
-        typeof window.PNGPD_ARENA.open === "function"
+        typeof window.PNGPD_ARENA.open==="function"
     ){
 
         closePanel();
@@ -2521,21 +3060,17 @@ function openArenaSystem(){
 
     }
 
-
     openPanel(
         "⚔️ Arena",
         `
 
             <div class="note">
 
-                <h3>
-                    🏆 Arena
-                </h3>
+                <h3>🏆 Arena Module</h3>
 
                 <p>
-                    The Arena system is
-                    available through the
-                    Arena module.
+                    The multiplayer Arena module
+                    is ready to connect here.
                 </p>
 
             </div>
@@ -2546,59 +3081,108 @@ function openArenaSystem(){
 }
 
 
-/* =========================
+/* =========================================================
    PROFILE
-========================= */
+========================================================= */
 
 function openProfile(){
 
+    const courses=getCourses();
+
+    let totalAttempted=0;
+    let totalCorrect=0;
+
+    courses.forEach(course=>{
+
+        const p=getProgress(course);
+
+        totalAttempted+=p.attempted;
+        totalCorrect+=p.correct;
+
+    });
+
+    const academicMastery=
+        totalAttempted
+        ? Math.round(
+            totalCorrect/
+            totalAttempted*
+            100
+        )
+        : 0;
+
     openPanel(
-        "👤 Profile",
+        "👤 Student Profile",
         `
 
-            <div class="note">
+            <div class="academic-banner">
 
-                <h3>
-                    ${player.name}
-                </h3>
+                <h2>
+                    ${escapeHTML(player.name)}
+                </h2>
 
                 <p>
-                    PNGPD Student
+                    PNGPD Student • Campus Life 2.0
                 </p>
 
             </div>
-
 
             <div class="course-grid">
 
                 <div class="course-card">
 
-                    ⭐ XP
-                    <br>
+                    <strong>⭐ XP</strong>
 
-                    ${player.xp}
+                    <small>
+                        ${player.xp}
+                    </small>
 
                 </div>
-
 
                 <div class="course-card">
 
-                    💰 Money
-                    <br>
+                    <strong>💰 MONEY</strong>
 
-                    ₦${player.money.toLocaleString()}
+                    <small>
+                        ₦${player.money.toLocaleString()}
+                    </small>
 
                 </div>
-
 
                 <div class="course-card">
 
-                    ❤️ Energy
-                    <br>
+                    <strong>❤️ ENERGY</strong>
 
-                    ${player.energy}
+                    <small>
+                        ${player.energy}
+                    </small>
 
                 </div>
+
+                <div class="course-card">
+
+                    <strong>🎓 ACADEMIC MASTERY</strong>
+
+                    <small>
+                        ${academicMastery}%
+                    </small>
+
+                </div>
+
+            </div>
+
+            <div class="note">
+
+                <h3>📚 Academic Record</h3>
+
+                <p>
+                    Total questions attempted:
+                    <b>${totalAttempted}</b>
+                </p>
+
+                <p>
+                    Total correct:
+                    <b>${totalCorrect}</b>
+                </p>
 
             </div>
 
@@ -2608,63 +3192,56 @@ function openProfile(){
 }
 
 
-/* =========================
-   TOAST
-========================= */
+/* =========================================================
+   UTILITIES
+========================================================= */
+
+function escapeHTML(value){
+
+    return String(value)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
 
 function toast(msg){
 
-    const el =
-        document.getElementById(
-            "toast"
-        );
+    const el=document.getElementById("toast");
 
+    el.textContent=msg;
 
-    el.textContent = msg;
+    el.classList.add("show");
 
+    clearTimeout(el._timer);
 
-    el.classList.add(
-        "show"
-    );
-
-
-    clearTimeout(
-        el._timer
-    );
-
-
-    el._timer =
-        setTimeout(
-            () => {
-
-                el.classList.remove(
-                    "show"
-                );
-
-            },
-            2200
-        );
+    el._timer=setTimeout(()=>{
+        el.classList.remove("show");
+    },2200);
 
 }
 
 
-/* =========================
+/* =========================================================
    INITIALIZE
-========================= */
+========================================================= */
 
-document.getElementById(
-    "player"
-).style.left =
-    posX + "px";
+const savedName=localStorage.getItem("pngpd_name");
 
+if(savedName)
+    player.name=savedName;
 
-document.getElementById(
-    "player"
-).style.top =
-    posY + "px";
+document.getElementById("player").style.left=
+    posX+"px";
 
+document.getElementById("player").style.top=
+    posY+"px";
 
 updateHUD();
+
+window.addEventListener("resize",camera);
 
 </script>
 
