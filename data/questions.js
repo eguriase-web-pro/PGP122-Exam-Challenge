@@ -650,5 +650,329 @@ window.PNGPD_QUESTIONS = [
         answer: 3,
         explanation: "Sensible heat is calculated using Q = mCp(Tf - Ti), where m is mass, Cp is specific heat capacity, and Tf - Ti is the temperature change."
     }
+    // =====================================================
+    // PGP 123 — INDUSTRIAL UTILITIES
+    // BATCH 2: STEAM, ENERGY, FUELS AND COMBUSTION
+    // =====================================================
+
+    {
+        id: 41,
+        course: "PGP 123",
+        topic: "Steam",
+        difficulty: "Easy",
+        question: "What is steam?",
+        options: [
+            "Water in its solid state",
+            "Water in its vapour state containing thermal energy",
+            "Liquid water below freezing point",
+            "A mixture containing only oxygen and nitrogen"
+        ],
+        answer: 1,
+        explanation: "Steam is water vapour containing thermal energy, including sensible and latent heat depending on its condition."
+    },
+
+    {
+        id: 42,
+        course: "PGP 123",
+        topic: "Steam",
+        difficulty: "Easy",
+        question: "What is saturated steam?",
+        options: [
+            "Steam heated beyond its saturation temperature",
+            "Steam containing no thermal energy",
+            "Steam at the saturation temperature corresponding to its pressure",
+            "Water that has not reached its boiling point"
+        ],
+        answer: 2,
+        explanation: "Saturated steam exists at the saturation temperature corresponding to its pressure. It may be wet or dry saturated steam."
+    },
+
+    {
+        id: 43,
+        course: "PGP 123",
+        topic: "Steam",
+        difficulty: "Medium",
+        question: "How is superheated steam produced?",
+        options: [
+            "By heating saturated steam beyond its saturation temperature at the given pressure",
+            "By cooling saturated steam below its saturation temperature",
+            "By freezing liquid water",
+            "By mixing liquid water with cold air"
+        ],
+        answer: 0,
+        explanation: "Superheated steam is produced by adding heat to saturated steam so that its temperature rises above the saturation temperature at the given pressure."
+    },
+
+    {
+        id: 44,
+        course: "PGP 123",
+        topic: "Steam",
+        difficulty: "Medium",
+        question: "What does steam quality represent in a wet-steam mixture?",
+        options: [
+            "The colour of the steam",
+            "The total mass of the boiler",
+            "The temperature of the boiler room",
+            "The mass fraction of vapour in the saturated liquid-vapour mixture"
+        ],
+        answer: 3,
+        explanation: "Steam quality, or dryness fraction, is the mass of vapour divided by the total mass of a wet saturated mixture."
+    },
+
+    {
+        id: 45,
+        course: "PGP 123",
+        topic: "Heat Calculations",
+        difficulty: "Medium",
+        question: "Which equation is used to calculate sensible heat when specific heat capacity is constant?",
+        options: [
+            "Q = m/Cp",
+            "Q = mCp(Tf - Ti)",
+            "Q = m + Cp",
+            "Q = Cp/(Tf - Ti)"
+        ],
+        answer: 1,
+        explanation: "Sensible heat is calculated using Q = mCp(Tf - Ti), where m is mass, Cp is specific heat capacity, and Tf - Ti is the temperature change."
+    },
+
+    {
+        id: 46,
+        course: "PGP 123",
+        topic: "Heat Calculations",
+        difficulty: "Medium",
+        question: "Calculate the heat required to raise 2 kg of water from 25°C to 75°C. Take Cp = 4.18 kJ/(kg·°C).",
+        options: [
+            "209 kJ",
+            "104.5 kJ",
+            "418 kJ",
+            "836 kJ"
+        ],
+        answer: 2,
+        explanation: "Q = mCpΔT = 2 × 4.18 × (75 - 25) = 418 kJ."
+    },
+
+    {
+        id: 47,
+        course: "PGP 123",
+        topic: "Latent Heat",
+        difficulty: "Medium",
+        question: "Which expression calculates the energy required for a phase change when latent heat is known?",
+        options: [
+            "Q = mHv",
+            "Q = m/Hv",
+            "Q = m + Hv",
+            "Q = Hv/m"
+        ],
+        answer: 0,
+        explanation: "The energy for a phase change is calculated using Q = mHv, where m is mass and Hv is the relevant specific latent heat."
+    },
+
+    {
+        id: 48,
+        course: "PGP 123",
+        topic: "Energy",
+        difficulty: "Easy",
+        question: "Which of the following is a renewable energy source?",
+        options: [
+            "Coal",
+            "Petroleum",
+            "Natural gas",
+            "Solar energy"
+        ],
+        answer: 3,
+        explanation: "Solar energy is renewable because it is continually replenished by the Sun."
+    },
+
+    {
+        id: 49,
+        course: "PGP 123",
+        topic: "Energy",
+        difficulty: "Easy",
+        question: "Which of these is classified as a non-renewable energy source?",
+        options: [
+            "Wind",
+            "Petroleum",
+            "Tidal energy",
+            "Solar energy"
+        ],
+        answer: 1,
+        explanation: "Petroleum is a fossil fuel formed over geological timescales and is classified as non-renewable."
+    },
+
+    {
+        id: 50,
+        course: "PGP 123",
+        topic: "Energy Units",
+        difficulty: "Medium",
+        question: "How many kilojoules are equivalent to 1 kWh?",
+        options: [
+            "360 kJ",
+            "1000 kJ",
+            "3600 kJ",
+            "36,000 kJ"
+        ],
+        answer: 2,
+        explanation: "1 kWh = 1000 W × 3600 s = 3,600,000 J = 3600 kJ."
+    },
+
+    {
+        id: 51,
+        course: "PGP 123",
+        topic: "Energy Units",
+        difficulty: "Medium",
+        question: "Approximately how many joules are equivalent to one British thermal unit (Btu)?",
+        options: [
+            "1055 J",
+            "4.18 J",
+            "100 J",
+            "3600 J"
+        ],
+        answer: 0,
+        explanation: "One Btu is approximately equal to 1055 joules."
+    },
+
+    {
+        id: 52,
+        course: "PGP 123",
+        topic: "Solid Fuels",
+        difficulty: "Easy",
+        question: "What is coke in fuel technology?",
+        options: [
+            "A liquid obtained by cooling steam",
+            "A gaseous mixture consisting only of nitrogen",
+            "A type of treated wastewater",
+            "A carbon-rich solid residue produced by heating coal or other carbonaceous materials"
+        ],
+        answer: 3,
+        explanation: "Coke is a carbon-rich solid residue obtained by carbonizing coal or other carbonaceous materials under suitable conditions."
+    },
+
+    {
+        id: 53,
+        course: "PGP 123",
+        topic: "Solid Fuels",
+        difficulty: "Medium",
+        question: "What is meant by the moisture content of a solid fuel?",
+        options: [
+            "The percentage of oxygen in the atmosphere",
+            "The amount of water present in the fuel, usually expressed as a percentage",
+            "The total quantity of ash produced by a boiler",
+            "The temperature at which the fuel melts"
+        ],
+        answer: 1,
+        explanation: "Moisture content indicates the water present in a fuel and is commonly reported as a percentage by mass."
+    },
+
+    {
+        id: 54,
+        course: "PGP 123",
+        topic: "Solid Fuels",
+        difficulty: "Medium",
+        question: "Using the simplified relationship in the lecture note, calculate fixed carbon if moisture is 5%, ash is 10%, and volatile matter is 30%.",
+        options: [
+            "35%",
+            "45%",
+            "55%",
+            "65%"
+        ],
+        answer: 2,
+        explanation: "Fixed carbon = 100% - (moisture + ash + volatile matter) = 100 - (5 + 10 + 30) = 55%."
+    },
+
+    {
+        id: 55,
+        course: "PGP 123",
+        topic: "Solid Fuels",
+        difficulty: "Medium",
+        question: "What is volatile matter in the analysis of coal?",
+        options: [
+            "The portion released as gases and vapours when the coal is heated under prescribed conditions in the absence of air",
+            "Only the liquid water mixed with coal",
+            "The ash remaining after complete combustion",
+            "The total mass of the furnace"
+        ],
+        answer: 0,
+        explanation: "Volatile matter is the portion of a solid fuel released as gases and vapours during heating under prescribed conditions without air."
+    },
+
+    {
+        id: 56,
+        course: "PGP 123",
+        topic: "Liquid Fuels",
+        difficulty: "Easy",
+        question: "Which of the following is a liquid fuel?",
+        options: [
+            "Coke",
+            "Coal",
+            "Kerosene",
+            "Charcoal"
+        ],
+        answer: 2,
+        explanation: "Kerosene is a liquid petroleum-derived fuel."
+    },
+
+    {
+        id: 57,
+        course: "PGP 123",
+        topic: "Gaseous Fuels",
+        difficulty: "Easy",
+        question: "What is the main constituent of natural gas?",
+        options: [
+            "Oxygen",
+            "Methane",
+            "Chlorine",
+            "Carbon monoxide"
+        ],
+        answer: 1,
+        explanation: "Methane is the principal constituent of natural gas, although its exact composition varies by source."
+    },
+
+    {
+        id: 58,
+        course: "PGP 123",
+        topic: "Gaseous Fuels",
+        difficulty: "Medium",
+        question: "Which statement best describes liquefied petroleum gas (LPG)?",
+        options: [
+            "It consists entirely of liquid water",
+            "It is a solid fuel composed only of carbon",
+            "It is a gas that cannot be liquefied by pressure",
+            "It is composed mainly of hydrocarbons such as propane and butane that can be liquefied under suitable pressure"
+        ],
+        answer: 3,
+        explanation: "LPG consists mainly of hydrocarbons such as propane and butane, which can be liquefied under suitable pressure at ordinary temperatures."
+    },
+
+    {
+        id: 59,
+        course: "PGP 123",
+        topic: "Combustion",
+        difficulty: "Medium",
+        question: "What is theoretical or stoichiometric air in combustion?",
+        options: [
+            "The minimum calculated air required for complete combustion according to the reaction stoichiometry",
+            "Air supplied without considering the fuel composition",
+            "Air containing no oxygen",
+            "The air exhausted from a cooling tower"
+        ],
+        answer: 0,
+        explanation: "Theoretical air is the calculated quantity of air required to supply the stoichiometric oxygen for complete combustion of the fuel."
+    },
+
+    {
+        id: 60,
+        course: "PGP 123",
+        topic: "Combustion",
+        difficulty: "Medium",
+        question: "Why is excess air commonly supplied in practical combustion systems?",
+        options: [
+            "To prevent oxygen from entering the combustion chamber",
+            "To guarantee that no heat is released",
+            "To help achieve more complete combustion under real operating conditions",
+            "To convert all fuel into liquid water before combustion"
+        ],
+        answer: 2,
+        explanation: "Excess air helps provide sufficient oxygen for more complete combustion despite imperfect mixing and operating variations."
+    }
 
 ];
