@@ -2737,4 +2737,1117 @@ function openCanteen(){
     `;
 
 
-    foods.forEach
+    foods.forEach(
+        food => {
+
+            html += `
+
+                <div class="card">
+
+                    <div
+                        style="
+                            font-size:35px
+                        "
+                    >
+                        ${food[0]}
+                    </div>
+
+                    <div>
+                        ${food[1]}
+                    </div>
+
+                    <div
+                        style="
+                            margin-top:7px;
+                        "
+                    >
+                        ₦${food[2]}
+                        • +${food[3]} Energy
+                    </div>
+
+                    <button
+                        onclick="
+                            buyFood(
+                                ${food[2]},
+                                ${food[3]},
+                                '${food[1]}'
+                            )
+                        "
+                    >
+                        BUY
+                    </button>
+
+                </div>
+
+            `;
+
+        }
+    );
+
+
+    html += `
+        </div>
+    `;
+
+
+    openPanel(
+        "🍔 CANTEEN",
+        html
+    );
+
+}
+
+
+function buyFood(
+    price,
+    energy,
+    foodName
+){
+
+    if(
+        state.money <
+        price
+    ){
+
+        toast(
+            "Not enough money 💸"
+        );
+
+        return;
+
+    }
+
+
+    state.money -=
+        price;
+
+
+    state.energy =
+        Math.min(
+            100,
+            state.energy +
+            energy
+        );
+
+
+    updateHUD();
+
+
+    toast(
+        foodName +
+        " bought! 🍽️"
+    );
+
+}
+
+
+/* =====================================================
+   PGP 126 LAB
+===================================================== */
+
+const labPracticals = [
+
+    {
+
+        title:
+            "Engineering Relative Density",
+
+        formula:
+            "RD = density of substance ÷ density of reference substance.",
+
+        apparatus:
+            "Hydrometer or density bottle, balance, measuring cylinder and clean sample.",
+
+        focus:
+            "Revise the formula, apparatus, correct reading technique, temperature effects, sample handling and sources of error."
+
+    },
+
+    {
+
+        title:
+            "Pour Point",
+
+        formula:
+            "Pour point is the lowest temperature at which the oil remains sufficiently fluid to pour under specified test conditions.",
+
+        apparatus:
+            "Pour-point test jar, thermometer, cooling bath and petroleum sample.",
+
+        focus:
+            "Revise controlled cooling, thermometer readings, observation of movement and practical interpretation."
+
+    },
+
+    {
+
+        title:
+            "API Gravity",
+
+        formula:
+            "API = (141.5 ÷ SG at 60°F/60°F) − 131.5.",
+
+        apparatus:
+            "API hydrometer, hydrometer cylinder, thermometer and petroleum sample.",
+
+        focus:
+            "Revise the formula, specific-gravity relationship, apparatus, reading technique and interpretation."
+
+    }
+
+];
+
+
+function openLab(){
+
+    let html = `
+
+        <div class="note">
+
+            <b>
+                🧪 PGP 126 PRACTICAL REVISION
+            </b>
+
+            <br><br>
+
+            Practicals:
+
+            <br>
+            • Engineering Relative Density
+            <br>
+            • Pour Point
+            <br>
+            • API Gravity
+
+            <br><br>
+
+            Each practical contains its
+            formula, apparatus, principle,
+            practical focus and quiz.
+
+        </div>
+
+        <div class="lab-grid">
+
+    `;
+
+
+    labPracticals.forEach(
+        (
+            practical,
+            index
+        ) => {
+
+            html += `
+
+                <div class="card">
+
+                    <div>
+                        ${practical.title}
+                    </div>
+
+                    <button
+                        onclick="
+                            labNotes(
+                                ${index}
+                            )
+                        "
+                    >
+                        PRACTICAL NOTES
+                    </button>
+
+                    <button
+                        onclick="
+                            labQuiz(
+                                ${index}
+                            )
+                        "
+                    >
+                        QUIZ ME
+                    </button>
+
+                </div>
+
+            `;
+
+        }
+    );
+
+
+    html += `
+        </div>
+    `;
+
+
+    openPanel(
+        "🧪 PGP 126 LABORATORY",
+        html
+    );
+
+}
+
+
+function labNotes(
+    index
+){
+
+    const p =
+        labPracticals[
+            index
+        ];
+
+
+    openPanel(
+
+        "🧪 " +
+        p.title,
+
+        `
+
+        <div class="note">
+
+            <h3>
+                📐 Formula / Principle
+            </h3>
+
+            <p>
+                ${p.formula}
+            </p>
+
+        </div>
+
+
+        <div class="note">
+
+            <h3>
+                🧰 Apparatus
+            </h3>
+
+            <p>
+                ${p.apparatus}
+            </p>
+
+        </div>
+
+
+        <div class="note">
+
+            <h3>
+                🔬 Practical Focus
+            </h3>
+
+            <p>
+                ${p.focus}
+            </p>
+
+        </div>
+
+        `
+
+    );
+
+}
+
+
+function labQuiz(
+    index
+){
+
+    const p =
+        labPracticals[
+            index
+        ];
+
+
+    const questionSets = [
+
+        [
+
+            {
+
+                q:
+                    "Which formula is used for API gravity?",
+
+                options:[
+                    "(141.5/SG) − 131.5",
+                    "SG × 141.5",
+                    "131.5 − SG",
+                    "SG / 141.5"
+                ],
+
+                answer:0
+
+            },
+
+            {
+
+                q:
+                    "If specific gravity decreases, API gravity generally:",
+
+                options:[
+                    "Increases",
+                    "Decreases",
+                    "Becomes zero",
+                    "Does not change"
+                ],
+
+                answer:0
+
+            },
+
+            {
+
+                q:
+                    "Which apparatus is commonly used to measure API gravity?",
+
+                options:[
+                    "API hydrometer",
+                    "Burette",
+                    "Condenser",
+                    "Crucible"
+                ],
+
+                answer:0
+
+            },
+
+            {
+
+                q:
+                    "API gravity is mainly used to describe:",
+
+                options:[
+                    "Petroleum density/lightness",
+                    "Petroleum pH",
+                    "Water hardness",
+                    "Steam pressure"
+                ],
+
+                answer:0
+
+            }
+
+        ],
+
+
+        [
+
+            {
+
+                q:
+                    "Pour point testing mainly involves:",
+
+                options:[
+                    "Heating until boiling",
+                    "Controlled cooling and checking fluid movement",
+                    "Measuring pH",
+                    "Filtering solids"
+                ],
+
+                answer:1
+
+            },
+
+            {
+
+                q:
+                    "A thermometer is required in pour point testing mainly to:",
+
+                options:[
+                    "Measure sample temperature",
+                    "Measure density",
+                    "Measure pressure",
+                    "Weigh the sample"
+                ],
+
+                answer:0
+
+            },
+
+            {
+
+                q:
+                    "Which apparatus is associated with pour point testing?",
+
+                options:[
+                    "Pour-point test jar",
+                    "Burette",
+                    "Pipette only",
+                    "Volumetric flask only"
+                ],
+
+                answer:0
+
+            },
+
+            {
+
+                q:
+                    "During pour point testing the petroleum sample is:",
+
+                options:[
+                    "Controlled and cooled",
+                    "Burned",
+                    "Distilled completely",
+                    "Neutralised with acid"
+                ],
+
+                answer:0
+
+            }
+
+        ],
+
+
+        [
+
+            {
+
+                q:
+                    "Relative density compares the density of a substance with:",
+
+                options:[
+                    "Its mass",
+                    "A reference substance",
+                    "Its viscosity",
+                    "Its temperature only"
+                ],
+
+                answer:1
+
+            },
+
+            {
+
+                q:
+                    "Which can cause poor density measurement?",
+
+                options:[
+                    "Clean apparatus",
+                    "Trapped air",
+                    "Correct temperature",
+                    "Proper reading"
+                ],
+
+                answer:1
+
+            },
+
+            {
+
+                q:
+                    "Why should the apparatus be clean during density measurement?",
+
+                options:[
+                    "To reduce contamination and measurement error",
+                    "To increase the mass",
+                    "To change the sample colour",
+                    "To increase pressure"
+                ],
+
+                answer:0
+
+            },
+
+            {
+
+                q:
+                    "Temperature can affect density measurement because:",
+
+                options:[
+                    "Density can vary with temperature",
+                    "Temperature has no possible effect",
+                    "It changes the name of the sample",
+                    "It removes all solids"
+                ],
+
+                answer:0
+
+            }
+
+        ]
+
+    ];
+
+
+    const questions =
+        questionSets[index];
+
+
+    let questionIndex =
+        0;
+
+    let score = 0;
+
+
+    function showLabQuestion(){
+
+        if(
+            questionIndex >=
+            questions.length
+        ){
+
+            openPanel(
+
+                "🏆 LAB RESULT",
+
+                `
+
+                <div
+                    class="note"
+                    style="
+                        text-align:center
+                    "
+                >
+
+                    <h2>
+                        ${p.title}
+                    </h2>
+
+                    <h1>
+                        ${score}/${questions.length}
+                    </h1>
+
+                    <p>
+                        ${
+                            score === questions.length
+                            ? "🔥 Excellent practical knowledge!"
+                            : "📚 Review the practical notes and try again."
+                        }
+                    </p>
+
+                </div>
+
+                `
+
+            );
+
+            return;
+
+        }
+
+
+        const q =
+            questions[
+                questionIndex
+            ];
+
+
+        let html = `
+
+            <div class="quiz-question">
+
+                ${q.q}
+
+            </div>
+
+        `;
+
+
+        q.options.forEach(
+            (
+                option,
+                i
+            ) => {
+
+                html += `
+
+                    <button
+                        class="option"
+                        onclick="
+                            labAnswer(
+                                ${i}
+                            )
+                        "
+                    >
+
+                        ${String.fromCharCode(
+                            65 + i
+                        )}.
+                        ${option}
+
+                    </button>
+
+                `;
+
+            }
+        );
+
+
+        openPanel(
+            "🧪 " + p.title,
+            html
+        );
+
+    }
+
+
+    window.labAnswer =
+        function(selected){
+
+            const q =
+                questions[
+                    questionIndex
+                ];
+
+
+            if(
+                selected ===
+                q.answer
+            ){
+
+                score++;
+
+                state.xp += 5;
+
+                updateHUD();
+
+                toast(
+                    "Correct! +5 XP ⭐"
+                );
+
+            }else{
+
+                toast(
+                    "Not quite. Keep studying 📚"
+                );
+
+            }
+
+
+            questionIndex++;
+
+            showLabQuestion();
+
+        };
+
+
+    showLabQuestion();
+
+}
+
+
+/* =====================================================
+   ARENA
+===================================================== */
+
+function openArena(){
+
+    if(
+        window.PNGPD_ARENA &&
+        typeof
+        window.PNGPD_ARENA.open ===
+        "function"
+    ){
+
+        window.PNGPD_ARENA.open();
+
+        return;
+
+    }
+
+
+    openPanel(
+
+        "⚔️ ARENA",
+
+        `
+
+        <div class="note">
+
+            <h2>
+                🔥 Academic Battle Arena
+            </h2>
+
+            <p>
+                Challenge another PNGPD student
+                in an academic quiz battle.
+            </p>
+
+            <p>
+                The online Arena system will
+                appear here when the Supabase
+                Arena module is available.
+            </p>
+
+            <button
+                class="next-btn"
+                onclick="
+                    openLocalArena()
+                "
+            >
+                ENTER PRACTICE BATTLE
+            </button>
+
+        </div>
+
+        `
+
+    );
+
+}
+
+
+function openLocalArena(){
+
+    const pool =
+        [
+            ...(window.PNGPD_QUESTIONS || [])
+        ]
+        .sort(
+            () =>
+                Math.random() - 0.5
+        )
+        .slice(
+            0,
+            10
+        );
+
+
+    if(!pool.length){
+
+        openPanel(
+            "⚔️ ARENA",
+            `
+            <div class="note">
+                No Arena questions are loaded yet.
+            </div>
+            `
+        );
+
+        return;
+
+    }
+
+
+    let index = 0;
+
+    let score = 0;
+
+
+    function showArenaQuestion(){
+
+        if(
+            index >=
+            pool.length
+        ){
+
+            openPanel(
+
+                "🏆 ARENA RESULT",
+
+                `
+
+                <div
+                    class="note"
+                    style="
+                        text-align:center
+                    "
+                >
+
+                    <h1>
+                        ${score}/${pool.length}
+                    </h1>
+
+                    <p>
+                        Academic battle completed.
+                    </p>
+
+                </div>
+
+                `
+
+            );
+
+            return;
+
+        }
+
+
+        const q =
+            pool[index];
+
+
+        let html = `
+
+            <div class="quiz-question">
+
+                ${q.question}
+
+            </div>
+
+        `;
+
+
+        q.options.forEach(
+            (
+                option,
+                i
+            ) => {
+
+                html += `
+
+                    <button
+                        class="option"
+                        onclick="
+                            arenaAnswer(
+                                ${i}
+                            )
+                        "
+                    >
+
+                        ${String.fromCharCode(
+                            65 + i
+                        )}.
+                        ${option}
+
+                    </button>
+
+                `;
+
+            }
+        );
+
+
+        openPanel(
+
+            `⚔️ BATTLE
+            ${index + 1}/${pool.length}`,
+
+            html
+
+        );
+
+    }
+
+
+    window.arenaAnswer =
+        function(selected){
+
+            if(
+                selected ===
+                Number(
+                    pool[index].answer
+                )
+            ){
+
+                score++;
+
+                state.xp += 5;
+
+                updateHUD();
+
+            }
+
+
+            index++;
+
+            showArenaQuestion();
+
+        };
+
+
+    showArenaQuestion();
+
+}
+
+
+/* =====================================================
+   GOOGLE MAPS STYLE CAMPUS PANNING
+===================================================== */
+
+let panX = 0;
+
+let panY = 0;
+
+let dragging = false;
+
+let lastX = 0;
+
+let lastY = 0;
+
+
+function applyPan(){
+
+    document.getElementById(
+        "world"
+    ).style.transform =
+        `
+        translate(
+            ${panX}px,
+            ${panY}px
+        )
+        `;
+
+}
+
+
+function centerWorld(){
+
+    const viewport =
+        document.getElementById(
+            "viewport"
+        );
+
+
+    panX =
+        (
+            viewport.clientWidth
+            - 1800
+        ) / 2;
+
+
+    panY =
+        (
+            viewport.clientHeight
+            - 1200
+        ) / 2;
+
+
+    applyPan();
+
+}
+
+
+/* ================= MOUSE + TOUCH DRAG ================= */
+
+const viewport =
+    document.getElementById(
+        "viewport"
+    );
+
+
+viewport.addEventListener(
+    "pointerdown",
+    event => {
+
+        if(
+            event.target.closest(
+                ".building"
+            )
+        ){
+
+            return;
+
+        }
+
+
+        dragging = true;
+
+        lastX =
+            event.clientX;
+
+        lastY =
+            event.clientY;
+
+
+        viewport.setPointerCapture(
+            event.pointerId
+        );
+
+    }
+);
+
+
+viewport.addEventListener(
+    "pointermove",
+    event => {
+
+        if(!dragging){
+
+            return;
+
+        }
+
+
+        panX +=
+            event.clientX -
+            lastX;
+
+        panY +=
+            event.clientY -
+            lastY;
+
+
+        lastX =
+            event.clientX;
+
+        lastY =
+            event.clientY;
+
+
+        applyPan();
+
+    }
+);
+
+
+viewport.addEventListener(
+    "pointerup",
+    () => {
+
+        dragging = false;
+
+    }
+);
+
+
+viewport.addEventListener(
+    "pointercancel",
+    () => {
+
+        dragging = false;
+
+    }
+);
+
+
+/* ================= MOUSE WHEEL / TRACKPAD ================= */
+
+viewport.addEventListener(
+    "wheel",
+    event => {
+
+        event.preventDefault();
+
+        panX -=
+            event.deltaX;
+
+        panY -=
+            event.deltaY;
+
+        applyPan();
+
+    },
+    {
+        passive:false
+    }
+);
+
+
+/* ================= RESIZE ================= */
+
+window.addEventListener(
+    "resize",
+    () => {
+
+        if(
+            document.getElementById(
+                "game"
+            ).style.display ===
+            "block"
+            &&
+            !dragging
+        ){
+
+            centerWorld();
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
