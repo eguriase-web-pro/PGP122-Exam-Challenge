@@ -211,12 +211,18 @@ button{font:inherit;cursor:pointer;border:0}
 
 .quiz-question{
     margin-bottom:15px;font-size:19px;font-weight:900;
+    line-height:1.5;color:#222;
 }
 .option{
     display:block;width:100%;margin:8px 0;padding:13px;
     border-radius:12px;background:#f1f3f4;text-align:left;
+    color:#222;
 }
 .option:hover{background:#ffd6e2}
+.option:disabled{
+    opacity:.8;
+    cursor:not-allowed;
+}
 .next-btn{
     margin-top:10px;padding:12px 18px;border-radius:12px;
     background:#e91e63;color:white;font-weight:900;
@@ -395,11 +401,22 @@ button{font:inherit;cursor:pointer;border:0}
     </div>
 </div>
 
-<!-- IMPORTANT: keep your existing files -->
+<!-- These files are optional. The game can still open without them. -->
 <script src="data/questions.js"></script>
 <script src="game/actions.js" defer></script>
 
 <script>
+
+/* =========================================================
+   PNGPD LIFE 2.0
+========================================================= */
+
+"use strict";
+
+
+/* =========================================================
+   STUDY MATERIALS
+========================================================= */
 
 window.PNGPD_STUDY_MATERIALS = [
 
@@ -410,8 +427,8 @@ sections:[
 title:"💧 Fluid Kinematics",
 content:`
 <b>Fluid Kinematics</b> is the study of the motion of
-fluid particles, including velocity and acceleration,
-without considering the forces causing the motion.
+fluid particles without considering the forces causing
+the motion.
 
 <br><br>
 
@@ -427,17 +444,11 @@ without considering the forces causing the motion.
 {
 title:"📐 Flow Rate & Continuity",
 content:`
-The volumetric rate of flow is:
+The volumetric flow rate is:
 
 <br><br>
 
 <b>Q = AV</b>
-
-<br><br>
-
-Q = volumetric flow rate<br>
-A = cross-sectional area<br>
-V = average velocity
 
 <br><br>
 
@@ -449,7 +460,7 @@ For incompressible flow:
 
 <br><br>
 
-This is based on conservation of mass.
+This follows from conservation of mass.
 `
 },
 {
@@ -477,29 +488,17 @@ elevation for ideal, incompressible, steady flow.
 <br><br>
 
 <b>p/γ + V²/(2g) + z = constant</b>
-
-<br><br>
-
-Applications include Venturimeter and Pitot tube.
 `
 },
 {
 title:"📏 Venturimeter & Pitot Tube",
 content:`
-<b>Venturimeter:</b> Used to determine flow rate through
-a pipe.
+<b>Venturimeter:</b> Used to determine flow rate.
 
 <br><br>
 
-Main parts:<br>
-• Converging section<br>
-• Throat<br>
-• Diverging section
-
-<br><br>
-
-<b>Pitot tube:</b> Used to measure fluid velocity at a
-particular point.
+<b>Pitot tube:</b> Used to measure fluid velocity at
+a particular point.
 `
 }
 ]
@@ -524,18 +523,13 @@ temperature and other properties.
 
 <br><br>
 
-Types include liquid/fluid mixing and solid/powder mixing.
-
-<br><br>
-
 Tumbling mixers include double-cone and twin-shell
 or V-blender arrangements.
 
 <br><br>
 
 Double-cone mixers are suitable for free-flowing dry
-powders. Typical batch filling is about 50–60% and
-mixing may take about 5–20 minutes.
+powders.
 `
 },
 {
@@ -558,18 +552,6 @@ Filtration rate can be expressed as <b>dV/dt</b>.
 `
 },
 {
-title:"🧪 Membrane Separation",
-content:`
-Membrane separation uses a selective membrane to separate
-components.
-
-<br><br>
-
-It may depend on molecular size, solubility, diffusivity
-and pressure difference.
-`
-},
-{
 title:"⛏️ Leaching",
 content:`
 <b>Leaching</b> is a solid-liquid extraction process in
@@ -577,15 +559,8 @@ which a solvent removes a soluble constituent from a solid.
 
 <br><br>
 
-Stages:<br>
-1. Contacting<br>
-2. Solute transfer<br>
-3. Separation
-
-<br><br>
-
-Factors include particle size, solvent properties,
-temperature, contact time and agitation.
+Important factors include particle size, solvent
+properties, temperature, contact time and agitation.
 `
 },
 {
@@ -609,13 +584,13 @@ sections:[
 {
 title:"💧 Boiler Feed Water",
 content:`
-Important boiler-water quality considerations include
-hardness, dissolved oxygen and silica.
+Important boiler-water considerations include hardness,
+dissolved oxygen and silica.
 
 <br><br>
 
 Hardness from calcium and magnesium should be controlled
-because it can cause scale formation.
+because it can cause scale.
 
 <br><br>
 
@@ -623,17 +598,14 @@ Dissolved oxygen can contribute to corrosion.
 `
 },
 {
-title:"🚰 Drinking Water Quality",
+title:"🚰 Drinking Water",
 content:`
-Important drinking-water parameters include pH,
-conductivity, TDS, turbidity, calcium, magnesium and
-microbiological quality.
+Important parameters include pH, conductivity, TDS,
+turbidity, calcium, magnesium and microbiological quality.
 
 <br><br>
 
-Typical Nigerian/WHO reference values in the course
-material include pH around 6.5–8.5 and total coliform
-of 0.
+Typical reference values include pH around 6.5–8.5.
 `
 },
 {
@@ -671,7 +643,7 @@ changes with respect to another.
 
 <br><br>
 
-If <b>y = xⁿ</b>:
+For <b>y = xⁿ</b>:
 
 <br><br>
 
@@ -691,10 +663,6 @@ Integration is the reverse process of differentiation.
 <br><br>
 
 <b>∫xⁿ dx = xⁿ⁺¹/(n+1) + C</b>
-
-<br><br>
-
-C is the constant of integration.
 `
 }
 ]
@@ -731,12 +699,6 @@ and lower boiling points.
 {
 title:"⚗️ Petroleum Properties",
 content:`
-Important petroleum properties include density,
-specific gravity, molecular weight, viscosity and
-fractional composition.
-
-<br><br>
-
 <b>SG = density of petroleum liquid / density of water</b>
 
 <br><br>
@@ -768,30 +730,25 @@ sections:[
 {
 title:"⚖️ Engineering Relative Density",
 content:`
-Relative density compares the density of a substance
-with the density of a reference substance.
+<b>RD = density of substance / density of reference substance</b>
 
 <br><br>
 
-<b>RD = Density of substance / Density of reference substance</b>
-
-<br><br>
-
-Avoid trapped air bubbles and use clean apparatus.
-Temperature can affect density measurements.
+Apparatus may include hydrometer or density bottle,
+balance, measuring cylinder and thermometer depending
+on the method.
 `
 },
 {
 title:"🌡️ Pour Point",
 content:`
 <b>Pour point</b> is the lowest temperature at which oil
-remains sufficiently fluid to pour under specified
-test conditions.
+remains sufficiently fluid to pour under specified test
+conditions.
 
 <br><br>
 
-Apparatus includes a test jar, thermometer, cooling bath
-and petroleum sample.
+Apparatus includes test jar, thermometer and cooling bath.
 `
 },
 {
@@ -801,16 +758,8 @@ content:`
 
 <br><br>
 
-Higher API generally means lighter petroleum.
-Lower API generally means heavier petroleum.
-
-<br><br>
-
-Common apparatus:<br>
-• API hydrometer<br>
-• Hydrometer cylinder<br>
-• Thermometer<br>
-• Petroleum sample
+Apparatus includes API hydrometer, hydrometer cylinder,
+thermometer and petroleum sample.
 `
 }
 ]
@@ -836,11 +785,6 @@ title:"🎤 Oral Presentation",
 content:`
 A good technical presentation should be clear,
 organised, concise and technically accurate.
-
-<br><br>
-
-The presenter should understand the subject rather than
-simply memorising the material.
 `
 }
 ]
@@ -852,14 +796,9 @@ sections:[
 {
 title:"🧪 General Laboratory Technology",
 content:`
-Important laboratory areas include laboratory safety,
-measurement, glassware, errors, filtration, distillation,
-titration and laboratory calculations.
-
-<br><br>
-
-Always use the correct apparatus and follow safe
-laboratory procedures.
+Important areas include laboratory safety, measurement,
+glassware, errors, filtration, distillation, titration
+and laboratory calculations.
 `
 }
 ]
@@ -867,13 +806,15 @@ laboratory procedures.
 };
 
 
-/* ================= PLAYER DATA ================= */
+/* =========================================================
+   GAME STATE
+========================================================= */
 
 const state={
-name:localStorage.getItem("pngpd_name")||"Patrick",
-money:Number(localStorage.getItem("pngpd_money")||5000),
-energy:Number(localStorage.getItem("pngpd_energy")||100),
-xp:Number(localStorage.getItem("pngpd_xp")||0)
+    name:localStorage.getItem("pngpd_name")||"Patrick",
+    money:Number(localStorage.getItem("pngpd_money")||5000),
+    energy:Number(localStorage.getItem("pngpd_energy")||100),
+    xp:Number(localStorage.getItem("pngpd_xp")||0)
 };
 
 let currentCourse="";
@@ -882,9 +823,12 @@ let quizIndex=0;
 let quizScore=0;
 
 
-/* ================= BASIC ================= */
+/* =========================================================
+   START / LOGIN
+========================================================= */
 
 function showAuth(){
+
     document.getElementById("splash").style.display="none";
     document.getElementById("auth").style.display="flex";
 }
@@ -907,16 +851,31 @@ function enterGame(){
     centerWorld();
 }
 
+
+/* =========================================================
+   HUD
+========================================================= */
+
 function updateHUD(){
 
-    document.getElementById("money").textContent=state.money;
-    document.getElementById("energy").textContent=state.energy;
-    document.getElementById("xp").textContent=state.xp;
+    document.getElementById("money").textContent=
+        state.money.toLocaleString();
+
+    document.getElementById("energy").textContent=
+        state.energy;
+
+    document.getElementById("xp").textContent=
+        state.xp;
 
     localStorage.setItem("pngpd_money",state.money);
     localStorage.setItem("pngpd_energy",state.energy);
     localStorage.setItem("pngpd_xp",state.xp);
 }
+
+
+/* =========================================================
+   TOAST
+========================================================= */
 
 function toast(message){
 
@@ -932,6 +891,11 @@ function toast(message){
     },2200);
 }
 
+
+/* =========================================================
+   PANEL
+========================================================= */
+
 function openPanel(title,html){
 
     document.getElementById("panelTitle").textContent=title;
@@ -940,19 +904,22 @@ function openPanel(title,html){
 }
 
 function closePanel(){
+
     document.getElementById("panel").style.display="none";
 }
 
-function escapeText(text){
+document.getElementById("panel").addEventListener("click",function(e){
 
-    return String(text)
-        .replace(/\\/g,"\\\\")
-        .replace(/'/g,"\\'");
+    if(e.target===this){
+        closePanel();
+    }
 
-}
+});
 
 
-/* ================= PROFILE ================= */
+/* =========================================================
+   PROFILE
+========================================================= */
 
 function openProfile(){
 
@@ -960,18 +927,23 @@ function openProfile(){
         "👤 Student Profile",
         `
         <div class="note">
-            <h2>${state.name}</h2>
+
+            <h2>${escapeHTML(state.name)}</h2>
+
             <p>🎓 PNGPD Student</p>
             <p>⭐ ${state.xp} XP</p>
-            <p>💰 ₦${state.money}</p>
+            <p>💰 ₦${state.money.toLocaleString()}</p>
             <p>⚡ ${state.energy}/100 Energy</p>
+
         </div>
         `
     );
 }
 
 
-/* ================= HOSTEL ================= */
+/* =========================================================
+   HOSTEL
+========================================================= */
 
 function openHostel(){
 
@@ -979,12 +951,18 @@ function openHostel(){
         "🏠 HOSTEL",
         `
         <div class="note">
+
             <h2>🛏️ Rest</h2>
-            <p>Rest and recover your energy before heading back into campus.</p>
+
+            <p>
+                Rest and recover your energy before heading
+                back into campus.
+            </p>
 
             <button class="next-btn" onclick="restPlayer()">
                 😴 REST +30 ENERGY
             </button>
+
         </div>
         `
     );
@@ -1000,7 +978,9 @@ function restPlayer(){
 }
 
 
-/* ================= CAMPAIGN ================= */
+/* =========================================================
+   CAMPAIGN
+========================================================= */
 
 function openCampaign(){
 
@@ -1014,6 +994,7 @@ function openCampaign(){
             color:white;
             background:linear-gradient(135deg,#b71c1c,#f44336,#ffca28);
         ">
+
             <div style="font-size:45px">🗳️</div>
 
             <h1>VOTE PATRICK</h1>
@@ -1028,16 +1009,251 @@ function openCampaign(){
                 Approachability • Responsiveness • Action
             </p>
 
-            <strong>
-                Let's make PNGPD NSChE stronger, more active and more connected.
-            </strong>
         </div>
         `
     );
 }
 
 
-/* ================= COURSE SYSTEM ================= */
+/* =========================================================
+   IMPORTANT:
+   ROBUST QUESTION BANK SYSTEM
+========================================================= */
+
+function getRawQuestionBank(){
+
+    /*
+      Supports several possible question.js formats.
+    */
+
+    const possible=[
+        window.PNGPD_QUESTIONS,
+        window.questions,
+        window.QUESTIONS,
+        window.questionBank,
+        window.QUESTION_BANK,
+        window.PGP122_QUESTIONS,
+        window.PGP_QUESTIONS
+    ];
+
+    for(const item of possible){
+
+        if(item){
+
+            if(Array.isArray(item)){
+                return item;
+            }
+
+            if(typeof item==="object"){
+
+                /*
+                  If the bank is:
+                  {
+                     "PGP 122":[...],
+                     "PGP 121":[...]
+                  }
+                */
+
+                const flattened=[];
+
+                Object.keys(item).forEach(key=>{
+
+                    const value=item[key];
+
+                    if(Array.isArray(value)){
+
+                        value.forEach(q=>{
+
+                            if(q && typeof q==="object"){
+
+                                flattened.push({
+                                    ...q,
+                                    course:q.course||q.subject||key
+                                });
+
+                            }
+
+                        });
+
+                    }
+
+                });
+
+                if(flattened.length){
+                    return flattened;
+                }
+            }
+        }
+    }
+
+    return [];
+}
+
+
+/* =========================================================
+   NORMALIZE QUESTIONS
+========================================================= */
+
+function normalizeQuestion(raw){
+
+    if(!raw || typeof raw!=="object"){
+        return null;
+    }
+
+    let question=
+        raw.question||
+        raw.questionText||
+        raw.q||
+        raw.text||
+        raw.prompt;
+
+    let options=
+        raw.options||
+        raw.choices||
+        raw.answers||
+        raw.option||
+        raw.choicesList;
+
+    let answer=
+        raw.answer;
+
+    if(answer===undefined) answer=raw.correctAnswer;
+    if(answer===undefined) answer=raw.correct;
+    if(answer===undefined) answer=raw.correctOption;
+    if(answer===undefined) answer=raw.correctIndex;
+
+    let course=
+        raw.course||
+        raw.subject||
+        raw.courseCode||
+        raw.courseName||
+        raw.topic||
+        "";
+
+    if(!question || !options){
+        return null;
+    }
+
+    if(!Array.isArray(options)){
+
+        if(typeof options==="object"){
+            options=Object.values(options);
+        }else{
+            return null;
+        }
+    }
+
+    options=options.map(x=>String(x));
+
+    /*
+      Convert answers such as:
+      A
+      B
+      C
+      D
+      into 0,1,2,3.
+    */
+
+    if(typeof answer==="string"){
+
+        const trimmed=answer.trim();
+
+        const letter=trimmed.toUpperCase();
+
+        if(/^[A-Z]$/.test(letter)){
+
+            answer=letter.charCodeAt(0)-65;
+
+        }else{
+
+            const numeric=Number(trimmed);
+
+            if(!Number.isNaN(numeric)){
+                answer=numeric;
+            }
+        }
+    }
+
+    /*
+      Some question banks use 1,2,3,4 instead of 0,1,2,3.
+    */
+
+    if(
+        typeof answer==="number" &&
+        answer>=1 &&
+        answer<=options.length
+    ){
+
+        /*
+          If answer equals the array length,
+          it definitely uses 1-based numbering.
+        */
+
+        if(answer===options.length){
+            answer=answer-1;
+        }
+
+    }
+
+    answer=Number(answer);
+
+    if(
+        !Number.isInteger(answer)||
+        answer<0||
+        answer>=options.length
+    ){
+
+        return null;
+    }
+
+    return{
+        course:String(course).trim(),
+        question:String(question),
+        options,
+        answer
+    };
+}
+
+
+/* =========================================================
+   GET ALL VALID QUESTIONS
+========================================================= */
+
+function getAllQuestions(){
+
+    const raw=getRawQuestionBank();
+
+    return raw
+        .map(normalizeQuestion)
+        .filter(Boolean);
+}
+
+
+/* =========================================================
+   GET COURSE QUESTIONS
+========================================================= */
+
+function getCourseQuestions(course){
+
+    const all=getAllQuestions();
+
+    const target=String(course)
+        .trim()
+        .toUpperCase();
+
+    return all.filter(q=>{
+
+        return String(q.course)
+            .trim()
+            .toUpperCase()===target;
+
+    });
+}
+
+
+/* =========================================================
+   GET COURSES
+========================================================= */
 
 function getCourses(){
 
@@ -1056,34 +1272,48 @@ function getCourses(){
         "MTH 112"
     ]);
 
-    if(window.PNGPD_STUDY_MATERIALS){
-        window.PNGPD_STUDY_MATERIALS.forEach(item=>{
-            if(item.course) courses.add(item.course);
-        });
-    }
+    window.PNGPD_STUDY_MATERIALS.forEach(item=>{
 
-    if(window.PNGPD_QUESTIONS){
-        window.PNGPD_QUESTIONS.forEach(item=>{
-            if(item.course) courses.add(item.course);
-        });
-    }
+        if(item.course){
+            courses.add(item.course);
+        }
+
+    });
+
+    getAllQuestions().forEach(q=>{
+
+        if(q.course){
+            courses.add(q.course);
+        }
+
+    });
 
     return [...courses];
 }
 
 
-/* ================= LIBRARY ================= */
+/* =========================================================
+   CLASSROOM
+========================================================= */
 
 function openClassroom(){
+
     openLibrary();
 }
+
+
+/* =========================================================
+   LIBRARY
+========================================================= */
 
 function openLibrary(){
 
     const courses=getCourses();
 
     let html=`
+
         <div class="note">
+
             <b>📖 QUICK REVISION LIBRARY</b>
 
             <br><br>
@@ -1097,30 +1327,37 @@ function openLibrary(){
             📌 Formulas<br>
             📌 Practical facts<br>
             📌 Practice questions
+
         </div>
 
         <div class="course-grid">
+
     `;
 
     courses.forEach(course=>{
 
+        const count=getCourseQuestions(course).length;
+
         html+=`
+
             <div class="card">
 
                 <div style="font-size:21px">
-                    ${course}
+                    ${escapeHTML(course)}
                 </div>
 
                 <div style="margin-top:7px;font-size:12px">
-                    SHORT NOTES + PRACTICE
+                    ${count} PRACTICE QUESTIONS
                 </div>
 
-                <button onclick="openCourse('${escapeText(course)}')">
+                <button onclick="openCourse('${escapeJS(course)}')">
                     OPEN COURSE
                 </button>
 
             </div>
+
         `;
+
     });
 
     html+=`</div>`;
@@ -1129,39 +1366,43 @@ function openLibrary(){
 }
 
 
-/* ================= COURSE MATERIAL ================= */
+/* =========================================================
+   COURSE MATERIAL
+========================================================= */
 
 function getCourseMaterial(course){
 
-    return (
-        window.PNGPD_STUDY_MATERIALS||[]
-    ).find(item=>item.course===course);
+    return window.PNGPD_STUDY_MATERIALS.find(
+        item=>item.course===course
+    );
 }
+
 
 function openCourse(course){
 
     currentCourse=course;
 
     const material=getCourseMaterial(course);
-
-    const questions=(window.PNGPD_QUESTIONS||[])
-        .filter(q=>q.course===course);
+    const questions=getCourseQuestions(course);
 
     let html=`
+
         <div class="note" style="
             border-left-color:#e91e63;
             background:linear-gradient(135deg,#fff3e0,#ffe0b2);
         ">
 
-            <h2>📖 ${course}</h2>
+            <h2>📖 ${escapeHTML(course)}</h2>
 
             <p><b>QUICK REVISION NOTES</b></p>
 
             <p>
-                Read the key points and formulas before attempting the practice.
+                Read the key points and formulas before attempting
+                the practice.
             </p>
 
         </div>
+
     `;
 
     if(material&&material.sections){
@@ -1169,6 +1410,7 @@ function openCourse(course){
         material.sections.forEach(section=>{
 
             html+=`
+
                 <div class="note">
 
                     <h3>${section.title}</h3>
@@ -1178,19 +1420,28 @@ function openCourse(course){
                     </div>
 
                 </div>
+
             `;
+
         });
 
     }else{
 
         html+=`
+
             <div class="note">
-                No short-note material has been loaded for ${course} yet.
+
+                No short-note material has been loaded
+                for ${escapeHTML(course)} yet.
+
             </div>
+
         `;
+
     }
 
     html+=`
+
         <div style="
             margin-top:18px;
             padding:18px;
@@ -1208,139 +1459,307 @@ function openCourse(course){
 
             <button
                 class="practice-btn"
-                onclick="startQuiz('${escapeText(course)}')"
+                onclick="startQuiz('${escapeJS(course)}')"
             >
                 📝 START PRACTICE
             </button>
 
         </div>
+
     `;
 
     openPanel("📖 "+course,html);
 }
 
 
-/* ================= QUIZ ================= */
+/* =========================================================
+   PRACTICE
+========================================================= */
 
 function startQuiz(course){
 
     currentCourse=course;
 
-    const all=(window.PNGPD_QUESTIONS||[])
-        .filter(q=>q.course===course);
+    const all=getCourseQuestions(course);
 
-    all.sort(()=>Math.random()-0.5);
-
-    quizQuestions=all.slice(0,30);
-    quizIndex=0;
-    quizScore=0;
-
-    if(!quizQuestions.length){
+    if(!all.length){
 
         openPanel(
             "📝 PRACTICE",
             `
+
             <div class="note">
-                No questions are loaded for ${course} yet.
+
+                <h2>No questions loaded</h2>
+
+                <p>
+                    The course notes are available, but no valid
+                    practice questions were found for ${escapeHTML(course)}.
+                </p>
+
+                <p style="margin-top:10px">
+                    Check your <b>data/questions.js</b> question format.
+                </p>
+
             </div>
+
+            <button
+                class="next-btn"
+                onclick="openCourse('${escapeJS(course)}')"
+            >
+                ← BACK TO NOTES
+            </button>
+
             `
         );
 
         return;
     }
 
+    /*
+      Maximum 30 questions per session.
+      Questions are shuffled so the same order isn't repeated.
+    */
+
+    quizQuestions=shuffleArray(all).slice(
+        0,
+        Math.min(30,all.length)
+    );
+
+    quizIndex=0;
+    quizScore=0;
+
     renderQuestion();
 }
+
+
+/* =========================================================
+   SHUFFLE
+========================================================= */
+
+function shuffleArray(array){
+
+    const result=[...array];
+
+    for(let i=result.length-1;i>0;i--){
+
+        const j=Math.floor(Math.random()*(i+1));
+
+        [result[i],result[j]]=[
+            result[j],
+            result[i]
+        ];
+    }
+
+    return result;
+}
+
+
+/* =========================================================
+   RENDER QUESTION
+========================================================= */
 
 function renderQuestion(){
 
     const q=quizQuestions[quizIndex];
 
+    if(!q){
+        finishQuiz();
+        return;
+    }
+
     let html=`
-        <div class="quiz-question">
-            ${q.question}
+
+        <div style="
+            margin-bottom:12px;
+            color:#e91e63;
+            font-weight:900;
+        ">
+            Question ${quizIndex+1}
+            of
+            ${quizQuestions.length}
         </div>
+
+        <div class="quiz-question">
+            ${escapeHTML(q.question)}
+        </div>
+
     `;
 
     q.options.forEach((option,index)=>{
 
         html+=`
+
             <button
                 class="option"
                 onclick="answerQuiz(${index})"
             >
-                ${String.fromCharCode(65+index)}. ${option}
+                ${String.fromCharCode(65+index)}.
+                ${escapeHTML(option)}
             </button>
+
         `;
+
     });
 
     html+=`<div id="feedback"></div>`;
 
     openPanel(
-        `📝 ${currentCourse} • ${quizIndex+1}/${quizQuestions.length}`,
+        `📝 ${escapeHTML(currentCourse)}`,
         html
     );
 }
+
+
+/* =========================================================
+   ANSWER QUESTION
+========================================================= */
 
 function answerQuiz(selected){
 
     const q=quizQuestions[quizIndex];
 
-    document.querySelectorAll(".option")
-        .forEach(button=>button.disabled=true);
+    if(!q){
+        return;
+    }
 
-    const correct=selected===Number(q.answer);
+    const buttons=document.querySelectorAll(".option");
+
+    buttons.forEach(button=>{
+        button.disabled=true;
+    });
+
+    const correct=
+        Number(selected)===Number(q.answer);
 
     if(correct){
+
         quizScore++;
+
         state.xp+=5;
+
+        updateHUD();
+
     }
 
     let feedback=correct
-        ? `<div class="correct">✅ Correct!</div>`
-        : `<div class="wrong">❌ Incorrect.</div>`;
+
+        ? `
+            <div class="correct"
+                 style="margin-top:15px">
+                ✅ CORRECT!
+            </div>
+          `
+
+        : `
+            <div class="wrong"
+                 style="margin-top:15px">
+                ❌ WRONG!
+                <br>
+                Correct answer:
+                ${String.fromCharCode(65+Number(q.answer))}
+                .
+                ${escapeHTML(q.options[q.answer])}
+            </div>
+          `;
 
     if(q.explanation){
+
         feedback+=`
-            <br>
-            <small>${q.explanation}</small>
+
+            <div style="
+                margin-top:10px;
+                padding:12px;
+                border-radius:10px;
+                background:#f5f5f5;
+                color:#333;
+            ">
+                <b>Explanation:</b><br>
+                ${escapeHTML(q.explanation)}
+            </div>
+
         `;
+
     }
 
     feedback+=`
-        <button class="next-btn" onclick="nextQuestion()">
-            CONTINUE
+
+        <button
+            class="next-btn"
+            onclick="nextQuestion()"
+        >
+            CONTINUE →
         </button>
+
     `;
 
     document.getElementById("feedback").innerHTML=feedback;
-
-    updateHUD();
 }
+
+
+/* =========================================================
+   NEXT QUESTION
+========================================================= */
 
 function nextQuestion(){
 
     quizIndex++;
 
     if(quizIndex<quizQuestions.length){
+
         renderQuestion();
+
     }else{
+
         finishQuiz();
+
     }
 }
 
+
+/* =========================================================
+   FINISH PRACTICE
+========================================================= */
+
 function finishQuiz(){
 
+    const total=quizQuestions.length;
+
+    const percentage=
+        total
+        ? Math.round((quizScore/total)*100)
+        : 0;
+
+    let message;
+
+    if(percentage>=80){
+        message="🔥 Excellent! You really know this course.";
+    }else if(percentage>=60){
+        message="👏 Good work. Keep revising.";
+    }else{
+        message="📚 You need more revision. Go through the notes again.";
+    }
+
     openPanel(
-        "🏆 RESULT",
+        "🏆 PRACTICE RESULT",
         `
+
         <div class="note" style="text-align:center">
 
-            <h2>${currentCourse}</h2>
+            <h2>${escapeHTML(currentCourse)}</h2>
 
-            <h1>
-                ${quizScore}/${quizQuestions.length}
-            </h1>
+            <div style="
+                font-size:55px;
+                font-weight:900;
+                color:#e91e63;
+                margin:15px;
+            ">
+                ${quizScore}/${total}
+            </div>
+
+            <h2>${percentage}%</h2>
+
+            <p>${message}</p>
 
             <p>
                 ⭐ +${quizScore*5} XP
@@ -1348,12 +1767,13 @@ function finishQuiz(){
 
             <button
                 class="next-btn"
-                onclick="openCourse('${escapeText(currentCourse)}')"
+                onclick="openCourse('${escapeJS(currentCourse)}')"
             >
-                BACK TO COURSE
+                📖 REVIEW COURSE
             </button>
 
         </div>
+
         `
     );
 
@@ -1361,7 +1781,9 @@ function finishQuiz(){
 }
 
 
-/* ================= CANTEEN ================= */
+/* =========================================================
+   CANTEEN
+========================================================= */
 
 function openCanteen(){
 
@@ -1375,21 +1797,25 @@ function openCanteen(){
     ];
 
     let html=`
+
         <div class="note">
+
             🍽️ Choose your food.
 
             <br><br>
 
-            Each food has a different price and restores
-            a different amount of energy.
+            Food restores energy but costs money.
+
         </div>
 
         <div class="food-grid">
+
     `;
 
     foods.forEach(food=>{
 
         html+=`
+
             <div class="card">
 
                 <div style="font-size:35px">
@@ -1403,13 +1829,19 @@ function openCanteen(){
                 </div>
 
                 <button onclick="
-                    buyFood(${food[2]},${food[3]},'${food[1]}')
+                    buyFood(
+                        ${food[2]},
+                        ${food[3]},
+                        '${escapeJS(food[1])}'
+                    )
                 ">
                     BUY
                 </button>
 
             </div>
+
         `;
+
     });
 
     html+=`</div>`;
@@ -1417,10 +1849,13 @@ function openCanteen(){
     openPanel("🍔 CANTEEN",html);
 }
 
+
 function buyFood(price,energy,foodName){
 
     if(state.money<price){
+
         toast("Not enough money 💸");
+
         return;
     }
 
@@ -1437,7 +1872,9 @@ function buyFood(price,energy,foodName){
 }
 
 
-/* ================= PGP 126 LAB ================= */
+/* =========================================================
+   PGP 126 LAB
+========================================================= */
 
 const labPracticals=[
 
@@ -1464,9 +1901,11 @@ focus:"Revise the formula, specific-gravity relationship, apparatus, reading tec
 
 ];
 
+
 function openLab(){
 
     let html=`
+
         <div class="note">
 
             <b>🧪 PGP 126 PRACTICAL REVISION</b>
@@ -1479,19 +1918,16 @@ function openLab(){
             <br>• Pour Point
             <br>• API Gravity
 
-            <br><br>
-
-            Each practical contains its formula,
-            apparatus, principle, practical focus and quiz.
-
         </div>
 
         <div class="lab-grid">
+
     `;
 
     labPracticals.forEach((practical,index)=>{
 
         html+=`
+
             <div class="card">
 
                 <div>${practical.title}</div>
@@ -1505,13 +1941,16 @@ function openLab(){
                 </button>
 
             </div>
+
         `;
+
     });
 
     html+=`</div>`;
 
     openPanel("🧪 PGP 126 LABORATORY",html);
 }
+
 
 function labNotes(index){
 
@@ -1520,6 +1959,7 @@ function labNotes(index){
     openPanel(
         "🧪 "+p.title,
         `
+
         <div class="note">
 
             <h3>📐 Formula / Principle</h3>
@@ -1543,9 +1983,11 @@ function labNotes(index){
             <p>${p.focus}</p>
 
         </div>
+
         `
     );
 }
+
 
 function labQuiz(index){
 
@@ -1696,6 +2138,7 @@ function labQuiz(index){
             openPanel(
                 "🏆 LAB RESULT",
                 `
+
                 <div class="note" style="text-align:center">
 
                     <h2>${p.title}</h2>
@@ -1713,6 +2156,7 @@ function labQuiz(index){
                     </p>
 
                 </div>
+
                 `
             );
 
@@ -1722,21 +2166,27 @@ function labQuiz(index){
         const q=questions[questionIndex];
 
         let html=`
+
             <div class="quiz-question">
                 ${q.q}
             </div>
+
         `;
 
         q.options.forEach((option,i)=>{
 
             html+=`
+
                 <button
                     class="option"
                     onclick="labAnswer(${i})"
                 >
-                    ${String.fromCharCode(65+i)}. ${option}
+                    ${String.fromCharCode(65+i)}.
+                    ${option}
                 </button>
+
             `;
+
         });
 
         openPanel("🧪 "+p.title,html);
@@ -1750,6 +2200,7 @@ function labQuiz(index){
 
             score++;
             state.xp+=5;
+
             updateHUD();
 
             toast("Correct! +5 XP ⭐");
@@ -1769,7 +2220,9 @@ function labQuiz(index){
 }
 
 
-/* ================= ARENA ================= */
+/* =========================================================
+   ARENA
+========================================================= */
 
 function openArena(){
 
@@ -1779,48 +2232,51 @@ function openArena(){
     ){
 
         window.PNGPD_ARENA.open();
+
         return;
     }
 
     openPanel(
         "⚔️ ARENA",
         `
+
         <div class="note">
 
             <h2>🔥 Academic Battle Arena</h2>
 
             <p>
-                Challenge another PNGPD student in an academic quiz battle.
+                Challenge another PNGPD student in an academic
+                quiz battle.
             </p>
 
-            <p>
-                The online Arena system will appear here when
-                the Supabase Arena module is available.
-            </p>
-
-            <button class="next-btn" onclick="openLocalArena()">
+            <button class="next-btn"
+                onclick="openLocalArena()">
                 ENTER PRACTICE BATTLE
             </button>
 
         </div>
+
         `
     );
 }
 
+
 function openLocalArena(){
 
-    const pool=[...(window.PNGPD_QUESTIONS||[])]
-        .sort(()=>Math.random()-0.5)
-        .slice(0,10);
+    const pool=shuffleArray(
+        getAllQuestions()
+    ).slice(0,10);
 
     if(!pool.length){
 
         openPanel(
             "⚔️ ARENA",
             `
+
             <div class="note">
-                No Arena questions are loaded yet.
+                No valid Arena questions are loaded yet.
             </div>
+
             `
         );
 
@@ -1837,6 +2293,7 @@ function openLocalArena(){
             openPanel(
                 "🏆 ARENA RESULT",
                 `
+
                 <div class="note" style="text-align:center">
 
                     <h1>${score}/${pool.length}</h1>
@@ -1846,6 +2303,7 @@ function openLocalArena(){
                     </p>
 
                 </div>
+
                 `
             );
 
@@ -1855,21 +2313,27 @@ function openLocalArena(){
         const q=pool[index];
 
         let html=`
+
             <div class="quiz-question">
-                ${q.question}
+                ${escapeHTML(q.question)}
             </div>
+
         `;
 
         q.options.forEach((option,i)=>{
 
             html+=`
+
                 <button
                     class="option"
                     onclick="arenaAnswer(${i})"
                 >
-                    ${String.fromCharCode(65+i)}. ${option}
+                    ${String.fromCharCode(65+i)}.
+                    ${escapeHTML(option)}
                 </button>
+
             `;
+
         });
 
         openPanel(
@@ -1881,13 +2345,16 @@ function openLocalArena(){
     window.arenaAnswer=function(selected){
 
         if(
-            selected===
+            Number(selected)===
             Number(pool[index].answer)
         ){
 
             score++;
+
             state.xp+=5;
+
             updateHUD();
+
         }
 
         index++;
@@ -1899,7 +2366,9 @@ function openLocalArena(){
 }
 
 
-/* ================= CAMPUS PANNING ================= */
+/* =========================================================
+   CAMPUS PANNING
+========================================================= */
 
 let panX=0;
 let panY=0;
@@ -1913,6 +2382,7 @@ function applyPan(){
         `translate(${panX}px,${panY}px)`;
 }
 
+
 function centerWorld(){
 
     const viewport=document.getElementById("viewport");
@@ -1924,9 +2394,8 @@ function centerWorld(){
 }
 
 
-/* ================= DRAG ================= */
-
 const viewport=document.getElementById("viewport");
+
 
 viewport.addEventListener("pointerdown",event=>{
 
@@ -1940,7 +2409,9 @@ viewport.addEventListener("pointerdown",event=>{
     lastY=event.clientY;
 
     viewport.setPointerCapture(event.pointerId);
+
 });
+
 
 viewport.addEventListener("pointermove",event=>{
 
@@ -1955,18 +2426,23 @@ viewport.addEventListener("pointermove",event=>{
     lastY=event.clientY;
 
     applyPan();
+
 });
+
 
 viewport.addEventListener("pointerup",()=>{
+
     dragging=false;
+
 });
+
 
 viewport.addEventListener("pointercancel",()=>{
+
     dragging=false;
+
 });
 
-
-/* ================= WHEEL ================= */
 
 viewport.addEventListener(
     "wheel",
@@ -1984,7 +2460,9 @@ viewport.addEventListener(
 );
 
 
-/* ================= RESIZE ================= */
+/* =========================================================
+   RESIZE
+========================================================= */
 
 window.addEventListener("resize",()=>{
 
@@ -1995,9 +2473,45 @@ window.addEventListener("resize",()=>{
     ){
 
         centerWorld();
+
     }
 
 });
+
+
+/* =========================================================
+   TEXT HELPERS
+========================================================= */
+
+function escapeHTML(text){
+
+    return String(text)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+}
+
+
+function escapeJS(text){
+
+    return String(text)
+        .replace(/\\/g,"\\\\")
+        .replace(/'/g,"\\'")
+        .replace(/\n/g,"\\n")
+        .replace(/\r/g,"");
+}
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+document.getElementById("hudName").textContent=state.name;
+document.getElementById("player-name").textContent=state.name;
+
+updateHUD();
 
 </script>
 
