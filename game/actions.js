@@ -1,3 +1,12 @@
+/* =========================================================
+   PNGPD LIFE — ARENA SYSTEM
+   ========================================================= */
+
+
+/* =========================================================
+   ARENA MAIN MENU
+   ========================================================= */
+
 function openArena() {
 
     showGeneralPanel(
@@ -55,10 +64,10 @@ function openArena() {
                 <h3>🔥 Arena Rules</h3>
 
                 <p>⚔️ Challenge another student.</p>
-                <p>🧠 Answer the same questions.</p>
-                <p>⏱️ Beat the clock.</p>
+                <p>🧠 Both players answer the same questions.</p>
+                <p>⏱️ You have limited time.</p>
                 <p>🏆 Highest score wins.</p>
-                <p>⭐ Winners earn XP and improve their ranking.</p>
+                <p>⭐ Winners earn Arena XP.</p>
 
             </div>
         `
@@ -67,7 +76,7 @@ function openArena() {
 
 
 /* =========================================================
-   ARENA — 1V1 BATTLE
+   1V1 BATTLE MENU
    ========================================================= */
 
 function openArenaBattle() {
@@ -99,7 +108,7 @@ function openArenaBattle() {
                 <h3>📨 Invitations</h3>
 
                 <p>
-                    Incoming battle invitations will appear here.
+                    Check if another student has challenged you.
                 </p>
 
                 <button
@@ -108,6 +117,20 @@ function openArenaBattle() {
                     onclick="loadArenaInvitations()"
                 >
                     🔄 Check Invitations
+                </button>
+
+            </div>
+
+            <div class="panel-card" style="margin-top:12px;">
+
+                <h3>⚔️ My Active Battles</h3>
+
+                <button
+                    class="btn btn-primary btn-block"
+                    style="margin-top:15px"
+                    onclick="loadMyArenaMatches()"
+                >
+                    🔄 Check Battles
                 </button>
 
             </div>
@@ -139,54 +162,22 @@ function createArenaChallenge() {
                     margin-top:15px;
                 ">
 
-                    <button
-                        class="btn btn-primary btn-block"
-                        onclick="sendArenaChallenge('PGP 121')"
-                    >
-                        PGP 121
-                    </button>
-
-                    <button
-                        class="btn btn-primary btn-block"
-                        onclick="sendArenaChallenge('PGP 122')"
-                    >
-                        PGP 122
-                    </button>
-
-                    <button
-                        class="btn btn-primary btn-block"
-                        onclick="sendArenaChallenge('PGP 123')"
-                    >
-                        PGP 123
-                    </button>
-
-                    <button
-                        class="btn btn-primary btn-block"
-                        onclick="sendArenaChallenge('PGP 124')"
-                    >
-                        PGP 124
-                    </button>
-
-                    <button
-                        class="btn btn-primary btn-block"
-                        onclick="sendArenaChallenge('PGP 125')"
-                    >
-                        PGP 125
-                    </button>
-
-                    <button
-                        class="btn btn-primary btn-block"
-                        onclick="sendArenaChallenge('PGP 126')"
-                    >
-                        PGP 126
-                    </button>
-
-                    <button
-                        class="btn btn-primary btn-block"
-                        onclick="sendArenaChallenge('PGP 127')"
-                    >
-                        PGP 127
-                    </button>
+                    ${[
+                        "PGP 121",
+                        "PGP 122",
+                        "PGP 123",
+                        "PGP 124",
+                        "PGP 125",
+                        "PGP 126",
+                        "PGP 127"
+                    ].map(course => `
+                        <button
+                            class="btn btn-primary btn-block"
+                            onclick="sendArenaChallenge('${course}')"
+                        >
+                            ${course}
+                        </button>
+                    `).join("")}
 
                 </div>
 
@@ -197,7 +188,7 @@ function createArenaChallenge() {
 
 
 /* =========================================================
-   PLACEHOLDER — MULTIPLAYER CONNECTION
+   SEND CHALLENGE
    ========================================================= */
 
 async function sendArenaChallenge(course) {
@@ -205,12 +196,7 @@ async function sendArenaChallenge(course) {
     try {
 
         if (!window.pngpdSupabase) {
-            showGeneralPanel(
-                "⚠️ Arena",
-                `<div class="panel-card">
-                    <p>Supabase is not connected.</p>
-                </div>`
-            );
+            alert("Supabase is not connected.");
             return;
         }
 
@@ -220,12 +206,7 @@ async function sendArenaChallenge(course) {
         } = await window.pngpdSupabase.auth.getUser();
 
         if (userError || !user) {
-            showGeneralPanel(
-                "🔐 Login Required",
-                `<div class="panel-card">
-                    <p>You must be logged in to challenge another student.</p>
-                </div>`
-            );
+            alert("You must be logged in.");
             return;
         }
 
@@ -237,7 +218,7 @@ async function sendArenaChallenge(course) {
                     <h3>⚔️ ${course} Battle</h3>
 
                     <p>
-                        Enter the username of the PNGPD student
+                        Enter the username of the student
                         you want to challenge.
                     </p>
 
@@ -250,9 +231,9 @@ async function sendArenaChallenge(course) {
                             padding:12px;
                             margin-top:12px;
                             border-radius:8px;
-                            border:1px solid var(--border);
-                            background:var(--card);
-                            color:inherit;
+                            border:1px solid rgba(255,255,255,.1);
+                            background:#071522;
+                            color:white;
                             box-sizing:border-box;
                         "
                     >
@@ -271,23 +252,27 @@ async function sendArenaChallenge(course) {
 
     } catch (error) {
 
-        console.error("Arena challenge error:", error);
-
-        showGeneralPanel(
-            "⚠️ Arena Error",
-            `<div class="panel-card">
-                <p>Something went wrong. Please try again.</p>
-            </div>`
-        );
+        console.error(error);
+        alert("Something went wrong.");
     }
 }
+
+
+/* =========================================================
+   FIND OPPONENT
+   ========================================================= */
+
 async function findArenaOpponent(course) {
 
-    const input = document.getElementById("arenaOpponentUsername");
+    const input =
+        document.getElementById(
+            "arenaOpponentUsername"
+        );
 
     if (!input) return;
 
-    const username = input.value.trim();
+    const username =
+        input.value.trim();
 
     if (!username) {
         alert("Enter a username first.");
@@ -306,12 +291,14 @@ async function findArenaOpponent(course) {
             return;
         }
 
-        const { data: players, error } =
-            await window.pngpdSupabase
-                .from("arena_profiles")
-                .select("user_id, username")
-                .ilike("username", username)
-                .limit(1);
+        const {
+            data: players,
+            error
+        } = await window.pngpdSupabase
+            .from("arena_profiles")
+            .select("user_id, username")
+            .ilike("username", username)
+            .limit(1);
 
         if (error) {
             console.error(error);
@@ -324,24 +311,27 @@ async function findArenaOpponent(course) {
             return;
         }
 
-        const opponent = players[0];
+        const opponent =
+            players[0];
 
         if (opponent.user_id === user.id) {
             alert("You cannot challenge yourself.");
             return;
         }
 
-        const { data: match, error: matchError } =
-            await window.pngpdSupabase
-                .from("arena_matches")
-                .insert({
-                    challenger_id: user.id,
-                    opponent_id: opponent.user_id,
-                    course: course,
-                    status: "pending"
-                })
-                .select()
-                .single();
+        const {
+            data: match,
+            error: matchError
+        } = await window.pngpdSupabase
+            .from("arena_matches")
+            .insert({
+                challenger_id: user.id,
+                opponent_id: opponent.user_id,
+                course: course,
+                status: "pending"
+            })
+            .select()
+            .single();
 
         if (matchError) {
             console.error(matchError);
@@ -361,16 +351,25 @@ async function findArenaOpponent(course) {
                         has been sent to:
                     </p>
 
-                    <div class="badge" style="margin-top:10px">
+                    <div class="badge"
+                         style="margin-top:10px">
                         👤 ${opponent.username}
                     </div>
 
                     <p style="
                         margin-top:15px;
-                        color:var(--muted);
+                        color:#9bb0c2;
                     ">
                         Waiting for the player to accept...
                     </p>
+
+                    <button
+                        class="btn btn-primary btn-block"
+                        style="margin-top:15px"
+                        onclick="loadMyArenaMatches()"
+                    >
+                        🔄 Check Battle Status
+                    </button>
 
                 </div>
             `
@@ -378,23 +377,19 @@ async function findArenaOpponent(course) {
 
     } catch (error) {
 
-        console.error("Challenge error:", error);
-
+        console.error(error);
         alert("Something went wrong.");
     }
 }
+
+
 /* =========================================================
-   ARENA — INVITATIONS
+   LOAD INVITATIONS
    ========================================================= */
 
 async function loadArenaInvitations() {
 
     try {
-
-        if (!window.pngpdSupabase) {
-            alert("Supabase is not connected.");
-            return;
-        }
 
         const {
             data: { user },
@@ -406,21 +401,23 @@ async function loadArenaInvitations() {
             return;
         }
 
-        const { data: invitations, error } =
-            await window.pngpdSupabase
-                .from("arena_matches")
-                .select(`
-                    id,
-                    course,
-                    challenger_id,
-                    status,
-                    created_at
-                `)
-                .eq("opponent_id", user.id)
-                .eq("status", "pending")
-                .order("created_at", {
-                    ascending: false
-                });
+        const {
+            data: invitations,
+            error
+        } = await window.pngpdSupabase
+            .from("arena_matches")
+            .select(`
+                id,
+                course,
+                challenger_id,
+                status,
+                created_at
+            `)
+            .eq("opponent_id", user.id)
+            .eq("status", "pending")
+            .order("created_at", {
+                ascending: false
+            });
 
         if (error) {
             console.error(error);
@@ -428,17 +425,21 @@ async function loadArenaInvitations() {
             return;
         }
 
-        if (!invitations || invitations.length === 0) {
+        if (!invitations ||
+            invitations.length === 0) {
 
             showGeneralPanel(
                 "📨 Invitations",
                 `
                     <div class="panel-card">
+
                         <h3>📭 No Invitations</h3>
+
                         <p>
                             You don't have any pending
                             battle invitations.
                         </p>
+
                     </div>
                 `
             );
@@ -450,15 +451,16 @@ async function loadArenaInvitations() {
 
         for (const invitation of invitations) {
 
-            const { data: challenger } =
-                await window.pngpdSupabase
-                    .from("arena_profiles")
-                    .select("username")
-                    .eq(
-                        "user_id",
-                        invitation.challenger_id
-                    )
-                    .single();
+            const {
+                data: challenger
+            } = await window.pngpdSupabase
+                .from("arena_profiles")
+                .select("username")
+                .eq(
+                    "user_id",
+                    invitation.challenger_id
+                )
+                .single();
 
             const username =
                 challenger?.username ||
@@ -511,57 +513,78 @@ async function loadArenaInvitations() {
 
     } catch (error) {
 
-        console.error(
-            "Invitation error:",
-            error
-        );
-
+        console.error(error);
         alert("Something went wrong.");
     }
 }
 
 
+/* =========================================================
+   ACCEPT CHALLENGE
+   ========================================================= */
+
 async function acceptArenaChallenge(matchId) {
 
     try {
 
-        const { error } =
-            await window.pngpdSupabase
-                .from("arena_matches")
-                .update({
-                    status: "accepted"
-                })
-                .eq("id", matchId)
-                .eq("status", "pending");
+        const {
+            data: { user },
+            error: userError
+        } = await window.pngpdSupabase.auth.getUser();
 
-        if (error) {
-            console.error(error);
-            alert("Could not accept challenge.");
+        if (userError || !user) {
+            alert("Please log in first.");
+            return;
+        }
+
+        const {
+            data: match,
+            error: matchError
+        } = await window.pngpdSupabase
+            .from("arena_matches")
+            .update({
+                status: "accepted"
+            })
+            .eq("id", matchId)
+            .eq("opponent_id", user.id)
+            .eq("status", "pending")
+            .select()
+            .single();
+
+        if (matchError || !match) {
+
+            console.error(matchError);
+
+            alert(
+                "The challenge could not be accepted. " +
+                "It may already have been handled."
+            );
+
             return;
         }
 
         showGeneralPanel(
-    "⚔️ Challenge Accepted",
-    `
-        <div class="panel-card">
+            "⚔️ Challenge Accepted",
+            `
+                <div class="panel-card">
 
-            <h3>✅ Battle Accepted!</h3>
+                    <h3>✅ Battle Accepted!</h3>
 
-            <p>
-                Get ready for your ${matchId ? "battle" : "match"}.
-            </p>
+                    <p>
+                        ${match.course} battle is ready.
+                    </p>
 
-            <button
-                class="btn btn-primary btn-block"
-                style="margin-top:18px"
-                onclick="startArenaMatch('${matchId}')"
-            >
-                🚀 Start Battle
-            </button>
+                    <button
+                        class="btn btn-primary btn-block"
+                        style="margin-top:18px"
+                        onclick="startArenaMatch('${match.id}')"
+                    >
+                        🚀 Enter Battle
+                    </button>
 
-        </div>
-    `
-);
+                </div>
+            `
+        );
 
     } catch (error) {
 
@@ -571,22 +594,43 @@ async function acceptArenaChallenge(matchId) {
 }
 
 
+/* =========================================================
+   DECLINE CHALLENGE
+   ========================================================= */
+
 async function declineArenaChallenge(matchId) {
 
     try {
 
-        const { error } =
-            await window.pngpdSupabase
-                .from("arena_matches")
-                .update({
-                    status: "declined"
-                })
-                .eq("id", matchId)
-                .eq("status", "pending");
+        const {
+            data: { user },
+            error: userError
+        } = await window.pngpdSupabase.auth.getUser();
+
+        if (userError || !user) {
+            alert("Please log in first.");
+            return;
+        }
+
+        const {
+            error
+        } = await window.pngpdSupabase
+            .from("arena_matches")
+            .update({
+                status: "declined"
+            })
+            .eq("id", matchId)
+            .eq("opponent_id", user.id)
+            .eq("status", "pending");
 
         if (error) {
+
             console.error(error);
-            alert("Could not decline challenge.");
+
+            alert(
+                "Could not decline challenge."
+            );
+
             return;
         }
 
@@ -611,14 +655,15 @@ async function declineArenaChallenge(matchId) {
         alert("Something went wrong.");
     }
 }
-async function startArenaMatch(matchId) {
+
+
+/* =========================================================
+   MY MATCHES
+   ========================================================= */
+
+async function loadMyArenaMatches() {
 
     try {
-
-        if (!window.pngpdSupabase) {
-            alert("Supabase is not connected.");
-            return;
-        }
 
         const {
             data: { user },
@@ -630,16 +675,155 @@ async function startArenaMatch(matchId) {
             return;
         }
 
-        const { data: match, error: matchError } =
-            await window.pngpdSupabase
-                .from("arena_matches")
-                .select("*")
-                .eq("id", matchId)
+        const {
+            data: matches,
+            error
+        } = await window.pngpdSupabase
+            .from("arena_matches")
+            .select("*")
+            .or(
+                `challenger_id.eq.${user.id},opponent_id.eq.${user.id}`
+            )
+            .in(
+                "status",
+                ["accepted", "active"]
+            )
+            .order(
+                "created_at",
+                { ascending:false }
+            );
+
+        if (error) {
+
+            console.error(error);
+            alert("Could not load battles.");
+
+            return;
+        }
+
+        if (!matches ||
+            matches.length === 0) {
+
+            showGeneralPanel(
+                "⚔️ My Battles",
+                `
+                    <div class="panel-card">
+
+                        <h3>📭 No Active Battles</h3>
+
+                        <p>
+                            You don't have an accepted
+                            or active battle.
+                        </p>
+
+                    </div>
+                `
+            );
+
+            return;
+        }
+
+        let html = "";
+
+        for (const match of matches) {
+
+            const opponentId =
+                match.challenger_id === user.id
+                    ? match.opponent_id
+                    : match.challenger_id;
+
+            const {
+                data: opponent
+            } = await window.pngpdSupabase
+                .from("arena_profiles")
+                .select("username")
+                .eq("user_id", opponentId)
                 .single();
 
+            const opponentName =
+                opponent?.username ||
+                "Opponent";
+
+            html += `
+                <div class="panel-card"
+                     style="margin-bottom:12px;">
+
+                    <h3>
+                        ⚔️ ${match.course}
+                    </h3>
+
+                    <p>
+                        Opponent:
+                        <strong>${opponentName}</strong>
+                    </p>
+
+                    <p style="
+                        margin-top:8px;
+                        color:#9bb0c2;
+                    ">
+                        Status: ${match.status}
+                    </p>
+
+                    <button
+                        class="btn btn-primary btn-block"
+                        style="margin-top:12px"
+                        onclick="startArenaMatch('${match.id}')"
+                    >
+                        🚀 Enter Battle
+                    </button>
+
+                </div>
+            `;
+        }
+
+        showGeneralPanel(
+            "⚔️ My Battles",
+            html
+        );
+
+    } catch (error) {
+
+        console.error(error);
+        alert("Something went wrong.");
+    }
+}
+
+
+/* =========================================================
+   START ARENA MATCH
+   ========================================================= */
+
+async function startArenaMatch(matchId) {
+
+    try {
+
+        const {
+            data: { user },
+            error: userError
+        } = await window.pngpdSupabase.auth.getUser();
+
+        if (userError || !user) {
+            alert("Please log in first.");
+            return;
+        }
+
+        const {
+            data: match,
+            error: matchError
+        } = await window.pngpdSupabase
+            .from("arena_matches")
+            .select("*")
+            .eq("id", matchId)
+            .single();
+
         if (matchError || !match) {
+
             console.error(matchError);
-            alert("Battle could not be found.");
+
+            alert(
+                "Battle could not be found."
+            );
+
             return;
         }
 
@@ -647,51 +831,36 @@ async function startArenaMatch(matchId) {
             match.challenger_id !== user.id &&
             match.opponent_id !== user.id
         ) {
-            alert("You are not part of this battle.");
+
+            alert(
+                "You are not part of this battle."
+            );
+
             return;
         }
 
-        if (match.status !== "accepted" &&
-            match.status !== "active") {
+        if (
+            match.status !== "accepted" &&
+            match.status !== "active"
+        ) {
 
-            alert("This battle is not ready yet.");
+            alert(
+                "This battle is not ready yet."
+            );
+
             return;
         }
+
+        await prepareArenaQuestions(match);
 
         await window.pngpdSupabase
             .from("arena_matches")
             .update({
-                status: "active"
+                status:"active"
             })
             .eq("id", matchId);
 
-        showGeneralPanel(
-            "⚔️ Arena Battle",
-            `
-                <div class="panel-card">
-
-                    <h3>⚔️ ${match.course}</h3>
-
-                    <p>
-                        Your opponent has accepted the challenge.
-                    </p>
-
-                    <p>
-                        Both players will receive the same
-                        questions.
-                    </p>
-
-                    <button
-                        class="btn btn-primary btn-block"
-                        style="margin-top:18px"
-                        onclick="loadArenaQuestions('${matchId}')"
-                    >
-                        🚀 Start Battle
-                    </button>
-
-                </div>
-            `
-        );
+        loadArenaQuestions(matchId);
 
     } catch (error) {
 
@@ -700,7 +869,1102 @@ async function startArenaMatch(matchId) {
             error
         );
 
-        alert("Could not start the battle.");
+        alert(
+            "Could not start the battle."
+        );
+    }
+}
+
+
+/* =========================================================
+   PREPARE SAME QUESTIONS FOR BOTH PLAYERS
+   ========================================================= */
+
+async function prepareArenaQuestions(match) {
+
+    const {
+        data: existing,
+        error: existingError
+    } = await window.pngpdSupabase
+        .from("arena_match_questions")
+        .select("id")
+        .eq("match_id", match.id);
+
+    if (existingError) {
+
+        console.error(existingError);
+
+        throw existingError;
+    }
+
+    if (existing &&
+        existing.length > 0) {
+
+        return;
+    }
+
+    const bank =
+        window.PNGPD_QUESTIONS ||
+        window.questions ||
+        [];
+
+    const normalizeCourse = value =>
+        String(value || "")
+            .toUpperCase()
+            .replace(
+                /[^A-Z0-9]/g,
+                ""
+            );
+
+    const questions =
+        bank.filter(q =>
+            normalizeCourse(
+                q.course ||
+                q.subject ||
+                q.courseCode
+            ) ===
+            normalizeCourse(match.course)
+        );
+
+    if (questions.length === 0) {
+
+        throw new Error(
+            `No questions found for ${match.course}.`
+        );
+    }
+
+    const shuffled =
+        [...questions];
+
+    for (
+        let i = shuffled.length - 1;
+        i > 0;
+        i--
+    ) {
+
+        const j =
+            Math.floor(
+                Math.random() * (i + 1)
+            );
+
+        [
+            shuffled[i],
+            shuffled[j]
+        ] = [
+            shuffled[j],
+            shuffled[i]
+        ];
+    }
+
+    const selected =
+        shuffled.slice(
+            0,
+            Math.min(10, shuffled.length)
+        );
+
+    const rows =
+        selected.map(
+            (q, index) => ({
+                match_id: match.id,
+                question_number: index + 1,
+                question_text: q.question,
+                option_a: q.options[0],
+                option_b: q.options[1],
+                option_c: q.options[2],
+                option_d: q.options[3],
+                correct_answer: q.answer
+            })
+        );
+
+    const {
+        error: insertError
+    } = await window.pngpdSupabase
+        .from("arena_match_questions")
+        .insert(rows);
+
+    if (insertError) {
+
+        console.error(
+            "Question creation error:",
+            insertError
+        );
+
+        throw insertError;
+    }
+}
+
+
+/* =========================================================
+   LOAD BATTLE QUESTIONS
+   ========================================================= */
+
+async function loadArenaQuestions(matchId) {
+
+    try {
+
+        const {
+            data: { user },
+            error: userError
+        } = await window.pngpdSupabase.auth.getUser();
+
+        if (userError || !user) {
+            alert("Please log in first.");
+            return;
+        }
+
+        const {
+            data: questions,
+            error
+        } = await window.pngpdSupabase
+            .from("arena_match_questions")
+            .select("*")
+            .eq("match_id", matchId)
+            .order(
+                "question_number",
+                { ascending:true }
+            );
+
+        if (error) {
+
+            console.error(error);
+
+            alert(
+                "Could not load battle questions."
+            );
+
+            return;
+        }
+
+        if (!questions ||
+            questions.length === 0) {
+
+            alert(
+                "Battle questions are not ready yet."
+            );
+
+            return;
+        }
+
+        startArenaQuiz(
+            matchId,
+            questions,
+            user.id
+        );
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert(
+            "Could not load Arena questions."
+        );
+    }
+}
+
+
+/* =========================================================
+   ARENA QUIZ
+   ========================================================= */
+
+function startArenaQuiz(
+    matchId,
+    questions,
+    playerId
+) {
+
+    let current = 0;
+    let score = 0;
+    let startTime = Date.now();
+    let timer = null;
+    let answered = false;
+
+    const totalTime =
+        questions.length * 20;
+
+    let remaining =
+        totalTime;
+
+    function render() {
+
+        const q =
+            questions[current];
+
+        answered = false;
+
+        const options = [
+            q.option_a,
+            q.option_b,
+            q.option_c,
+            q.option_d
+        ];
+
+        showGeneralPanel(
+            "⚔️ Arena Battle",
+            `
+                <div class="panel-card">
+
+                    <div style="
+                        display:flex;
+                        justify-content:space-between;
+                        gap:10px;
+                    ">
+
+                        <strong>
+                            Question
+                            ${current + 1}/${questions.length}
+                        </strong>
+
+                        <strong>
+                            ⭐ ${score}
+                        </strong>
+
+                    </div>
+
+                    <div style="
+                        margin-top:10px;
+                        padding:8px;
+                        background:#152536;
+                        border-radius:8px;
+                        text-align:center;
+                    ">
+
+                        ⏱️
+                        <span id="arenaTimer">
+                            ${remaining}
+                        </span>s
+
+                    </div>
+
+                    <div style="
+                        margin-top:18px;
+                        padding:16px;
+                        background:#152536;
+                        border-radius:12px;
+                    ">
+
+                        <small style="
+                            color:#9bb0c2;
+                        ">
+                            ${q.question_number}
+                        </small>
+
+                        <h3 style="
+                            margin-top:10px;
+                            line-height:1.6;
+                        ">
+                            ${q.question_text}
+                        </h3>
+
+                    </div>
+
+                    <div
+                        id="arenaOptions"
+                        style="
+                            margin-top:15px;
+                            display:grid;
+                            gap:9px;
+                        "
+                    >
+
+                        ${options.map(
+                            (option,index) => `
+                                <button
+                                    class="option"
+                                    onclick="submitArenaAnswer(
+                                        '${matchId}',
+                                        '${q.id}',
+                                        ${index},
+                                        ${q.correct_answer},
+                                        ${current},
+                                        ${questions.length}
+                                    )"
+                                >
+                                    ${String.fromCharCode(65 + index)}.
+                                    ${option}
+                                </button>
+                            `
+                        ).join("")}
+
+                    </div>
+
+                </div>
+            `
+        );
+
+        clearInterval(timer);
+
+        timer =
+            setInterval(
+                () => {
+
+                    remaining--;
+
+                    const timerElement =
+                        document.getElementById(
+                            "arenaTimer"
+                        );
+
+                    if (timerElement) {
+                        timerElement.textContent =
+                            remaining;
+                    }
+
+                    if (remaining <= 0) {
+
+                        clearInterval(timer);
+
+                        finishArenaQuiz(
+                            matchId,
+                            playerId,
+                            score,
+                            questions.length
+                        );
+                    }
+
+                },
+                1000
+            );
+    }
+
+    window._arenaQuizState = {
+        matchId,
+        questions,
+        playerId,
+        getCurrent: () => current,
+        advance: () => {
+            current++;
+        },
+        getScore: () => score,
+        addScore: () => {
+            score++;
+        },
+        getStartTime: () => startTime
+    };
+
+    render();
+}
+
+
+/* =========================================================
+   SUBMIT ARENA ANSWER
+   ========================================================= */
+
+async function submitArenaAnswer(
+    matchId,
+    questionId,
+    selectedAnswer,
+    correctAnswer,
+    questionIndex,
+    totalQuestions
+) {
+
+    const state =
+        window._arenaQuizState;
+
+    if (!state) return;
+
+    if (
+        state.matchId !== matchId
+    ) {
+        return;
+    }
+
+    const buttons =
+        document.querySelectorAll(
+            "#arenaOptions button"
+        );
+
+    buttons.forEach(
+        button => {
+            button.disabled = true;
+        }
+    );
+
+    const isCorrect =
+        Number(selectedAnswer) ===
+        Number(correctAnswer);
+
+    const answerTime =
+        Date.now() -
+        state.getStartTime();
+
+    await window.pngpdSupabase
+        .from("arena_answers")
+        .insert({
+            match_id: matchId,
+            question_id: questionId,
+            player_id: state.playerId,
+            answer: selectedAnswer,
+            is_correct: isCorrect,
+            answer_time_ms: answerTime
+        });
+
+    if (isCorrect) {
+
+        state.addScore();
+
+    }
+
+    const isLast =
+        questionIndex >=
+        totalQuestions - 1;
+
+    if (isLast) {
+
+        finishArenaQuiz(
+            matchId,
+            state.playerId,
+            state.getScore(),
+            totalQuestions
+        );
+
+        return;
+    }
+
+    state.advance();
+
+    setTimeout(
+        () => {
+
+            const next =
+                state.questions[
+                    state.getCurrent()
+                ];
+
+            renderArenaQuestionAgain(
+                matchId,
+                state,
+                next
+            );
+
+        },
+        350
+    );
+}
+
+
+/* =========================================================
+   RENDER NEXT ARENA QUESTION
+   ========================================================= */
+
+function renderArenaQuestionAgain(
+    matchId,
+    state,
+    q
+) {
+
+    const current =
+        state.getCurrent();
+
+    const options = [
+        q.option_a,
+        q.option_b,
+        q.option_c,
+        q.option_d
+    ];
+
+    showGeneralPanel(
+        "⚔️ Arena Battle",
+        `
+            <div class="panel-card">
+
+                <div style="
+                    display:flex;
+                    justify-content:space-between;
+                ">
+
+                    <strong>
+                        Question
+                        ${current + 1}/${state.questions.length}
+                    </strong>
+
+                    <strong>
+                        ⭐ ${state.getScore()}
+                    </strong>
+
+                </div>
+
+                <div style="
+                    margin-top:18px;
+                    padding:16px;
+                    background:#152536;
+                    border-radius:12px;
+                ">
+
+                    <h3 style="
+                        line-height:1.6;
+                    ">
+                        ${q.question_text}
+                    </h3>
+
+                </div>
+
+                <div
+                    id="arenaOptions"
+                    style="
+                        margin-top:15px;
+                        display:grid;
+                        gap:9px;
+                    "
+                >
+
+                    ${options.map(
+                        (option,index) => `
+                            <button
+                                class="option"
+                                onclick="submitArenaAnswer(
+                                    '${matchId}',
+                                    '${q.id}',
+                                    ${index},
+                                    ${q.correct_answer},
+                                    ${current},
+                                    ${state.questions.length}
+                                )"
+                            >
+                                ${String.fromCharCode(65 + index)}.
+                                ${option}
+                            </button>
+                        `
+                    ).join("")}
+
+                </div>
+
+            </div>
+        `
+    );
+}
+
+
+/* =========================================================
+   FINISH ARENA QUIZ
+   ========================================================= */
+
+async function finishArenaQuiz(
+    matchId,
+    playerId,
+    score,
+    total
+) {
+
+    if (
+        window._arenaFinishedMatch ===
+        matchId
+    ) {
+        return;
+    }
+
+    window._arenaFinishedMatch =
+        matchId;
+
+    const {
+        data: match,
+        error
+    } = await window.pngpdSupabase
+        .from("arena_matches")
+        .select("*")
+        .eq("id", matchId)
+        .single();
+
+    if (error || !match) {
+
+        alert(
+            "Could not finish battle."
+        );
+
+        return;
+    }
+
+    const isChallenger =
+        match.challenger_id ===
+        playerId;
+
+    const updateData =
+        isChallenger
+            ? {
+                challenger_score: score
+            }
+            : {
+                opponent_score: score
+            };
+
+    const {
+        error:updateError
+    } = await window.pngpdSupabase
+        .from("arena_matches")
+        .update(updateData)
+        .eq("id", matchId);
+
+    if (updateError) {
+        console.error(updateError);
+    }
+
+    showGeneralPanel(
+        "🏁 Battle Finished",
+        `
+            <div class="panel-card">
+
+                <h3>🏁 Your Battle Is Complete</h3>
+
+                <h1 style="
+                    text-align:center;
+                    margin:20px 0;
+                    color:#00d49b;
+                ">
+                    ${score}/${total}
+                </h1>
+
+                <p>
+                    Waiting for your opponent to finish.
+                </p>
+
+                <button
+                    class="btn btn-primary btn-block"
+                    style="margin-top:18px"
+                    onclick="checkArenaResult('${matchId}')"
+                >
+                    🔄 Check Result
+                </button>
+
+            </div>
+        `
+    );
+}
+
+
+/* =========================================================
+   CHECK RESULT
+   ========================================================= */
+
+async function checkArenaResult(matchId) {
+
+    try {
+
+        const {
+            data: { user }
+        } = await window.pngpdSupabase.auth.getUser();
+
+        const {
+            data: match,
+            error
+        } = await window.pngpdSupabase
+            .from("arena_matches")
+            .select("*")
+            .eq("id", matchId)
+            .single();
+
+        if (error || !match) {
+
+            alert(
+                "Could not load battle result."
+            );
+
+            return;
+        }
+
+        const challengerFinished =
+            match.challenger_score !== null;
+
+        const opponentFinished =
+            match.opponent_score !== null;
+
+        if (
+            !challengerFinished ||
+            !opponentFinished
+        ) {
+
+            showGeneralPanel(
+                "⏳ Waiting",
+                `
+                    <div class="panel-card">
+
+                        <h3>⏳ Opponent Still Playing</h3>
+
+                        <p>
+                            Your opponent has not
+                            finished yet.
+                        </p>
+
+                        <button
+                            class="btn btn-primary btn-block"
+                            style="margin-top:15px"
+                            onclick="checkArenaResult('${matchId}')"
+                        >
+                            🔄 Check Again
+                        </button>
+
+                    </div>
+                `
+            );
+
+            return;
+        }
+
+        let winnerId = null;
+
+        if (
+            match.challenger_score >
+            match.opponent_score
+        ) {
+
+            winnerId =
+                match.challenger_id;
+
+        } else if (
+            match.opponent_score >
+            match.challenger_score
+        ) {
+
+            winnerId =
+                match.opponent_id;
+
+        }
+
+        await window.pngpdSupabase
+            .from("arena_matches")
+            .update({
+                status:"completed",
+                winner_id: winnerId
+            })
+            .eq("id", matchId);
+
+        await updateArenaProfiles(
+            match,
+            winnerId
+        );
+
+        const draw =
+            winnerId === null;
+
+        const won =
+            winnerId === user.id;
+
+        showGeneralPanel(
+            "🏆 Arena Result",
+            `
+                <div class="panel-card"
+                     style="text-align:center;">
+
+                    <h2>
+                        ${draw
+                            ? "🤝 DRAW"
+                            : won
+                                ? "🏆 YOU WON!"
+                                : "❌ YOU LOST"}
+                    </h2>
+
+                    <div style="
+                        margin:20px 0;
+                        font-size:24px;
+                    ">
+
+                        ${match.challenger_score}
+                        -
+                        ${match.opponent_score}
+
+                    </div>
+
+                    <p>
+                        ${draw
+                            ? "Both players finished with the same score."
+                            : won
+                                ? "Excellent! You earned Arena XP."
+                                : "Keep practising and challenge again."}
+                    </p>
+
+                </div>
+            `
+        );
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert(
+            "Could not calculate result."
+        );
+    }
+}
+
+
+/* =========================================================
+   UPDATE ARENA PROFILES
+   ========================================================= */
+
+async function updateArenaProfiles(
+    match,
+    winnerId
+) {
+
+    const players = [
+        match.challenger_id,
+        match.opponent_id
+    ];
+
+    for (const playerId of players) {
+
+        const {
+            data: profile
+        } = await window.pngpdSupabase
+            .from("arena_profiles")
+            .select("*")
+            .eq("user_id", playerId)
+            .single();
+
+        if (!profile) continue;
+
+        const isWinner =
+            winnerId === playerId;
+
+        const isDraw =
+            winnerId === null;
+
+        await window.pngpdSupabase
+            .from("arena_profiles")
+            .update({
+
+                battles_played:
+                    (profile.battles_played || 0) + 1,
+
+                wins:
+                    (profile.wins || 0) +
+                    (isWinner ? 1 : 0),
+
+                losses:
+                    (profile.losses || 0) +
+                    (!isWinner && !isDraw ? 1 : 0),
+
+                arena_xp:
+                    (profile.arena_xp || 0) +
+                    (
+                        isWinner
+                            ? 100
+                            : isDraw
+                                ? 40
+                                : 20
+                    )
+
+            })
+            .eq(
+                "user_id",
+                playerId
+            );
+    }
+}
+
+
+/* =========================================================
+   ARENA LEADERBOARD
+   ========================================================= */
+
+async function openArenaLeaderboard() {
+
+    try {
+
+        const {
+            data: players,
+            error
+        } = await window.pngpdSupabase
+            .from("arena_profiles")
+            .select(`
+                username,
+                battles_played,
+                wins,
+                losses,
+                arena_xp
+            `)
+            .order(
+                "arena_xp",
+                { ascending:false }
+            )
+            .limit(10);
+
+        if (error) {
+
+            console.error(error);
+
+            alert(
+                "Could not load leaderboard."
+            );
+
+            return;
+        }
+
+        if (!players ||
+            players.length === 0) {
+
+            showGeneralPanel(
+                "📊 Arena Leaderboard",
+                `
+                    <div class="panel-card">
+                        <h3>🏆 No Rankings Yet</h3>
+                        <p>
+                            Be the first PNGPD Arena champion!
+                        </p>
+                    </div>
+                `
+            );
+
+            return;
+        }
+
+        const medals = [
+            "🥇",
+            "🥈",
+            "🥉"
+        ];
+
+        const html =
+            players.map(
+                (player,index) => `
+                    <div class="panel-card"
+                         style="
+                            margin-bottom:8px;
+                            display:flex;
+                            justify-content:space-between;
+                            gap:10px;
+                         ">
+
+                        <div>
+                            <strong>
+                                ${medals[index] || `${index + 1}.`}
+                                ${player.username}
+                            </strong>
+
+                            <div style="
+                                margin-top:4px;
+                                color:#9bb0c2;
+                                font-size:12px;
+                            ">
+                                ${player.wins}W /
+                                ${player.losses}L
+                            </div>
+                        </div>
+
+                        <strong>
+                            ⭐ ${player.arena_xp}
+                        </strong>
+
+                    </div>
+                `
+            ).join("");
+
+        showGeneralPanel(
+            "📊 Arena Leaderboard",
+            html
+        );
+
+    } catch (error) {
+
+        console.error(error);
+        alert("Something went wrong.");
+    }
+}
+
+
+/* =========================================================
+   PLAYER ARENA RECORD
+   ========================================================= */
+
+async function openArenaRecord() {
+
+    try {
+
+        const {
+            data: { user },
+            error: userError
+        } = await window.pngpdSupabase.auth.getUser();
+
+        if (userError || !user) {
+
+            alert(
+                "Please log in first."
+            );
+
+            return;
+        }
+
+        const {
+            data: profile,
+            error
+        } = await window.pngpdSupabase
+            .from("arena_profiles")
+            .select("*")
+            .eq("user_id", user.id)
+            .single();
+
+        if (error ||
+            !profile) {
+
+            showGeneralPanel(
+                "👤 My Arena Record",
+                `
+                    <div class="panel-card">
+
+                        <h3>
+                            ⚔️ Arena Profile Not Found
+                        </h3>
+
+                        <p>
+                            Your Arena profile will be
+                            created when you enter your
+                            first battle.
+                        </p>
+
+                    </div>
+                `
+            );
+
+            return;
+        }
+
+        showGeneralPanel(
+            "👤 My Arena Record",
+            `
+                <div class="panel-card">
+
+                    <h3>⚔️ ${profile.username}</h3>
+
+                    <div style="
+                        display:grid;
+                        gap:8px;
+                        margin-top:15px;
+                    ">
+
+                        <span class="badge">
+                            ⚔️ Battles:
+                            ${profile.battles_played}
+                        </span>
+
+                        <span class="badge">
+                            ✅ Wins:
+                            ${profile.wins}
+                        </span>
+
+                        <span class="badge">
+                            ❌ Losses:
+                            ${profile.losses}
+                        </span>
+
+                        <span class="badge">
+                            ⭐ Arena XP:
+                            ${profile.arena_xp}
+                        </span>
+
+                        <span class="badge">
+                            🏆 Championships:
+                            ${profile.championship_wins}
+                        </span>
+
+                    </div>
+
+                </div>
+            `
+        );
+
+    } catch (error) {
+
+        console.error(error);
+        alert("Could not load Arena record.");
     }
 }
 
@@ -716,11 +1980,13 @@ function openChampionship() {
         `
             <div class="panel-card">
 
-                <h3>🏆 Become the PNGPD Champion</h3>
+                <h3>
+                    🏆 Become the PNGPD Champion
+                </h3>
 
                 <p>
-                    Compete through multiple rounds and
-                    become the top academic player in your class.
+                    Compete through multiple rounds
+                    and become the top academic player.
                 </p>
 
                 <div style="
@@ -771,8 +2037,8 @@ function joinChampionship() {
                 <h3>Registration</h3>
 
                 <p>
-                    Championship registration will connect
-                    players into the tournament bracket.
+                    Championship tournament registration
+                    will be connected to the Arena system.
                 </p>
 
                 <button
@@ -790,96 +2056,59 @@ function joinChampionship() {
 
 
 /* =========================================================
-   ARENA LEADERBOARD
+   GLOBAL EXPORTS
    ========================================================= */
 
-function openArenaLeaderboard() {
+window.openArena =
+    openArena;
 
-    showGeneralPanel(
-        "📊 Arena Leaderboard",
-        `
-            <div class="panel-card">
+window.openArenaBattle =
+    openArenaBattle;
 
-                <h3>🏆 Top PNGPD Players</h3>
+window.createArenaChallenge =
+    createArenaChallenge;
 
-                <div style="
-                    margin-top:15px;
-                    display:grid;
-                    gap:8px;
-                ">
+window.sendArenaChallenge =
+    sendArenaChallenge;
 
-                    <div class="badge">
-                        🥇 Champion — Awaiting Players
-                    </div>
+window.findArenaOpponent =
+    findArenaOpponent;
 
-                    <div class="badge">
-                        🥈 2nd Place — —
-                    </div>
+window.loadArenaInvitations =
+    loadArenaInvitations;
 
-                    <div class="badge">
-                        🥉 3rd Place — —
-                    </div>
+window.acceptArenaChallenge =
+    acceptArenaChallenge;
 
-                </div>
+window.declineArenaChallenge =
+    declineArenaChallenge;
 
-                <p style="
-                    margin-top:15px;
-                    color:var(--muted);
-                ">
-                    Rankings will update automatically as
-                    students compete.
-                </p>
+window.loadMyArenaMatches =
+    loadMyArenaMatches;
 
-            </div>
-        `
-    );
-}
+window.startArenaMatch =
+    startArenaMatch;
 
+window.prepareArenaQuestions =
+    prepareArenaQuestions;
 
-/* =========================================================
-   PLAYER ARENA RECORD
-   ========================================================= */
+window.loadArenaQuestions =
+    loadArenaQuestions;
 
-function openArenaRecord() {
+window.submitArenaAnswer =
+    submitArenaAnswer;
 
-    showGeneralPanel(
-        "👤 My Arena Record",
-        `
-            <div class="panel-card">
+window.checkArenaResult =
+    checkArenaResult;
 
-                <h3>⚔️ Your Record</h3>
+window.openArenaLeaderboard =
+    openArenaLeaderboard;
 
-                <div style="
-                    display:grid;
-                    gap:8px;
-                    margin-top:15px;
-                ">
+window.openArenaRecord =
+    openArenaRecord;
 
-                    <span class="badge">
-                        ⚔️ Battles: 0
-                    </span>
+window.openChampionship =
+    openChampionship;
 
-                    <span class="badge">
-                        ✅ Wins: 0
-                    </span>
-
-                    <span class="badge">
-                        ❌ Losses: 0
-                    </span>
-
-                    <span class="badge">
-                        🏆 Championships: 0
-                    </span>
-
-                </div>
-
-            </div>
-        `
-    );
-}
-window.sendArenaChallenge = sendArenaChallenge;
-window.findArenaOpponent = findArenaOpponent;
-window.loadArenaInvitations = loadArenaInvitations;
-window.acceptArenaChallenge = acceptArenaChallenge;
-window.declineArenaChallenge = declineArenaChallenge;;
-window.startArenaMatch = startArenaMatch;
+window.joinChampionship =
+    joinChampionship;
