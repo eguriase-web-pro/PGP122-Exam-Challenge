@@ -783,3 +783,6 @@ function openArenaRecord() {
 }
 window.sendArenaChallenge = sendArenaChallenge;
 window.findArenaOpponent = findArenaOpponent;
+window.loadArenaInvitations = loadArenaInvitations;
+window.acceptArenaChallenge = acceptArenaChallenge;
+window.declineArenaChallenge = declineArenaChallenge;;
