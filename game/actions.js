@@ -607,6 +607,98 @@ async function declineArenaChallenge(matchId) {
         alert("Something went wrong.");
     }
 }
+async function startArenaMatch(matchId) {
+
+    try {
+
+        if (!window.pngpdSupabase) {
+            alert("Supabase is not connected.");
+            return;
+        }
+
+        const {
+            data: { user },
+            error: userError
+        } = await window.pngpdSupabase.auth.getUser();
+
+        if (userError || !user) {
+            alert("Please log in first.");
+            return;
+        }
+
+        const { data: match, error: matchError } =
+            await window.pngpdSupabase
+                .from("arena_matches")
+                .select("*")
+                .eq("id", matchId)
+                .single();
+
+        if (matchError || !match) {
+            console.error(matchError);
+            alert("Battle could not be found.");
+            return;
+        }
+
+        if (
+            match.challenger_id !== user.id &&
+            match.opponent_id !== user.id
+        ) {
+            alert("You are not part of this battle.");
+            return;
+        }
+
+        if (match.status !== "accepted" &&
+            match.status !== "active") {
+
+            alert("This battle is not ready yet.");
+            return;
+        }
+
+        await window.pngpdSupabase
+            .from("arena_matches")
+            .update({
+                status: "active"
+            })
+            .eq("id", matchId);
+
+        showGeneralPanel(
+            "⚔️ Arena Battle",
+            `
+                <div class="panel-card">
+
+                    <h3>⚔️ ${match.course}</h3>
+
+                    <p>
+                        Your opponent has accepted the challenge.
+                    </p>
+
+                    <p>
+                        Both players will receive the same
+                        questions.
+                    </p>
+
+                    <button
+                        class="btn btn-primary btn-block"
+                        style="margin-top:18px"
+                        onclick="loadArenaQuestions('${matchId}')"
+                    >
+                        🚀 Start Battle
+                    </button>
+
+                </div>
+            `
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Start arena match error:",
+            error
+        );
+
+        alert("Could not start the battle.");
+    }
+}
 
 
 /* =========================================================
