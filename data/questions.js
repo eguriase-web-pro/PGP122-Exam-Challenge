@@ -1,1535 +1,1070 @@
 window.PNGPD_QUESTIONS = [
 
-    // =====================================================
-    // PGP 122 — SEPARATION PROCESS I
-    // BATCH 1: MIXING, FILTRATION, MEMBRANES, EVAPORATION
-    // =====================================================
-
-    {
-        id: 1,
-        course: "PGP 122",
-        topic: "Introduction to Separation",
-        difficulty: "Easy",
-        question: "What is the primary purpose of a separation process?",
-        options: [
-            "To combine all components into one substance",
-            "To divide a mixture into distinct components or phases",
-            "To increase the temperature of every mixture",
-            "To convert every liquid into a gas"
-        ],
-        answer: 1,
-        explanation: "Separation processes divide mixtures into distinct components or phases based on differences in their physical or chemical properties."
-    },
-
-    {
-        id: 2,
-        course: "PGP 122",
-        topic: "Introduction to Separation",
-        difficulty: "Medium",
-        question: "Why are separation operations important in chemical plants?",
-        options: [
-            "They eliminate the need for chemical reactors",
-            "They ensure every process operates without energy",
-            "They purify raw materials, separate products and recover unreacted materials",
-            "They prevent all chemical reactions from occurring"
-        ],
-        answer: 2,
-        explanation: "Separation operations purify feeds, recover unreacted materials and separate products to meet required specifications."
-    },
-
-    {
-        id: 3,
-        course: "PGP 122",
-        topic: "Liquid Mixing",
-        difficulty: "Easy",
-        question: "What is mixing in chemical processing?",
-        options: [
-            "Random distribution of materials through one another",
-            "Complete removal of all liquid from a vessel",
-            "Conversion of every solid into vapour",
-            "Separation of a mixture by gravity alone"
-        ],
-        answer: 0,
-        explanation: "Mixing involves distributing two or more initially separate materials or phases through one another to reduce non-uniformity."
-    },
-
-    {
-        id: 4,
-        course: "PGP 122",
-        topic: "Agitation",
-        difficulty: "Medium",
-        question: "Which statement correctly distinguishes agitation from mixing?",
-        options: [
-            "Agitation and mixing always mean exactly the same thing",
-            "Agitation induces motion in a material, while mixing distributes materials through one another",
-            "Mixing only occurs in gases",
-            "Agitation can only be performed without equipment"
-        ],
-        answer: 1,
-        explanation: "Agitation creates motion, often a circulating flow in a vessel. Mixing uses movement to distribute materials and reduce non-uniformity."
-    },
-
-    {
-        id: 5,
-        course: "PGP 122",
-        topic: "Agitation Equipment",
-        difficulty: "Easy",
-        question: "Which set contains the three main elements of a conventional agitated vessel?",
-        options: [
-            "Condenser, boiler and filter",
-            "Pump, compressor and turbine",
-            "Vessel, baffles and impeller",
-            "Pipe, valve and heat exchanger"
-        ],
-        answer: 2,
-        explanation: "A conventional agitated vessel consists principally of a vessel, baffles and an impeller."
-    },
-
-    {
-        id: 6,
-        course: "PGP 122",
-        topic: "Baffles",
-        difficulty: "Medium",
-        question: "What is the principal function of baffles in an agitated tank?",
-        options: [
-            "To prevent all fluid movement",
-            "To increase unwanted swirling and vortex formation",
-            "To remove dissolved salts",
-            "To reduce excessive swirling and improve effective mixing"
-        ],
-        answer: 3,
-        explanation: "Baffles disrupt rotational flow and vortex formation, helping produce more effective mixing."
-    },
-
-    {
-        id: 7,
-        course: "PGP 122",
-        topic: "Impellers",
-        difficulty: "Medium",
-        question: "Which type of impeller normally produces flow approximately parallel to its shaft axis?",
-        options: [
-            "Axial-flow impeller",
-            "Radial-flow impeller",
-            "Filter plate",
-            "Membrane module"
-        ],
-        answer: 0,
-        explanation: "Axial-flow impellers, such as propellers, generate currents predominantly parallel to the impeller shaft."
-    },
-
-    {
-        id: 8,
-        course: "PGP 122",
-        topic: "Impellers",
-        difficulty: "Easy",
-        question: "Which of the following is a common type of liquid-mixing impeller?",
-        options: [
-            "Sedimentation basin",
-            "Propeller",
-            "Filter cloth",
-            "Evaporator shell"
-        ],
-        answer: 1,
-        explanation: "Propellers are common impellers used to agitate liquids, especially liquids of relatively low viscosity."
-    },
-
-    {
-        id: 9,
-        course: "PGP 122",
-        topic: "Filtration",
-        difficulty: "Easy",
-        question: "What is the liquid that passes through a filter medium called?",
-        options: [
-            "Slurry",
-            "Filter cake",
-            "Filtrate",
-            "Filter aid"
-        ],
-        answer: 2,
-        explanation: "The liquid that passes through the filter medium is called the filtrate."
-    },
-
-    {
-        id: 10,
-        course: "PGP 122",
-        topic: "Filtration",
-        difficulty: "Easy",
-        question: "What is the usual feed to a solid-liquid filtration unit?",
-        options: [
-            "Pure vapour",
-            "Slurry",
-            "Dry gas",
-            "Pure solid without liquid"
-        ],
-        answer: 1,
-        explanation: "A slurry containing suspended solids in a liquid is commonly fed into a filtration unit."
-    },
-
-    {
-        id: 11,
-        course: "PGP 122",
-        topic: "Filtration",
-        difficulty: "Medium",
-        question: "What is the main function of the filter medium?",
-        options: [
-            "To evaporate the liquid",
-            "To dissolve the retained solids",
-            "To increase the boiling point of the feed",
-            "To retain solids while allowing liquid to pass"
-        ],
-        answer: 3,
-        explanation: "The filter medium permits the liquid to pass while retaining solid particles, subject to its pore structure and operating conditions."
-    },
-
-    {
-        id: 12,
-        course: "PGP 122",
-        topic: "Filtration",
-        difficulty: "Medium",
-        question: "During constant-pressure filtration, what generally happens as the filter cake becomes thicker?",
-        options: [
-            "Filtration rate decreases because flow resistance increases",
-            "Filtration rate increases without limit",
-            "The filter cake disappears",
-            "The pressure difference must automatically become zero"
-        ],
-        answer: 0,
-        explanation: "Cake growth increases resistance to liquid flow, so the filtration rate generally declines under constant-pressure operation."
-    },
-
-    {
-        id: 13,
-        course: "PGP 122",
-        topic: "Filtration",
-        difficulty: "Medium",
-        question: "Why may a filter aid be added before filtration?",
-        options: [
-            "To convert the filtrate into a gas",
-            "To make every solid dissolve",
-            "To improve cake permeability and filtration performance",
-            "To eliminate the need for a filter medium"
-        ],
-        answer: 2,
-        explanation: "Filter aids can create a more permeable cake, reducing resistance and improving filtration."
-    },
-
-    {
-        id: 14,
-        course: "PGP 122",
-        topic: "Filtration",
-        difficulty: "Medium",
-        question: "What is the main purpose of washing a filter cake?",
-        options: [
-            "To increase the quantity of dissolved impurities",
-            "To remove soluble material retained in the wet cake",
-            "To convert the solid cake into vapour",
-            "To stop all liquid from entering the filter"
-        ],
-        answer: 1,
-        explanation: "Cake washing displaces or removes soluble impurities remaining in the liquid held within the filter cake."
-    },
-
-    {
-        id: 15,
-        course: "PGP 122",
-        topic: "Membrane Separation",
-        difficulty: "Easy",
-        question: "What is the basic function of a membrane separation process?",
-        options: [
-            "To allow every component to pass at the same rate",
-            "To heat every component until it boils",
-            "To mix all components permanently",
-            "To separate components through selective transport across a membrane"
-        ],
-        answer: 3,
-        explanation: "A membrane selectively permits certain components to pass more readily than others."
-    },
-
-    {
-        id: 16,
-        course: "PGP 122",
-        topic: "Membrane Separation",
-        difficulty: "Medium",
-        question: "In a pressure-driven membrane process, what does transmembrane pressure represent?",
-        options: [
-            "The pressure difference across the membrane",
-            "The temperature difference between two tanks",
-            "The mass of the filter cake",
-            "The viscosity of the feed"
-        ],
-        answer: 0,
-        explanation: "Transmembrane pressure is the pressure difference driving transport across the membrane."
-    },
-
-    {
-        id: 17,
-        course: "PGP 122",
-        topic: "Membrane Separation",
-        difficulty: "Medium",
-        question: "In the general membrane flux relationship, what is the likely effect of increasing total membrane and cake resistance while other factors remain constant?",
-        options: [
-            "Flux increases indefinitely",
-            "Flux becomes independent of pressure",
-            "Flux decreases",
-            "Flux must become negative"
-        ],
-        answer: 2,
-        explanation: "For a pressure-driven membrane process, greater resistance reduces flux when pressure difference and viscosity remain constant."
-    },
-
-    {
-        id: 18,
-        course: "PGP 122",
-        topic: "Evaporation",
-        difficulty: "Easy",
-        question: "What is the principal objective of evaporation in many chemical-processing operations?",
-        options: [
-            "To concentrate a solution by removing some solvent as vapour",
-            "To separate two solid particles by size",
-            "To increase the amount of solvent in a solution",
-            "To convert every dissolved solute into gas"
-        ],
-        answer: 0,
-        explanation: "Evaporation removes a portion of the volatile solvent, commonly water, leaving a more concentrated solution."
-    },
-
-    {
-        id: 19,
-        course: "PGP 122",
-        topic: "Evaporation",
-        difficulty: "Medium",
-        question: "How does evaporation differ from drying in the usual chemical-engineering sense?",
-        options: [
-            "Evaporation never requires heat",
-            "Drying only applies to gases",
-            "Evaporation always separates two volatile liquids",
-            "Evaporation commonly leaves a concentrated liquid, while drying commonly produces a solid product"
-        ],
-        answer: 3,
-        explanation: "Evaporation concentrates a solution and generally leaves a liquid residue; drying removes moisture from a material to produce a drier solid."
-    },
-
-    {
-        id: 20,
-        course: "PGP 122",
-        topic: "Evaporation",
-        difficulty: "Medium",
-        question: "Why might an evaporator be operated under reduced pressure when concentrating a heat-sensitive product?",
-        options: [
-            "To make the solvent impossible to evaporate",
-            "To lower the boiling temperature and reduce thermal damage",
-            "To eliminate the need for heat transfer",
-            "To increase the boiling temperature in every case"
-        ],
-        answer: 1,
-        explanation: "Reducing pressure lowers the boiling temperature, which can help protect heat-sensitive products from degradation."
-    },
-
-
-    // =====================================================
-    // PGP 123 — INDUSTRIAL UTILITIES
-    // BATCH 1: WATER, WATER TREATMENT, WASTEWATER, STEAM
-    // =====================================================
-
-    {
-        id: 21,
-        course: "PGP 123",
-        topic: "Industrial Utilities",
-        difficulty: "Easy",
-        question: "What are industrial utilities?",
-        options: [
-            "Only the raw materials sold by a factory",
-            "Only the finished products of a refinery",
-            "Essential services and systems that support industrial operations",
-            "Equipment used exclusively for laboratory experiments"
-        ],
-        answer: 2,
-        explanation: "Industrial utilities include essential services such as water, steam, electricity and compressed air that support production."
-    },
-
-    {
-        id: 22,
-        course: "PGP 123",
-        topic: "Industrial Utilities",
-        difficulty: "Easy",
-        question: "Which of the following is an example of an industrial utility?",
-        options: [
-            "Electricity",
-            "A finished bottle of soft drink",
-            "A packaged consumer product",
-            "A sales receipt"
-        ],
-        answer: 0,
-        explanation: "Electricity is an industrial utility used to power machinery, equipment, lighting and control systems."
-    },
-
-    {
-        id: 23,
-        course: "PGP 123",
-        topic: "Properties of Water",
-        difficulty: "Easy",
-        question: "At approximately what temperature does pure water freeze at standard atmospheric pressure?",
-        options: [
-            "100°C",
-            "0°C",
-            "25°C",
-            "50°C"
-        ],
-        answer: 1,
-        explanation: "Pure water freezes at approximately 0°C at standard atmospheric pressure."
-    },
-
-    {
-        id: 24,
-        course: "PGP 123",
-        topic: "Properties of Water",
-        difficulty: "Easy",
-        question: "What is the approximate boiling point of pure water at one atmosphere of pressure?",
-        options: [
-            "0°C",
-            "50°C",
-            "75°C",
-            "100°C"
-        ],
-        answer: 3,
-        explanation: "Pure water boils at approximately 100°C at one atmosphere of pressure."
-    },
-
-    {
-        id: 25,
-        course: "PGP 123",
-        topic: "Properties of Water",
-        difficulty: "Medium",
-        question: "What is the approximate density of pure water at 4°C?",
-        options: [
-            "1 g/cm³",
-            "0.1 g/cm³",
-            "10 g/cm³",
-            "100 g/cm³"
-        ],
-        answer: 0,
-        explanation: "The density of pure water is approximately 1 g/cm³ at 4°C."
-    },
-
-    {
-        id: 26,
-        course: "PGP 123",
-        topic: "Properties of Water",
-        difficulty: "Medium",
-        question: "Why does ice float on liquid water?",
-        options: [
-            "Ice always contains dissolved salt",
-            "Ice has a higher density than liquid water",
-            "Ice is less dense than liquid water",
-            "Ice has no mass"
-        ],
-        answer: 2,
-        explanation: "Water expands as it freezes, making ice less dense than liquid water."
-    },
-
-    {
-        id: 27,
-        course: "PGP 123",
-        topic: "Sources of Industrial Water",
-        difficulty: "Medium",
-        question: "Which source of industrial water may contain suspended solids, microorganisms and dissolved salts?",
-        options: [
-            "Pure distilled water only",
-            "Surface water from rivers and lakes",
-            "Water-free compressed air",
-            "Dry steam"
-        ],
-        answer: 1,
-        explanation: "Surface water can contain suspended particles, microorganisms and dissolved substances, so treatment may be necessary."
-    },
-
-    {
-        id: 28,
-        course: "PGP 123",
-        topic: "Industrial Water Applications",
-        difficulty: "Medium",
-        question: "Why does boiler feed water generally require careful treatment?",
-        options: [
-            "To deliberately increase scale formation",
-            "To increase the concentration of suspended solids",
-            "To prevent steam from forming",
-            "To reduce problems such as scaling, corrosion and fouling"
-        ],
-        answer: 3,
-        explanation: "Boiler feed water requires suitable quality to minimize deposits, corrosion and fouling that can damage equipment and reduce efficiency."
-    },
-
-    {
-        id: 29,
-        course: "PGP 123",
-        topic: "Water Hardness",
-        difficulty: "Easy",
-        question: "Which ions are primarily responsible for water hardness?",
-        options: [
-            "Calcium and magnesium ions",
-            "Helium and neon atoms",
-            "Hydrogen and oxygen atoms only",
-            "Gold and silver ions"
-        ],
-        answer: 0,
-        explanation: "Water hardness is primarily associated with dissolved calcium and magnesium ions."
-    },
-
-    {
-        id: 30,
-        course: "PGP 123",
-        topic: "Water Hardness",
-        difficulty: "Medium",
-        question: "Which laboratory method is commonly used to determine total water hardness?",
-        options: [
-            "Simple visual inspection alone",
-            "Measurement of electrical cable length",
-            "EDTA titration",
-            "Determination of steam pressure only"
-        ],
-        answer: 2,
-        explanation: "EDTA complexometric titration is commonly used to determine calcium and magnesium hardness."
-    },
-
-    {
-        id: 31,
-        course: "PGP 123",
-        topic: "Water Quality",
-        difficulty: "Medium",
-        question: "What does turbidity measure?",
-        options: [
-            "The total mass of a water tank",
-            "The cloudiness of water caused by suspended and colloidal materials",
-            "The temperature of a steam turbine",
-            "The electrical power of a pump"
-        ],
-        answer: 1,
-        explanation: "Turbidity indicates the cloudiness of water caused by suspended particles and other light-scattering materials."
-    },
-
-    {
-        id: 32,
-        course: "PGP 123",
-        topic: "Water Quality",
-        difficulty: "Medium",
-        question: "What does dissolved oxygen (DO) indicate in a water sample?",
-        options: [
-            "The amount of solid fuel in the water",
-            "The total quantity of calcium in every case",
-            "The amount of steam above the water",
-            "The amount of oxygen dissolved in the water"
-        ],
-        answer: 3,
-        explanation: "Dissolved oxygen measures oxygen present in water and is important for aquatic life and water-quality assessment."
-    },
-
-    {
-        id: 33,
-        course: "PGP 123",
-        topic: "Water Quality",
-        difficulty: "Medium",
-        question: "What does biochemical oxygen demand (BOD) measure?",
-        options: [
-            "Oxygen consumed by microorganisms while decomposing biodegradable organic matter under specified conditions",
-            "The pressure inside a boiler",
-            "The amount of calcium deposited in a pipe",
-            "The total electricity used by a treatment plant"
-        ],
-        answer: 0,
-        explanation: "BOD measures the oxygen used by microorganisms to break down biodegradable organic material under defined test conditions."
-    },
-
-    {
-        id: 34,
-        course: "PGP 123",
-        topic: "Water Quality",
-        difficulty: "Medium",
-        question: "Chemical oxygen demand (COD) is generally used to estimate:",
-        options: [
-            "Only the temperature of a water sample",
-            "Only the number of water-treatment tanks",
-            "The oxygen equivalent required to chemically oxidize substances in a sample",
-            "The amount of sunlight entering a reservoir"
-        ],
-        answer: 2,
-        explanation: "COD estimates the oxygen equivalent needed to chemically oxidize oxidizable substances in a water sample."
-    },
-
-    {
-        id: 35,
-        course: "PGP 123",
-        topic: "Water Treatment",
-        difficulty: "Easy",
-        question: "What is the main purpose of screening during water treatment?",
-        options: [
-            "To remove all dissolved gases",
-            "To remove large debris and coarse solids",
-            "To increase water hardness",
-            "To convert water into steam"
-        ],
-        answer: 1,
-        explanation: "Screening removes large debris and coarse solids before later treatment stages."
-    },
-
-    {
-        id: 36,
-        course: "PGP 123",
-        topic: "Water Treatment",
-        difficulty: "Medium",
-        question: "What is the main purpose of coagulation in water treatment?",
-        options: [
-            "To increase the size of the water tank",
-            "To evaporate all water immediately",
-            "To increase dissolved oxygen in every case",
-            "To destabilize fine particles so they can aggregate"
-        ],
-        answer: 3,
-        explanation: "Coagulation destabilizes colloidal and finely divided particles, allowing them to aggregate and be removed more readily."
-    },
-
-    {
-        id: 37,
-        course: "PGP 123",
-        topic: "Water Treatment",
-        difficulty: "Medium",
-        question: "How does flocculation differ from coagulation?",
-        options: [
-            "Flocculation gently brings destabilized particles together into larger flocs",
-            "Flocculation always converts water into ice",
-            "Coagulation removes the need for all later treatment",
-            "Flocculation only measures water temperature"
-        ],
-        answer: 0,
-        explanation: "After coagulation, gentle mixing during flocculation encourages small destabilized particles to form larger flocs."
-    },
-
-    {
-        id: 38,
-        course: "PGP 123",
-        topic: "Wastewater Treatment",
-        difficulty: "Medium",
-        question: "What is the principal purpose of sedimentation in wastewater treatment?",
-        options: [
-            "To increase the concentration of suspended solids in the final effluent",
-            "To convert all dissolved salts into gases",
-            "To separate settleable suspended solids by gravity",
-            "To generate electricity directly from every water sample"
-        ],
-        answer: 2,
-        explanation: "Sedimentation allows settleable particles to separate from water under gravity."
-    },
-
-    {
-        id: 39,
-        course: "PGP 123",
-        topic: "Wastewater Treatment",
-        difficulty: "Medium",
-        question: "What happens during anaerobic digestion of sludge?",
-        options: [
-            "Sludge is exposed to unlimited oxygen at all times",
-            "Microorganisms break down organic matter without oxygen, often producing biogas",
-            "All sludge is converted into drinking water immediately",
-            "The sludge is mixed with pure oxygen to prevent biological activity"
-        ],
-        answer: 1,
-        explanation: "Anaerobic microorganisms stabilize organic matter in the absence of oxygen and can produce biogas containing methane."
-    },
-
-        {
-        id: 40,
-        course: "PGP 123",
-        topic: "Steam",
-        difficulty: "Medium",
-        question: "Which equation calculates sensible heat when mass, specific heat capacity and temperature change are known?",
-        options: [
-            "Q = m/Cp",
-            "Q = Cp/m",
-            "Q = m + Cp + temperature",
-            "Q = mCp(Tf - Ti)"
-        ],
-        answer: 3,
-        explanation: "Sensible heat is calculated using Q = mCp(Tf - Ti), where m is mass, Cp is specific heat capacity, and Tf - Ti is the temperature change."
-    },
-
-    // =====================================================
-    // PGP 123 — INDUSTRIAL UTILITIES
-    // BATCH 2: STEAM, ENERGY, FUELS AND COMBUSTION
-    // =====================================================
-
-    {
-        id: 41,
-        course: "PGP 123",
-        topic: "Steam",
-        difficulty: "Easy",
-        question: "What is steam?",
-        options: [
-            "Water in its solid state",
-            "Water in its vapour state containing thermal energy",
-            "Liquid water below freezing point",
-            "A mixture containing only oxygen and nitrogen"
-        ],
-        answer: 1,
-        explanation: "Steam is water vapour containing thermal energy, including sensible and latent heat depending on its condition."
-    },
-
-    {
-        id: 42,
-        course: "PGP 123",
-        topic: "Steam",
-        difficulty: "Easy",
-        question: "What is saturated steam?",
-        options: [
-            "Steam heated beyond its saturation temperature",
-            "Steam containing no thermal energy",
-            "Steam at the saturation temperature corresponding to its pressure",
-            "Water that has not reached its boiling point"
-        ],
-        answer: 2,
-        explanation: "Saturated steam exists at the saturation temperature corresponding to its pressure. It may be wet or dry saturated steam."
-    },
-
-    {
-        id: 43,
-        course: "PGP 123",
-        topic: "Steam",
-        difficulty: "Medium",
-        question: "How is superheated steam produced?",
-        options: [
-            "By heating saturated steam beyond its saturation temperature at the given pressure",
-            "By cooling saturated steam below its saturation temperature",
-            "By freezing liquid water",
-            "By mixing liquid water with cold air"
-        ],
-        answer: 0,
-        explanation: "Superheated steam is produced by adding heat to saturated steam so that its temperature rises above the saturation temperature at the given pressure."
-    },
-
-    {
-        id: 44,
-        course: "PGP 123",
-        topic: "Steam",
-        difficulty: "Medium",
-        question: "What does steam quality represent in a wet-steam mixture?",
-        options: [
-            "The colour of the steam",
-            "The total mass of the boiler",
-            "The temperature of the boiler room",
-            "The mass fraction of vapour in the saturated liquid-vapour mixture"
-        ],
-        answer: 3,
-        explanation: "Steam quality, or dryness fraction, is the mass of vapour divided by the total mass of a wet saturated mixture."
-    },
-
-    {
-        id: 45,
-        course: "PGP 123",
-        topic: "Heat Calculations",
-        difficulty: "Medium",
-        question: "Which equation is used to calculate sensible heat when specific heat capacity is constant?",
-        options: [
-            "Q = m/Cp",
-            "Q = mCp(Tf - Ti)",
-            "Q = m + Cp",
-            "Q = Cp/(Tf - Ti)"
-        ],
-        answer: 1,
-        explanation: "Sensible heat is calculated using Q = mCp(Tf - Ti), where m is mass, Cp is specific heat capacity, and Tf - Ti is the temperature change."
-    },
-
-    {
-        id: 46,
-        course: "PGP 123",
-        topic: "Heat Calculations",
-        difficulty: "Medium",
-        question: "Calculate the heat required to raise 2 kg of water from 25°C to 75°C. Take Cp = 4.18 kJ/(kg·°C).",
-        options: [
-            "209 kJ",
-            "104.5 kJ",
-            "418 kJ",
-            "836 kJ"
-        ],
-        answer: 2,
-        explanation: "Q = mCpΔT = 2 × 4.18 × (75 - 25) = 418 kJ."
-    },
-
-    {
-        id: 47,
-        course: "PGP 123",
-        topic: "Latent Heat",
-        difficulty: "Medium",
-        question: "Which expression calculates the energy required for a phase change when latent heat is known?",
-        options: [
-            "Q = mHv",
-            "Q = m/Hv",
-            "Q = m + Hv",
-            "Q = Hv/m"
-        ],
-        answer: 0,
-        explanation: "The energy for a phase change is calculated using Q = mHv, where m is mass and Hv is the relevant specific latent heat."
-    },
-
-    {
-        id: 48,
-        course: "PGP 123",
-        topic: "Energy",
-        difficulty: "Easy",
-        question: "Which of the following is a renewable energy source?",
-        options: [
-            "Coal",
-            "Petroleum",
-            "Natural gas",
-            "Solar energy"
-        ],
-        answer: 3,
-        explanation: "Solar energy is renewable because it is continually replenished by the Sun."
-    },
-
-    {
-        id: 49,
-        course: "PGP 123",
-        topic: "Energy",
-        difficulty: "Easy",
-        question: "Which of these is classified as a non-renewable energy source?",
-        options: [
-            "Wind",
-            "Petroleum",
-            "Tidal energy",
-            "Solar energy"
-        ],
-        answer: 1,
-        explanation: "Petroleum is a fossil fuel formed over geological timescales and is classified as non-renewable."
-    },
-
-    {
-        id: 50,
-        course: "PGP 123",
-        topic: "Energy Units",
-        difficulty: "Medium",
-        question: "How many kilojoules are equivalent to 1 kWh?",
-        options: [
-            "360 kJ",
-            "1000 kJ",
-            "3600 kJ",
-            "36,000 kJ"
-        ],
-        answer: 2,
-        explanation: "1 kWh = 1000 W × 3600 s = 3,600,000 J = 3600 kJ."
-    },
-
-    {
-        id: 51,
-        course: "PGP 123",
-        topic: "Energy Units",
-        difficulty: "Medium",
-        question: "Approximately how many joules are equivalent to one British thermal unit (Btu)?",
-        options: [
-            "1055 J",
-            "4.18 J",
-            "100 J",
-            "3600 J"
-        ],
-        answer: 0,
-        explanation: "One Btu is approximately equal to 1055 joules."
-    },
-
-    {
-        id: 52,
-        course: "PGP 123",
-        topic: "Solid Fuels",
-        difficulty: "Easy",
-        question: "What is coke in fuel technology?",
-        options: [
-            "A liquid obtained by cooling steam",
-            "A gaseous mixture consisting only of nitrogen",
-            "A type of treated wastewater",
-            "A carbon-rich solid residue produced by heating coal or other carbonaceous materials"
-        ],
-        answer: 3,
-        explanation: "Coke is a carbon-rich solid residue obtained by carbonizing coal or other carbonaceous materials under suitable conditions."
-    },
-
-    {
-        id: 53,
-        course: "PGP 123",
-        topic: "Solid Fuels",
-        difficulty: "Medium",
-        question: "What is meant by the moisture content of a solid fuel?",
-        options: [
-            "The percentage of oxygen in the atmosphere",
-            "The amount of water present in the fuel, usually expressed as a percentage",
-            "The total quantity of ash produced by a boiler",
-            "The temperature at which the fuel melts"
-        ],
-        answer: 1,
-        explanation: "Moisture content indicates the water present in a fuel and is commonly reported as a percentage by mass."
-    },
-
-    {
-        id: 54,
-        course: "PGP 123",
-        topic: "Solid Fuels",
-        difficulty: "Medium",
-        question: "Using the simplified relationship in the lecture note, calculate fixed carbon if moisture is 5%, ash is 10%, and volatile matter is 30%.",
-        options: [
-            "35%",
-            "45%",
-            "55%",
-            "65%"
-        ],
-        answer: 2,
-        explanation: "Fixed carbon = 100% - (moisture + ash + volatile matter) = 100 - (5 + 10 + 30) = 55%."
-    },
-
-    {
-        id: 55,
-        course: "PGP 123",
-        topic: "Solid Fuels",
-        difficulty: "Medium",
-        question: "What is volatile matter in the analysis of coal?",
-        options: [
-            "The portion released as gases and vapours when the coal is heated under prescribed conditions in the absence of air",
-            "Only the liquid water mixed with coal",
-            "The ash remaining after complete combustion",
-            "The total mass of the furnace"
-        ],
-        answer: 0,
-        explanation: "Volatile matter is the portion of a solid fuel released as gases and vapours during heating under prescribed conditions without air."
-    },
-
-    {
-        id: 56,
-        course: "PGP 123",
-        topic: "Liquid Fuels",
-        difficulty: "Easy",
-        question: "Which of the following is a liquid fuel?",
-        options: [
-            "Coke",
-            "Coal",
-            "Kerosene",
-            "Charcoal"
-        ],
-        answer: 2,
-        explanation: "Kerosene is a liquid petroleum-derived fuel."
-    },
-
-    {
-        id: 57,
-        course: "PGP 123",
-        topic: "Gaseous Fuels",
-        difficulty: "Easy",
-        question: "What is the main constituent of natural gas?",
-        options: [
-            "Oxygen",
-            "Methane",
-            "Chlorine",
-            "Carbon monoxide"
-        ],
-        answer: 1,
-        explanation: "Methane is the principal constituent of natural gas, although its exact composition varies by source."
-    },
-
-    {
-        id: 58,
-        course: "PGP 123",
-        topic: "Gaseous Fuels",
-        difficulty: "Medium",
-        question: "Which statement best describes liquefied petroleum gas (LPG)?",
-        options: [
-            "It consists entirely of liquid water",
-            "It is a solid fuel composed only of carbon",
-            "It is a gas that cannot be liquefied by pressure",
-            "It is composed mainly of hydrocarbons such as propane and butane that can be liquefied under suitable pressure"
-        ],
-        answer: 3,
-        explanation: "LPG consists mainly of hydrocarbons such as propane and butane, which can be liquefied under suitable pressure at ordinary temperatures."
-    },
-
-    {
-        id: 59,
-        course: "PGP 123",
-        topic: "Combustion",
-        difficulty: "Medium",
-        question: "What is theoretical or stoichiometric air in combustion?",
-        options: [
-            "The minimum calculated air required for complete combustion according to the reaction stoichiometry",
-            "Air supplied without considering the fuel composition",
-            "Air containing no oxygen",
-            "The air exhausted from a cooling tower"
-        ],
-        answer: 0,
-        explanation: "Theoretical air is the calculated quantity of air required to supply the stoichiometric oxygen for complete combustion of the fuel."
-    },
-
-        {
-        id: 60,
-        course: "PGP 123",
-        topic: "Combustion",
-        difficulty: "Medium",
-        question: "Why is excess air commonly supplied in practical combustion systems?",
-        options: [
-            "To prevent oxygen from entering the combustion chamber",
-            "To guarantee that no heat is released",
-            "To help achieve more complete combustion under real operating conditions",
-            "To convert all fuel into liquid water before combustion"
-        ],
-        answer: 2,
-        explanation: "Excess air helps provide sufficient oxygen for more complete combustion despite imperfect mixing and operating variations."
-    },
-
-    // =====================================================
-    // PGP 122 — SEPARATION PROCESS I
-    // BATCH: LEACHING, EXTRACTION, FILTRATION, MEMBRANES
-    // =====================================================
-
-    {
-        id: 81,
-        course: "PGP 122",
-        topic: "Leaching",
-        difficulty: "Easy",
-        question: "What is the main purpose of leaching?",
-        options: [
-            "To remove a soluble substance from a solid using a liquid solvent",
-            "To convert a liquid directly into a gas without heating",
-            "To separate two gases by compression",
-            "To solidify a liquid mixture"
-        ],
-        answer: 0,
-        explanation: "Leaching transfers a soluble component from a solid into a suitable liquid solvent."
-    },
-    {
-        id: 82,
-        course: "PGP 122",
-        topic: "Leaching",
-        difficulty: "Easy",
-        question: "In leaching, what is the liquid used to dissolve the desired component called?",
-        options: ["Filtrate", "Solvent", "Sediment", "Residue"],
-        answer: 1,
-        explanation: "The solvent dissolves the desired soluble component from the solid feed."
-    },
-    {
-        id: 83,
-        course: "PGP 122",
-        topic: "Leaching",
-        difficulty: "Medium",
-        question: "After leaching a solid mixture, what is the liquid containing the dissolved solute commonly called?",
-        options: ["Cake", "Sludge", "Leach solution", "Dry residue"],
-        answer: 2,
-        explanation: "The leach solution contains the solvent and the component transferred from the solid."
-    },
-    {
-        id: 84,
-        course: "PGP 122",
-        topic: "Leaching",
-        difficulty: "Easy",
-        question: "What is the insoluble solid left after leaching commonly called?",
-        options: ["Distillate", "Extract", "Permeate", "Leached residue"],
-        answer: 3,
-        explanation: "The leached residue is the solid remaining after the soluble material has been extracted."
-    },
-    {
-        id: 85,
-        course: "PGP 122",
-        topic: "Leaching",
-        difficulty: "Medium",
-        question: "Why is a solid often reduced to smaller particles before leaching?",
-        options: [
-            "To increase the exposed surface area and improve mass transfer",
-            "To make the solute permanently insoluble",
-            "To eliminate the need for a solvent",
-            "To prevent contact between the solid and liquid"
-        ],
-        answer: 0,
-        explanation: "Smaller particles generally provide greater surface area for solvent contact, which can improve extraction rates."
-    },
-    {
-        id: 86,
-        course: "PGP 122",
-        topic: "Leaching",
-        difficulty: "Medium",
-        question: "Which factor can reduce the effectiveness of leaching?",
-        options: [
-            "Using a solvent that dissolves the desired solute",
-            "Poor contact between the solvent and the solid",
-            "Providing adequate mixing",
-            "Selecting an appropriate solvent"
-        ],
-        answer: 1,
-        explanation: "Poor solid–liquid contact limits mass transfer and can leave more of the desired solute in the solid residue."
-    },
-    {
-        id: 87,
-        course: "PGP 122",
-        topic: "Leaching",
-        difficulty: "Medium",
-        question: "A solid contains 20 kg of soluble material. If 75% is extracted, how much soluble material is recovered?",
-        options: ["5 kg", "10 kg", "15 kg", "18 kg"],
-        answer: 2,
-        explanation: "Recovered material = 0.75 × 20 = 15 kg."
-    },
-    {
-        id: 88,
-        course: "PGP 122",
-        topic: "Leaching",
-        difficulty: "Medium",
-        question: "If 15 kg of a soluble component is initially present and 12 kg is extracted, what percentage is recovered?",
-        options: ["20%", "60%", "75%", "80%"],
-        answer: 3,
-        explanation: "Recovery = (12/15) × 100 = 80%."
-    },
-    {
-        id: 89,
-        course: "PGP 122",
-        topic: "Leaching",
-        difficulty: "Medium",
-        question: "A solid contains 40 kg of soluble material. If 10 kg remains unextracted, how much was extracted?",
-        options: ["30 kg", "10 kg", "40 kg", "50 kg"],
-        answer: 0,
-        explanation: "Extracted material = initial amount − unextracted amount = 40 − 10 = 30 kg."
-    },
-    {
-        id: 90,
-        course: "PGP 122",
-        topic: "Leaching",
-        difficulty: "Medium",
-        question: "What is counter-current leaching?",
-        options: [
-            "Solid and solvent are both stationary throughout the process",
-            "The solid and solvent move through the stages in opposite directions",
-            "The solvent never contacts the solid",
-            "The solid is converted entirely into vapour"
-        ],
-        answer: 1,
-        explanation: "In counter-current operation, the solid and solvent move in opposite directions through successive stages."
-    },
-    {
-        id: 91,
-        course: "PGP 122",
-        topic: "Leaching",
-        difficulty: "Medium",
-        question: "What is one potential advantage of multistage counter-current leaching over a single contact stage?",
-        options: [
-            "It always eliminates solvent consumption",
-            "It prevents solute dissolution",
-            "It can achieve greater solute recovery with efficient solvent use",
-            "It makes all solids soluble"
-        ],
-        answer: 2,
-        explanation: "Multiple counter-current contacts can improve extraction performance and solvent utilization."
-    },
-    {
-        id: 92,
-        course: "PGP 122",
-        topic: "Leaching",
-        difficulty: "Easy",
-        question: "Which property is especially important when selecting a solvent for leaching?",
-        options: [
-            "The colour of the container",
-            "The shape of the equipment building",
-            "The number of operators in the plant",
-            "The solvent's ability to dissolve the desired component selectively"
-        ],
-        answer: 3,
-        explanation: "Solubility and selectivity are important because the solvent should extract the desired component effectively."
-    },
-    {
-        id: 93,
-        course: "PGP 122",
-        topic: "Liquid-Liquid Extraction",
-        difficulty: "Easy",
-        question: "What is liquid–liquid extraction?",
-        options: [
-            "Transferring a component from one liquid phase into another liquid phase",
-            "Removing a solid from a gas using a filter",
-            "Converting a solid directly into a gas",
-            "Separating particles only by size"
-        ],
-        answer: 0,
-        explanation: "Liquid–liquid extraction separates components through their different distributions between two liquid phases."
-    },
-    {
-        id: 94,
-        course: "PGP 122",
-        topic: "Liquid-Liquid Extraction",
-        difficulty: "Easy",
-        question: "What is the extracting solvent expected to do in liquid–liquid extraction?",
-        options: [
-            "React with every component completely",
-            "Preferentially dissolve the component being recovered",
-            "Remain solid throughout the process",
-            "Prevent mass transfer between the phases"
-        ],
-        answer: 1,
-        explanation: "A suitable extracting solvent preferentially dissolves the target component and allows it to transfer into the solvent-rich phase."
-    },
-    {
-        id: 95,
-        course: "PGP 122",
-        topic: "Liquid-Liquid Extraction",
-        difficulty: "Medium",
-        question: "What does the distribution coefficient describe in liquid–liquid extraction?",
-        options: [
-            "The weight of the extraction vessel",
-            "The rotational speed of a pump",
-            "The equilibrium concentration ratio of a solute between the two liquid phases",
-            "The temperature of the laboratory"
-        ],
-        answer: 2,
-        explanation: "A distribution coefficient expresses the equilibrium ratio of a solute's concentrations in the two phases, using a defined convention."
-    },
-    {
-        id: 96,
-        course: "PGP 122",
-        topic: "Liquid-Liquid Extraction",
-        difficulty: "Medium",
-        question: "At equilibrium, a solute has a concentration of 12 g/L in the extract phase and 3 g/L in the other phase. If K = Cextract/Cother, what is K?",
-        options: ["0.25", "3", "9", "4"],
-        answer: 3,
-        explanation: "K = Cextract/Cother = 12/3 = 4."
-    },
-    {
-        id: 97,
-        course: "PGP 122",
-        topic: "Liquid-Liquid Extraction",
-        difficulty: "Medium",
-        question: "Why are two liquid phases required for conventional liquid–liquid extraction?",
-        options: [
-            "The solute must distribute between the phases according to its relative solubility",
-            "Both phases must always have identical compositions",
-            "The solute must be completely insoluble in both phases",
-            "The phases must both be solid at room temperature"
-        ],
-        answer: 0,
-        explanation: "Extraction relies on the solute distributing differently between two liquid phases, usually with limited mutual miscibility."
-    },
-    {
-        id: 98,
-        course: "PGP 122",
-        topic: "Liquid-Liquid Extraction",
-        difficulty: "Medium",
-        question: "What is the raffinate in liquid–liquid extraction?",
-        options: [
-            "The solid particles in a filter cake",
-            "The liquid phase remaining after the desired solute has been transferred into the extracting phase",
-            "The vapour produced during evaporation",
-            "The heating fluid inside a heat exchanger"
-        ],
-        answer: 1,
-        explanation: "The raffinate is the phase depleted in the extracted solute relative to the feed."
-    },
-    {
-        id: 99,
-        course: "PGP 122",
-        topic: "Liquid-Liquid Extraction",
-        difficulty: "Medium",
-        question: "What is the extract in liquid–liquid extraction?",
-        options: [
-            "The original feed vessel",
-            "The unprocessed solid",
-            "The solvent-rich phase containing the transferred solute",
-            "The vapour leaving an evaporator"
-        ],
-        answer: 2,
-        explanation: "The extract is the phase enriched in the transferred solute."
-    },
-    {
-        id: 100,
-        course: "PGP 122",
-        topic: "Liquid-Liquid Extraction",
-        difficulty: "Medium",
-        question: "Which equipment can be used for liquid–liquid extraction?",
-        options: [
-            "A domestic refrigerator only",
-            "A weighing balance only",
-            "A simple storage tank without contact between phases",
-            "A mixer-settler"
-        ],
-        answer: 3,
-        explanation: "A mixer-settler mixes the phases to promote mass transfer and then allows them to separate."
-    },
-    {
-        id: 101,
-        course: "PGP 122",
-        topic: "Filtration",
-        difficulty: "Easy",
-        question: "What is filtration?",
-        options: [
-            "Separating suspended solids from a fluid by passing the mixture through a porous medium",
-            "Dissolving all suspended solids in a solvent",
-            "Converting liquid into steam",
-            "Separating two dissolved liquids by their boiling points"
-        ],
-        answer: 0,
-        explanation: "Filtration retains suspended solids on or within a porous medium while the fluid passes through."
-    },
-    {
-        id: 102,
-        course: "PGP 122",
-        topic: "Filtration",
-        difficulty: "Easy",
-        question: "What is the filtrate?",
-        options: [
-            "The solid retained by the filter",
-            "The fluid that passes through the filter medium",
-            "The filter housing",
-            "The solid feed before filtration"
-        ],
-        answer: 1,
-        explanation: "The filtrate is the fluid collected after it passes through the filter medium."
-    },
-    {
-        id: 103,
-        course: "PGP 122",
-        topic: "Filtration",
-        difficulty: "Easy",
-        question: "What is a filter cake?",
-        options: [
-            "The liquid collected after filtration",
-            "The vapour above a liquid",
-            "The accumulated solids retained during filtration",
-            "The solvent used in leaching"
-        ],
-        answer: 2,
-        explanation: "A filter cake is the layer of retained solids that builds up on the filter medium."
-    },
-    {
-        id: 104,
-        course: "PGP 122",
-        topic: "Filtration",
-        difficulty: "Medium",
-        question: "What is the main function of a filter medium?",
-        options: [
-            "To heat the feed to its boiling point",
-            "To dissolve every particle in the feed",
-            "To create the chemical reaction being studied",
-            "To retain solids while allowing fluid to pass through"
-        ],
-        answer: 3,
-        explanation: "The filter medium provides a porous barrier that permits fluid passage while retaining solids."
-    },
-    {
-        id: 105,
-        course: "PGP 122",
-        topic: "Filtration",
-        difficulty: "Medium",
-        question: "What is the usual effect of increasing the pressure difference across a filter cake, assuming other conditions remain suitable?",
-        options: [
-            "It can increase the filtration rate",
-            "It always reduces the filtration rate to zero",
-            "It eliminates the solid particles",
-            "It converts the filtrate into a solid"
-        ],
-        answer: 0,
-        explanation: "A greater pressure difference can increase the driving force for filtration, although cake compression and other resistances may limit the improvement."
-    },
-    {
-        id: 106,
-        course: "PGP 122",
-        topic: "Filtration",
-        difficulty: "Medium",
-        question: "Why can filtration become slower as a cake builds up?",
-        options: [
-            "The liquid always becomes chemically pure",
-            "The cake adds resistance to fluid flow",
-            "The filter medium disappears immediately",
-            "Gravity stops acting on the liquid"
-        ],
-        answer: 1,
-        explanation: "The growing cake increases resistance to flow, often reducing the filtration rate at constant pressure."
-    },
-    {
-        id: 107,
-        course: "PGP 122",
-        topic: "Filtration",
-        difficulty: "Easy",
-        question: "Which device commonly uses a porous filter medium to separate solids from liquid?",
-        options: [
-            "A turbine blade",
-            "A condenser used only for vapour",
-            "A filter press",
-            "A combustion chamber"
-        ],
-        answer: 2,
-        explanation: "A filter press separates suspended solids from liquid by forcing the mixture through filter media."
-    },
-    {
-        id: 108,
-        course: "PGP 122",
-        topic: "Filtration",
-        difficulty: "Medium",
-        question: "A filtration operation produces 80 kg of dry solids from a feed containing 100 kg of suspended solids. What is the solids recovery?",
-        options: ["20%", "40%", "80%", "125%"],
-        answer: 2,
-        explanation: "Solids recovery = (80/100) × 100 = 80%."
-    },
-    {
-        id: 109,
-        course: "PGP 122",
-        topic: "Filtration",
-        difficulty: "Medium",
-        question: "A filter processes 120 L of liquid in 4 minutes at a constant average rate. What is the average volumetric flow rate?",
-        options: ["15 L/min", "20 L/min", "25 L/min", "30 L/min"],
-        answer: 3,
-        explanation: "Average flow rate = volume/time = 120/4 = 30 L/min."
-    },
-    {
-        id: 110,
-        course: "PGP 122",
-        topic: "Membrane Separation",
-        difficulty: "Easy",
-        question: "What is the basic principle of membrane separation?",
-        options: [
-            "A membrane selectively allows certain components to pass more readily than others",
-            "All components must pass through at exactly the same rate",
-            "The feed must always be completely vaporized",
-            "The process can only separate dry solids"
-        ],
-        answer: 0,
-        explanation: "Membrane separation uses selective transport through a membrane to separate components."
-    },
-    {
-        id: 111,
-        course: "PGP 122",
-        topic: "Membrane Separation",
-        difficulty: "Easy",
-        question: "What is permeate in a membrane separation process?",
-        options: [
-            "The material that cannot enter the feed tank",
-            "The portion that passes through the membrane",
-            "The solid casing surrounding the membrane",
-            "The material used to manufacture a pump"
-        ],
-        answer: 1,
-        explanation: "Permeate is the stream that passes through the membrane."
-    },
-    {
-        id: 112,
-        course: "PGP 122",
-        topic: "Membrane Separation",
-        difficulty: "Easy",
-        question: "What is retentate in a membrane process?",
-        options: [
-            "The stream that has completely evaporated",
-            "The heating steam",
-            "The stream retained on the feed side and enriched in rejected components",
-            "The clean permeate collected after the membrane"
-        ],
-        answer: 2,
-        explanation: "Retentate is the portion that does not pass through the membrane and is enriched in components rejected by it."
-    },
-    {
-        id: 113,
-        course: "PGP 122",
-        topic: "Membrane Separation",
-        difficulty: "Medium",
-        question: "Which membrane process is commonly used to remove many dissolved salts from water?",
-        options: [
-            "Ordinary sedimentation",
-            "Gravity thickening",
-            "Coarse screening",
-            "Reverse osmosis"
-        ],
-        answer: 3,
-        explanation: "Reverse osmosis uses applied pressure to drive water through a semipermeable membrane while rejecting much of the dissolved salt."
-    },
-    {
-        id: 114,
-        course: "PGP 122",
-        topic: "Membrane Separation",
-        difficulty: "Medium",
-        question: "Which membrane process is generally associated with removing suspended particles and many microorganisms?",
-        options: [
-            "Microfiltration",
-            "Simple evaporation",
-            "Crystallization",
-            "Liquid–liquid extraction"
-        ],
-        answer: 0,
-        explanation: "Microfiltration uses relatively large membrane pores to remove suspended particles and many microorganisms; performance depends on membrane characteristics and operating conditions."
-    },
-    {
-        id: 115,
-        course: "PGP 122",
-        topic: "Membrane Separation",
-        difficulty: "Medium",
-        question: "What does membrane flux measure?",
-        options: [
-            "The mass of the membrane housing",
-            "The amount of permeate passing through a unit membrane area per unit time",
-            "The number of valves in a plant",
-            "The colour difference between two liquids"
-        ],
-        answer: 1,
-        explanation: "Membrane flux is commonly expressed as permeate volume per membrane area per unit time."
-    },
-        {
-        id: 116,
-        course: "PGP 122",
-        topic: "Membrane Separation",
-        difficulty: "Medium",
-        question: "A membrane produces 24 L of permeate in 2 hours through an area of 3 m². What is the average flux?",
-        options: [
-            "2 L/(m²·h)",
-            "3 L/(m²·h)",
-            "4 L/(m²·h)",
-            "12 L/(m²·h)"
-        ],
-        answer: 2,
-        explanation: "Flux = permeate volume/(area × time) = 24/(3 × 2) = 4 L/(m²·h)."
-    },
-    {
-        id: 117,
-        course: "PGP 122",
-        topic: "Membrane Separation",
-        difficulty: "Medium",
-        question: "Which problem can reduce membrane performance during operation?",
-        options: [
-            "Correctly selecting the membrane",
-            "Membrane fouling by accumulated material",
-            "Maintaining suitable operating conditions",
-            "Using an appropriate pretreatment system"
-        ],
-        answer: 1,
-        explanation: "Fouling occurs when materials accumulate on or within the membrane, increasing resistance and reducing performance."
-    },
-    {
-        id: 118,
-        course: "PGP 122",
-        topic: "Membrane Separation",
-        difficulty: "Medium",
-        question: "What is one purpose of pretreatment before membrane separation?",
-        options: [
-            "To guarantee that every dissolved substance becomes a solid",
-            "To eliminate the need for monitoring",
-            "To reduce fouling and protect the membrane",
-            "To prevent the feed from contacting the membrane"
-        ],
-        answer: 2,
-        explanation: "Pretreatment removes or reduces problematic particles and substances that could foul or damage the membrane."
-    },
-    {
-        id: 119,
-        course: "PGP 122",
-        topic: "Evaporation",
-        difficulty: "Easy",
-        question: "What is the principal purpose of evaporation in process engineering?",
-        options: [
-            "To separate two solid particles by size",
-            "To transfer a solute from one liquid to another immiscible liquid",
-            "To remove suspended solids exclusively by a porous barrier",
-            "To concentrate a solution by vaporizing part of its solvent"
-        ],
-        answer: 3,
-        explanation: "Evaporation concentrates a solution by vaporizing some of its volatile solvent, commonly water."
-    },
-    {
-        id: 120,
-        course: "PGP 122",
-        topic: "Evaporation",
-        difficulty: "Medium",
-        question: "A feed of 100 kg contains 10% dissolved solids by mass. If the product contains 25% solids and no solids are lost, what is the product mass?",
-        options: ["40 kg", "25 kg", "50 kg", "75 kg"],
-        answer: 0,
-        explanation: "Solids in feed = 100 × 0.10 = 10 kg. Product mass = 10/0.25 = 40 kg."
-    }
+/* =========================================================
+   PGP 122 — SEPARATION PROCESS I
+   ========================================================= */
+
+{
+id:"pgp122-001",course:"PGP 122",topic:"Filtration",
+question:"In cake filtration, what happens to cake resistance as filtration proceeds?",
+options:["It decreases continuously","It remains zero","It increases as cake thickness increases","It becomes independent of cake thickness"],
+answer:2
+},
+{
+id:"pgp122-002",course:"PGP 122",topic:"Filtration",
+question:"Under constant-pressure filtration, which variable normally decreases with time?",
+options:["Pressure drop","Filtrate flow rate","Filter area","Fluid density"],
+answer:1
+},
+{
+id:"pgp122-003",course:"PGP 122",topic:"Filtration",
+question:"Under constant-rate filtration, what normally happens to the pressure drop as the cake builds up?",
+options:["It decreases","It remains constant","It increases","It becomes zero"],
+answer:2
+},
+{
+id:"pgp122-004",course:"PGP 122",topic:"Filtration",
+question:"The overall pressure drop during cake filtration is the sum of:",
+options:["Cake and medium pressure drops","Gravity and vapor pressure","Static and kinetic pressure only","Feed and discharge pressure only"],
+answer:0
+},
+{
+id:"pgp122-005",course:"PGP 122",topic:"Filtration",
+question:"Which resistance is particularly important at the beginning of cake filtration?",
+options:["Cake resistance","Filter-medium resistance","Vapor resistance","Thermal resistance"],
+answer:1
+},
+{
+id:"pgp122-006",course:"PGP 122",topic:"Membrane Separation",
+question:"The fundamental function of a semipermeable membrane is to:",
+options:["Heat the feed","Selectively control transport between phases","Increase particle density","Eliminate pressure differences"],
+answer:1
+},
+{
+id:"pgp122-007",course:"PGP 122",topic:"Membrane Separation",
+question:"Which property can determine whether a membrane retains a substance?",
+options:["Particle size","Color only","Boiling point only","Container volume only"],
+answer:0
+},
+{
+id:"pgp122-008",course:"PGP 122",topic:"Evaporation",
+question:"Boiling-point rise during evaporation is mainly associated with:",
+options:["Increasing concentration of dissolved material","Decreasing concentration","Increasing filter area","Reduction in viscosity to zero"],
+answer:0
+},
+{
+id:"pgp122-009",course:"PGP 122",topic:"Evaporation",
+question:"Why may an evaporator be operated under vacuum when processing heat-sensitive materials?",
+options:["To increase boiling temperature","To lower boiling temperature","To eliminate condensation","To increase atmospheric pressure"],
+answer:1
+},
+{
+id:"pgp122-010",course:"PGP 122",topic:"Evaporation",
+question:"Which evaporator arrangement reuses vapor from one effect as the heating medium for another?",
+options:["Single-effect evaporation","Multiple-effect evaporation","Batch filtration","Crossflow filtration"],
+answer:1
+},
+{
+id:"pgp122-011",course:"PGP 122",topic:"Evaporation",
+question:"In forward-feed multiple-effect evaporation, the feed generally moves:",
+options:["Opposite to vapor flow","In the same direction as vapor flow","Randomly between effects","Directly to the condenser"],
+answer:1
+},
+{
+id:"pgp122-012",course:"PGP 122",topic:"Agitation",
+question:"What is the principal purpose of baffles in an agitated tank?",
+options:["Increase vortex formation","Prevent gross vortexing","Stop heat transfer","Increase sedimentation"],
+answer:1
+},
+{
+id:"pgp122-013",course:"PGP 122",topic:"Agitation",
+question:"Baffles are generally less necessary for highly viscous liquids because:",
+options:["They contain no molecules","High shear already suppresses excessive rotary motion","Viscosity eliminates mixing","The liquid becomes gaseous"],
+answer:1
+},
+{
+id:"pgp122-014",course:"PGP 122",topic:"Mixing",
+question:"A double-cone mixer is particularly associated with:",
+options:["Free-flowing dry powders","Highly corrosive gases","Distillation of crude oil","Boiler blowdown"],
+answer:0
+},
+{
+id:"pgp122-015",course:"PGP 122",topic:"Mixing",
+question:"A typical batch filling level for a tumbling mixer is approximately:",
+options:["1–5%","10–20%","50–60%","95–100%"],
+answer:2
+},
+{
+id:"pgp122-016",course:"PGP 122",topic:"Mixing",
+question:"A twin-shell blender is characterized by:",
+options:["Two cylinders joined to form a V","A single vertical plate","A membrane cartridge","A distillation column"],
+answer:0
+},
+{
+id:"pgp122-017",course:"PGP 122",topic:"Mixing",
+question:"Fine, light powders can be continuously blended using an impact wheel primarily through:",
+options:["Centrifugal action","Gravity alone","Condensation","Crystallization"],
+answer:0
+},
+{
+id:"pgp122-018",course:"PGP 122",topic:"Evaporation",
+question:"Which of the following is NOT a major method of improving evaporator energy efficiency?",
+options:["Multiple effects","Vapor recompression","Heat-pump operation","Increasing unnecessary steam losses"],
+answer:3
+},
+{
+id:"pgp122-019",course:"PGP 122",topic:"Separation",
+question:"Mechanical separation differs from diffusional separation mainly because mechanical separation generally depends strongly on:",
+options:["Particle or phase physical properties","Chemical reaction rate only","Nuclear decay","Molecular synthesis"],
+answer:0
+},
+{
+id:"pgp122-020",course:"PGP 122",topic:"Filtration",
+question:"Which factor directly tends to increase filtration rate when other variables remain favorable?",
+options:["Greater filter area","Greater filtrate viscosity","Greater cake resistance","Lower pressure difference"],
+answer:0
+},
+{
+id:"pgp122-021",course:"PGP 122",topic:"Filtration",
+question:"If filtrate viscosity increases while all other conditions remain constant, filtration rate will generally:",
+options:["Increase","Decrease","Become infinite","Remain exactly unchanged"],
+answer:1
+},
+{
+id:"pgp122-022",course:"PGP 122",topic:"Membrane Separation",
+question:"A membrane that separates mainly because its pores exclude particles based on size is relying primarily on:",
+options:["Size exclusion","Combustion","Gravity settling","Thermal cracking"],
+answer:0
+},
+{
+id:"pgp122-023",course:"PGP 122",topic:"Evaporation",
+question:"The main purpose of evaporation in process engineering is usually to:",
+options:["Concentrate a solution by removing solvent","Separate solids by magnetism","Create a vacuum only","Measure density"],
+answer:0
+},
+{
+id:"pgp122-024",course:"PGP 122",topic:"Evaporation",
+question:"In a continuous evaporator, feed and product streams are generally:",
+options:["Both discontinuous","Continuously supplied and discharged","Never discharged","Only introduced once"],
+answer:1
+},
+{
+id:"pgp122-025",course:"PGP 122",topic:"Filtration",
+question:"If cake resistance becomes very large during constant-pressure filtration, the most direct effect is:",
+options:["Higher filtrate flow","Lower filtrate flow","Zero cake thickness","Higher solvent volatility"],
+answer:1
+},
+{
+id:"pgp122-026",course:"PGP 122",topic:"Filtration",
+question:"A filter cake is formed when particles:",
+options:["Accumulate on the filter medium surface","Vaporize completely","React with atmospheric nitrogen","Become gases"],
+answer:0
+},
+{
+id:"pgp122-027",course:"PGP 122",topic:"Evaporation",
+question:"A single-effect evaporator generally uses steam less efficiently than:",
+options:["A multiple-effect system","An empty vessel","A storage tank","A filter press"],
+answer:0
+},
+{
+id:"pgp122-028",course:"PGP 122",topic:"Agitation",
+question:"The primary purpose of an impeller in an agitated vessel is to:",
+options:["Generate fluid motion and mixing","Remove all dissolved gases","Filter suspended solids","Condense vapor"],
+answer:0
+},
+{
+id:"pgp122-029",course:"PGP 122",topic:"Separation",
+question:"Which operation would be most appropriate for removing suspended solid particles from a liquid slurry?",
+options:["Filtration","Catalytic reforming","Alkylation","Polymerization"],
+answer:0
+},
+{
+id:"pgp122-030",course:"PGP 122",topic:"Evaporation",
+question:"Why can scale formation become a serious evaporator problem?",
+options:["It reduces heat-transfer performance","It increases membrane selectivity","It eliminates boiling-point rise","It makes steam unnecessary"],
+answer:0
+},
+{
+id:"pgp122-031",course:"PGP 122",topic:"Calculations",
+question:"A filter has an area of 2 m² and produces 0.004 m³/s of filtrate. What is the superficial velocity?",
+options:["0.0005 m/s","0.002 m/s","0.008 m/s","0.5 m/s"],
+answer:1
+},
+{
+id:"pgp122-032",course:"PGP 122",topic:"Calculations",
+question:"If a filtration pressure drop is 150 kPa and the cake accounts for 90 kPa, what pressure drop occurs across the filter medium?",
+options:["40 kPa","50 kPa","60 kPa","240 kPa"],
+answer:2
+},
+
+/* =========================================================
+   PGP 123 — INDUSTRIAL UTILITIES
+   ========================================================= */
+
+{
+id:"pgp123-001",course:"PGP 123",topic:"Water Treatment",
+question:"Which ions are chiefly responsible for conventional hardness in water?",
+options:["Na⁺ and K⁺","Ca²⁺ and Mg²⁺","H⁺ and OH⁻","Cl⁻ and NO₃⁻"],
+answer:1
+},
+{
+id:"pgp123-002",course:"PGP 123",topic:"Water Treatment",
+question:"Temporary hardness is commonly associated with:",
+options:["Calcium and magnesium bicarbonates","Sodium chloride only","Silica only","Iron sulfide only"],
+answer:0
+},
+{
+id:"pgp123-003",course:"PGP 123",topic:"Water Treatment",
+question:"Permanent hardness is generally caused by calcium and magnesium:",
+options:["Bicarbonates only","Chlorides and sulfates","Hydroxides only","Gases"],
+answer:1
+},
+{
+id:"pgp123-004",course:"PGP 123",topic:"Boiler Water",
+question:"Why is dissolved oxygen undesirable in boiler feed water?",
+options:["It promotes corrosion","It prevents all scale formation","It increases steam purity","It reduces oxidation"],
+answer:0
+},
+{
+id:"pgp123-005",course:"PGP 123",topic:"Boiler Water",
+question:"Scale deposition on heat-transfer surfaces primarily causes:",
+options:["Improved heat transfer","Reduced heat transfer","Lower fuel consumption","Zero maintenance"],
+answer:1
+},
+{
+id:"pgp123-006",course:"PGP 123",topic:"Water Quality",
+question:"The pH of neutral water at ordinary conditions is approximately:",
+options:["0","5","7","14"],
+answer:2
+},
+{
+id:"pgp123-007",course:"PGP 123",topic:"Water Quality",
+question:"Which instrument is commonly used to measure water pH?",
+options:["pH meter","Rotameter","Bourdon gauge","Calorimeter only"],
+answer:0
+},
+{
+id:"pgp123-008",course:"PGP 123",topic:"Water Quality",
+question:"TDS represents:",
+options:["Total dissolved solids","Total dissolved steam","Thermal density standard","Total discharge speed"],
+answer:0
+},
+{
+id:"pgp123-009",course:"PGP 123",topic:"Water Quality",
+question:"According to the supplied material, the Nigerian drinking-water pH range is:",
+options:["2.0–4.0","4.5–6.0","6.5–8.5","10–14"],
+answer:2
+},
+{
+id:"pgp123-010",course:"PGP 123",topic:"Water Quality",
+question:"Which parameter is commonly expressed in NTU?",
+options:["Turbidity","pH","TDS","Dissolved oxygen"],
+answer:0
+},
+{
+id:"pgp123-011",course:"PGP 123",topic:"Wastewater",
+question:"The primary purpose of preliminary wastewater treatment is to:",
+options:["Remove large debris and grit","Sterilize every dissolved ion","Produce pharmaceutical-grade water","Increase organic loading"],
+answer:0
+},
+{
+id:"pgp123-012",course:"PGP 123",topic:"Wastewater",
+question:"Primary wastewater treatment relies strongly on:",
+options:["Gravity sedimentation","Catalytic cracking","Distillation","Polymerization"],
+answer:0
+},
+{
+id:"pgp123-013",course:"PGP 123",topic:"Wastewater",
+question:"Secondary wastewater treatment is mainly aimed at removing:",
+options:["Dissolved and colloidal organic matter biologically","Only large plastics","Only sand","Only radioactive materials"],
+answer:0
+},
+{
+id:"pgp123-014",course:"PGP 123",topic:"Wastewater",
+question:"Activated sludge treatment depends heavily on:",
+options:["Aerobic microorganisms","Crude oil distillation","Dry sand only","Metal casting"],
+answer:0
+},
+{
+id:"pgp123-015",course:"PGP 123",topic:"Wastewater",
+question:"A trickling filter uses a microbial:",
+options:["Biofilm","Membrane vacuum","Boiler tube","Crude fraction"],
+answer:0
+},
+{
+id:"pgp123-016",course:"PGP 123",topic:"Wastewater",
+question:"Tertiary treatment is generally used to:",
+options:["Remove remaining contaminants and polish effluent","Remove only large stones","Create raw sewage","Increase suspended solids"],
+answer:0
+},
+{
+id:"pgp123-017",course:"PGP 123",topic:"Water Treatment",
+question:"Reverse osmosis operates using:",
+options:["A semipermeable membrane","A combustion chamber","A cyclone furnace","A mechanical crusher"],
+answer:0
+},
+{
+id:"pgp123-018",course:"PGP 123",topic:"Water Treatment",
+question:"Which process removes contaminants by accumulating them on the surface of a solid?",
+options:["Adsorption","Absorption only","Combustion","Evaporation"],
+answer:0
+},
+{
+id:"pgp123-019",course:"PGP 123",topic:"Water Treatment",
+question:"Activated carbon is commonly used as a:",
+options:["Adsorbent","Boiler fuel","Heat exchanger tube","Catalyst support only"],
+answer:0
+},
+{
+id:"pgp123-020",course:"PGP 123",topic:"Disinfection",
+question:"Which is NOT a common disinfection method mentioned in the material?",
+options:["Chlorination","UV radiation","Ozonation","Catalytic reforming"],
+answer:3
+},
+{
+id:"pgp123-021",course:"PGP 123",topic:"Ion Exchange",
+question:"Cation exchange primarily involves exchange of:",
+options:["Positive ions","Negative ions only","Electrons only","Neutrons"],
+answer:0
+},
+{
+id:"pgp123-022",course:"PGP 123",topic:"Ion Exchange",
+question:"Anion exchange involves ions such as:",
+options:["OH⁻ and Cl⁻","Ca²⁺ only","Na⁺ only","H⁺ only"],
+answer:0
+},
+{
+id:"pgp123-023",course:"PGP 123",topic:"Aeration",
+question:"Aeration can help remove dissolved:",
+options:["H₂S and CO₂","Calcium metal only","Sand only","Plastic"],
+answer:0
+},
+{
+id:"pgp123-024",course:"PGP 123",topic:"Aeration",
+question:"Aeration can oxidize dissolved Fe²⁺ into:",
+options:["A more insoluble higher oxidation-state form","NaCl","H₂S","CO₂"],
+answer:0
+},
+{
+id:"pgp123-025",course:"PGP 123",topic:"Wastewater",
+question:"Untreated wastewater containing excess nutrients can promote:",
+options:["Algal blooms","Crude distillation","Membrane polymerization","Scale-free boilers"],
+answer:0
+},
+{
+id:"pgp123-026",course:"PGP 123",topic:"Wastewater",
+question:"Algal blooms can contribute to aquatic oxygen depletion because of:",
+options:["Excess nutrient loading and subsequent biological activity","Lower atmospheric pressure","Crude cracking","Ion exchange"],
+answer:0
+},
+{
+id:"pgp123-027",course:"PGP 123",topic:"Water Quality",
+question:"Which sample in the supplied assignment would be most suspicious as industrial wastewater because of very high TDS and BOD?",
+options:["Sample A","Sample B","Sample C","Sample E"],
+answer:3
+},
+{
+id:"pgp123-028",course:"PGP 123",topic:"Water Quality",
+question:"A water sample has pH 3.0. Relative to the recommended drinking-water range, it is:",
+options:["Acceptable","Too acidic","Too alkaline","Exactly neutral"],
+answer:1
+},
+{
+id:"pgp123-029",course:"PGP 123",topic:"Wastewater",
+question:"The sludge produced during wastewater treatment may be subjected to:",
+options:["Thickening and stabilization","Crude distillation only","Catalytic reforming","Gas compression only"],
+answer:0
+},
+{
+id:"pgp123-030",course:"PGP 123",topic:"Industrial Utilities",
+question:"Why is boiler feed-water purity critical?",
+options:["To reduce scaling, corrosion and foaming","To increase suspended solids","To make steam dirty","To increase sludge formation"],
+answer:0
+},
+
+/* =========================================================
+   PGP 124 — CALCULUS
+   ========================================================= */
+
+{
+id:"pgp124-001",course:"PGP 124",topic:"Limits",
+question:"Evaluate lim(x→2) (x² − 4)/(x − 2).",
+options:["0","2","4","Does not exist"],
+answer:2
+},
+{
+id:"pgp124-002",course:"PGP 124",topic:"Limits",
+question:"Evaluate lim(x→0) sin(x)/x.",
+options:["0","1","∞","Does not exist"],
+answer:1
+},
+{
+id:"pgp124-003",course:"PGP 124",topic:"Limits",
+question:"Evaluate lim(x→∞) (3x²+2)/(x²−5).",
+options:["0","1","3","∞"],
+answer:2
+},
+{
+id:"pgp124-004",course:"PGP 124",topic:"Differentiation",
+question:"If y = x³ − 5x² + 2x − 7, dy/dx is:",
+options:["3x²−10x+2","x²−10x+2","3x²−5x+2","3x−10"],
+answer:0
+},
+{
+id:"pgp124-005",course:"PGP 124",topic:"Differentiation",
+question:"Differentiate y = sin x.",
+options:["cos x","−cos x","tan x","−sin x"],
+answer:0
+},
+{
+id:"pgp124-006",course:"PGP 124",topic:"Differentiation",
+question:"Differentiate y = e^(3x).",
+options:["e^(3x)","3e^(3x)","3xe^(3x)","e^x"],
+answer:1
+},
+{
+id:"pgp124-007",course:"PGP 124",topic:"Differentiation",
+question:"If y = ln(x²+1), dy/dx equals:",
+options:["2x/(x²+1)","1/(x²+1)","2/(x²+1)","ln(2x)"],
+answer:0
+},
+{
+id:"pgp124-008",course:"PGP 124",topic:"Product Rule",
+question:"The derivative of uv is:",
+options:["u'v'","uv' + vu'","u'v − uv'","u/v"],
+answer:1
+},
+{
+id:"pgp124-009",course:"PGP 124",topic:"Quotient Rule",
+question:"Which expression represents d(u/v)/dx?",
+options:["(u'v−uv')/v²","u'v'","(u'v+uv')/v","uv"],
+answer:0
+},
+{
+id:"pgp124-010",course:"PGP 124",topic:"Chain Rule",
+question:"If y=(3x²+1)^5, dy/dx is:",
+options:["30x(3x²+1)^4","5(3x²+1)^4","15x(3x²+1)^5","30x(3x²+1)^5"],
+answer:0
+},
+{
+id:"pgp124-011",course:"PGP 124",topic:"Applications",
+question:"At a stationary point of y=f(x), assuming differentiability, which condition must hold?",
+options:["f(x)=0","f'(x)=0","f''(x)=0 always","x=0"],
+answer:1
+},
+{
+id:"pgp124-012",course:"PGP 124",topic:"Applications",
+question:"For f(x)=x²−6x+5, the x-coordinate of the stationary point is:",
+options:["1","2","3","6"],
+answer:2
+},
+{
+id:"pgp124-013",course:"PGP 124",topic:"Applications",
+question:"For f(x)=x²−6x+5, the stationary point is a:",
+options:["Maximum","Minimum","Point of inflection","Discontinuity"],
+answer:1
+},
+{
+id:"pgp124-014",course:"PGP 124",topic:"Second Derivative",
+question:"If f''(x)>0 at a stationary point, the point is generally classified as:",
+options:["Local maximum","Local minimum","Always an inflection point","Undefined"],
+answer:1
+},
+{
+id:"pgp124-015",course:"PGP 124",topic:"Integration",
+question:"∫x³ dx equals:",
+options:["3x²+C","x⁴/4+C","x³/3+C","4x³+C"],
+answer:1
+},
+{
+id:"pgp124-016",course:"PGP 124",topic:"Integration",
+question:"∫cos x dx equals:",
+options:["−sin x+C","sin x+C","tan x+C","−cos x+C"],
+answer:1
+},
+{
+id:"pgp124-017",course:"PGP 124",topic:"Integration",
+question:"∫e^x dx equals:",
+options:["xe^x+C","e^x+C","ln x+C","x²e^x+C"],
+answer:1
+},
+{
+id:"pgp124-018",course:"PGP 124",topic:"Integration",
+question:"∫1/x dx equals:",
+options:["x²/2+C","ln|x|+C","1/x²+C","e^x+C"],
+answer:1
+},
+{
+id:"pgp124-019",course:"PGP 124",topic:"Definite Integration",
+question:"Evaluate ∫₀² x dx.",
+options:["1","2","4","8"],
+answer:1
+},
+{
+id:"pgp124-020",course:"PGP 124",topic:"Definite Integration",
+question:"Evaluate ∫₀¹ 3x² dx.",
+options:["1","2","3","1/3"],
+answer:0
+},
+{
+id:"pgp124-021",course:"PGP 124",topic:"Integration",
+question:"Which technique is especially useful for integrating a product such as x e^x?",
+options:["Integration by parts","Long division only","Implicit differentiation","The quotient rule"],
+answer:0
+},
+{
+id:"pgp124-022",course:"PGP 124",topic:"Integration",
+question:"In integration by parts, ∫u dv =",
+options:["uv − ∫v du","uv + ∫v du","u/v","u'v'"],
+answer:0
+},
+{
+id:"pgp124-023",course:"PGP 124",topic:"Differential Equations",
+question:"The order of a differential equation is determined by the:",
+options:["Highest derivative present","Largest coefficient","Number of variables only","Constant term"],
+answer:0
+},
+{
+id:"pgp124-024",course:"PGP 124",topic:"Differential Equations",
+question:"The general solution of dy/dx = 3x² is:",
+options:["y=3x³+C","y=x³+C","y=x²+C","y=6x+C"],
+answer:1
+},
+{
+id:"pgp124-025",course:"PGP 124",topic:"Limits",
+question:"If the left-hand and right-hand limits at x=a are unequal, the two-sided limit:",
+options:["Must equal zero","Does not exist","Must equal one","Must be infinite"],
+answer:1
+},
+{
+id:"pgp124-026",course:"PGP 124",topic:"Continuity",
+question:"A function is continuous at x=a when, among other requirements:",
+options:["lim f(x)=f(a)","f(a)=0","f'(a)=0","a must equal 1"],
+answer:0
+},
+{
+id:"pgp124-027",course:"PGP 124",topic:"Partial Differentiation",
+question:"If z=x²y+3y², ∂z/∂x is:",
+options:["2xy","x²+6y","2x+3y","x²y"],
+answer:0
+},
+{
+id:"pgp124-028",course:"PGP 124",topic:"Partial Differentiation",
+question:"If z=x²y+3y², ∂z/∂y is:",
+options:["2xy","x²+6y","2x+3y","x²"],
+answer:1
+},
+{
+id:"pgp124-029",course:"PGP 124",topic:"Applications",
+question:"If displacement is s(t), velocity is obtained by:",
+options:["ds/dt","d²s/dt² only","∫s dt","s²"],
+answer:0
+},
+{
+id:"pgp124-030",course:"PGP 124",topic:"Applications",
+question:"If velocity is v(t), acceleration is:",
+options:["∫v dt","dv/dt","v²","1/v"],
+answer:1
+},
+{
+id:"pgp124-031",course:"PGP 124",topic:"Optimization",
+question:"A rectangular enclosure has fixed perimeter. The maximum area occurs when the rectangle is:",
+options:["Extremely long and narrow","A square","A triangle","A circle"],
+answer:1
+},
+{
+id:"pgp124-032",course:"PGP 124",topic:"Integration",
+question:"If F'(x)=f(x), then ∫ₐᵇ f(x)dx equals:",
+options:["F(a)+F(b)","F(b)−F(a)","F(a)−F(b) always","F'(b)−F'(a)"],
+answer:1
+},
+{
+id:"pgp124-033",course:"PGP 124",topic:"Differentiation",
+question:"Differentiate x² sin x.",
+options:["2x sin x+x² cos x","2x cos x","x² sin x","2x sin x"],
+answer:0
+},
+{
+id:"pgp124-034",course:"PGP 124",topic:"Differentiation",
+question:"Differentiate ln(sin x).",
+options:["tan x","cot x","sin x","cos x"],
+answer:1
+},
+{
+id:"pgp124-035",course:"PGP 124",topic:"Integration",
+question:"∫2x/(x²+1) dx equals:",
+options:["ln(x²+1)+C","2ln(x)+C","x²+1+C","1/(x²+1)+C"],
+answer:0
+},
+{
+id:"pgp124-036",course:"PGP 124",topic:"Limits",
+question:"Evaluate lim(x→∞) (5x+1)/(2x−3).",
+options:["0","2/5","5/2","∞"],
+answer:2
+},
+{
+id:"pgp124-037",course:"PGP 124",topic:"Series",
+question:"For a geometric series with first term a and common ratio r, convergence requires:",
+options:["|r|<1","r>1","r=2 only","|r|>1"],
+answer:0
+},
+{
+id:"pgp124-038",course:"PGP 124",topic:"Applications",
+question:"The area under y=f(x) between x=a and x=b is represented by:",
+options:["∫ₐᵇ f(x)dx","f'(b)-f'(a)","f(a)+f(b)","∫f'(x)dx only"],
+answer:0
+},
+{
+id:"pgp124-039",course:"PGP 124",topic:"Calculus",
+question:"A point where concavity changes sign may be identified as a:",
+options:["Stationary point necessarily","Point of inflection","Maximum necessarily","Root necessarily"],
+answer:1
+},
+{
+id:"pgp124-040",course:"PGP 124",topic:"Calculus",
+question:"If f'(x)>0 throughout an interval, f is:",
+options:["Decreasing","Increasing","Constant necessarily","Undefined"],
+answer:1
+},
+
+/* =========================================================
+   PGP 125 — PETROLEUM / PETROCHEMICAL PROCESS CHEMISTRY
+   ========================================================= */
+
+{
+id:"pgp125-001",course:"PGP 125",topic:"Crude Oil",
+question:"Atmospheric crude distillation primarily separates crude oil according to differences in:",
+options:["Boiling range and volatility","Color only","Magnetic susceptibility","Electrical conductivity"],
+answer:0
+},
+{
+id:"pgp125-002",course:"PGP 125",topic:"Crude Distillation",
+question:"Before atmospheric distillation, crude oil is commonly subjected to:",
+options:["Desalting and dehydration","Polymerization only","Freezing","Catalytic reforming only"],
+answer:0
+},
+{
+id:"pgp125-003",course:"PGP 125",topic:"Crude Distillation",
+question:"The approximate crude preheat/furnace temperature mentioned in the material is:",
+options:["40–60°C","100–150°C","340–380°C","700–900°C"],
+answer:2
+},
+{
+id:"pgp125-004",course:"PGP 125",topic:"Petroleum Characterization",
+question:"API gravity is inversely related to:",
+options:["Specific gravity","Boiling point only","Viscosity only","Sulfur concentration only"],
+answer:0
+},
+{
+id:"pgp125-005",course:"PGP 125",topic:"Petroleum Characterization",
+question:"Using API gravity, a crude oil above about 31.1° API is classified as:",
+options:["Heavy","Medium","Light","Extra-heavy"],
+answer:2
+},
+{
+id:"pgp125-006",course:"PGP 125",topic:"Petroleum Characterization",
+question:"Extra-heavy crude is generally characterized by API gravity:",
+options:["Above 50","31.1–50","22.3–31.1","Below 10"],
+answer:3
+},
+{
+id:"pgp125-007",course:"PGP 125",topic:"Petroleum Characterization",
+question:"The API gravity equation uses specific gravity at:",
+options:["0°C/0°C","60°F/60°F","100°C/100°C","25°C/100°F"],
+answer:1
+},
+{
+id:"pgp125-008",course:"PGP 125",topic:"VLE",
+question:"According to Raoult's law for an ideal solution, a component's partial pressure is related to its:",
+options:["Liquid mole fraction and vapor pressure","Density only","Viscosity only","API gravity only"],
+answer:0
+},
+{
+id:"pgp125-009",course:"PGP 125",topic:"VLE",
+question:"A component with higher vapor pressure at a given temperature tends to:",
+options:["Prefer the vapor phase","Prefer the solid phase","Remain completely in liquid","Have zero volatility"],
+answer:0
+},
+{
+id:"pgp125-010",course:"PGP 125",topic:"Cracking",
+question:"Thermal cracking converts heavier hydrocarbons into:",
+options:["Smaller hydrocarbon molecules","Only water","Only oxygen","Metal salts"],
+answer:0
+},
+{
+id:"pgp125-011",course:"PGP 125",topic:"Catalytic Reforming",
+question:"A major objective of catalytic reforming is to produce:",
+options:["Higher-octane components","Raw sewage","Boiler feed water","Heavy metals"],
+answer:0
+},
+{
+id:"pgp125-012",course:"PGP 125",topic:"Alkylation",
+question:"Alkylation in petroleum refining is used to produce:",
+options:["High-quality branched hydrocarbons for gasoline blending","Boiler scale","Wastewater sludge","Crude salts"],
+answer:0
+},
+{
+id:"pgp125-013",course:"PGP 125",topic:"Isomerization",
+question:"Hydrocarbon isomerization changes:",
+options:["Molecular arrangement without fundamentally changing molecular formula","Carbon into oxygen","Liquid into metal","Water into crude oil"],
+answer:0
+},
+{
+id:"pgp125-014",course:"PGP 125",topic:"Vacuum Residue",
+question:"Which is a possible processing route for vacuum residue?",
+options:["Visbreaking","Drinking-water chlorination","Ion exchange","Aeration only"],
+answer:0
+},
+{
+id:"pgp125-015",course:"PGP 125",topic:"Vacuum Residue",
+question:"Delayed coking is primarily associated with processing:",
+options:["Heavy/residual hydrocarbon streams","Pure drinking water","Light gases only","Laboratory glassware"],
+answer:0
+},
+{
+id:"pgp125-016",course:"PGP 125",topic:"Corrosion",
+question:"Naphthenic acids are important in refinery operations because they can contribute to:",
+options:["Corrosion","Water hardness only","Polymerization of glass","Membrane filtration"],
+answer:0
+},
+{
+id:"pgp125-017",course:"PGP 125",topic:"Petroleum",
+question:"Which generally indicates a lighter crude oil?",
+options:["Higher API gravity","Lower API gravity","Higher density only","Higher residue always"],
+answer:0
+},
+{
+id:"pgp125-018",course:"PGP 125",topic:"Petroleum",
+question:"Specific gravity of petroleum liquid is defined relative to the density of:",
+options:["Water at the reference temperature","Mercury at 100°C","Air at 0°C only","Crude oil at 500°C"],
+answer:0
+},
+{
+id:"pgp125-019",course:"PGP 125",topic:"Petroleum",
+question:"Which property directly measures resistance of a fluid to flow?",
+options:["Viscosity","API gravity","Vapor pressure only","Boiling point only"],
+answer:0
+},
+{
+id:"pgp125-020",course:"PGP 125",topic:"Refining",
+question:"Which sequence best represents major refinery operations?",
+options:["Distillation → conversion → treating/blending","Blending → freezing → filtration only","Water treatment → ion exchange → aeration","Polymerization → sewage treatment"],
+answer:0
+},
+{
+id:"pgp125-021",course:"PGP 125",topic:"Distillation",
+question:"In a distillation column, more volatile components tend to become concentrated toward the:",
+options:["Vapor phase and upper sections","Bottom liquid only","Solid phase","Feed pump"],
+answer:0
+},
+{
+id:"pgp125-022",course:"PGP 125",topic:"Crude Oil",
+question:"Why is crude oil described as a complex mixture?",
+options:["It contains many hydrocarbon families and other compounds","It contains only methane","It contains only one pure substance","It contains no heteroatoms"],
+answer:0
+},
+{
+id:"pgp125-023",course:"PGP 125",topic:"Environmental Chemistry",
+question:"Phenols and cresylic acids in petroleum processing are important partly because they can be:",
+options:["Environmental contaminants","Boiler fuels only","Membrane materials","Cooling-water gases"],
+answer:0
+},
+{
+id:"pgp125-024",course:"PGP 125",topic:"Distillation",
+question:"If two components have substantially different volatilities, distillation can separate them because:",
+options:["Their vapor-liquid distributions differ","They have identical vapor pressures","They cannot enter vapor phase","They have identical boiling points"],
+answer:0
+},
+{
+id:"pgp125-025",course:"PGP 125",topic:"API Gravity",
+question:"Using API = 141.5/SG − 131.5, the approximate API gravity for SG = 0.85 is:",
+options:["20.0","35.0","45.0","60.0"],
+answer:1
+},
+{
+id:"pgp125-026",course:"PGP 125",topic:"Refining",
+question:"Which process is primarily a separation process rather than a chemical conversion?",
+options:["Atmospheric distillation","Thermal cracking","Catalytic reforming","Alkylation"],
+answer:0
+},
+{
+id:"pgp125-027",course:"PGP 125",topic:"Refining",
+question:"Catalytic cracking differs from simple physical distillation because catalytic cracking:",
+options:["Changes hydrocarbon molecular structures","Only sorts molecules by boiling point","Does not alter hydrocarbons","Only removes water"],
+answer:0
+},
+{
+id:"pgp125-028",course:"PGP 125",topic:"Petroleum",
+question:"A decrease in specific gravity generally corresponds to:",
+options:["An increase in API gravity","A decrease in API gravity","No API change","Infinite viscosity"],
+answer:0
+},
+{
+id:"pgp125-029",course:"PGP 125",topic:"Refining",
+question:"Which operation can improve gasoline octane by rearranging hydrocarbon structures?",
+options:["Catalytic reforming","Sedimentation","Filtration","Aeration"],
+answer:0
+},
+{
+id:"pgp125-030",course:"PGP 125",topic:"Refining",
+question:"The central difference between physical separation and chemical conversion is that chemical conversion:",
+options:["Changes molecular structures","Only separates existing molecules","Never requires energy","Cannot involve catalysts"],
+answer:0
+},
+
+/* =========================================================
+   GLT — GENERAL LABORATORY TECHNOLOGY
+   ========================================================= */
+
+{
+id:"glt-001",course:"GLT",topic:"Laboratory Safety",
+question:"The primary purpose of laboratory safety rules is to:",
+options:["Prevent accidents and minimize exposure to hazards","Increase experiment time","Make equipment heavier","Reduce accuracy"],
+answer:0
+},
+{
+id:"glt-002",course:"GLT",topic:"Laboratory Safety",
+question:"Which PPE is most directly intended to protect the eyes from chemical splashes?",
+options:["Safety goggles","Lab coat","Safety shoes","Ear plugs"],
+answer:0
+},
+{
+id:"glt-003",course:"GLT",topic:"Measurement",
+question:"The SI base unit of amount of substance is:",
+options:["Kilogram","Mole","Liter","Newton"],
+answer:1
+},
+{
+id:"glt-004",course:"GLT",topic:"Measurement",
+question:"Which instrument is generally more appropriate for accurately delivering a measured small volume than a beaker?",
+options:["Volumetric pipette","Evaporating dish","Watch glass","Mortar"],
+answer:0
+},
+{
+id:"glt-005",course:"GLT",topic:"Measurement",
+question:"A volumetric flask is primarily designed to:",
+options:["Prepare a solution to a precise volume","Heat solids to red heat","Measure gas pressure","Separate crude fractions"],
+answer:0
+},
+{
+id:"glt-006",course:"GLT",topic:"Measurement",
+question:"A burette is commonly used in:",
+options:["Titration","Drying solids only","Filtration only","Grinding"],
+answer:0
+},
+{
+id:"glt-007",course:"GLT",topic:"Titration",
+question:"The equivalence point in a titration is the point at which:",
+options:["Stoichiometrically equivalent amounts have reacted","The solution necessarily becomes neutral","The indicator is always colorless","No reaction has occurred"],
+answer:0
+},
+{
+id:"glt-008",course:"GLT",topic:"Accuracy",
+question:"Accuracy refers primarily to:",
+options:["Closeness to the true value","Repeatability only","Number of decimal places","Speed of measurement"],
+answer:0
+},
+{
+id:"glt-009",course:"GLT",topic:"Precision",
+question:"Precision refers primarily to:",
+options:["Closeness of repeated measurements to one another","Closeness to an accepted value only","The size of equipment","Chemical purity"],
+answer:0
+},
+{
+id:"glt-010",course:"GLT",topic:"Errors",
+question:"A systematic error tends to:",
+options:["Produce a consistent bias in measurements","Occur randomly with no pattern","Always cancel out","Make measurement impossible"],
+answer:0
+},
+{
+id:"glt-011",course:"GLT",topic:"Errors",
+question:"Random error is best reduced by:",
+options:["Repeated measurements and statistical treatment","Changing the units only","Ignoring all readings","Using less precise equipment"],
+answer:0
+},
+{
+id:"glt-012",course:"GLT",topic:"Laboratory Safety",
+question:"When diluting concentrated acid, the safer general practice is to:",
+options:["Add acid slowly to water","Add water rapidly to acid","Heat the acid first","Pour both simultaneously"],
+answer:0
+},
+{
+id:"glt-013",course:"GLT",topic:"Laboratory Safety",
+question:"Why should a laboratory fume hood be used for volatile hazardous chemicals?",
+options:["It removes or controls hazardous vapors","It increases chemical concentration","It sterilizes glassware","It measures pH"],
+answer:0
+},
+{
+id:"glt-014",course:"GLT",topic:"Glassware",
+question:"Which item is most suitable for observing a reaction while providing approximate volume measurements?",
+options:["Beaker","Volumetric flask","Burette","Pipette"],
+answer:0
+},
+{
+id:"glt-015",course:"GLT",topic:"Glassware",
+question:"A graduated cylinder is generally used for:",
+options:["Measuring liquid volume","Performing high-pressure reactions","Filtering gases","Measuring electrical resistance"],
+answer:0
+},
+{
+id:"glt-016",course:"GLT",topic:"Laboratory Techniques",
+question:"Filtration is primarily used to separate:",
+options:["An insoluble solid from a fluid","Two completely miscible gases","Two identical liquids","Dissolved ions by boiling alone"],
+answer:0
+},
+{
+id:"glt-017",course:"GLT",topic:"Laboratory Techniques",
+question:"Centrifugation separates particles mainly by exploiting differences in:",
+options:["Sedimentation behavior under centrifugal force","Color","Odor","Boiling point only"],
+answer:0
+},
+{
+id:"glt-018",course:"GLT",topic:"Laboratory Techniques",
+question:"Decantation is most appropriate when:",
+options:["A liquid can be poured away from settled solids","Two gases must be separated","A solution requires exact titration","A solid must be vaporized"],
+answer:0
+},
+{
+id:"glt-019",course:"GLT",topic:"Laboratory Techniques",
+question:"Distillation separates components mainly because of differences in:",
+options:["Volatility/boiling point","Magnetic properties","Color","Particle shape only"],
+answer:0
+},
+{
+id:"glt-020",course:"GLT",topic:"Laboratory Techniques",
+question:"Recrystallization is commonly used to:",
+options:["Purify a crystalline solid","Measure pressure","Determine gas velocity","Remove all water from air"],
+answer:0
+},
+{
+id:"glt-021",course:"GLT",topic:"Laboratory Safety",
+question:"A chemical container label should normally include:",
+options:["Chemical identity and relevant hazard information","Only the owner's name","Only the purchase price","Nothing if the solution is clear"],
+answer:0
+},
+{
+id:"glt-022",course:"GLT",topic:"Laboratory Safety",
+question:"If a chemical splashes into the eye, the first appropriate response is generally to:",
+options:["Immediately flush with plenty of water using the eyewash","Rub the eye","Close the eye and continue working","Apply oil"],
+answer:0
+},
+{
+id:"glt-023",course:"GLT",topic:"Measurements",
+question:"If an instrument has a smaller least count, it generally permits:",
+options:["Finer measurement resolution","Less measurement information","Lower resolution","No measurement"],
+answer:0
+},
+{
+id:"glt-024",course:"GLT",topic:"Laboratory Calculations",
+question:"A sample has mass 25 g and volume 5 cm³. Its density is:",
+options:["2 g/cm³","5 g/cm³","10 g/cm³","125 g/cm³"],
+answer:1
+},
+{
+id:"glt-025",course:"GLT",topic:"Laboratory Calculations",
+question:"If 10 mL of a 2 M solution is diluted to 100 mL, the final concentration is:",
+options:["0.02 M","0.2 M","2 M","20 M"],
+answer:1
+},
+{
+id:"glt-026",course:"GLT",topic:"Laboratory Calculations",
+question:"The dilution relationship commonly used for simple solution dilution is:",
+options:["C₁V₁=C₂V₂","PV=nRT only","F=ma","Q=mcΔT"],
+answer:0
+},
+{
+id:"glt-027",course:"GLT",topic:"Laboratory Technology",
+question:"A balance should normally be zeroed/tared before:",
+options:["Measuring sample mass","Heating a solution","Filtering water","Opening a fume hood"],
+answer:0
+},
+{
+id:"glt-028",course:"GLT",topic:"Laboratory Safety",
+question:"Why should cracked laboratory glassware generally not be used?",
+options:["It may fail unexpectedly and cause injury or contamination","It improves accuracy","It increases strength","It sterilizes the sample"],
+answer:0
+},
+{
+id:"glt-029",course:"GLT",topic:"Laboratory Practice",
+question:"Good laboratory practice requires experimental observations to be:",
+options:["Recorded accurately and promptly","Memorized and written days later","Changed to match expected results","Ignored if unexpected"],
+answer:0
+},
+{
+id:"glt-030",course:"GLT",topic:"Laboratory Practice",
+question:"If an experimental result disagrees with the expected result, the best scientific response is to:",
+options:["Investigate possible causes and report the actual result","Change the result","Delete the experiment","Guess the expected value"],
+answer:0
+},
+{
+id:"glt-031",course:"GLT",topic:"Laboratory Safety",
+question:"Which action is unsafe in a laboratory?",
+options:["Pipetting by mouth","Wearing PPE","Labeling samples","Disposing waste properly"],
+answer:0
+},
+{
+id:"glt-032",course:"GLT",topic:"Laboratory Technology",
+question:"Calibration is performed primarily to:",
+options:["Compare an instrument's response with a known standard","Increase sample mass","Change chemical composition","Clean glassware"],
+answer:0
+},
+{
+id:"glt-033",course:"GLT",topic:"Laboratory Calculations",
+question:"A thermometer reads 25.0°C when the accepted value is 24.5°C. The absolute error is:",
+options:["0.05°C","0.5°C","1.5°C","49.5°C"],
+answer:1
+},
+{
+id:"glt-034",course:"GLT",topic:"Laboratory Practice",
+question:"The number of significant figures in 0.00450 is:",
+options:["2","3","4","5"],
+answer:1
+},
+{
+id:"glt-035",course:"GLT",topic:"Laboratory Practice",
+question:"Which is most important when transferring a sample between labeled containers?",
+options:["Preventing contamination and ensuring correct identification","Changing its color","Increasing its temperature unnecessarily","Removing the label"],
+answer:0
+},
+{
+id:"glt-036",course:"GLT",topic:"Laboratory Safety",
+question:"Chemical waste should generally be:",
+options:["Disposed of according to its hazard class and laboratory procedure","Poured into any sink","Mixed together randomly","Stored in drinking bottles"],
+answer:0
+},
+{
+id:"glt-037",course:"GLT",topic:"Laboratory Techniques",
+question:"A desiccator is primarily used to:",
+options:["Keep substances dry using a drying environment","Measure pressure","Distill crude oil","Perform titration"],
+answer:0
+},
+{
+id:"glt-038",course:"GLT",topic:"Laboratory Techniques",
+question:"The meniscus should normally be read at eye level to reduce:",
+options:["Parallax error","Chemical reaction","Evaporation","Density"],
+answer:0
+},
+{
+id:"glt-039",course:"GLT",topic:"Laboratory Techniques",
+question:"For most aqueous solutions in standard glassware, the lower meniscus is commonly used for volume reading because:",
+options:["It provides a consistent reference","It increases concentration","It eliminates calibration","It changes the density"],
+answer:0
+},
+{
+id:"glt-040",course:"GLT",topic:"Laboratory Practice",
+question:"A control experiment is useful because it:",
+options:["Provides a basis for comparison with the experimental condition","Guarantees the desired result","Eliminates all errors","Makes measurements unnecessary"],
+answer:0
+}
+
+/* =========================================================
+   END OF QUESTION BANK
+   ========================================================= */
 
 ];
+
+console.log(
+    "PNGPD LIFE question bank loaded:",
+    window.PNGPD_QUESTIONS.length,
+    "questions"
+);
