@@ -6,789 +6,261 @@
 <title>PNGPD LIFE 2.0</title>
 
 <style>
-*{
-    box-sizing:border-box;
-}
-
+*{box-sizing:border-box}
 html,body{
-    margin:0;
-    width:100%;
-    height:100%;
-    overflow:hidden;
-    font-family:Arial,sans-serif;
-    background:#111;
+    margin:0;width:100%;height:100%;overflow:hidden;
+    font-family:Arial,sans-serif;background:#111;
 }
-
-button{
-    font:inherit;
-    cursor:pointer;
-    border:0;
-}
-
-.screen{
-    position:fixed;
-    inset:0;
-}
-
-/* ================= SPLASH ================= */
+button{font:inherit;cursor:pointer;border:0}
+.screen{position:fixed;inset:0}
 
 #splash{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    color:white;
-    background:
-        linear-gradient(
-            135deg,
-            #ff1744,
-            #ff6d00,
-            #7b1fa2
-        );
+    display:flex;align-items:center;justify-content:center;
+    text-align:center;color:white;
+    background:linear-gradient(135deg,#ff1744,#ff6d00,#7b1fa2);
 }
-
-.splash-box{
-    padding:35px;
-}
-
+.splash-box{padding:35px}
 .logo{
-    font-size:55px;
-    font-weight:900;
-    letter-spacing:3px;
+    font-size:55px;font-weight:900;letter-spacing:3px;
     text-shadow:0 6px 15px #0006;
 }
-
-.subtitle{
-    margin-top:8px;
-    font-size:16px;
-}
-
+.subtitle{margin-top:8px;font-size:16px}
 .start-btn{
-    margin-top:30px;
-    padding:15px 36px;
-    border-radius:30px;
-    background:white;
-    color:#e91e63;
-    font-weight:900;
-    font-size:17px;
+    margin-top:30px;padding:15px 36px;border-radius:30px;
+    background:white;color:#e91e63;font-weight:900;font-size:17px;
 }
-
-/* ================= AUTH ================= */
 
 #auth{
-    display:none;
-    align-items:center;
-    justify-content:center;
-    background:
-        linear-gradient(
-            135deg,
-            #ff1744,
-            #ff9100
-        );
+    display:none;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,#ff1744,#ff9100);
 }
-
 .auth-card{
-    width:min(92%,400px);
-    background:white;
-    padding:25px;
-    border-radius:25px;
-    box-shadow:0 25px 70px #0006;
+    width:min(92%,400px);background:white;padding:25px;
+    border-radius:25px;box-shadow:0 25px 70px #0006;
 }
-
-.auth-card h2{
-    color:#d81b60;
-    margin-top:0;
-}
-
+.auth-card h2{color:#d81b60;margin-top:0}
 .auth-card input{
-    width:100%;
-    padding:14px;
-    margin:7px 0;
-    border:2px solid #eee;
-    border-radius:12px;
-    outline:none;
+    width:100%;padding:14px;margin:7px 0;
+    border:2px solid #eee;border-radius:12px;outline:none;
 }
-
 .auth-btn{
-    width:100%;
-    padding:14px;
-    margin-top:10px;
-    border-radius:12px;
-    background:#e91e63;
-    color:white;
-    font-weight:900;
+    width:100%;padding:14px;margin-top:10px;border-radius:12px;
+    background:#e91e63;color:white;font-weight:900;
 }
 
-/* ================= GAME ================= */
-
-#game{
-    display:none;
-    background:#78c84a;
-}
-
+#game{display:none;background:#78c84a}
 #viewport{
-    position:absolute;
-    inset:0;
-    overflow:hidden;
-    touch-action:none;
-    background:#78c84a;
+    position:absolute;inset:0;overflow:hidden;
+    touch-action:none;background:#78c84a;
 }
-
 #world{
-    position:absolute;
-    width:1800px;
-    height:1200px;
-    left:0;
-    top:0;
-    transform-origin:0 0;
-    background:#78c84a;
+    position:absolute;width:1800px;height:1200px;
+    left:0;top:0;transform-origin:0 0;background:#78c84a;
 }
-
 .grass{
-    position:absolute;
-    inset:0;
-    background:
-        radial-gradient(
-            circle,
-            #ffffff22 0 2px,
-            transparent 3px
-        );
+    position:absolute;inset:0;
+    background:radial-gradient(circle,#ffffff22 0 2px,transparent 3px);
     background-size:35px 35px;
 }
 
-/* ================= ROADS ================= */
-
-.road{
-    position:absolute;
-    background:#777;
-}
-
-.road.horizontal{
-    width:100%;
-    height:120px;
-}
-
-.road.vertical{
-    height:100%;
-    width:120px;
-}
-
+.road{position:absolute;background:#777}
+.road.horizontal{width:100%;height:120px}
+.road.vertical{height:100%;width:120px}
 .road.horizontal::after{
-    content:"";
-    position:absolute;
-    left:0;
-    right:0;
-    top:57px;
-    height:6px;
-    background:#ffd740;
+    content:"";position:absolute;left:0;right:0;top:57px;
+    height:6px;background:#ffd740;
 }
-
 .road.vertical::after{
-    content:"";
-    position:absolute;
-    top:0;
-    bottom:0;
-    left:57px;
-    width:6px;
-    background:#ffd740;
+    content:"";position:absolute;top:0;bottom:0;left:57px;
+    width:6px;background:#ffd740;
 }
-
-/* ================= PATHS ================= */
 
 .path{
-    position:absolute;
-    background:#d8b57a;
-    border-radius:30px;
+    position:absolute;background:#d8b57a;border-radius:30px;
 }
-
-/* ================= TREES ================= */
 
 .tree{
-    position:absolute;
-    width:48px;
-    height:48px;
-    border-radius:50%;
-    background:#188038;
-    border:6px solid #0b5d2a;
+    position:absolute;width:48px;height:48px;border-radius:50%;
+    background:#188038;border:6px solid #0b5d2a;
     box-shadow:0 8px 0 #795548;
 }
-
 .tree::after{
-    content:"";
-    position:absolute;
-    width:12px;
-    height:20px;
-    left:12px;
-    top:34px;
-    background:#795548;
+    content:"";position:absolute;width:12px;height:20px;
+    left:12px;top:34px;background:#795548;
 }
-
-/* ================= BUILDINGS ================= */
 
 .building{
-    position:absolute;
-    width:240px;
-    height:180px;
-
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-
-    border:7px solid white;
-    border-radius:25px;
-
-    color:white;
-    text-align:center;
-
-    box-shadow:
-        0 12px 25px #0005;
-
-    cursor:pointer;
-    user-select:none;
-
-    transition:.15s;
+    position:absolute;width:240px;height:180px;
+    display:flex;flex-direction:column;align-items:center;
+    justify-content:center;border:7px solid white;
+    border-radius:25px;color:white;text-align:center;
+    box-shadow:0 12px 25px #0005;cursor:pointer;
+    user-select:none;transition:.15s;
 }
-
-.building:hover{
-    transform:scale(1.04);
-}
-
-.building b{
-    font-size:25px;
-    text-shadow:0 3px 5px #0007;
-}
-
-.building span{
-    margin-top:8px;
-    font-size:13px;
-}
-
-/* positions */
+.building:hover{transform:scale(1.04)}
+.building b{font-size:25px;text-shadow:0 3px 5px #0007}
+.building span{margin-top:8px;font-size:13px}
 
 .library{
-    left:150px;
-    top:170px;
-    background:
-        linear-gradient(
-            135deg,
-            #e53935,
-            #ff9800
-        );
+    left:150px;top:170px;
+    background:linear-gradient(135deg,#e53935,#ff9800);
 }
-
 .classroom{
-    left:780px;
-    top:170px;
-    background:
-        linear-gradient(
-            135deg,
-            #ff9800,
-            #fdd835
-        );
+    left:780px;top:170px;
+    background:linear-gradient(135deg,#ff9800,#fdd835);
 }
-
 .arena{
-    left:1410px;
-    top:170px;
-    background:
-        linear-gradient(
-            135deg,
-            #7b1fa2,
-            #e040fb
-        );
+    left:1410px;top:170px;
+    background:linear-gradient(135deg,#7b1fa2,#e040fb);
 }
-
 .hostel{
-    left:150px;
-    top:690px;
-    background:
-        linear-gradient(
-            135deg,
-            #0288d1,
-            #00acc1
-        );
+    left:150px;top:690px;
+    background:linear-gradient(135deg,#0288d1,#00acc1);
 }
-
 .canteen{
-    left:780px;
-    top:690px;
-    background:
-        linear-gradient(
-            135deg,
-            #f4511e,
-            #ff1744
-        );
+    left:780px;top:690px;
+    background:linear-gradient(135deg,#f4511e,#ff1744);
 }
-
 .lab{
-    left:1410px;
-    top:690px;
-    background:
-        linear-gradient(
-            135deg,
-            #00897b,
-            #43a047
-        );
+    left:1410px;top:690px;
+    background:linear-gradient(135deg,#00897b,#43a047);
 }
-
-/* ================= PLAYER ================= */
 
 #player{
-    position:absolute;
-
-    left:875px;
-    top:500px;
-
-    width:60px;
-    height:75px;
-
-    z-index:20;
-
-    text-align:center;
-
+    position:absolute;left:875px;top:500px;
+    width:60px;height:75px;z-index:20;text-align:center;
     font-size:40px;
-
-    filter:
-        drop-shadow(
-            0 5px 4px #0006
-        );
-
+    filter:drop-shadow(0 5px 4px #0006);
     pointer-events:none;
 }
-
 #player-name{
-    display:block;
-
-    background:white;
-
-    border-radius:8px;
-
-    padding:2px 5px;
-
-    font-size:11px;
-    font-weight:900;
+    display:block;background:white;border-radius:8px;
+    padding:2px 5px;font-size:11px;font-weight:900;
 }
-
-/* ================= HUD ================= */
 
 #hud{
-    position:fixed;
-
-    z-index:50;
-
-    left:12px;
-    top:12px;
-
-    min-width:230px;
-
-    padding:13px 16px;
-
-    background:#fffffff0;
-
-    border-radius:18px;
-
-    box-shadow:
-        0 8px 25px #0004;
+    position:fixed;z-index:50;left:12px;top:12px;
+    min-width:230px;padding:13px 16px;background:#fffffff0;
+    border-radius:18px;box-shadow:0 8px 25px #0004;
 }
-
-.hud-name{
-    color:#d81b60;
-    font-weight:900;
-}
-
-.stats{
-    margin-top:5px;
-    font-size:13px;
-}
+.hud-name{color:#d81b60;font-weight:900}
+.stats{margin-top:5px;font-size:13px}
 
 #hud-buttons{
-    position:fixed;
-
-    z-index:51;
-
-    right:12px;
-    top:12px;
-
-    display:flex;
-    gap:8px;
+    position:fixed;z-index:51;right:12px;top:12px;
+    display:flex;gap:8px;
 }
-
 .round-btn{
-    width:46px;
-    height:46px;
-
-    border-radius:50%;
-
-    background:white;
-
-    font-size:21px;
-
-    box-shadow:
-        0 7px 18px #0004;
+    width:46px;height:46px;border-radius:50%;background:white;
+    font-size:21px;box-shadow:0 7px 18px #0004;
 }
-
-/* ================= CAMPAIGN ================= */
 
 #campaign{
-    position:fixed;
-
-    z-index:52;
-
-    left:50%;
-    top:12px;
-
-    transform:translateX(-50%);
-
-    padding:10px 18px;
-
-    border:3px solid white;
-
-    border-radius:18px;
-
-    color:white;
-
-    text-align:center;
-
-    font-weight:900;
-
-    background:
-        linear-gradient(
-            135deg,
-            #b71c1c,
-            #f44336,
-            #ffca28
-        );
-
-    box-shadow:
-        0 8px 25px #0006;
-
-    cursor:pointer;
+    position:fixed;z-index:52;left:50%;top:12px;
+    transform:translateX(-50%);padding:10px 18px;
+    border:3px solid white;border-radius:18px;color:white;
+    text-align:center;font-weight:900;
+    background:linear-gradient(135deg,#b71c1c,#f44336,#ffca28);
+    box-shadow:0 8px 25px #0006;cursor:pointer;
 }
-
-/* ================= PANEL ================= */
 
 #panel{
-    position:fixed;
-
-    z-index:90;
-
-    inset:0;
-
-    display:none;
-
-    align-items:center;
-    justify-content:center;
-
-    padding:15px;
-
+    position:fixed;z-index:90;inset:0;display:none;
+    align-items:center;justify-content:center;padding:15px;
     background:#0008;
 }
-
 .panel-box{
-    width:min(94%,750px);
-
-    max-height:90vh;
-
-    overflow:auto;
-
-    background:white;
-
-    border-radius:24px;
-
-    box-shadow:
-        0 25px 80px #0008;
+    width:min(94%,750px);max-height:90vh;overflow:auto;
+    background:white;border-radius:24px;
+    box-shadow:0 25px 80px #0008;
 }
-
 .panel-header{
-    position:sticky;
-
-    top:0;
-
-    z-index:5;
-
-    padding:18px 20px;
-
-    color:white;
-
-    font-size:22px;
-
-    font-weight:900;
-
-    background:
-        linear-gradient(
-            135deg,
-            #e91e63,
-            #ff5722
-        );
+    position:sticky;top:0;z-index:5;padding:18px 20px;
+    color:white;font-size:22px;font-weight:900;
+    background:linear-gradient(135deg,#e91e63,#ff5722);
 }
-
 .close-btn{
-    float:right;
-
-    width:35px;
-    height:35px;
-
-    border-radius:50%;
-
-    background:#ffffff33;
-
-    color:white;
-
-    font-weight:900;
+    float:right;width:35px;height:35px;border-radius:50%;
+    background:#ffffff33;color:white;font-weight:900;
 }
-
-.panel-body{
-    padding:18px;
-}
-
-/* ================= CARDS ================= */
+.panel-body{padding:18px}
 
 .note{
-    margin:10px 0;
-
-    padding:15px;
-
-    border-left:6px solid #ff9800;
-
-    border-radius:14px;
-
-    background:#fff8e1;
+    margin:10px 0;padding:15px;border-left:6px solid #ff9800;
+    border-radius:14px;background:#fff8e1;
 }
-
-.course-grid,
-.food-grid,
-.lab-grid{
+.course-grid,.food-grid,.lab-grid{
     display:grid;
-
-    grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(190px,1fr)
-        );
-
+    grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
     gap:12px;
 }
-
 .card{
-    min-height:120px;
-
-    padding:17px;
-
-    border-radius:18px;
-
-    color:white;
-
-    font-weight:900;
-
-    box-shadow:
-        0 7px 16px #0003;
+    min-height:120px;padding:17px;border-radius:18px;color:white;
+    font-weight:900;box-shadow:0 7px 16px #0003;
 }
-
-.card:nth-child(6n+1){
-    background:#e53935;
-}
-
-.card:nth-child(6n+2){
-    background:#8e24aa;
-}
-
-.card:nth-child(6n+3){
-    background:#00897b;
-}
-
-.card:nth-child(6n+4){
-    background:#fb8c00;
-}
-
-.card:nth-child(6n+5){
-    background:#1e88e5;
-}
-
-.card:nth-child(6n){
-    background:#6d4c41;
-}
-
+.card:nth-child(6n+1){background:#e53935}
+.card:nth-child(6n+2){background:#8e24aa}
+.card:nth-child(6n+3){background:#00897b}
+.card:nth-child(6n+4){background:#fb8c00}
+.card:nth-child(6n+5){background:#1e88e5}
+.card:nth-child(6n){background:#6d4c41}
 .card button{
-    margin-top:12px;
-
-    padding:9px 13px;
-
-    border-radius:10px;
-
-    background:white;
-
-    color:#222;
-
-    font-weight:900;
+    margin-top:12px;padding:9px 13px;border-radius:10px;
+    background:white;color:#222;font-weight:900;
 }
-
-/* ================= QUIZ ================= */
 
 .quiz-question{
-    margin-bottom:15px;
-
-    font-size:19px;
-
-    font-weight:900;
+    margin-bottom:15px;font-size:19px;font-weight:900;
 }
-
 .option{
-    display:block;
-
-    width:100%;
-
-    margin:8px 0;
-
-    padding:13px;
-
-    border-radius:12px;
-
-    background:#f1f3f4;
-
-    text-align:left;
+    display:block;width:100%;margin:8px 0;padding:13px;
+    border-radius:12px;background:#f1f3f4;text-align:left;
 }
-
-.option:hover{
-    background:#ffd6e2;
-}
-
+.option:hover{background:#ffd6e2}
 .next-btn{
-    margin-top:10px;
-
-    padding:12px 18px;
-
-    border-radius:12px;
-
-    background:#e91e63;
-
-    color:white;
-
-    font-weight:900;
+    margin-top:10px;padding:12px 18px;border-radius:12px;
+    background:#e91e63;color:white;font-weight:900;
 }
-
-/* ================= SHORT NOTE BUTTON ================= */
-
 .study-btn{
-    width:100%;
-    margin-top:10px;
-    padding:13px;
-    border-radius:12px;
-    background:#ff9800;
-    color:white;
-    font-weight:900;
+    width:100%;margin-top:10px;padding:13px;border-radius:12px;
+    background:#ff9800;color:white;font-weight:900;
 }
-
 .practice-btn{
-    width:100%;
-    margin-top:10px;
-    padding:13px;
-    border-radius:12px;
-    background:#e91e63;
-    color:white;
-    font-weight:900;
+    width:100%;margin-top:10px;padding:13px;border-radius:12px;
+    background:#e91e63;color:white;font-weight:900;
 }
-
-/* ================= TOAST ================= */
-
 #toast{
-    position:fixed;
-
-    z-index:100;
-
-    bottom:20px;
-    left:50%;
-
-    transform:translateX(-50%);
-
-    display:none;
-
-    padding:12px 18px;
-
-    border-radius:12px;
-
-    background:#222;
-
-    color:white;
+    position:fixed;z-index:100;bottom:20px;left:50%;
+    transform:translateX(-50%);display:none;padding:12px 18px;
+    border-radius:12px;background:#222;color:white;
 }
-
-.correct{
-    color:#087f23;
-    font-weight:900;
-}
-
-.wrong{
-    color:#c62828;
-    font-weight:900;
-}
+.correct{color:#087f23;font-weight:900}
+.wrong{color:#c62828;font-weight:900}
 
 @media(max-width:650px){
-
-    .logo{
-        font-size:40px;
-    }
-
-    #campaign{
-        font-size:11px;
-        top:65px;
-    }
-
-    .building{
-        width:210px;
-        height:155px;
-    }
-
-    .course-grid,
-    .food-grid,
-    .lab-grid{
-        grid-template-columns:1fr;
-    }
+    .logo{font-size:40px}
+    #campaign{font-size:11px;top:65px}
+    .building{width:210px;height:155px}
+    .course-grid,.food-grid,.lab-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
 
 <body>
 
-<!-- ================= SPLASH ================= -->
-
 <div id="splash" class="screen">
-
     <div class="splash-box">
-
-        <div class="logo">
-            PNGPD LIFE
-        </div>
-
-        <div class="subtitle">
-            Your Campus. Your Choices. Your Future.
-        </div>
-
-        <button
-            class="start-btn"
-            onclick="showAuth()"
-        >
-            START GAME 🚀
-        </button>
-
+        <div class="logo">PNGPD LIFE</div>
+        <div class="subtitle">Your Campus. Your Choices. Your Future.</div>
+        <button class="start-btn" onclick="showAuth()">START GAME 🚀</button>
     </div>
-
 </div>
 
-
-<!-- ================= AUTH ================= -->
-
 <div id="auth" class="screen">
-
     <div class="auth-card">
+        <h2>🎓 PNGPD LIFE</h2>
 
-        <h2>
-            🎓 PNGPD LIFE
-        </h2>
-
-        <input
-            id="playerName"
-            placeholder="Enter your name"
-        >
+        <input id="playerName" placeholder="Enter your name">
 
         <input
             id="playerEmail"
@@ -796,19 +268,11 @@ button{
             placeholder="Email (optional)"
         >
 
-        <button
-            class="auth-btn"
-            onclick="enterGame()"
-        >
+        <button class="auth-btn" onclick="enterGame()">
             ENTER CAMPUS
         </button>
-
     </div>
-
 </div>
-
-
-<!-- ================= GAME ================= -->
 
 <div id="game" class="screen">
 
@@ -818,54 +282,21 @@ button{
 
             <div class="grass"></div>
 
+            <div class="road horizontal" style="top:420px"></div>
+            <div class="road horizontal" style="top:900px"></div>
 
-            <!-- ROADS -->
-
-            <div
-                class="road horizontal"
-                style="top:420px"
-            ></div>
-
-            <div
-                class="road horizontal"
-                style="top:900px"
-            ></div>
-
-            <div
-                class="road vertical"
-                style="left:500px"
-            ></div>
-
-            <div
-                class="road vertical"
-                style="left:1150px"
-            ></div>
-
-
-            <!-- PATHS -->
+            <div class="road vertical" style="left:500px"></div>
+            <div class="road vertical" style="left:1150px"></div>
 
             <div
                 class="path"
-                style="
-                    left:500px;
-                    top:390px;
-                    width:650px;
-                    height:35px;
-                "
+                style="left:500px;top:390px;width:650px;height:35px"
             ></div>
 
             <div
                 class="path"
-                style="
-                    left:500px;
-                    top:870px;
-                    width:650px;
-                    height:35px;
-                "
+                style="left:500px;top:870px;width:650px;height:35px"
             ></div>
-
-
-            <!-- TREES -->
 
             <div class="tree" style="left:40px;top:70px"></div>
             <div class="tree" style="left:620px;top:90px"></div>
@@ -882,1219 +313,778 @@ button{
             <div class="tree" style="left:1220px;top:1050px"></div>
             <div class="tree" style="left:1690px;top:1030px"></div>
 
-
-            <!-- BUILDINGS -->
-
-            <div
-                class="building library"
-                onclick="openLibrary()"
-            >
+            <div class="building library" onclick="openLibrary()">
                 <b>📚 LIBRARY</b>
-                <span>
-                    Study • Notes • Practice
-                </span>
+                <span>Study • Notes • Practice</span>
             </div>
 
-
-            <div
-                class="building classroom"
-                onclick="openClassroom()"
-            >
+            <div class="building classroom" onclick="openClassroom()">
                 <b>🏫 CLASSROOM</b>
-                <span>
-                    Courses • Revision • Exams
-                </span>
+                <span>Courses • Revision • Exams</span>
             </div>
 
-
-            <div
-                class="building arena"
-                onclick="openArena()"
-            >
+            <div class="building arena" onclick="openArena()">
                 <b>⚔️ ARENA</b>
-                <span>
-                    Academic 1v1 Battles
-                </span>
+                <span>Academic 1v1 Battles</span>
             </div>
 
-
-            <div
-                class="building hostel"
-                onclick="openHostel()"
-            >
+            <div class="building hostel" onclick="openHostel()">
                 <b>🏠 HOSTEL</b>
-                <span>
-                    Rest • Energy • Profile
-                </span>
+                <span>Rest • Energy • Profile</span>
             </div>
 
-
-            <div
-                class="building canteen"
-                onclick="openCanteen()"
-            >
+            <div class="building canteen" onclick="openCanteen()">
                 <b>🍔 CANTEEN</b>
-                <span>
-                    Food • Prices • Energy
-                </span>
+                <span>Food • Prices • Energy</span>
             </div>
 
-
-            <div
-                class="building lab"
-                onclick="openLab()"
-            >
+            <div class="building lab" onclick="openLab()">
                 <b>🧪 LABORATORY</b>
-                <span>
-                    PGP 126 Practicals
-                </span>
+                <span>PGP 126 Practicals</span>
             </div>
-
-
-            <!-- PLAYER -->
 
             <div id="player">
-
                 🧑🏾‍🎓
-
-                <small id="player-name">
-                    Patrick
-                </small>
-
+                <small id="player-name">Patrick</small>
             </div>
 
         </div>
-
     </div>
-
-
-    <!-- HUD -->
 
     <div id="hud">
-
-        <div
-            class="hud-name"
-            id="hudName"
-        >
-            Patrick
-        </div>
+        <div class="hud-name" id="hudName">Patrick</div>
 
         <div class="stats">
-
             💰 ₦<span id="money">5000</span>
-
             &nbsp;
-
             ⚡ <span id="energy">100</span>
-
             &nbsp;
-
             ⭐ <span id="xp">0</span> XP
-
         </div>
-
     </div>
-
-
-    <!-- TOP BUTTONS -->
 
     <div id="hud-buttons">
-
-        <button
-            class="round-btn"
-            onclick="openProfile()"
-        >
-            👤
-        </button>
-
-        <button
-            class="round-btn"
-            onclick="openLibrary()"
-        >
-            📚
-        </button>
-
+        <button class="round-btn" onclick="openProfile()">👤</button>
+        <button class="round-btn" onclick="openLibrary()">📚</button>
     </div>
 
-
-    <!-- NSChE -->
-
-    <div
-        id="campaign"
-        onclick="openCampaign()"
-    >
-
+    <div id="campaign" onclick="openCampaign()">
         🗳️ VOTE PATRICK
-
         <br>
-
         <span style="font-size:12px">
             FOR VICE PRESIDENT • NSChE
         </span>
-
     </div>
 
-
     <div id="toast"></div>
-
 </div>
 
-
-<!-- ================= PANEL ================= -->
-
 <div id="panel">
-
     <div class="panel-box">
 
         <div class="panel-header">
-
             <span id="panelTitle"></span>
 
-            <button
-                class="close-btn"
-                onclick="closePanel()"
-            >
+            <button class="close-btn" onclick="closePanel()">
                 ×
             </button>
-
         </div>
 
-        <div
-            class="panel-body"
-            id="panelBody"
-        ></div>
+        <div class="panel-body" id="panelBody"></div>
 
     </div>
-
 </div>
 
-
-<!-- ================= DATA FILE ================= -->
-
+<!-- IMPORTANT: keep your existing files -->
 <script src="data/questions.js"></script>
-
-<script src="game/actions.js"></script>
-
+<script src="game/actions.js" defer></script>
 
 <script>
 
-/* =====================================================
-   BUILT-IN SHORT NOTE MATERIAL
-   NO SEPARATE STUDY-MATERIALS.JS REQUIRED
-===================================================== */
-
 window.PNGPD_STUDY_MATERIALS = [
 
-    /* ================= PGP 121 ================= */
-
-    {
-        course:"PGP 121",
-
-        sections:[
-
-            {
-                title:"💧 Fluid Kinematics",
-
-                content:`
-                    <b>Fluid Kinematics</b> is the study of
-                    the motion of fluid particles, including
-                    their velocity and acceleration, without
-                    considering the forces causing the motion.
-
-                    <br><br>
-
-                    <b>Important classifications:</b><br>
-                    • Steady flow<br>
-                    • Unsteady flow<br>
-                    • Compressible flow<br>
-                    • Incompressible flow<br>
-                    • Laminar flow<br>
-                    • Turbulent flow
-                `
-            },
-
-            {
-                title:"📐 Flow Rate & Continuity",
-
-                content:`
-                    The volumetric rate of flow is:
-
-                    <br><br>
-
-                    <b>Q = AV</b>
-
-                    <br><br>
-
-                    Where:<br>
-                    Q = volumetric flow rate<br>
-                    A = cross-sectional area<br>
-                    V = average velocity
-
-                    <br><br>
-
-                    For incompressible flow:
-
-                    <br><br>
-
-                    <b>A₁V₁ = A₂V₂</b>
-
-                    <br><br>
-
-                    This is based on conservation of mass.
-                `
-            },
-
-            {
-                title:"⚡ Fluid Head",
-
-                content:`
-                    The main forms of head for a flowing
-                    liquid are:
-
-                    <br><br>
-
-                    <b>Potential head = z</b>
-
-                    <br>
-
-                    <b>Velocity head = V² / 2g</b>
-
-                    <br>
-
-                    <b>Pressure head = p / γ</b>
-
-                    <br><br>
-
-                    Total head:
-
-                    <br><br>
-
-                    <b>
-                    H = z + V²/(2g) + p/γ
-                    </b>
-                `
-            },
-
-            {
-                title:"🔬 Bernoulli's Equation",
-
-                content:`
-                    Bernoulli's equation relates pressure,
-                    velocity and elevation for ideal,
-                    incompressible, steady flow along a
-                    streamline.
-
-                    <br><br>
-
-                    <b>
-                    p/γ + V²/(2g) + z = constant
-                    </b>
-
-                    <br><br>
-
-                    It is applied in devices such as:
-
-                    <br>
-                    • Venturimeter<br>
-                    • Pitot tube
-                `
-            },
-
-            {
-                title:"📏 Venturimeter & Pitot Tube",
-
-                content:`
-                    <b>Venturimeter:</b>
-
-                    <br>
-
-                    Used to determine the flow rate of
-                    fluid through a pipe.
-
-                    <br><br>
-
-                    Main parts:
-
-                    <br>
-                    • Converging section<br>
-                    • Throat<br>
-                    • Diverging section
-
-                    <br><br>
-
-                    <b>Pitot tube:</b>
-
-                    <br>
-
-                    Used to measure fluid velocity at a
-                    particular point by converting kinetic
-                    energy into pressure energy at the
-                    stagnation point.
-                `
-            }
-
-        ]
-    },
-
-
-    /* ================= PGP 122 ================= */
-
-    {
-        course:"PGP 122",
-
-        sections:[
-
-            {
-                title:"⚙️ Introduction to Separation",
-
-                content:`
-                    <b>Separation</b> is the process of dividing
-                    a mixture into two or more distinct
-                    components or phases based on differences
-                    in their physical or chemical properties.
-
-                    <br><br>
-
-                    Separation processes are important because
-                    chemical plants normally require separation
-                    before products can be obtained in the
-                    required form.
-                `
-            },
-
-            {
-                title:"🔄 Liquid & Solid Mixing",
-
-                content:`
-                    <b>Mixing</b> reduces non-uniformity such as
-                    concentration and temperature differences.
-
-                    <br><br>
-
-                    Types include:
-
-                    <br>
-                    • Liquid/fluid mixing<br>
-                    • Solid/powder mixing
-
-                    <br><br>
-
-                    <b>Tumbling mixers</b> include double-cone
-                    and twin-shell/V-blender arrangements.
-
-                    <br><br>
-
-                    Double-cone mixers are suitable for
-                    free-flowing dry powders.
-
-                    <br><br>
-
-                    Typical batch filling is about
-                    <b>50–60%</b>, while mixing may commonly
-                    take about <b>5–20 minutes</b>.
-                `
-            },
-
-            {
-                title:"🧹 Filtration",
-
-                content:`
-                    <b>Filtration</b> is the separation of solid
-                    particles from a fluid by passing the mixture
-                    through a filtering medium.
-
-                    <br><br>
-
-                    <b>Filter cake:</b> solid material retained
-                    by the filter medium.
-
-                    <br><br>
-
-                    <b>Filtrate:</b> fluid that passes through
-                    the filter medium.
-
-                    <br><br>
-
-                    Filtration rate can be expressed as:
-
-                    <br><br>
-
-                    <b>dV/dt</b>
-                `
-            },
-
-            {
-                title:"🧪 Membrane Separation",
-
-                content:`
-                    Membrane separation uses a selective membrane
-                    to separate components of a mixture.
-
-                    <br><br>
-
-                    Separation may depend on differences in:
-
-                    <br>
-                    • Molecular size<br>
-                    • Solubility<br>
-                    • Diffusivity<br>
-                    • Pressure difference
-
-                    <br><br>
-
-                    The membrane allows some components to
-                    permeate more readily than others.
-                `
-            },
-
-            {
-                title:"⛏️ Leaching",
-
-                content:`
-                    <b>Leaching</b> is a solid-liquid extraction
-                    process in which a solvent removes a soluble
-                    constituent from a solid.
-
-                    <br><br>
-
-                    Main stages:
-
-                    <br>
-                    <b>1.</b> Contacting the solid with solvent<br>
-                    <b>2.</b> Transfer of the soluble material<br>
-                    <b>3.</b> Separation of the liquid from the solid
-
-                    <br><br>
-
-                    Factors affecting leaching:
-
-                    <br>
-                    • Particle size<br>
-                    • Solvent properties<br>
-                    • Temperature<br>
-                    • Contact time<br>
-                    • Agitation
-                `
-            },
-
-            {
-                title:"🔥 Evaporation",
-
-                content:`
-                    <b>Evaporation</b> concentrates a solution
-                    by vaporising part of its solvent.
-
-                    <br><br>
-
-                    Important concepts:
-
-                    <br>
-                    • Boiling point<br>
-                    • Heat transfer<br>
-                    • Steam economy<br>
-                    • Single-effect evaporation<br>
-                    • Multiple-effect evaporation
-
-                    <br><br>
-
-                    Multiple-effect evaporation can improve
-                    steam economy by using vapour generated
-                    in one effect to provide heat for another.
-                `
-            }
-
-        ]
-    },
-
-
-    /* ================= PGP 124 ================= */
-
-    {
-        course:"PGP 124",
-
-        sections:[
-
-            {
-                title:"📐 Calculus",
-
-                content:`
-                    Calculus deals mainly with:
-
-                    <br><br>
-
-                    • Limits<br>
-                    • Continuity<br>
-                    • Differentiation<br>
-                    • Integration<br>
-                    • Applications of derivatives
-                `
-            },
-
-            {
-                title:"📈 Differentiation",
-
-                content:`
-                    Differentiation determines the rate at
-                    which one quantity changes with respect
-                    to another.
-
-                    <br><br>
-
-                    Basic power rule:
-
-                    <br><br>
-
-                    <b>
-                    If y = xⁿ,
-                    then dy/dx = nxⁿ⁻¹
-                    </b>
-
-                    <br><br>
-
-                    Applications include gradients, rates
-                    of change, maximum values and minimum
-                    values.
-                `
-            },
-
-            {
-                title:"∫ Integration",
-
-                content:`
-                    Integration is the reverse process of
-                    differentiation.
-
-                    <br><br>
-
-                    Basic result:
-
-                    <br><br>
-
-                    <b>
-                    ∫xⁿ dx =
-                    xⁿ⁺¹/(n+1) + C
-                    </b>
-
-                    <br><br>
-
-                    C is the constant of integration.
-                `
-            }
-
-        ]
-    },
-
-
-    /* ================= PGP 126 ================= */
-
-    {
-        course:"PGP 126",
-
-        sections:[
-
-            {
-                title:"⚖️ Engineering Relative Density",
-
-                content:`
-                    Relative density compares the density of
-                    a substance with the density of a reference
-                    substance.
-
-                    <br><br>
-
-                    <b>
-                    RD =
-                    Density of substance /
-                    Density of reference substance
-                    </b>
-
-                    <br><br>
-
-                    <b>Important practical points:</b>
-
-                    <br>
-                    • Use clean apparatus.<br>
-                    • Avoid trapped air bubbles.<br>
-                    • Consider temperature effects.<br>
-                    • Take readings correctly.<br>
-                    • Record measurements carefully.
-                `
-            },
-
-            {
-                title:"🌡️ Pour Point",
-
-                content:`
-                    <b>Pour point</b> is the lowest temperature
-                    at which an oil remains sufficiently fluid
-                    to pour under specified test conditions.
-
-                    <br><br>
-
-                    <b>Apparatus:</b>
-
-                    <br>
-                    • Pour-point test jar<br>
-                    • Thermometer<br>
-                    • Cooling bath<br>
-                    • Petroleum sample
-
-                    <br><br>
-
-                    The sample is cooled under controlled
-                    conditions while its ability to flow is
-                    observed.
-                `
-            },
-
-            {
-                title:"🛢️ API Gravity",
-
-                content:`
-                    API gravity is used to express the
-                    relative density of petroleum liquids.
-
-                    <br><br>
-
-                    <b>
-                    API =
-                    (141.5 / SG at 60°F/60°F)
-                    − 131.5
-                    </b>
-
-                    <br><br>
-
-                    API gravity is inversely related to
-                    specific gravity.
-
-                    <br><br>
-
-                    <b>
-                    Higher API → lighter petroleum
-                    </b>
-
-                    <br>
-
-                    <b>
-                    Lower API → heavier petroleum
-                    </b>
-
-                    <br><br>
-
-                    <b>Common apparatus:</b>
-
-                    <br>
-                    • API hydrometer<br>
-                    • Hydrometer cylinder<br>
-                    • Thermometer<br>
-                    • Petroleum sample
-                `
-            }
-
-        ]
-    },
-
-
-    /* ================= PGP 127 ================= */
-
-    {
-        course:"PGP 127",
-
-        sections:[
-
-            {
-                title:"📝 Technical Report Writing",
-
-                content:`
-                    A technical report presents technical
-                    information in an organised and
-                    understandable manner.
-
-                    <br><br>
-
-                    Common sections include:
-
-                    <br>
-                    • Title<br>
-                    • Introduction<br>
-                    • Objectives<br>
-                    • Methodology<br>
-                    • Results<br>
-                    • Discussion<br>
-                    • Conclusion<br>
-                    • References
-                `
-            },
-
-            {
-                title:"🎤 Oral Presentation",
-
-                content:`
-                    A good technical presentation should be:
-
-                    <br><br>
-
-                    • Clear<br>
-                    • Organised<br>
-                    • Concise<br>
-                    • Technically accurate
-
-                    <br><br>
-
-                    The presenter should understand the
-                    subject instead of simply memorising
-                    the material.
-                `
-            }
-
-        ]
-    }
-
-];
-
-
-/* =====================================================
-   PLAYER DATA
-===================================================== */
-
-const state = {
-
-    name:
-        localStorage.getItem(
-            "pngpd_name"
-        ) || "Patrick",
-
-    money:
-        Number(
-            localStorage.getItem(
-                "pngpd_money"
-            ) || 5000
-        ),
-
-    energy:
-        Number(
-            localStorage.getItem(
-                "pngpd_energy"
-            ) || 100
-        ),
-
-    xp:
-        Number(
-            localStorage.getItem(
-                "pngpd_xp"
-            ) || 0
-        )
+{
+course:"PGP 121",
+sections:[
+{
+title:"💧 Fluid Kinematics",
+content:`
+<b>Fluid Kinematics</b> is the study of the motion of
+fluid particles, including velocity and acceleration,
+without considering the forces causing the motion.
+
+<br><br>
+
+<b>Important classifications:</b><br>
+• Steady flow<br>
+• Unsteady flow<br>
+• Compressible flow<br>
+• Incompressible flow<br>
+• Laminar flow<br>
+• Turbulent flow
+`
+},
+{
+title:"📐 Flow Rate & Continuity",
+content:`
+The volumetric rate of flow is:
+
+<br><br>
+
+<b>Q = AV</b>
+
+<br><br>
+
+Q = volumetric flow rate<br>
+A = cross-sectional area<br>
+V = average velocity
+
+<br><br>
+
+For incompressible flow:
+
+<br><br>
+
+<b>A₁V₁ = A₂V₂</b>
+
+<br><br>
+
+This is based on conservation of mass.
+`
+},
+{
+title:"⚡ Fluid Head",
+content:`
+<b>Potential head = z</b><br>
+<b>Velocity head = V² / 2g</b><br>
+<b>Pressure head = p / γ</b>
+
+<br><br>
+
+Total head:
+
+<br><br>
+
+<b>H = z + V²/(2g) + p/γ</b>
+`
+},
+{
+title:"🔬 Bernoulli's Equation",
+content:`
+Bernoulli's equation relates pressure, velocity and
+elevation for ideal, incompressible, steady flow.
+
+<br><br>
+
+<b>p/γ + V²/(2g) + z = constant</b>
+
+<br><br>
+
+Applications include Venturimeter and Pitot tube.
+`
+},
+{
+title:"📏 Venturimeter & Pitot Tube",
+content:`
+<b>Venturimeter:</b> Used to determine flow rate through
+a pipe.
+
+<br><br>
+
+Main parts:<br>
+• Converging section<br>
+• Throat<br>
+• Diverging section
+
+<br><br>
+
+<b>Pitot tube:</b> Used to measure fluid velocity at a
+particular point.
+`
+}
+]
+},
+
+{
+course:"PGP 122",
+sections:[
+{
+title:"⚙️ Separation",
+content:`
+<b>Separation</b> is the process of dividing a mixture
+into two or more distinct components or phases based on
+differences in physical or chemical properties.
+`
+},
+{
+title:"🔄 Mixing",
+content:`
+Mixing reduces non-uniformity in concentration,
+temperature and other properties.
+
+<br><br>
+
+Types include liquid/fluid mixing and solid/powder mixing.
+
+<br><br>
+
+Tumbling mixers include double-cone and twin-shell
+or V-blender arrangements.
+
+<br><br>
+
+Double-cone mixers are suitable for free-flowing dry
+powders. Typical batch filling is about 50–60% and
+mixing may take about 5–20 minutes.
+`
+},
+{
+title:"🧹 Filtration",
+content:`
+<b>Filtration</b> separates solid particles from a fluid
+using a filtering medium.
+
+<br><br>
+
+<b>Filter cake:</b> solid retained by the filter.
+
+<br><br>
+
+<b>Filtrate:</b> fluid passing through the filter.
+
+<br><br>
+
+Filtration rate can be expressed as <b>dV/dt</b>.
+`
+},
+{
+title:"🧪 Membrane Separation",
+content:`
+Membrane separation uses a selective membrane to separate
+components.
+
+<br><br>
+
+It may depend on molecular size, solubility, diffusivity
+and pressure difference.
+`
+},
+{
+title:"⛏️ Leaching",
+content:`
+<b>Leaching</b> is a solid-liquid extraction process in
+which a solvent removes a soluble constituent from a solid.
+
+<br><br>
+
+Stages:<br>
+1. Contacting<br>
+2. Solute transfer<br>
+3. Separation
+
+<br><br>
+
+Factors include particle size, solvent properties,
+temperature, contact time and agitation.
+`
+},
+{
+title:"🔥 Evaporation",
+content:`
+<b>Evaporation</b> concentrates a solution by vaporising
+part of its solvent.
+
+<br><br>
+
+Important concepts include boiling point, heat transfer,
+steam economy, single-effect and multiple-effect evaporation.
+`
+}
+]
+},
+
+{
+course:"PGP 123",
+sections:[
+{
+title:"💧 Boiler Feed Water",
+content:`
+Important boiler-water quality considerations include
+hardness, dissolved oxygen and silica.
+
+<br><br>
+
+Hardness from calcium and magnesium should be controlled
+because it can cause scale formation.
+
+<br><br>
+
+Dissolved oxygen can contribute to corrosion.
+`
+},
+{
+title:"🚰 Drinking Water Quality",
+content:`
+Important drinking-water parameters include pH,
+conductivity, TDS, turbidity, calcium, magnesium and
+microbiological quality.
+
+<br><br>
+
+Typical Nigerian/WHO reference values in the course
+material include pH around 6.5–8.5 and total coliform
+of 0.
+`
+},
+{
+title:"♻️ Wastewater Treatment",
+content:`
+Main stages may include:
+
+<br>
+• Preliminary treatment<br>
+• Primary treatment<br>
+• Secondary treatment<br>
+• Tertiary treatment<br>
+• Sludge treatment
+`
+}
+]
+},
+
+{
+course:"PGP 124",
+sections:[
+{
+title:"📐 Calculus",
+content:`
+Calculus deals mainly with limits, continuity,
+differentiation, integration and applications of
+derivatives.
+`
+},
+{
+title:"📈 Differentiation",
+content:`
+Differentiation determines the rate at which one quantity
+changes with respect to another.
+
+<br><br>
+
+If <b>y = xⁿ</b>:
+
+<br><br>
+
+<b>dy/dx = nxⁿ⁻¹</b>
+
+<br><br>
+
+Applications include gradients, rates of change,
+maximum and minimum values.
+`
+},
+{
+title:"∫ Integration",
+content:`
+Integration is the reverse process of differentiation.
+
+<br><br>
+
+<b>∫xⁿ dx = xⁿ⁺¹/(n+1) + C</b>
+
+<br><br>
+
+C is the constant of integration.
+`
+}
+]
+},
+
+{
+course:"PGP 125",
+sections:[
+{
+title:"🛢️ Crude Oil Processing",
+content:`
+Crude processing combines physical separation and
+chemical conversion.
+
+<br><br>
+
+Important processes include distillation, absorption,
+adsorption, cracking, reforming, alkylation and
+isomerization.
+`
+},
+{
+title:"🔥 Atmospheric Distillation",
+content:`
+Atmospheric distillation separates crude oil mainly
+according to boiling range and volatility.
+
+<br><br>
+
+Lighter components generally have higher vapour pressure
+and lower boiling points.
+`
+},
+{
+title:"⚗️ Petroleum Properties",
+content:`
+Important petroleum properties include density,
+specific gravity, molecular weight, viscosity and
+fractional composition.
+
+<br><br>
+
+<b>SG = density of petroleum liquid / density of water</b>
+
+<br><br>
+
+<b>API = (141.5/SG) − 131.5</b>
+`
+},
+{
+title:"📊 API Classification",
+content:`
+Light crude: above 31.1 API
+
+<br>
+Medium crude: 22.3–31.1 API
+
+<br>
+Heavy crude: 10–22.3 API
+
+<br>
+Extra-heavy crude: below 10 API
+`
+}
+]
+},
+
+{
+course:"PGP 126",
+sections:[
+{
+title:"⚖️ Engineering Relative Density",
+content:`
+Relative density compares the density of a substance
+with the density of a reference substance.
+
+<br><br>
+
+<b>RD = Density of substance / Density of reference substance</b>
+
+<br><br>
+
+Avoid trapped air bubbles and use clean apparatus.
+Temperature can affect density measurements.
+`
+},
+{
+title:"🌡️ Pour Point",
+content:`
+<b>Pour point</b> is the lowest temperature at which oil
+remains sufficiently fluid to pour under specified
+test conditions.
+
+<br><br>
+
+Apparatus includes a test jar, thermometer, cooling bath
+and petroleum sample.
+`
+},
+{
+title:"🛢️ API Gravity",
+content:`
+<b>API = (141.5 / SG at 60°F/60°F) − 131.5</b>
+
+<br><br>
+
+Higher API generally means lighter petroleum.
+Lower API generally means heavier petroleum.
+
+<br><br>
+
+Common apparatus:<br>
+• API hydrometer<br>
+• Hydrometer cylinder<br>
+• Thermometer<br>
+• Petroleum sample
+`
+}
+]
+},
+
+{
+course:"PGP 127",
+sections:[
+{
+title:"📝 Technical Report Writing",
+content:`
+A technical report presents technical information in an
+organised and understandable manner.
+
+<br><br>
+
+Common sections include title, introduction, objectives,
+methodology, results, discussion, conclusion and references.
+`
+},
+{
+title:"🎤 Oral Presentation",
+content:`
+A good technical presentation should be clear,
+organised, concise and technically accurate.
+
+<br><br>
+
+The presenter should understand the subject rather than
+simply memorising the material.
+`
+}
+]
+},
+
+{
+course:"GLT",
+sections:[
+{
+title:"🧪 General Laboratory Technology",
+content:`
+Important laboratory areas include laboratory safety,
+measurement, glassware, errors, filtration, distillation,
+titration and laboratory calculations.
+
+<br><br>
+
+Always use the correct apparatus and follow safe
+laboratory procedures.
+`
+}
+]
 
 };
 
 
-let currentCourse = "";
+/* ================= PLAYER DATA ================= */
 
-let quizQuestions = [];
+const state={
+name:localStorage.getItem("pngpd_name")||"Patrick",
+money:Number(localStorage.getItem("pngpd_money")||5000),
+energy:Number(localStorage.getItem("pngpd_energy")||100),
+xp:Number(localStorage.getItem("pngpd_xp")||0)
+};
 
-let quizIndex = 0;
+let currentCourse="";
+let quizQuestions=[];
+let quizIndex=0;
+let quizScore=0;
 
-let quizScore = 0;
 
-
-/* =====================================================
-   BASIC FUNCTIONS
-===================================================== */
+/* ================= BASIC ================= */
 
 function showAuth(){
-
-    document.getElementById(
-        "splash"
-    ).style.display = "none";
-
-    document.getElementById(
-        "auth"
-    ).style.display = "flex";
-
+    document.getElementById("splash").style.display="none";
+    document.getElementById("auth").style.display="flex";
 }
-
 
 function enterGame(){
 
-    const input =
-        document.getElementById(
-            "playerName"
-        );
+    const input=document.getElementById("playerName");
 
-    state.name =
-        input.value.trim()
-        || "Patrick";
+    state.name=input.value.trim()||"Patrick";
 
-    localStorage.setItem(
-        "pngpd_name",
-        state.name
-    );
+    localStorage.setItem("pngpd_name",state.name);
 
-    document.getElementById(
-        "auth"
-    ).style.display = "none";
+    document.getElementById("auth").style.display="none";
+    document.getElementById("game").style.display="block";
 
-    document.getElementById(
-        "game"
-    ).style.display = "block";
-
-    document.getElementById(
-        "hudName"
-    ).textContent =
-        state.name;
-
-    document.getElementById(
-        "player-name"
-    ).textContent =
-        state.name;
+    document.getElementById("hudName").textContent=state.name;
+    document.getElementById("player-name").textContent=state.name;
 
     updateHUD();
-
     centerWorld();
-
 }
-
 
 function updateHUD(){
 
-    document.getElementById(
-        "money"
-    ).textContent =
-        state.money;
+    document.getElementById("money").textContent=state.money;
+    document.getElementById("energy").textContent=state.energy;
+    document.getElementById("xp").textContent=state.xp;
 
-    document.getElementById(
-        "energy"
-    ).textContent =
-        state.energy;
-
-    document.getElementById(
-        "xp"
-    ).textContent =
-        state.xp;
-
-
-    localStorage.setItem(
-        "pngpd_money",
-        state.money
-    );
-
-    localStorage.setItem(
-        "pngpd_energy",
-        state.energy
-    );
-
-    localStorage.setItem(
-        "pngpd_xp",
-        state.xp
-    );
-
+    localStorage.setItem("pngpd_money",state.money);
+    localStorage.setItem("pngpd_energy",state.energy);
+    localStorage.setItem("pngpd_xp",state.xp);
 }
-
 
 function toast(message){
 
-    const t =
-        document.getElementById(
-            "toast"
-        );
+    const t=document.getElementById("toast");
 
-    t.textContent =
-        message;
+    t.textContent=message;
+    t.style.display="block";
 
-    t.style.display =
-        "block";
+    clearTimeout(window.toastTimer);
 
-    clearTimeout(
-        window.toastTimer
-    );
-
-    window.toastTimer =
-        setTimeout(
-            ()=>{
-                t.style.display =
-                    "none";
-            },
-            2200
-        );
-
+    window.toastTimer=setTimeout(()=>{
+        t.style.display="none";
+    },2200);
 }
 
+function openPanel(title,html){
 
-function openPanel(
-    title,
-    html
-){
-
-    document.getElementById(
-        "panelTitle"
-    ).textContent =
-        title;
-
-    document.getElementById(
-        "panelBody"
-    ).innerHTML =
-        html;
-
-    document.getElementById(
-        "panel"
-    ).style.display =
-        "flex";
-
+    document.getElementById("panelTitle").textContent=title;
+    document.getElementById("panelBody").innerHTML=html;
+    document.getElementById("panel").style.display="flex";
 }
-
 
 function closePanel(){
-
-    document.getElementById(
-        "panel"
-    ).style.display =
-        "none";
-
+    document.getElementById("panel").style.display="none";
 }
-
 
 function escapeText(text){
 
     return String(text)
-        .replace(
-            /\\/g,
-            "\\\\"
-        )
-        .replace(
-            /'/g,
-            "\\'"
-        );
+        .replace(/\\/g,"\\\\")
+        .replace(/'/g,"\\'");
 
 }
 
 
-/* =====================================================
-   PROFILE
-===================================================== */
+/* ================= PROFILE ================= */
 
 function openProfile(){
 
     openPanel(
         "👤 Student Profile",
-
         `
         <div class="note">
-
-            <h2>
-                ${state.name}
-            </h2>
-
-            <p>
-                🎓 PNGPD Student
-            </p>
-
-            <p>
-                ⭐ ${state.xp} XP
-            </p>
-
-            <p>
-                💰 ₦${state.money}
-            </p>
-
-            <p>
-                ⚡ ${state.energy}/100 Energy
-            </p>
-
+            <h2>${state.name}</h2>
+            <p>🎓 PNGPD Student</p>
+            <p>⭐ ${state.xp} XP</p>
+            <p>💰 ₦${state.money}</p>
+            <p>⚡ ${state.energy}/100 Energy</p>
         </div>
         `
     );
-
 }
 
 
-/* =====================================================
-   HOSTEL
-===================================================== */
+/* ================= HOSTEL ================= */
 
 function openHostel(){
 
     openPanel(
-
         "🏠 HOSTEL",
-
         `
         <div class="note">
+            <h2>🛏️ Rest</h2>
+            <p>Rest and recover your energy before heading back into campus.</p>
 
-            <h2>
-                🛏️ Rest
-            </h2>
-
-            <p>
-                Rest and recover your energy
-                before heading back into campus.
-            </p>
-
-            <button
-                class="next-btn"
-                onclick="restPlayer()"
-            >
+            <button class="next-btn" onclick="restPlayer()">
                 😴 REST +30 ENERGY
             </button>
-
         </div>
         `
-
     );
-
 }
-
 
 function restPlayer(){
 
-    state.energy =
-        Math.min(
-            100,
-            state.energy + 30
-        );
+    state.energy=Math.min(100,state.energy+30);
 
     updateHUD();
 
-    toast(
-        "You rested. +30 Energy ⚡"
-    );
-
+    toast("You rested. +30 Energy ⚡");
 }
 
 
-/* =====================================================
-   NSChE CAMPAIGN
-===================================================== */
+/* ================= CAMPAIGN ================= */
 
 function openCampaign(){
 
     openPanel(
-
         "🗳️ VOTE PATRICK",
-
         `
-        <div
-            style="
-                text-align:center;
-                padding:25px;
-                border-radius:18px;
-                color:white;
-                background:
-                    linear-gradient(
-                        135deg,
-                        #b71c1c,
-                        #f44336,
-                        #ffca28
-                    );
-            "
-        >
+        <div style="
+            text-align:center;
+            padding:25px;
+            border-radius:18px;
+            color:white;
+            background:linear-gradient(135deg,#b71c1c,#f44336,#ffca28);
+        ">
+            <div style="font-size:45px">🗳️</div>
 
-            <div style="font-size:45px">
-                🗳️
-            </div>
+            <h1>VOTE PATRICK</h1>
 
-            <h1>
-                VOTE PATRICK
-            </h1>
-
-            <h2>
-                FOR VICE PRESIDENT
-                OF NSChE
-            </h2>
+            <h2>FOR VICE PRESIDENT OF NSChE</h2>
 
             <p>
-                Commitment • Integrity •
-                Confidence • Accountability
+                Commitment • Integrity • Confidence • Accountability
             </p>
 
             <p>
-                Approachability •
-                Responsiveness • Action
+                Approachability • Responsiveness • Action
             </p>
 
             <strong>
-                Let's make PNGPD NSChE
-                stronger, more active
-                and more connected.
+                Let's make PNGPD NSChE stronger, more active and more connected.
             </strong>
-
         </div>
         `
-
     );
-
 }
 
 
-/* =====================================================
-   COURSE SYSTEM
-===================================================== */
+/* ================= COURSE SYSTEM ================= */
 
 function getCourses(){
 
-    const courses =
-        new Set();
+    const courses=new Set([
+        "PGP 121",
+        "PGP 122",
+        "PGP 123",
+        "PGP 124",
+        "PGP 125",
+        "PGP 126",
+        "PGP 127",
+        "GLT",
+        "CHE",
+        "GNS",
+        "MTH 101",
+        "MTH 112"
+    ]);
 
-    if(
-        window.PNGPD_STUDY_MATERIALS
-    ){
-
-        window.PNGPD_STUDY_MATERIALS
-            .forEach(
-                item =>
-                    courses.add(
-                        item.course
-                    )
-            );
-
+    if(window.PNGPD_STUDY_MATERIALS){
+        window.PNGPD_STUDY_MATERIALS.forEach(item=>{
+            if(item.course) courses.add(item.course);
+        });
     }
 
-
-    if(
-        window.PNGPD_QUESTIONS
-    ){
-
-        window.PNGPD_QUESTIONS
-            .forEach(
-                item =>
-                    courses.add(
-                        item.course
-                    )
-            );
-
+    if(window.PNGPD_QUESTIONS){
+        window.PNGPD_QUESTIONS.forEach(item=>{
+            if(item.course) courses.add(item.course);
+        });
     }
 
-
-    return [
-        ...courses
-    ];
-
+    return [...courses];
 }
 
 
-/* =====================================================
-   LIBRARY
-===================================================== */
+/* ================= LIBRARY ================= */
 
 function openClassroom(){
-
     openLibrary();
-
 }
-
 
 function openLibrary(){
 
-    const courses =
-        getCourses();
+    const courses=getCourses();
 
-
-    let html = `
-
+    let html=`
         <div class="note">
-
-            <b>
-                📖 QUICK REVISION LIBRARY
-            </b>
+            <b>📖 QUICK REVISION LIBRARY</b>
 
             <br><br>
 
@@ -2102,1207 +1092,613 @@ function openLibrary(){
 
             <br><br>
 
-            📌 Definitions
-            <br>
-            📌 Key points
-            <br>
-            📌 Formulas
-            <br>
-            📌 Practical facts
-            <br>
+            📌 Definitions<br>
+            📌 Key points<br>
+            📌 Formulas<br>
+            📌 Practical facts<br>
             📌 Practice questions
-
         </div>
 
         <div class="course-grid">
-
     `;
 
+    courses.forEach(course=>{
 
-    courses.forEach(
-        course => {
+        html+=`
+            <div class="card">
 
-            html += `
-
-                <div class="card">
-
-                    <div
-                        style="
-                            font-size:21px
-                        "
-                    >
-                        ${course}
-                    </div>
-
-                    <div
-                        style="
-                            margin-top:7px;
-                            font-size:12px
-                        "
-                    >
-                        SHORT NOTES + PRACTICE
-                    </div>
-
-                    <button
-                        onclick="
-                            openCourse(
-                                '${escapeText(course)}'
-                            )
-                        "
-                    >
-                        OPEN COURSE
-                    </button>
-
+                <div style="font-size:21px">
+                    ${course}
                 </div>
 
-            `;
+                <div style="margin-top:7px;font-size:12px">
+                    SHORT NOTES + PRACTICE
+                </div>
 
-        }
-    );
+                <button onclick="openCourse('${escapeText(course)}')">
+                    OPEN COURSE
+                </button>
 
+            </div>
+        `;
+    });
 
-    html += `
-        </div>
-    `;
+    html+=`</div>`;
 
-
-    openPanel(
-        "📚 PNGPD LIBRARY",
-        html
-    );
-
+    openPanel("📚 PNGPD LIBRARY",html);
 }
 
 
-/* =====================================================
-   COURSE MATERIAL
-===================================================== */
+/* ================= COURSE MATERIAL ================= */
 
-function getCourseMaterial(
-    course
-){
+function getCourseMaterial(course){
 
     return (
-        window.PNGPD_STUDY_MATERIALS
-        || []
-    ).find(
-        item =>
-            item.course === course
-    );
-
+        window.PNGPD_STUDY_MATERIALS||[]
+    ).find(item=>item.course===course);
 }
 
+function openCourse(course){
 
-function openCourse(
-    course
-){
+    currentCourse=course;
 
-    currentCourse =
-        course;
+    const material=getCourseMaterial(course);
 
+    const questions=(window.PNGPD_QUESTIONS||[])
+        .filter(q=>q.course===course);
 
-    const material =
-        getCourseMaterial(
-            course
-        );
+    let html=`
+        <div class="note" style="
+            border-left-color:#e91e63;
+            background:linear-gradient(135deg,#fff3e0,#ffe0b2);
+        ">
 
+            <h2>📖 ${course}</h2>
 
-    const questions =
-        (
-            window.PNGPD_QUESTIONS
-            || []
-        )
-        .filter(
-            q =>
-                q.course === course
-        );
-
-
-    let html = `
-
-        <div
-            class="note"
-            style="
-                border-left-color:#e91e63;
-                background:
-                    linear-gradient(
-                        135deg,
-                        #fff3e0,
-                        #ffe0b2
-                    );
-            "
-        >
-
-            <h2>
-                📖 ${course}
-            </h2>
+            <p><b>QUICK REVISION NOTES</b></p>
 
             <p>
-                <b>QUICK REVISION NOTES</b>
-            </p>
-
-            <p>
-                Read the key points and formulas
-                before attempting the practice.
+                Read the key points and formulas before attempting the practice.
             </p>
 
         </div>
-
     `;
 
+    if(material&&material.sections){
 
-    if(
-        material &&
-        material.sections
-    ){
+        material.sections.forEach(section=>{
 
-        material.sections
-            .forEach(
-                section => {
+            html+=`
+                <div class="note">
 
-                    html += `
+                    <h3>${section.title}</h3>
 
-                        <div class="note">
+                    <div style="line-height:1.7;color:#333">
+                        ${section.content}
+                    </div>
 
-                            <h3>
-                                ${section.title}
-                            </h3>
-
-                            <div
-                                style="
-                                    line-height:1.7;
-                                    color:#333;
-                                "
-                            >
-                                ${section.content}
-                            </div>
-
-                        </div>
-
-                    `;
-
-                }
-            );
+                </div>
+            `;
+        });
 
     }else{
 
-        html += `
-
+        html+=`
             <div class="note">
-
-                No short-note material
-                has been loaded for
-                ${course} yet.
-
+                No short-note material has been loaded for ${course} yet.
             </div>
-
         `;
-
     }
 
+    html+=`
+        <div style="
+            margin-top:18px;
+            padding:18px;
+            border-radius:18px;
+            background:linear-gradient(135deg,#e91e63,#ff5722);
+            color:white;
+            text-align:center;
+        ">
 
-    html += `
-
-        <div
-            style="
-                margin-top:18px;
-                padding:18px;
-                border-radius:18px;
-                background:
-                    linear-gradient(
-                        135deg,
-                        #e91e63,
-                        #ff5722
-                    );
-                color:white;
-                text-align:center;
-            "
-        >
-
-            <h3>
-                🧠 TEST YOUR KNOWLEDGE
-            </h3>
+            <h3>🧠 TEST YOUR KNOWLEDGE</h3>
 
             <p>
-                ${questions.length}
-                practice questions available.
+                ${questions.length} practice questions available.
             </p>
 
             <button
                 class="practice-btn"
-                onclick="
-                    startQuiz(
-                        '${escapeText(course)}'
-                    )
-                "
+                onclick="startQuiz('${escapeText(course)}')"
             >
                 📝 START PRACTICE
             </button>
 
         </div>
-
     `;
 
-
-    openPanel(
-        "📖 " + course,
-        html
-    );
-
+    openPanel("📖 "+course,html);
 }
 
 
-/* =====================================================
-   QUIZ
-===================================================== */
+/* ================= QUIZ ================= */
 
-function startQuiz(
-    course
-){
+function startQuiz(course){
 
-    currentCourse =
-        course;
+    currentCourse=course;
 
+    const all=(window.PNGPD_QUESTIONS||[])
+        .filter(q=>q.course===course);
 
-    const all =
-        (
-            window.PNGPD_QUESTIONS
-            || []
-        )
-        .filter(
-            q =>
-                q.course === course
-        );
+    all.sort(()=>Math.random()-0.5);
 
+    quizQuestions=all.slice(0,30);
+    quizIndex=0;
+    quizScore=0;
 
-    all.sort(
-        () =>
-            Math.random() - 0.5
-    );
-
-
-    quizQuestions =
-        all.slice(
-            0,
-            30
-        );
-
-
-    quizIndex = 0;
-
-    quizScore = 0;
-
-
-    if(
-        !quizQuestions.length
-    ){
+    if(!quizQuestions.length){
 
         openPanel(
-
             "📝 PRACTICE",
-
             `
             <div class="note">
-
-                No questions are loaded
-                for ${course} yet.
-
+                No questions are loaded for ${course} yet.
             </div>
             `
-
         );
 
         return;
-
     }
 
-
     renderQuestion();
-
 }
-
 
 function renderQuestion(){
 
-    const q =
-        quizQuestions[
-            quizIndex
-        ];
+    const q=quizQuestions[quizIndex];
 
-
-    let html = `
-
+    let html=`
         <div class="quiz-question">
-
             ${q.question}
-
         </div>
-
     `;
 
+    q.options.forEach((option,index)=>{
 
-    q.options.forEach(
-        (
-            option,
-            index
-        ) => {
+        html+=`
+            <button
+                class="option"
+                onclick="answerQuiz(${index})"
+            >
+                ${String.fromCharCode(65+index)}. ${option}
+            </button>
+        `;
+    });
 
-            html += `
-
-                <button
-                    class="option"
-                    onclick="
-                        answerQuiz(
-                            ${index}
-                        )
-                    "
-                >
-
-                    ${String.fromCharCode(
-                        65 + index
-                    )}.
-                    ${option}
-
-                </button>
-
-            `;
-
-        }
-    );
-
-
-    html += `
-
-        <div
-            id="feedback"
-        ></div>
-
-    `;
-
+    html+=`<div id="feedback"></div>`;
 
     openPanel(
-
-        `📝 ${currentCourse}
-        • ${quizIndex + 1}/${quizQuestions.length}`,
-
+        `📝 ${currentCourse} • ${quizIndex+1}/${quizQuestions.length}`,
         html
-
     );
-
 }
 
+function answerQuiz(selected){
 
-function answerQuiz(
-    selected
-){
+    const q=quizQuestions[quizIndex];
 
-    const q =
-        quizQuestions[
-            quizIndex
-        ];
+    document.querySelectorAll(".option")
+        .forEach(button=>button.disabled=true);
 
-
-    const buttons =
-        document.querySelectorAll(
-            ".option"
-        );
-
-
-    buttons.forEach(
-        button =>
-            button.disabled = true
-    );
-
-
-    const correct =
-        selected ===
-        Number(q.answer);
-
+    const correct=selected===Number(q.answer);
 
     if(correct){
-
         quizScore++;
-
-        state.xp += 5;
-
+        state.xp+=5;
     }
 
+    let feedback=correct
+        ? `<div class="correct">✅ Correct!</div>`
+        : `<div class="wrong">❌ Incorrect.</div>`;
 
-    let feedback =
-        correct
-
-        ?
-
-        `
-        <div class="correct">
-
-            ✅ Correct!
-
-        </div>
-        `
-
-        :
-
-        `
-        <div class="wrong">
-
-            ❌ Incorrect.
-
-        </div>
-        `;
-
-
-    if(
-        q.explanation
-    ){
-
-        feedback += `
-
+    if(q.explanation){
+        feedback+=`
             <br>
-
-            <small>
-                ${q.explanation}
-            </small>
-
+            <small>${q.explanation}</small>
         `;
-
     }
 
-
-    feedback += `
-
-        <button
-            class="next-btn"
-            onclick="nextQuestion()"
-        >
+    feedback+=`
+        <button class="next-btn" onclick="nextQuestion()">
             CONTINUE
         </button>
-
     `;
 
-
-    document.getElementById(
-        "feedback"
-    ).innerHTML =
-        feedback;
-
+    document.getElementById("feedback").innerHTML=feedback;
 
     updateHUD();
-
 }
-
 
 function nextQuestion(){
 
     quizIndex++;
 
-
-    if(
-        quizIndex <
-        quizQuestions.length
-    ){
-
+    if(quizIndex<quizQuestions.length){
         renderQuestion();
-
     }else{
-
         finishQuiz();
-
     }
-
 }
-
 
 function finishQuiz(){
 
     openPanel(
-
         "🏆 RESULT",
-
         `
-        <div
-            class="note"
-            style="
-                text-align:center
-            "
-        >
+        <div class="note" style="text-align:center">
 
-            <h2>
-                ${currentCourse}
-            </h2>
+            <h2>${currentCourse}</h2>
 
             <h1>
                 ${quizScore}/${quizQuestions.length}
             </h1>
 
             <p>
-                ⭐ +
-                ${quizScore * 5}
-                XP
+                ⭐ +${quizScore*5} XP
             </p>
 
             <button
                 class="next-btn"
-                onclick="
-                    openCourse(
-                        '${escapeText(
-                            currentCourse
-                        )}'
-                    )
-                "
+                onclick="openCourse('${escapeText(currentCourse)}')"
             >
                 BACK TO COURSE
             </button>
 
         </div>
         `
-
     );
 
-
     updateHUD();
-
 }
 
 
-/* =====================================================
-   CANTEEN
-===================================================== */
+/* ================= CANTEEN ================= */
 
 function openCanteen(){
 
-    const foods = [
-
-        [
-            "🍚",
-            "Jollof Rice",
-            800,
-            25
-        ],
-
-        [
-            "🍝",
-            "Spaghetti",
-            700,
-            22
-        ],
-
-        [
-            "🍗",
-            "Chicken & Rice",
-            1200,
-            35
-        ],
-
-        [
-            "🥪",
-            "Sandwich",
-            500,
-            15
-        ],
-
-        [
-            "🍜",
-            "Noodles & Egg",
-            650,
-            20
-        ],
-
-        [
-            "🥤",
-            "Soft Drink",
-            300,
-            8
-        ]
-
+    const foods=[
+        ["🍚","Jollof Rice",800,25],
+        ["🍝","Spaghetti",700,22],
+        ["🍗","Chicken & Rice",1200,35],
+        ["🥪","Sandwich",500,15],
+        ["🍜","Noodles & Egg",650,20],
+        ["🥤","Soft Drink",300,8]
     ];
 
-
-    let html = `
-
+    let html=`
         <div class="note">
-
             🍽️ Choose your food.
 
             <br><br>
 
-            Each food has a different price
-            and restores a different amount
-            of energy.
-
+            Each food has a different price and restores
+            a different amount of energy.
         </div>
 
         <div class="food-grid">
-
     `;
 
+    foods.forEach(food=>{
 
-    foods.forEach(
-        food => {
+        html+=`
+            <div class="card">
 
-            html += `
-
-                <div class="card">
-
-                    <div
-                        style="
-                            font-size:35px
-                        "
-                    >
-                        ${food[0]}
-                    </div>
-
-                    <div>
-                        ${food[1]}
-                    </div>
-
-                    <div
-                        style="
-                            margin-top:7px;
-                        "
-                    >
-                        ₦${food[2]}
-                        • +${food[3]} Energy
-                    </div>
-
-                    <button
-                        onclick="
-                            buyFood(
-                                ${food[2]},
-                                ${food[3]},
-                                '${food[1]}'
-                            )
-                        "
-                    >
-                        BUY
-                    </button>
-
+                <div style="font-size:35px">
+                    ${food[0]}
                 </div>
 
-            `;
+                <div>${food[1]}</div>
 
-        }
-    );
+                <div style="margin-top:7px">
+                    ₦${food[2]} • +${food[3]} Energy
+                </div>
 
+                <button onclick="
+                    buyFood(${food[2]},${food[3]},'${food[1]}')
+                ">
+                    BUY
+                </button>
 
-    html += `
-        </div>
-    `;
+            </div>
+        `;
+    });
 
+    html+=`</div>`;
 
-    openPanel(
-        "🍔 CANTEEN",
-        html
-    );
-
+    openPanel("🍔 CANTEEN",html);
 }
 
+function buyFood(price,energy,foodName){
 
-function buyFood(
-    price,
-    energy,
-    foodName
-){
-
-    if(
-        state.money <
-        price
-    ){
-
-        toast(
-            "Not enough money 💸"
-        );
-
+    if(state.money<price){
+        toast("Not enough money 💸");
         return;
-
     }
 
+    state.money-=price;
 
-    state.money -=
-        price;
-
-
-    state.energy =
-        Math.min(
-            100,
-            state.energy +
-            energy
-        );
-
+    state.energy=Math.min(
+        100,
+        state.energy+energy
+    );
 
     updateHUD();
 
-
-    toast(
-        foodName +
-        " bought! 🍽️"
-    );
-
+    toast(foodName+" bought! 🍽️");
 }
 
 
-/* =====================================================
-   PGP 126 LAB
-===================================================== */
+/* ================= PGP 126 LAB ================= */
 
-const labPracticals = [
+const labPracticals=[
 
-    {
+{
+title:"Engineering Relative Density",
+formula:"RD = density of substance ÷ density of reference substance.",
+apparatus:"Hydrometer or density bottle, balance, measuring cylinder and clean sample.",
+focus:"Revise the formula, apparatus, correct reading technique, temperature effects, sample handling and sources of error."
+},
 
-        title:
-            "Engineering Relative Density",
+{
+title:"Pour Point",
+formula:"Pour point is the lowest temperature at which the oil remains sufficiently fluid to pour under specified test conditions.",
+apparatus:"Pour-point test jar, thermometer, cooling bath and petroleum sample.",
+focus:"Revise controlled cooling, thermometer readings, observation of movement and practical interpretation."
+},
 
-        formula:
-            "RD = density of substance ÷ density of reference substance.",
-
-        apparatus:
-            "Hydrometer or density bottle, balance, measuring cylinder and clean sample.",
-
-        focus:
-            "Revise the formula, apparatus, correct reading technique, temperature effects, sample handling and sources of error."
-
-    },
-
-    {
-
-        title:
-            "Pour Point",
-
-        formula:
-            "Pour point is the lowest temperature at which the oil remains sufficiently fluid to pour under specified test conditions.",
-
-        apparatus:
-            "Pour-point test jar, thermometer, cooling bath and petroleum sample.",
-
-        focus:
-            "Revise controlled cooling, thermometer readings, observation of movement and practical interpretation."
-
-    },
-
-    {
-
-        title:
-            "API Gravity",
-
-        formula:
-            "API = (141.5 ÷ SG at 60°F/60°F) − 131.5.",
-
-        apparatus:
-            "API hydrometer, hydrometer cylinder, thermometer and petroleum sample.",
-
-        focus:
-            "Revise the formula, specific-gravity relationship, apparatus, reading technique and interpretation."
-
-    }
+{
+title:"API Gravity",
+formula:"API = (141.5 ÷ SG at 60°F/60°F) − 131.5.",
+apparatus:"API hydrometer, hydrometer cylinder, thermometer and petroleum sample.",
+focus:"Revise the formula, specific-gravity relationship, apparatus, reading technique and interpretation."
+}
 
 ];
 
-
 function openLab(){
 
-    let html = `
-
+    let html=`
         <div class="note">
 
-            <b>
-                🧪 PGP 126 PRACTICAL REVISION
-            </b>
+            <b>🧪 PGP 126 PRACTICAL REVISION</b>
 
             <br><br>
 
             Practicals:
 
-            <br>
-            • Engineering Relative Density
-            <br>
-            • Pour Point
-            <br>
-            • API Gravity
+            <br>• Engineering Relative Density
+            <br>• Pour Point
+            <br>• API Gravity
 
             <br><br>
 
-            Each practical contains its
-            formula, apparatus, principle,
-            practical focus and quiz.
+            Each practical contains its formula,
+            apparatus, principle, practical focus and quiz.
 
         </div>
 
         <div class="lab-grid">
-
     `;
 
+    labPracticals.forEach((practical,index)=>{
 
-    labPracticals.forEach(
-        (
-            practical,
-            index
-        ) => {
+        html+=`
+            <div class="card">
 
-            html += `
+                <div>${practical.title}</div>
 
-                <div class="card">
+                <button onclick="labNotes(${index})">
+                    PRACTICAL NOTES
+                </button>
 
-                    <div>
-                        ${practical.title}
-                    </div>
+                <button onclick="labQuiz(${index})">
+                    QUIZ ME
+                </button>
 
-                    <button
-                        onclick="
-                            labNotes(
-                                ${index}
-                            )
-                        "
-                    >
-                        PRACTICAL NOTES
-                    </button>
+            </div>
+        `;
+    });
 
-                    <button
-                        onclick="
-                            labQuiz(
-                                ${index}
-                            )
-                        "
-                    >
-                        QUIZ ME
-                    </button>
+    html+=`</div>`;
 
-                </div>
+    openPanel("🧪 PGP 126 LABORATORY",html);
+}
 
-            `;
+function labNotes(index){
 
+    const p=labPracticals[index];
+
+    openPanel(
+        "🧪 "+p.title,
+        `
+        <div class="note">
+
+            <h3>📐 Formula / Principle</h3>
+
+            <p>${p.formula}</p>
+
+        </div>
+
+        <div class="note">
+
+            <h3>🧰 Apparatus</h3>
+
+            <p>${p.apparatus}</p>
+
+        </div>
+
+        <div class="note">
+
+            <h3>🔬 Practical Focus</h3>
+
+            <p>${p.focus}</p>
+
+        </div>
+        `
+    );
+}
+
+function labQuiz(index){
+
+    const p=labPracticals[index];
+
+    const questionSets=[
+
+    [
+        {
+            q:"Which formula is used for API gravity?",
+            options:[
+                "(141.5/SG) − 131.5",
+                "SG × 141.5",
+                "131.5 − SG",
+                "SG / 141.5"
+            ],
+            answer:0
+        },
+        {
+            q:"If specific gravity decreases, API gravity generally:",
+            options:[
+                "Increases",
+                "Decreases",
+                "Becomes zero",
+                "Does not change"
+            ],
+            answer:0
+        },
+        {
+            q:"Which apparatus is commonly used to measure API gravity?",
+            options:[
+                "API hydrometer",
+                "Burette",
+                "Condenser",
+                "Crucible"
+            ],
+            answer:0
+        },
+        {
+            q:"API gravity is mainly used to describe:",
+            options:[
+                "Petroleum density/lightness",
+                "Petroleum pH",
+                "Water hardness",
+                "Steam pressure"
+            ],
+            answer:0
         }
-    );
-
-
-    html += `
-        </div>
-    `;
-
-
-    openPanel(
-        "🧪 PGP 126 LABORATORY",
-        html
-    );
-
-}
-
-
-function labNotes(
-    index
-){
-
-    const p =
-        labPracticals[
-            index
-        ];
-
-
-    openPanel(
-
-        "🧪 " +
-        p.title,
-
-        `
-
-        <div class="note">
-
-            <h3>
-                📐 Formula / Principle
-            </h3>
-
-            <p>
-                ${p.formula}
-            </p>
-
-        </div>
-
-
-        <div class="note">
-
-            <h3>
-                🧰 Apparatus
-            </h3>
-
-            <p>
-                ${p.apparatus}
-            </p>
-
-        </div>
-
-
-        <div class="note">
-
-            <h3>
-                🔬 Practical Focus
-            </h3>
-
-            <p>
-                ${p.focus}
-            </p>
-
-        </div>
-
-        `
-
-    );
-
-}
-
-
-function labQuiz(
-    index
-){
-
-    const p =
-        labPracticals[
-            index
-        ];
-
-
-    const questionSets = [
-
-        [
-
-            {
-
-                q:
-                    "Which formula is used for API gravity?",
-
-                options:[
-                    "(141.5/SG) − 131.5",
-                    "SG × 141.5",
-                    "131.5 − SG",
-                    "SG / 141.5"
-                ],
-
-                answer:0
-
-            },
-
-            {
-
-                q:
-                    "If specific gravity decreases, API gravity generally:",
-
-                options:[
-                    "Increases",
-                    "Decreases",
-                    "Becomes zero",
-                    "Does not change"
-                ],
-
-                answer:0
-
-            },
-
-            {
-
-                q:
-                    "Which apparatus is commonly used to measure API gravity?",
-
-                options:[
-                    "API hydrometer",
-                    "Burette",
-                    "Condenser",
-                    "Crucible"
-                ],
-
-                answer:0
-
-            },
-
-            {
-
-                q:
-                    "API gravity is mainly used to describe:",
-
-                options:[
-                    "Petroleum density/lightness",
-                    "Petroleum pH",
-                    "Water hardness",
-                    "Steam pressure"
-                ],
-
-                answer:0
-
-            }
-
-        ],
-
-
-        [
-
-            {
-
-                q:
-                    "Pour point testing mainly involves:",
-
-                options:[
-                    "Heating until boiling",
-                    "Controlled cooling and checking fluid movement",
-                    "Measuring pH",
-                    "Filtering solids"
-                ],
-
-                answer:1
-
-            },
-
-            {
-
-                q:
-                    "A thermometer is required in pour point testing mainly to:",
-
-                options:[
-                    "Measure sample temperature",
-                    "Measure density",
-                    "Measure pressure",
-                    "Weigh the sample"
-                ],
-
-                answer:0
-
-            },
-
-            {
-
-                q:
-                    "Which apparatus is associated with pour point testing?",
-
-                options:[
-                    "Pour-point test jar",
-                    "Burette",
-                    "Pipette only",
-                    "Volumetric flask only"
-                ],
-
-                answer:0
-
-            },
-
-            {
-
-                q:
-                    "During pour point testing the petroleum sample is:",
-
-                options:[
-                    "Controlled and cooled",
-                    "Burned",
-                    "Distilled completely",
-                    "Neutralised with acid"
-                ],
-
-                answer:0
-
-            }
-
-        ],
-
-
-        [
-
-            {
-
-                q:
-                    "Relative density compares the density of a substance with:",
-
-                options:[
-                    "Its mass",
-                    "A reference substance",
-                    "Its viscosity",
-                    "Its temperature only"
-                ],
-
-                answer:1
-
-            },
-
-            {
-
-                q:
-                    "Which can cause poor density measurement?",
-
-                options:[
-                    "Clean apparatus",
-                    "Trapped air",
-                    "Correct temperature",
-                    "Proper reading"
-                ],
-
-                answer:1
-
-            },
-
-            {
-
-                q:
-                    "Why should the apparatus be clean during density measurement?",
-
-                options:[
-                    "To reduce contamination and measurement error",
-                    "To increase the mass",
-                    "To change the sample colour",
-                    "To increase pressure"
-                ],
-
-                answer:0
-
-            },
-
-            {
-
-                q:
-                    "Temperature can affect density measurement because:",
-
-                options:[
-                    "Density can vary with temperature",
-                    "Temperature has no possible effect",
-                    "It changes the name of the sample",
-                    "It removes all solids"
-                ],
-
-                answer:0
-
-            }
-
-        ]
+    ],
+
+    [
+        {
+            q:"Pour point testing mainly involves:",
+            options:[
+                "Heating until boiling",
+                "Controlled cooling and checking fluid movement",
+                "Measuring pH",
+                "Filtering solids"
+            ],
+            answer:1
+        },
+        {
+            q:"A thermometer is required in pour point testing mainly to:",
+            options:[
+                "Measure sample temperature",
+                "Measure density",
+                "Measure pressure",
+                "Weigh the sample"
+            ],
+            answer:0
+        },
+        {
+            q:"Which apparatus is associated with pour point testing?",
+            options:[
+                "Pour-point test jar",
+                "Burette",
+                "Pipette only",
+                "Volumetric flask only"
+            ],
+            answer:0
+        },
+        {
+            q:"During pour point testing the petroleum sample is:",
+            options:[
+                "Controlled and cooled",
+                "Burned",
+                "Distilled completely",
+                "Neutralised with acid"
+            ],
+            answer:0
+        }
+    ],
+
+    [
+        {
+            q:"Relative density compares the density of a substance with:",
+            options:[
+                "Its mass",
+                "A reference substance",
+                "Its viscosity",
+                "Its temperature only"
+            ],
+            answer:1
+        },
+        {
+            q:"Which can cause poor density measurement?",
+            options:[
+                "Clean apparatus",
+                "Trapped air",
+                "Correct temperature",
+                "Proper reading"
+            ],
+            answer:1
+        },
+        {
+            q:"Why should the apparatus be clean during density measurement?",
+            options:[
+                "To reduce contamination and measurement error",
+                "To increase the mass",
+                "To change the sample colour",
+                "To increase pressure"
+            ],
+            answer:0
+        },
+        {
+            q:"Temperature can affect density measurement because:",
+            options:[
+                "Density can vary with temperature",
+                "Temperature has no possible effect",
+                "It changes the name of the sample",
+                "It removes all solids"
+            ],
+            answer:0
+        }
+    ]
 
     ];
 
+    const questions=questionSets[index];
 
-    const questions =
-        questionSets[index];
-
-
-    let questionIndex =
-        0;
-
-    let score = 0;
-
+    let questionIndex=0;
+    let score=0;
 
     function showLabQuestion(){
 
-        if(
-            questionIndex >=
-            questions.length
-        ){
+        if(questionIndex>=questions.length){
 
             openPanel(
-
                 "🏆 LAB RESULT",
-
                 `
+                <div class="note" style="text-align:center">
 
-                <div
-                    class="note"
-                    style="
-                        text-align:center
-                    "
-                >
-
-                    <h2>
-                        ${p.title}
-                    </h2>
+                    <h2>${p.title}</h2>
 
                     <h1>
                         ${score}/${questions.length}
@@ -3310,199 +1706,112 @@ function labQuiz(
 
                     <p>
                         ${
-                            score === questions.length
+                            score===questions.length
                             ? "🔥 Excellent practical knowledge!"
                             : "📚 Review the practical notes and try again."
                         }
                     </p>
 
                 </div>
-
                 `
-
             );
 
             return;
+        }
+
+        const q=questions[questionIndex];
+
+        let html=`
+            <div class="quiz-question">
+                ${q.q}
+            </div>
+        `;
+
+        q.options.forEach((option,i)=>{
+
+            html+=`
+                <button
+                    class="option"
+                    onclick="labAnswer(${i})"
+                >
+                    ${String.fromCharCode(65+i)}. ${option}
+                </button>
+            `;
+        });
+
+        openPanel("🧪 "+p.title,html);
+    }
+
+    window.labAnswer=function(selected){
+
+        const q=questions[questionIndex];
+
+        if(selected===q.answer){
+
+            score++;
+            state.xp+=5;
+            updateHUD();
+
+            toast("Correct! +5 XP ⭐");
+
+        }else{
+
+            toast("Not quite. Keep studying 📚");
 
         }
 
+        questionIndex++;
 
-        const q =
-            questions[
-                questionIndex
-            ];
-
-
-        let html = `
-
-            <div class="quiz-question">
-
-                ${q.q}
-
-            </div>
-
-        `;
-
-
-        q.options.forEach(
-            (
-                option,
-                i
-            ) => {
-
-                html += `
-
-                    <button
-                        class="option"
-                        onclick="
-                            labAnswer(
-                                ${i}
-                            )
-                        "
-                    >
-
-                        ${String.fromCharCode(
-                            65 + i
-                        )}.
-                        ${option}
-
-                    </button>
-
-                `;
-
-            }
-        );
-
-
-        openPanel(
-            "🧪 " + p.title,
-            html
-        );
-
-    }
-
-
-    window.labAnswer =
-        function(selected){
-
-            const q =
-                questions[
-                    questionIndex
-                ];
-
-
-            if(
-                selected ===
-                q.answer
-            ){
-
-                score++;
-
-                state.xp += 5;
-
-                updateHUD();
-
-                toast(
-                    "Correct! +5 XP ⭐"
-                );
-
-            }else{
-
-                toast(
-                    "Not quite. Keep studying 📚"
-                );
-
-            }
-
-
-            questionIndex++;
-
-            showLabQuestion();
-
-        };
-
+        showLabQuestion();
+    };
 
     showLabQuestion();
-
 }
 
 
-/* =====================================================
-   ARENA
-===================================================== */
+/* ================= ARENA ================= */
 
 function openArena(){
 
     if(
         window.PNGPD_ARENA &&
-        typeof
-        window.PNGPD_ARENA.open ===
-        "function"
+        typeof window.PNGPD_ARENA.open==="function"
     ){
 
         window.PNGPD_ARENA.open();
-
         return;
-
     }
 
-
     openPanel(
-
         "⚔️ ARENA",
-
         `
-
         <div class="note">
 
-            <h2>
-                🔥 Academic Battle Arena
-            </h2>
+            <h2>🔥 Academic Battle Arena</h2>
 
             <p>
-                Challenge another PNGPD student
-                in an academic quiz battle.
+                Challenge another PNGPD student in an academic quiz battle.
             </p>
 
             <p>
-                The online Arena system will
-                appear here when the Supabase
-                Arena module is available.
+                The online Arena system will appear here when
+                the Supabase Arena module is available.
             </p>
 
-            <button
-                class="next-btn"
-                onclick="
-                    openLocalArena()
-                "
-            >
+            <button class="next-btn" onclick="openLocalArena()">
                 ENTER PRACTICE BATTLE
             </button>
 
         </div>
-
         `
-
     );
-
 }
-
 
 function openLocalArena(){
 
-    const pool =
-        [
-            ...(window.PNGPD_QUESTIONS || [])
-        ]
-        .sort(
-            () =>
-                Math.random() - 0.5
-        )
-        .slice(
-            0,
-            10
-        );
-
+    const pool=[...(window.PNGPD_QUESTIONS||[])]
+        .sort(()=>Math.random()-0.5)
+        .slice(0,10);
 
     if(!pool.length){
 
@@ -3516,336 +1825,179 @@ function openLocalArena(){
         );
 
         return;
-
     }
 
-
-    let index = 0;
-
-    let score = 0;
-
+    let index=0;
+    let score=0;
 
     function showArenaQuestion(){
 
-        if(
-            index >=
-            pool.length
-        ){
+        if(index>=pool.length){
 
             openPanel(
-
                 "🏆 ARENA RESULT",
-
                 `
+                <div class="note" style="text-align:center">
 
-                <div
-                    class="note"
-                    style="
-                        text-align:center
-                    "
-                >
-
-                    <h1>
-                        ${score}/${pool.length}
-                    </h1>
+                    <h1>${score}/${pool.length}</h1>
 
                     <p>
                         Academic battle completed.
                     </p>
 
                 </div>
-
                 `
-
             );
 
             return;
-
         }
 
+        const q=pool[index];
 
-        const q =
-            pool[index];
-
-
-        let html = `
-
+        let html=`
             <div class="quiz-question">
-
                 ${q.question}
-
             </div>
-
         `;
 
+        q.options.forEach((option,i)=>{
 
-        q.options.forEach(
-            (
-                option,
-                i
-            ) => {
-
-                html += `
-
-                    <button
-                        class="option"
-                        onclick="
-                            arenaAnswer(
-                                ${i}
-                            )
-                        "
-                    >
-
-                        ${String.fromCharCode(
-                            65 + i
-                        )}.
-                        ${option}
-
-                    </button>
-
-                `;
-
-            }
-        );
-
+            html+=`
+                <button
+                    class="option"
+                    onclick="arenaAnswer(${i})"
+                >
+                    ${String.fromCharCode(65+i)}. ${option}
+                </button>
+            `;
+        });
 
         openPanel(
-
-            `⚔️ BATTLE
-            ${index + 1}/${pool.length}`,
-
+            `⚔️ BATTLE ${index+1}/${pool.length}`,
             html
-
         );
-
     }
 
+    window.arenaAnswer=function(selected){
 
-    window.arenaAnswer =
-        function(selected){
+        if(
+            selected===
+            Number(pool[index].answer)
+        ){
 
-            if(
-                selected ===
-                Number(
-                    pool[index].answer
-                )
-            ){
+            score++;
+            state.xp+=5;
+            updateHUD();
+        }
 
-                score++;
+        index++;
 
-                state.xp += 5;
-
-                updateHUD();
-
-            }
-
-
-            index++;
-
-            showArenaQuestion();
-
-        };
-
+        showArenaQuestion();
+    };
 
     showArenaQuestion();
-
 }
 
 
-/* =====================================================
-   GOOGLE MAPS STYLE CAMPUS PANNING
-===================================================== */
+/* ================= CAMPUS PANNING ================= */
 
-let panX = 0;
-
-let panY = 0;
-
-let dragging = false;
-
-let lastX = 0;
-
-let lastY = 0;
-
+let panX=0;
+let panY=0;
+let dragging=false;
+let lastX=0;
+let lastY=0;
 
 function applyPan(){
 
-    document.getElementById(
-        "world"
-    ).style.transform =
-        `
-        translate(
-            ${panX}px,
-            ${panY}px
-        )
-        `;
-
+    document.getElementById("world").style.transform=
+        `translate(${panX}px,${panY}px)`;
 }
-
 
 function centerWorld(){
 
-    const viewport =
-        document.getElementById(
-            "viewport"
-        );
+    const viewport=document.getElementById("viewport");
 
-
-    panX =
-        (
-            viewport.clientWidth
-            - 1800
-        ) / 2;
-
-
-    panY =
-        (
-            viewport.clientHeight
-            - 1200
-        ) / 2;
-
+    panX=(viewport.clientWidth-1800)/2;
+    panY=(viewport.clientHeight-1200)/2;
 
     applyPan();
-
 }
 
 
-/* ================= MOUSE + TOUCH DRAG ================= */
+/* ================= DRAG ================= */
 
-const viewport =
-    document.getElementById(
-        "viewport"
-    );
+const viewport=document.getElementById("viewport");
 
+viewport.addEventListener("pointerdown",event=>{
 
-viewport.addEventListener(
-    "pointerdown",
-    event => {
-
-        if(
-            event.target.closest(
-                ".building"
-            )
-        ){
-
-            return;
-
-        }
-
-
-        dragging = true;
-
-        lastX =
-            event.clientX;
-
-        lastY =
-            event.clientY;
-
-
-        viewport.setPointerCapture(
-            event.pointerId
-        );
-
+    if(event.target.closest(".building")){
+        return;
     }
-);
 
+    dragging=true;
 
-viewport.addEventListener(
-    "pointermove",
-    event => {
+    lastX=event.clientX;
+    lastY=event.clientY;
 
-        if(!dragging){
+    viewport.setPointerCapture(event.pointerId);
+});
 
-            return;
+viewport.addEventListener("pointermove",event=>{
 
-        }
-
-
-        panX +=
-            event.clientX -
-            lastX;
-
-        panY +=
-            event.clientY -
-            lastY;
-
-
-        lastX =
-            event.clientX;
-
-        lastY =
-            event.clientY;
-
-
-        applyPan();
-
+    if(!dragging){
+        return;
     }
-);
+
+    panX+=event.clientX-lastX;
+    panY+=event.clientY-lastY;
+
+    lastX=event.clientX;
+    lastY=event.clientY;
+
+    applyPan();
+});
+
+viewport.addEventListener("pointerup",()=>{
+    dragging=false;
+});
+
+viewport.addEventListener("pointercancel",()=>{
+    dragging=false;
+});
 
 
-viewport.addEventListener(
-    "pointerup",
-    () => {
-
-        dragging = false;
-
-    }
-);
-
-
-viewport.addEventListener(
-    "pointercancel",
-    () => {
-
-        dragging = false;
-
-    }
-);
-
-
-/* ================= MOUSE WHEEL / TRACKPAD ================= */
+/* ================= WHEEL ================= */
 
 viewport.addEventListener(
     "wheel",
-    event => {
+    event=>{
 
         event.preventDefault();
 
-        panX -=
-            event.deltaX;
-
-        panY -=
-            event.deltaY;
+        panX-=event.deltaX;
+        panY-=event.deltaY;
 
         applyPan();
 
     },
-    {
-        passive:false
-    }
+    {passive:false}
 );
 
 
 /* ================= RESIZE ================= */
 
-window.addEventListener(
-    "resize",
-    () => {
+window.addEventListener("resize",()=>{
 
-        if(
-            document.getElementById(
-                "game"
-            ).style.display ===
-            "block"
-            &&
-            !dragging
-        ){
+    if(
+        document.getElementById("game").style.display==="block"
+        &&
+        !dragging
+    ){
 
-            centerWorld();
-
-        }
-
+        centerWorld();
     }
-);
+
+});
 
 </script>
 
