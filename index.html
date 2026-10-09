@@ -2119,62 +2119,44 @@ const PNGPD = {
        STUDY
     ===================== */
 
-    startStudy(){
+    startStudy() {
+    const courses = [
+        "PGP 121",
+        "PGP 122",
+        "PGP 123",
+        "PGP 124",
+        "PGP 125",
+        "PGP 126",
+        "PGP 127",
+        "MTH 112",
+        "GNS 111",
+        "GLT"
+    ];
 
-        this.openPanel(
-
-            "📚 Study Session",
-
-            `
-
-            <h3>
-                Choose a Subject
-            </h3>
-
-            <p style="
-                margin-top:12px;
-                color:#9bb0c2;
-                line-height:1.6;
-            ">
-                Select a course to begin
-                your academic challenge.
+    this.openPanel(
+        "📚 PNGPD COURSES",
+        `
+            <p style="color:#9bb0c2;margin-bottom:15px">
+                Select a course to practise its questions.
             </p>
 
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+                ${courses.map(course => `
+                    <button class="btn secondary"
+                        onclick="PNGPD.startQuiz('${course}')">
+                        ${course}
+                    </button>
+                `).join("")}
+            </div>
 
-            <button
-                class="btn primary"
-                onclick="
-                    PNGPD.startQuiz('PGP 122')
-                "
-            >
-                🛢️ PGP 122
+            <button class="btn secondary"
+                style="margin-top:15px"
+                onclick="PNGPD.closePanel()">
+                CLOSE
             </button>
-
-
-            <button
-                class="btn secondary"
-                onclick="
-                    PNGPD.startQuiz('Mathematics')
-                "
-            >
-                📐 Mathematics
-            </button>
-
-
-            <button
-                class="btn secondary"
-                onclick="
-                    PNGPD.startQuiz('Engineering')
-                "
-            >
-                ⚙️ Engineering
-            </button>
-
-            `
-
-        );
-
-    },
+        `
+    );
+},
 
 
     /* =====================
