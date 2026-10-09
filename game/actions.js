@@ -204,7 +204,7 @@ async function sendArenaChallenge(course) {
 
     try {
 
-        if (!window.supabaseClient) {
+        if (!window.pngpdSupabase) {
             showGeneralPanel(
                 "⚠️ Arena",
                 `<div class="panel-card">
@@ -217,7 +217,7 @@ async function sendArenaChallenge(course) {
         const {
             data: { user },
             error: userError
-        } = await window.supabaseClient.auth.getUser();
+        } = await window.pngpdSupabase.auth.getUser();
 
         if (userError || !user) {
             showGeneralPanel(
@@ -307,7 +307,7 @@ async function findArenaOpponent(course) {
         }
 
         const { data: players, error } =
-            await window.supabaseClient
+            await window.pngpdSupabase
                 .from("arena_profiles")
                 .select("user_id, username")
                 .ilike("username", username)
@@ -332,7 +332,7 @@ async function findArenaOpponent(course) {
         }
 
         const { data: match, error: matchError } =
-            await window.supabaseClient
+            await window.pngpdSupabase
                 .from("arena_matches")
                 .insert({
                     challenger_id: user.id,
