@@ -541,23 +541,27 @@ async function acceptArenaChallenge(matchId) {
         }
 
         showGeneralPanel(
-            "⚔️ Challenge Accepted",
-            `
-                <div class="panel-card">
+    "⚔️ Challenge Accepted",
+    `
+        <div class="panel-card">
 
-                    <h3>✅ Battle Accepted!</h3>
+            <h3>✅ Battle Accepted!</h3>
 
-                    <p>
-                        Your opponent has been notified.
-                    </p>
+            <p>
+                Get ready for your ${matchId ? "battle" : "match"}.
+            </p>
 
-                    <p>
-                        The battle system will start next.
-                    </p>
+            <button
+                class="btn btn-primary btn-block"
+                style="margin-top:18px"
+                onclick="startArenaMatch('${matchId}')"
+            >
+                🚀 Start Battle
+            </button>
 
-                </div>
-            `
-        );
+        </div>
+    `
+);
 
     } catch (error) {
 
