@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>PNGPD LIFE 2.0</title>
 
 <style>
@@ -23,9 +22,13 @@ html,body{
 }
 
 button{
-    font-family:inherit;
-    border:0;
+    font:inherit;
+    border:none;
     cursor:pointer;
+}
+
+.hidden{
+    display:none!important;
 }
 
 /* =========================
@@ -35,27 +38,24 @@ button{
 #splash{
     position:fixed;
     inset:0;
-    z-index:9999;
+    background:
+        radial-gradient(circle at 20% 30%,#ff334f 0 15%,transparent 50%),
+        radial-gradient(circle at 80% 20%,#ff9f1c 0 10%,transparent 50%),
+        radial-gradient(circle at 50% 80%,#8b2cff 0 12%,transparent 40%),
+        linear-gradient(135deg,#4a0b3c,#101c4d 50%,#062d2a);
     display:flex;
+    flex-direction:column;
     align-items:center;
     justify-content:center;
-    flex-direction:column;
-    color:white;
+    color:#fff;
     text-align:center;
-    background:
-        radial-gradient(circle at 20% 20%,#ff334f 0 10%,transparent 25%),
-        radial-gradient(circle at 80% 20%,#ff9f1c 0 8%,transparent 25%),
-        radial-gradient(circle at 50% 90%,#8b2cff 0 12%,transparent 28%),
-        linear-gradient(135deg,#4a0b3c,#101c4d 50%,#062d2a);
 }
 
 .logo{
-    font-size:clamp(42px,12vw,90px);
-    font-weight:1000;
-    letter-spacing:-4px;
-    text-shadow:
-        0 7px 0 #a80025,
-        0 12px 25px rgba(0,0,0,.5);
+    font-size:clamp(42px,10vw,90px);
+    font-weight:900;
+    letter-spacing:-3px;
+    text-shadow:0 6px 0 #a80025,0 12px 25px rgba(0,0,0,.5);
 }
 
 .logo span{
@@ -64,23 +64,23 @@ button{
 
 .tagline{
     margin-top:10px;
-    font-weight:800;
     font-size:18px;
+    font-weight:800;
 }
 
 .start-btn{
-    margin-top:35px;
-    padding:18px 42px;
+    margin-top:30px;
+    padding:18px 40px;
     border-radius:50px;
     background:#ff244f;
     color:#fff;
     font-size:20px;
-    font-weight:1000;
+    font-weight:900;
     box-shadow:0 8px 0 #a9002a,0 15px 30px rgba(0,0,0,.4);
 }
 
 .start-btn:active{
-    transform:translateY(6px);
+    transform:translateY(4px);
     box-shadow:0 2px 0 #a9002a;
 }
 
@@ -91,40 +91,40 @@ button{
 #auth{
     position:fixed;
     inset:0;
-    z-index:9000;
+    background:
+        radial-gradient(circle at 10% 20%,#ff244f 0 10%,transparent 30%),
+        radial-gradient(circle at 90% 80%,#ffb703 0 8%,transparent 25%),
+        linear-gradient(135deg,#28104e,#102a52);
     display:none;
     align-items:center;
     justify-content:center;
     padding:20px;
-    background:
-        radial-gradient(circle at 10% 20%,#ff244f 0 8%,transparent 25%),
-        radial-gradient(circle at 90% 80%,#ffb703 0 8%,transparent 25%),
-        linear-gradient(135deg,#28104e,#102a52);
 }
 
 .auth-card{
-    width:min(430px,100%);
-    padding:28px;
-    border-radius:30px;
-    background:rgba(255,255,255,.96);
-    box-shadow:0 25px 70px rgba(0,0,0,.45);
+    width:min(400px,100%);
+    background:#fff;
+    border-radius:25px;
+    box-shadow:0 25px 60px rgba(0,0,0,.3);
+    padding:25px;
+    text-align:center;
 }
 
 .auth-card h1{
     color:#ef1747;
     font-size:34px;
-    font-weight:1000;
+    font-weight:900;
 }
 
 .auth-card p{
-    margin:6px 0 20px;
     color:#555;
+    margin:6px 0 20px;
 }
 
 .auth-card input{
     width:100%;
-    padding:16px;
-    margin:7px 0;
+    padding:15px;
+    margin:8px 0;
     border:2px solid #ddd;
     border-radius:15px;
     font-size:16px;
@@ -138,19 +138,21 @@ button{
 .auth-main{
     width:100%;
     padding:16px;
-    margin-top:10px;
+    margin-top:12px;
     border-radius:15px;
     background:#ff244f;
     color:#fff;
-    font-weight:1000;
-    font-size:17px;
+    font-size:18px;
+    font-weight:900;
+    box-shadow:0 6px 0 #a9002a;
 }
 
 .auth-switch{
-    background:none;
-    color:#6a22d9;
     margin-top:15px;
+    color:#6a22d9;
     font-weight:800;
+    background:none;
+    font-size:14px;
 }
 
 .auth-error{
@@ -164,14 +166,12 @@ button{
 ========================= */
 
 #game{
-    display:none;
     position:fixed;
     inset:0;
+    display:none;
     overflow:hidden;
     background:#6fbd48;
 }
-
-/* CAMERA WORLD */
 
 #world{
     position:absolute;
@@ -181,55 +181,55 @@ button{
     top:50%;
     transform:translate(-50%,-50%);
     background:
-        radial-gradient(circle,#86d95d 0 35%,#68bd45 36% 100%);
+        linear-gradient(45deg,#86d95d 0,#68bd45 60%);
     overflow:hidden;
 }
 
-/* grass texture */
-
-#world::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    opacity:.16;
-    background-image:
-        radial-gradient(#237e36 1px,transparent 1px);
-    background-size:24px 24px;
-}
-
-/* roads */
+/* =========================
+   ROADS
+========================= */
 
 .road{
     position:absolute;
     background:#49494f;
     border:10px solid #37373c;
-    box-shadow:inset 0 0 0 4px rgba(255,255,255,.08);
+    box-shadow:inset 0 0 0 4px rgba(255,255,255,.05);
 }
 
 .road.horizontal{
-    height:145px;
     width:100%;
+    height:100px;
+    left:0;
 }
 
 .road.vertical{
-    width:145px;
+    width:100px;
     height:100%;
+    top:0;
 }
 
-.road::after{
+.road.horizontal::after{
     content:"";
     position:absolute;
-    inset:0;
+    top:45px;
+    left:0;
+    width:100%;
+    height:10px;
     background:repeating-linear-gradient(
         90deg,
         transparent 0 40px,
         #ffd84a 40px 65px,
         transparent 65px 105px
     );
-    opacity:.7;
 }
 
 .road.vertical::after{
+    content:"";
+    position:absolute;
+    top:0;
+    left:45px;
+    width:10px;
+    height:100%;
     background:repeating-linear-gradient(
         0deg,
         transparent 0 40px,
@@ -238,7 +238,9 @@ button{
     );
 }
 
-/* PATHS */
+/* =========================
+   PATHS
+========================= */
 
 .path{
     position:absolute;
@@ -247,100 +249,15 @@ button{
     border-radius:20px;
 }
 
-/* buildings */
-
-.building{
-    position:absolute;
-    width:230px;
-    height:150px;
-    border-radius:24px;
-    border:7px solid rgba(0,0,0,.25);
-    box-shadow:
-        0 12px 0 rgba(0,0,0,.18),
-        0 20px 30px rgba(0,0,0,.22);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    flex-direction:column;
-    color:#fff;
-    font-weight:1000;
-    text-align:center;
-    z-index:5;
-    transition:.15s;
-}
-
-.building:hover{
-    transform:scale(1.04);
-}
-
-.building .icon{
-    font-size:50px;
-}
-
-.building .name{
-    font-size:19px;
-    text-shadow:2px 3px 0 rgba(0,0,0,.3);
-}
-
-.building small{
-    margin-top:3px;
-    opacity:.9;
-}
-
-.library{
-    left:210px;
-    top:210px;
-    background:linear-gradient(135deg,#ef1747,#ff5a36);
-}
-
-.classroom{
-    left:720px;
-    top:160px;
-    background:linear-gradient(135deg,#ff8c00,#ffd23f);
-    color:#542000;
-}
-
-.hostel{
-    left:1190px;
-    top:220px;
-    background:linear-gradient(135deg,#7c25e8,#c142ff);
-}
-
-.canteen{
-    left:220px;
-    top:760px;
-    background:linear-gradient(135deg,#ff1744,#ff7b00);
-}
-
-.lab{
-    left:760px;
-    top:760px;
-    background:linear-gradient(135deg,#0077ff,#00c6ff);
-}
-
-.arena{
-    left:1250px;
-    top:750px;
-    background:linear-gradient(135deg,#e6007e,#ff3d3d);
-}
-
-/* trees */
+/* =========================
+   TREES
+========================= */
 
 .tree{
     position:absolute;
     width:70px;
     height:90px;
-    z-index:4;
-}
-
-.tree .trunk{
-    position:absolute;
-    width:18px;
-    height:40px;
-    background:#75401f;
-    left:26px;
-    top:48px;
-    border-radius:8px;
+    z-index:5;
 }
 
 .tree .leaf{
@@ -351,62 +268,119 @@ button{
     background:#19a844;
     border:5px solid #08752d;
     box-shadow:
-        -18px 10px 0 #23bd50,
-        18px 10px 0 #0d9638;
+        -12px 6px 0 #23bd50,
+        12px 6px 0 #0d9638;
 }
 
-/* campus signs */
-
-.sign{
+.tree .trunk{
     position:absolute;
-    padding:8px 15px;
-    border-radius:10px;
-    background:#fff;
-    border:4px solid #333;
-    font-weight:1000;
-    color:#222;
-    z-index:7;
+    width:18px;
+    height:40px;
+    background:#75401f;
+    left:26px;
+    top:45px;
+    border-radius:8px;
 }
 
-/* player */
+/* =========================
+   BUILDINGS
+========================= */
+
+.building{
+    position:absolute;
+    width:230px;
+    height:150px;
+    border-radius:15px;
+    border:7px solid rgba(0,0,0,.2);
+    box-shadow:
+        0 12px 0 rgba(0,0,0,.15),
+        0 20px 30px rgba(0,0,0,.22);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    font-weight:900;
+    color:#fff;
+    text-shadow:2px 2px 0 rgba(0,0,0,.3);
+    z-index:4;
+}
+
+.building .icon{
+    font-size:48px;
+}
+
+.building .name{
+    font-size:18px;
+    margin-top:6px;
+}
+
+.library{
+    left:270px;
+    top:240px;
+    background:linear-gradient(135deg,#ef1747,#ff5a36);
+}
+
+.classroom{
+    left:900px;
+    top:240px;
+    background:linear-gradient(135deg,#ff8c00,#ffd23f);
+    color:#542000;
+}
+
+.arena{
+    left:1530px;
+    top:240px;
+    background:linear-gradient(135deg,#7c25e8,#c142ff);
+}
+
+.hostel{
+    left:270px;
+    top:720px;
+    background:linear-gradient(135deg,#0077ff,#00c6ff);
+}
+
+.canteen{
+    left:900px;
+    top:720px;
+    background:linear-gradient(135deg,#ff1744,#ff7b00);
+}
+
+.lab{
+    left:1530px;
+    top:720px;
+    background:linear-gradient(135deg,#008cff,#00a86b);
+}
+
+/* =========================
+   PLAYER
+========================= */
 
 #player{
     position:absolute;
-    width:58px;
-    height:70px;
-    z-index:50;
-    left:860px;
-    top:550px;
-    transition:transform .08s linear;
-}
-
-.player-shadow{
-    position:absolute;
-    width:45px;
-    height:15px;
-    bottom:0;
-    left:7px;
-    border-radius:50%;
-    background:rgba(0,0,0,.3);
+    width:50px;
+    height:60px;
+    z-index:6;
+    left:875px;
+    top:570px;
 }
 
 .player-body{
     position:absolute;
-    left:10px;
-    top:18px;
     width:38px;
     height:42px;
-    border-radius:13px 13px 10px 10px;
+    left:6px;
+    bottom:0;
+    border-radius:10px 10px 8px 8px;
     background:#ff1744;
     border:4px solid #9d0022;
 }
 
 .player-head{
     position:absolute;
-    left:12px;
-    top:0;
-    width:34px;
-    height:34px;
+    width:32px;
+    height:32px;
+    left:9px;
+    top:-4px;
     border-radius:50%;
     background:#9b5b32;
     border:4px solid #603017;
@@ -416,11 +390,21 @@ button{
     content:"";
     position:absolute;
     left:3px;
-    top:-5px;
+    top:-6px;
     width:25px;
     height:12px;
     border-radius:50%;
     background:#171717;
+}
+
+.player-shadow{
+    position:absolute;
+    width:40px;
+    height:12px;
+    bottom:0;
+    left:5px;
+    border-radius:50%;
+    background:rgba(0,0,0,.3);
 }
 
 /* =========================
@@ -432,10 +416,9 @@ button{
     top:12px;
     left:12px;
     right:12px;
-    z-index:500;
+    z-index:10;
     display:flex;
     justify-content:space-between;
-    align-items:flex-start;
     pointer-events:none;
 }
 
@@ -447,39 +430,43 @@ button{
 
 .stat{
     pointer-events:auto;
+    background:#fff;
     padding:9px 13px;
     border-radius:15px;
-    background:#fff;
     border:3px solid #252525;
     box-shadow:0 5px 0 rgba(0,0,0,.25);
-    font-weight:1000;
+    font-weight:900;
+    display:flex;
+    align-items:center;
+    gap:4px;
+    font-size:14px;
 }
 
-.money{
+.stat.money{
     color:#008a3a;
 }
 
-.xp{
+.stat.xp{
     color:#6c1cff;
 }
 
-.energy{
+.stat.energy{
     color:#ff1744;
 }
 
 .hud-right{
-    pointer-events:auto;
     display:flex;
     gap:8px;
+    pointer-events:auto;
 }
 
 .round-btn{
-    width:50px;
-    height:50px;
+    width:48px;
+    height:48px;
     border-radius:50%;
-    border:3px solid #222;
     background:#ffd23f;
-    font-size:23px;
+    border:3px solid #222;
+    font-size:22px;
     box-shadow:0 5px 0 rgba(0,0,0,.25);
 }
 
@@ -491,18 +478,18 @@ button{
     position:fixed;
     bottom:18px;
     left:18px;
-    z-index:600;
     display:grid;
-    grid-template-columns:58px 58px 58px;
-    grid-template-rows:58px 58px 58px;
+    grid-template-columns:60px 60px 60px;
+    grid-template-rows:60px 60px;
     gap:5px;
+    z-index:9;
 }
 
 .move-btn{
-    border-radius:17px;
     background:#fff;
     border:3px solid #222;
-    font-size:25px;
+    border-radius:15px;
+    font-size:22px;
     box-shadow:0 5px 0 rgba(0,0,0,.3);
 }
 
@@ -511,27 +498,44 @@ button{
     box-shadow:0 1px 0 rgba(0,0,0,.3);
 }
 
-.up{grid-column:2;}
-.left{grid-column:1;grid-row:2;}
-.down{grid-column:2;grid-row:2;}
-.right{grid-column:3;grid-row:2;}
+.up{
+    grid-column:2;
+    grid-row:1;
+}
 
-/* interaction */
+.left{
+    grid-column:1;
+    grid-row:2;
+}
+
+.down{
+    grid-column:2;
+    grid-row:2;
+}
+
+.right{
+    grid-column:3;
+    grid-row:2;
+}
+
+/* =========================
+   INTERACT
+========================= */
 
 #interact{
     position:fixed;
-    bottom:28px;
+    bottom:25px;
     right:20px;
-    z-index:600;
-    padding:16px 20px;
+    z-index:9;
+    padding:14px 22px;
     border-radius:20px;
     background:#ff1744;
     color:#fff;
     border:4px solid #8f0020;
-    font-weight:1000;
-    font-size:17px;
+    font-weight:900;
+    font-size:16px;
     display:none;
-    box-shadow:0 7px 0 #75001b;
+    box-shadow:0 6px 0 #75001b;
 }
 
 /* =========================
@@ -541,134 +545,151 @@ button{
 #panel{
     position:fixed;
     inset:0;
-    z-index:1000;
+    background:rgba(12,8,30,.65);
     display:none;
     align-items:center;
     justify-content:center;
-    padding:18px;
-    background:rgba(12,8,30,.62);
+    padding:20px;
     backdrop-filter:blur(5px);
+    z-index:20;
 }
 
 .panel-card{
+    background:#fff;
     width:min(700px,100%);
     max-height:90vh;
     overflow:auto;
-    background:#fff;
-    border-radius:28px;
+    border-radius:25px;
     border:6px solid #222;
     box-shadow:0 25px 70px rgba(0,0,0,.5);
 }
 
 .panel-head{
-    padding:18px 20px;
+    padding:16px 20px;
+    background:linear-gradient(
+        135deg,
+        #ff1744,
+        #ff7b00,
+        #7c25e8
+    );
     color:#fff;
-    background:linear-gradient(135deg,#ff1744,#ff7b00,#7c25e8);
     display:flex;
     align-items:center;
     justify-content:space-between;
 }
 
 .panel-head h2{
-    font-size:25px;
-    font-weight:1000;
+    font-size:24px;
+    font-weight:900;
 }
 
 .close{
-    width:42px;
-    height:42px;
+    width:40px;
+    height:40px;
     border-radius:50%;
     background:#fff;
     color:#222;
-    font-size:22px;
-    font-weight:1000;
+    font-size:20px;
+    font-weight:900;
 }
 
 .panel-body{
     padding:20px;
 }
 
-/* courses */
+/* =========================
+   COURSES
+========================= */
 
 .course-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(145px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
     gap:12px;
 }
 
 .course-card{
-    min-height:110px;
-    padding:15px;
-    border-radius:20px;
+    background:#112217;
     color:#fff;
-    font-weight:1000;
+    border-radius:20px;
+    padding:12px;
     text-align:left;
+    font-weight:900;
     border:4px solid #222;
-    box-shadow:0 6px 0 rgba(0,0,0,.2);
 }
 
 .course-card:nth-child(6n+1){
     background:#ff1744;
 }
+
 .course-card:nth-child(6n+2){
     background:#ff7b00;
 }
+
 .course-card:nth-child(6n+3){
     background:#7c25e8;
 }
+
 .course-card:nth-child(6n+4){
     background:#008cff;
 }
+
 .course-card:nth-child(6n+5){
     background:#00a86b;
 }
+
 .course-card:nth-child(6n+6){
     background:#e91e63;
 }
 
 .course-card strong{
-    font-size:19px;
+    font-size:18px;
+    display:block;
 }
 
 .course-card small{
-    display:block;
-    margin-top:7px;
+    font-size:12px;
+    margin-top:6px;
     opacity:.9;
 }
 
-/* quiz */
+/* =========================
+   QUIZ
+========================= */
 
 .quiz-progress{
     height:14px;
     background:#ddd;
-    border-radius:20px;
+    border-radius:10px;
     overflow:hidden;
-    margin-bottom:18px;
+    margin-bottom:15px;
 }
 
 .quiz-progress span{
     display:block;
     height:100%;
-    background:linear-gradient(90deg,#ff1744,#ffb703,#7c25e8);
+    background:linear-gradient(
+        90deg,
+        #ff1744,
+        #ffb703,
+        #7c25e8
+    );
 }
 
 .question{
-    font-size:21px;
-    font-weight:1000;
-    line-height:1.4;
-    margin-bottom:18px;
+    font-weight:800;
+    font-size:20px;
     color:#222;
+    margin-bottom:12px;
 }
 
 .option{
     width:100%;
-    padding:15px;
-    margin:7px 0;
+    padding:12px;
+    margin:6px 0;
     border-radius:15px;
     background:#f4f4f7;
     border:3px solid #ddd;
     text-align:left;
-    font-size:16px;
     font-weight:800;
 }
 
@@ -689,23 +710,25 @@ button{
 
 .next-btn{
     width:100%;
-    padding:15px;
+    padding:12px;
     margin-top:12px;
     border-radius:15px;
     background:#6c1cff;
     color:#fff;
     font-size:17px;
-    font-weight:1000;
+    font-weight:900;
 }
 
-/* notes */
+/* =========================
+   NOTES
+========================= */
 
 .note{
     padding:15px;
-    margin:10px 0;
     border-radius:17px;
     background:#fff7d5;
     border-left:7px solid #ffb703;
+    margin:10px 0;
 }
 
 .note h3{
@@ -713,22 +736,24 @@ button{
     margin-bottom:5px;
 }
 
-/* notification */
+/* =========================
+   TOAST
+========================= */
 
 #toast{
     position:fixed;
     left:50%;
     top:90px;
     transform:translateX(-50%) translateY(-20px);
-    z-index:3000;
     background:#222;
     color:#fff;
-    padding:13px 18px;
+    padding:12px 18px;
     border-radius:15px;
     font-weight:900;
     opacity:0;
     pointer-events:none;
     transition:.25s;
+    z-index:30;
 }
 
 #toast.show{
@@ -736,16 +761,22 @@ button{
     transform:translateX(-50%) translateY(0);
 }
 
-/* mobile */
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:600px){
+
+    #world{
+        transform:translate(-50%,-50%) scale(.8);
+    }
+
     .building{
-        width:190px;
-        height:130px;
+        transform:scale(.8);
     }
 
     .building .icon{
-        font-size:40px;
+        font-size:36px;
     }
 
     .building .name{
@@ -760,1017 +791,1878 @@ button{
     .hud-right{
         display:none;
     }
-
-    #world{
-        transform:translate(-50%,-50%) scale(.9);
-    }
 }
 </style>
 </head>
 
 <body>
 
-<!-- SPLASH -->
+<!-- =========================
+     SPLASH
+========================= -->
+
 <section id="splash">
-    <div class="logo">PNGPD <span>LIFE</span></div>
-    <div style="font-size:20px;font-weight:900;">2.0</div>
-    <div class="tagline">YOUR CAMPUS. YOUR STORY. YOUR GAME. 🎮</div>
-    <button class="start-btn" onclick="showAuth()">PLAY NOW 🚀</button>
+
+    <div class="logo">
+        PNGPD <span>LIFE</span>
+    </div>
+
+    <div class="tagline">
+        2.0 YOUR CAMPUS. YOUR STORY. YOUR GAME.
+    </div>
+
+    <button
+        class="start-btn"
+        onclick="showAuth()"
+    >
+        PLAY NOW 🚀
+    </button>
+
 </section>
 
-<!-- AUTH -->
+
+<!-- =========================
+     AUTH
+========================= -->
+
 <section id="auth">
+
     <div class="auth-card">
-        <h1 id="authTitle">Welcome Back 👋</h1>
-        <p id="authText">Enter PNGPD LIFE and start your campus journey.</p>
 
-        <input id="username" placeholder="Username">
-        <input id="email" type="email" placeholder="Email">
-        <input id="password" type="password" placeholder="Password">
+        <h1 id="authTitle">
+            Welcome Back 👋
+        </h1>
 
-        <button class="auth-main" onclick="enterGame()">ENTER PNGPD LIFE 🎮</button>
+        <p id="authText">
+            Enter PNGPD LIFE and start your campus journey.
+        </p>
 
-        <button class="auth-switch" onclick="toggleAuth()">
+        <input
+            id="username"
+            placeholder="Username"
+        >
+
+        <input
+            id="email"
+            type="email"
+            placeholder="Email"
+        >
+
+        <input
+            id="password"
+            type="password"
+            placeholder="Password"
+        >
+
+        <button
+            class="auth-main"
+            onclick="enterGame()"
+        >
+            ENTER PNGPD LIFE 🎮
+        </button>
+
+        <button
+            class="auth-switch"
+            onclick="toggleAuth()"
+        >
             Create a new account
         </button>
 
-        <div class="auth-error" id="authError"></div>
+        <div
+            class="auth-error"
+            id="authError"
+        ></div>
+
     </div>
+
 </section>
 
-<!-- GAME -->
+
+<!-- =========================
+     GAME
+========================= -->
+
 <section id="game">
 
     <div id="world">
 
         <!-- ROADS -->
-        <div class="road horizontal" style="top:510px;"></div>
-        <div class="road vertical" style="left:825px;"></div>
+
+        <div
+            class="road horizontal"
+            style="top:45%;"
+        ></div>
+
+        <div
+            class="road vertical"
+            style="left:45%;"
+        ></div>
+
 
         <!-- PATHS -->
-        <div class="path" style="left:420px;top:330px;width:400px;height:55px;"></div>
-        <div class="path" style="left:1000px;top:330px;width:300px;height:55px;"></div>
-        <div class="path" style="left:430px;top:650px;width:390px;height:55px;"></div>
-        <div class="path" style="left:1000px;top:650px;width:300px;height:55px;"></div>
 
-        <!-- BUILDINGS -->
-        <div class="building library" onclick="openLibrary()">
-            <div class="icon">📚</div>
-            <div class="name">PNGPD LIBRARY</div>
-            <small>Study & Quizzes</small>
-        </div>
+        <div
+            class="path"
+            style="
+                width:300px;
+                height:40px;
+                left:450px;
+                top:230px;
+            "
+        ></div>
 
-        <div class="building classroom" onclick="openClassroom()">
-            <div class="icon">🏫</div>
-            <div class="name">CLASSROOM BLOCK</div>
-            <small>Attend Class</small>
-        </div>
+        <div
+            class="path"
+            style="
+                width:300px;
+                height:40px;
+                left:450px;
+                top:710px;
+            "
+        ></div>
 
-        <div class="building hostel" onclick="openHostel()">
-            <div class="icon">🏠</div>
-            <div class="name">STUDENT HOSTEL</div>
-            <small>Rest & Recover</small>
-        </div>
-
-        <div class="building canteen" onclick="openCanteen()">
-            <div class="icon">🍔</div>
-            <div class="name">CAMPUS CANTEEN</div>
-            <small>Eat & Socialize</small>
-        </div>
-
-        <div class="building lab" onclick="openLab()">
-            <div class="icon">🧪</div>
-            <div class="name">PROCESS LAB</div>
-            <small>Practical XP</small>
-        </div>
-
-        <div class="building arena" onclick="openArena()">
-            <div class="icon">⚔️</div>
-            <div class="name">PNGPD ARENA</div>
-            <small>Academic Battles</small>
-        </div>
-
-        <!-- SIGNS -->
-        <div class="sign" style="left:480px;top:275px;">📍 STUDY ZONE</div>
-        <div class="sign" style="left:1080px;top:275px;">🎓 STUDENT ZONE</div>
-        <div class="sign" style="left:510px;top:720px;">🍕 FOOD STREET</div>
-        <div class="sign" style="left:1080px;top:720px;">🔥 BATTLE ZONE</div>
 
         <!-- TREES -->
-        <div class="tree" style="left:50px;top:80px">
-            <div class="leaf"></div><div class="trunk"></div>
+
+        <div
+            class="tree"
+            style="left:30px;top:30px;"
+        >
+            <div class="leaf"></div>
+            <div class="trunk"></div>
         </div>
-        <div class="tree" style="left:500px;top:80px">
-            <div class="leaf"></div><div class="trunk"></div>
+
+        <div
+            class="tree"
+            style="left:1750px;top:30px;"
+        >
+            <div class="leaf"></div>
+            <div class="trunk"></div>
         </div>
-        <div class="tree" style="left:1050px;top:70px">
-            <div class="leaf"></div><div class="trunk"></div>
+
+        <div
+            class="tree"
+            style="left:30px;top:1100px;"
+        >
+            <div class="leaf"></div>
+            <div class="trunk"></div>
         </div>
-        <div class="tree" style="left:1500px;top:120px">
-            <div class="leaf"></div><div class="trunk"></div>
+
+        <div
+            class="tree"
+            style="left:1750px;top:1100px;"
+        >
+            <div class="leaf"></div>
+            <div class="trunk"></div>
         </div>
-        <div class="tree" style="left:70px;top:650px">
-            <div class="leaf"></div><div class="trunk"></div>
+
+
+        <!-- BUILDINGS -->
+
+        <div
+            class="building library"
+            onclick="enterLocation('library')"
+        >
+            <div class="icon">📚</div>
+            <div class="name">LIBRARY</div>
         </div>
-        <div class="tree" style="left:540px;top:980px">
-            <div class="leaf"></div><div class="trunk"></div>
+
+
+        <div
+            class="building classroom"
+            onclick="enterLocation('classroom')"
+        >
+            <div class="icon">🏫</div>
+            <div class="name">CLASSROOM</div>
         </div>
-        <div class="tree" style="left:1050px;top:1000px">
-            <div class="leaf"></div><div class="trunk"></div>
+
+
+        <div
+            class="building arena"
+            onclick="enterLocation('arena')"
+        >
+            <div class="icon">⚔️</div>
+            <div class="name">ARENA</div>
         </div>
-        <div class="tree" style="left:1550px;top:850px">
-            <div class="leaf"></div><div class="trunk"></div>
+
+
+        <div
+            class="building hostel"
+            onclick="enterLocation('hostel')"
+        >
+            <div class="icon">🏠</div>
+            <div class="name">HOSTEL</div>
         </div>
+
+
+        <div
+            class="building canteen"
+            onclick="enterLocation('canteen')"
+        >
+            <div class="icon">🍔</div>
+            <div class="name">CANTEEN</div>
+        </div>
+
+
+        <div
+            class="building lab"
+            onclick="enterLocation('lab')"
+        >
+            <div class="icon">🧪</div>
+            <div class="name">LABORATORY</div>
+        </div>
+
 
         <!-- PLAYER -->
+
         <div id="player">
+
             <div class="player-head"></div>
+
             <div class="player-body"></div>
+
             <div class="player-shadow"></div>
+
         </div>
 
     </div>
+
 
     <!-- HUD -->
+
     <div id="hud">
+
         <div class="hud-left">
-            <div class="stat">👤 <span id="playerName">Patrick</span></div>
-            <div class="stat money">💰 ₦<span id="money">5000</span></div>
-            <div class="stat xp">⭐ XP <span id="xp">0</span></div>
-            <div class="stat energy">❤️ <span id="energy">100</span></div>
+
+            <div class="stat">
+                👤
+                <span id="playerName">
+                    Student
+                </span>
+            </div>
+
+            <div class="stat money">
+                💰 ₦
+                <span id="money">
+                    5000
+                </span>
+            </div>
+
+            <div class="stat xp">
+                ⭐ XP
+                <span id="xp">
+                    0
+                </span>
+            </div>
+
+            <div class="stat energy">
+                ❤️
+                <span id="energy">
+                    100
+                </span>
+            </div>
+
         </div>
+
 
         <div class="hud-right">
-            <button class="round-btn" onclick="openProfile()">👤</button>
-            <button class="round-btn" onclick="openLibrary()">📚</button>
+
+            <button
+                class="round-btn"
+                onclick="openProfile()"
+            >
+                👤
+            </button>
+
+            <button
+                class="round-btn"
+                onclick="openLibrary()"
+            >
+                📚
+            </button>
+
         </div>
+
     </div>
+
 
     <!-- CONTROLS -->
+
     <div id="controls">
-        <button class="move-btn up" onpointerdown="move('up')">⬆️</button>
-        <button class="move-btn left" onpointerdown="move('left')">⬅️</button>
-        <button class="move-btn down" onpointerdown="move('down')">⬇️</button>
-        <button class="move-btn right" onpointerdown="move('right')">➡️</button>
+
+        <button
+            class="move-btn up"
+            onpointerdown="move('up')"
+        >
+            ⬆️
+        </button>
+
+        <button
+            class="move-btn left"
+            onpointerdown="move('left')"
+        >
+            ⬅️
+        </button>
+
+        <button
+            class="move-btn down"
+            onpointerdown="move('down')"
+        >
+            ⬇️
+        </button>
+
+        <button
+            class="move-btn right"
+            onpointerdown="move('right')"
+        >
+            ➡️
+        </button>
+
     </div>
 
-    <button id="interact" onclick="interact()">ENTER / INTERACT</button>
+
+    <!-- INTERACT -->
+
+    <button
+        id="interact"
+        onclick="interact()"
+    >
+        ENTER LOCATION 🚪
+    </button>
+
 </section>
 
-<!-- PANEL -->
+
+<!-- =========================
+     PANEL
+========================= -->
+
 <div id="panel">
+
     <div class="panel-card">
+
         <div class="panel-head">
-            <h2 id="panelTitle">PNGPD LIFE</h2>
-            <button class="close" onclick="closePanel()">×</button>
+
+            <h2 id="panelTitle">
+                PNGPD LIFE
+            </h2>
+
+            <button
+                class="close"
+                onclick="closePanel()"
+            >
+                ×
+            </button>
+
         </div>
-        <div class="panel-body" id="panelBody"></div>
+
+        <div
+            class="panel-body"
+            id="panelBody"
+        ></div>
+
     </div>
+
 </div>
+
+
+<!-- TOAST -->
 
 <div id="toast"></div>
 
+
+<!-- QUESTION BANK -->
+
 <script src="data/questions.js"></script>
 
-<script>
-/* =========================================================
-   PNGPD LIFE 2.0
-   CORE GAME
-========================================================= */
 
-const state = {
-    name: localStorage.getItem("pngpd_name") || "Patrick",
-    money: Number(localStorage.getItem("pngpd_money") || 5000),
-    xp: Number(localStorage.getItem("pngpd_xp") || 0),
-    energy: Number(localStorage.getItem("pngpd_energy") || 100),
-    x: 860,
-    y: 550,
-    speed: 24,
-    authRegister:false
+<script>
+/* =========================
+   GAME STATE
+========================= */
+
+let player = {
+    name:"Student",
+    money:5000,
+    xp:0,
+    energy:100
 };
 
-let currentCourse = "";
-let quizQuestions = [];
-let quizIndex = 0;
-let quizScore = 0;
-let quizAnswered = false;
+let currentLocation = null;
+
+let posX = 875;
+let posY = 570;
+
+const speed = 18;
+
 
 /* =========================
    AUTH
 ========================= */
 
+let authRegister = false;
+
 function showAuth(){
-    document.getElementById("splash").style.display="none";
-    document.getElementById("auth").style.display="flex";
+
+    document.getElementById("splash").style.display = "none";
+
+    document.getElementById("auth").style.display = "flex";
+
 }
 
+
 function toggleAuth(){
-    state.authRegister=!state.authRegister;
+
+    authRegister = !authRegister;
 
     document.getElementById("authTitle").textContent =
-        state.authRegister ? "Create Your Character 🚀" : "Welcome Back 👋";
+        authRegister
+        ? "Create Character 🚀"
+        : "Welcome Back 👋";
 
     document.getElementById("authText").textContent =
-        state.authRegister
-        ? "Create your PNGPD LIFE student account."
+        authRegister
+        ? "Create your PNGPD LIFE account."
         : "Enter PNGPD LIFE and start your campus journey.";
 
     document.querySelector(".auth-main").textContent =
-        state.authRegister ? "CREATE CHARACTER 🎮" : "ENTER PNGPD LIFE 🎮";
+        authRegister
+        ? "CREATE 🎮"
+        : "ENTER 🎮";
 
     document.querySelector(".auth-switch").textContent =
-        state.authRegister
+        authRegister
         ? "I already have an account"
         : "Create a new account";
 }
 
+
 function enterGame(){
 
     const name =
-        document.getElementById("username").value.trim() ||
-        "Patrick";
+        document.getElementById("username").value.trim()
+        || "Student";
 
-    state.name=name;
+    player.name = name;
 
-    localStorage.setItem("pngpd_name",name);
-    localStorage.setItem("pngpd_money",state.money);
-    localStorage.setItem("pngpd_xp",state.xp);
+    document.getElementById("auth").style.display = "none";
 
-    document.getElementById("auth").style.display="none";
-    document.getElementById("game").style.display="block";
+    document.getElementById("game").style.display = "block";
 
     updateHUD();
 
-    toast("Welcome to PNGPD LIFE, "+name+"! 🎮🔥");
+    toast(
+        "Welcome to PNGPD LIFE, "
+        + name
+        + "!"
+    );
+
 }
+
 
 /* =========================
    HUD
 ========================= */
 
 function updateHUD(){
-    document.getElementById("playerName").textContent=state.name;
-    document.getElementById("money").textContent=state.money.toLocaleString();
-    document.getElementById("xp").textContent=state.xp;
-    document.getElementById("energy").textContent=state.energy;
+
+    document.getElementById("playerName").textContent =
+        player.name;
+
+    document.getElementById("money").textContent =
+        player.money.toLocaleString();
+
+    document.getElementById("xp").textContent =
+        player.xp;
+
+    document.getElementById("energy").textContent =
+        player.energy;
+
 }
 
-function addXP(amount){
-    state.xp += amount;
-    localStorage.setItem("pngpd_xp",state.xp);
-    updateHUD();
-    toast("⭐ +"+amount+" XP!");
-}
-
-function spendMoney(amount){
-    state.money=Math.max(0,state.money-amount);
-    localStorage.setItem("pngpd_money",state.money);
-    updateHUD();
-}
 
 /* =========================
-   PLAYER MOVEMENT
+   MOVEMENT
 ========================= */
 
-function move(direction){
+function move(dir){
 
-    const world=document.getElementById("world");
+    if(dir === "up")
+        posY -= speed;
 
-    if(direction==="up") state.y-=state.speed;
-    if(direction==="down") state.y+=state.speed;
-    if(direction==="left") state.x-=state.speed;
-    if(direction==="right") state.x+=state.speed;
+    if(dir === "down")
+        posY += speed;
 
-    state.x=Math.max(30,Math.min(1710,state.x));
-    state.y=Math.max(30,Math.min(1110,state.y));
+    if(dir === "left")
+        posX -= speed;
 
-    const player=document.getElementById("player");
+    if(dir === "right")
+        posX += speed;
 
-    player.style.left=state.x+"px";
-    player.style.top=state.y+"px";
+
+    posX = Math.max(
+        30,
+        Math.min(1770,posX)
+    );
+
+    posY = Math.max(
+        30,
+        Math.min(1110,posY)
+    );
+
+
+    const p =
+        document.getElementById("player");
+
+    p.style.left =
+        posX + "px";
+
+    p.style.top =
+        posY + "px";
+
 
     camera();
 
-    checkNearLocation();
+    checkNearby();
+
 }
+
+
+/* =========================
+   CAMERA
+========================= */
 
 function camera(){
 
-    const world=document.getElementById("world");
+    const world =
+        document.getElementById("world");
 
-    const vw=window.innerWidth;
-    const vh=window.innerHeight;
+    const vw =
+        window.innerWidth;
 
-    let left=-(state.x-vw/2);
-    let top=-(state.y-vh/2);
+    const vh =
+        window.innerHeight;
 
-    left=Math.min(0,Math.max(vw-1800,left));
-    top=Math.min(0,Math.max(vh-1200,top));
 
-    world.style.left=(vw/2+left)+"px";
-    world.style.top=(vh/2+top)+"px";
+    let left =
+        -(posX - vw / 2);
+
+    let top =
+        -(posY - vh / 2);
+
+
+    left =
+        Math.min(
+            0,
+            Math.max(
+                vw - 1800,
+                left
+            )
+        );
+
+
+    top =
+        Math.min(
+            0,
+            Math.max(
+                vh - 1200,
+                top
+            )
+        );
+
+
+    world.style.left =
+        (vw / 2 + left) + "px";
+
+    world.style.top =
+        (vh / 2 + top) + "px";
+
 }
 
-document.addEventListener("keydown",e=>{
-
-    if(e.key==="ArrowUp" || e.key.toLowerCase()==="w")
-        move("up");
-
-    if(e.key==="ArrowDown" || e.key.toLowerCase()==="s")
-        move("down");
-
-    if(e.key==="ArrowLeft" || e.key.toLowerCase()==="a")
-        move("left");
-
-    if(e.key==="ArrowRight" || e.key.toLowerCase()==="d")
-        move("right");
-
-    if(e.key==="Enter")
-        interact();
-});
 
 /* =========================
-   LOCATIONS
+   KEYBOARD
 ========================= */
 
-const locations=[
-    {
-        name:"PNGPD Library",
-        x:210,y:210,w:230,h:150,
-        action:openLibrary
-    },
-    {
-        name:"Classroom Block",
-        x:720,y:160,w:230,h:150,
-        action:openClassroom
-    },
-    {
-        name:"Student Hostel",
-        x:1190,y:220,w:230,h:150,
-        action:openHostel
-    },
-    {
-        name:"Campus Canteen",
-        x:220,y:760,w:230,h:150,
-        action:openCanteen
-    },
-    {
-        name:"Process Lab",
-        x:760,y:760,w:230,h:150,
-        action:openLab
-    },
-    {
-        name:"PNGPD Arena",
-        x:1250,y:750,w:230,h:150,
-        action:openArena
+document.addEventListener(
+    "keydown",
+    e => {
+
+        if(
+            document.getElementById("game")
+            .style.display !== "block"
+        )
+            return;
+
+
+        if(
+            e.key === "ArrowUp" ||
+            e.key.toLowerCase() === "w"
+        )
+            move("up");
+
+
+        if(
+            e.key === "ArrowDown" ||
+            e.key.toLowerCase() === "s"
+        )
+            move("down");
+
+
+        if(
+            e.key === "ArrowLeft" ||
+            e.key.toLowerCase() === "a"
+        )
+            move("left");
+
+
+        if(
+            e.key === "ArrowRight" ||
+            e.key.toLowerCase() === "d"
+        )
+            move("right");
+
+
+        if(e.key === "Enter")
+            interact();
+
     }
-];
+);
 
-let nearby=null;
 
-function checkNearLocation(){
+/* =========================
+   BUILDING DETECTION
+========================= */
 
-    nearby=null;
+function checkNearby(){
 
-    for(const loc of locations){
+    currentLocation = null;
 
-        const cx=loc.x+loc.w/2;
-        const cy=loc.y+loc.h/2;
+    const buildings = [
 
-        const dx=state.x-cx;
-        const dy=state.y-cy;
+        ["library","Library"],
 
-        const distance=Math.sqrt(dx*dx+dy*dy);
+        ["classroom","Classroom"],
 
-        if(distance<180){
-            nearby=loc;
-            break;
+        ["hostel","Hostel"],
+
+        ["canteen","Canteen"],
+
+        ["lab","Laboratory"],
+
+        ["arena","Arena"]
+
+    ];
+
+
+    let nearestDist = Infinity;
+
+    let nearestName = null;
+
+
+    buildings.forEach(
+        ([key,label]) => {
+
+            const el =
+                document.querySelector(
+                    `.building.${key}`
+                );
+
+            if(!el)
+                return;
+
+
+            const rect =
+                el.getBoundingClientRect();
+
+
+            const centerX =
+                rect.left +
+                rect.width / 2;
+
+
+            const centerY =
+                rect.top +
+                rect.height / 2;
+
+
+            const dx =
+                centerX -
+                (posX + 25);
+
+
+            const dy =
+                centerY -
+                (posY + 30);
+
+
+            const dist =
+                Math.hypot(dx,dy);
+
+
+            if(dist < nearestDist){
+
+                nearestDist = dist;
+
+                nearestName = key;
+
+            }
+
         }
+    );
+
+
+    if(nearestDist < 180){
+
+        currentLocation =
+            nearestName;
+
+        enterLocation(
+            nearestName
+        );
+
+    }
+    else{
+
+        document.getElementById(
+            "interact"
+        ).style.display = "none";
+
     }
 
-    const button=document.getElementById("interact");
-
-    if(nearby){
-        button.style.display="block";
-        button.textContent="ENTER "+nearby.name.toUpperCase()+" 🚪";
-    }else{
-        button.style.display="none";
-    }
 }
+
+
+/* =========================
+   LOCATION
+========================= */
+
+function enterLocation(loc){
+
+    const names = {
+
+        library:
+            "📚 PNGPD Library",
+
+        classroom:
+            "🏫 Classroom Block",
+
+        hostel:
+            "🏠 Student Hostel",
+
+        canteen:
+            "🍔 Campus Canteen",
+
+        lab:
+            "🧪 Process Lab",
+
+        arena:
+            "⚔️ PNGPD Arena"
+
+    };
+
+
+    const button =
+        document.getElementById(
+            "interact"
+        );
+
+
+    button.textContent =
+        `ENTER ${names[loc] || ""}`;
+
+    button.style.display =
+        "block";
+
+}
+
 
 function interact(){
-    if(nearby && nearby.action){
-        nearby.action();
+
+    if(!currentLocation){
+
+        alert(
+            "Walk near a building to enter."
+        );
+
+        return;
+
     }
+
+
+    switch(currentLocation){
+
+        case "library":
+            openLibrary();
+            break;
+
+        case "classroom":
+            openClassroom();
+            break;
+
+        case "hostel":
+            openHostel();
+            break;
+
+        case "canteen":
+            openCanteen();
+            break;
+
+        case "lab":
+            openLab();
+            break;
+
+        case "arena":
+            openArena();
+            break;
+
+    }
+
 }
+
 
 /* =========================
    PANEL
 ========================= */
 
-function openPanel(title,html){
-    document.getElementById("panelTitle").textContent=title;
-    document.getElementById("panelBody").innerHTML=html;
-    document.getElementById("panel").style.display="flex";
+function openPanel(
+    title,
+    content
+){
+
+    document.getElementById(
+        "panelTitle"
+    ).textContent = title;
+
+
+    document.getElementById(
+        "panelBody"
+    ).innerHTML = content;
+
+
+    document.getElementById(
+        "panel"
+    ).style.display = "flex";
+
 }
 
+
 function closePanel(){
-    document.getElementById("panel").style.display="none";
+
+    document.getElementById(
+        "panel"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "panelBody"
+    ).innerHTML = "";
+
 }
+
 
 /* =========================
    LIBRARY
 ========================= */
 
-function getQuestions(){
-
-    const bank=window.PNGPD_QUESTIONS;
-
-    if(!Array.isArray(bank)){
-        return [];
-    }
-
-    return bank.filter(q =>
-        q &&
-        typeof q.question==="string" &&
-        Array.isArray(q.options) &&
-        q.options.length>=2
-    );
-}
-
-function getCourses(){
-
-    const courses=[...new Set(
-        getQuestions().map(q=>q.course || q.subject || q.code)
-    )].filter(Boolean);
-
-    return courses.sort();
-}
-
 function openLibrary(){
 
-    const courses=getCourses();
+    let questions =
+        window.PNGPD_QUESTIONS || [];
 
-    let html=`
-        <p style="font-weight:800;margin-bottom:15px;">
-            📚 Welcome to the PNGPD Library!
-            Choose a course to study or challenge yourself.
+
+    questions =
+        questions.filter(
+            q =>
+                q &&
+                q.question &&
+                Array.isArray(q.options) &&
+                q.options.length >= 2
+        );
+
+
+    let courses =
+        [
+            ...new Set(
+                questions.map(
+                    q =>
+                        (
+                            q.course ||
+                            q.subject ||
+                            q.code ||
+                            ""
+                        ).trim()
+                )
+            )
+        ];
+
+
+    courses =
+        courses
+        .filter(c => c)
+        .sort();
+
+
+    let html = `
+
+        <p
+            style="
+                font-weight:800;
+                margin-bottom:15px;
+            "
+        >
+            📚 Welcome to the Library!
+            Select a course:
         </p>
+
         <div class="course-grid">
+
     `;
 
-    if(!courses.length){
 
-        html+=`
-            <div style="
-                padding:20px;
-                border-radius:18px;
-                background:#ffe5eb;
-                color:#d00035;
-                font-weight:900;
-                grid-column:1/-1;
-            ">
-                Question bank not loaded.
-                Make sure <b>data/questions.js</b> contains
-                <b>window.PNGPD_QUESTIONS = [...]</b>.
+    if(courses.length === 0){
+
+        html += `
+
+            <div
+                style="
+                    padding:20px;
+                    border-radius:15px;
+                    background:#ffe5eb;
+                    color:#d00035;
+                    font-weight:900;
+                    grid-column:1/-1;
+                "
+            >
+                Question bank not found.
+                Load
+                <b>data/questions.js</b>.
             </div>
+
         `;
 
-    }else{
+    }
+    else{
 
-        courses.forEach(course=>{
+        courses.forEach(
+            course => {
 
-            const count=getQuestions()
-                .filter(q=>(q.course||q.subject||q.code)===course)
-                .length;
+                const count =
+                    questions.filter(
+                        q =>
+                            (
+                                q.course ||
+                                q.subject ||
+                                q.code
+                            ) === course
+                    ).length;
 
-            const safe=encodeURIComponent(course);
 
-            html+=`
-                <button class="course-card"
-                        onclick="selectCourse(decodeURIComponent('${safe}'))">
-                    <strong>${escapeHTML(course)}</strong>
-                    <small>${count} questions available</small>
-                    <small>▶ START STUDY</small>
-                </button>
-            `;
-        });
+                html += `
+
+                    <button
+                        class="course-card"
+                        onclick="
+                            selectCourse(
+                                '${encodeURIComponent(course)}'
+                            )
+                        "
+                    >
+
+                        <strong>
+                            ${course}
+                        </strong>
+
+                        <small>
+                            ${count} questions
+                        </small>
+
+                        <small>
+                            ▶ START
+                        </small>
+
+                    </button>
+
+                `;
+
+            }
+        );
+
     }
 
-    html+=`</div>`;
 
-    openPanel("📚 PNGPD LIBRARY",html);
-}
+    html += `
+        </div>
+    `;
 
-function selectCourse(course){
-
-    currentCourse=course;
-
-    const count=getQuestions()
-        .filter(q=>(q.course||q.subject||q.code)===course)
-        .length;
 
     openPanel(
-        "📖 "+course,
-        `
-        <div class="note">
-            <h3>🎯 COURSE CHALLENGE</h3>
-            <p>
-                You have <b>${count}</b> questions available.
-                Start a randomized quiz with no repeated question
-                inside the same session.
-            </p>
-        </div>
-
-        <button class="next-btn"
-                onclick="startQuiz('${encodeURIComponent(course)}')">
-            START QUIZ 🚀
-        </button>
-
-        <button class="next-btn"
-                style="background:#ff1744;"
-                onclick="showCourseNotes('${encodeURIComponent(course)}')">
-            KEY NOTES 📒
-        </button>
-        `
+        "📚 PNGPD Library",
+        html
     );
+
 }
+
 
 /* =========================
    QUIZ
 ========================= */
 
-function startQuiz(encoded){
+let quizQuestions = [];
 
-    currentCourse=decodeURIComponent(encoded);
+let quizIndex = 0;
 
-    let bank=getQuestions().filter(
-        q=>(q.course||q.subject||q.code)===currentCourse
-    );
+let quizScore = 0;
 
-    bank=shuffle([...bank]);
+let quizAnswered = false;
 
-    quizQuestions=bank.slice(
-        0,
-        Math.min(30,bank.length)
-    );
+let currentCourse = "";
 
-    quizIndex=0;
-    quizScore=0;
-    quizAnswered=false;
 
-    if(!quizQuestions.length){
-        openPanel(
-            "❌ NO QUESTIONS",
-            `<div class="note">
-                No questions were found for ${escapeHTML(currentCourse)}.
-            </div>`
+function selectCourse(encoded){
+
+    const course =
+        decodeURIComponent(encoded);
+
+
+    const available =
+        (
+            window.PNGPD_QUESTIONS || []
+        ).filter(
+            q =>
+                (
+                    q.course ||
+                    q.subject ||
+                    q.code
+                ) === course
         );
+
+
+    if(available.length === 0){
+
+        openPanel(
+            "❌ No Questions",
+            `
+                <div class="note">
+                    No questions found for
+                    <b>${course}</b>.
+                </div>
+            `
+        );
+
         return;
+
     }
 
+
+    quizQuestions =
+        available.slice();
+
+
+    for(
+        let i = quizQuestions.length - 1;
+        i > 0;
+        i--
+    ){
+
+        const j =
+            Math.floor(
+                Math.random() * (i + 1)
+            );
+
+
+        [
+            quizQuestions[i],
+            quizQuestions[j]
+        ] =
+        [
+            quizQuestions[j],
+            quizQuestions[i]
+        ];
+
+    }
+
+
+    quizQuestions =
+        quizQuestions.slice(
+            0,
+            Math.min(
+                30,
+                quizQuestions.length
+            )
+        );
+
+
+    quizIndex = 0;
+
+    quizScore = 0;
+
+    quizAnswered = false;
+
+    currentCourse = course;
+
+
     renderQuiz();
+
 }
+
 
 function renderQuiz(){
 
-    const q=quizQuestions[quizIndex];
+    const q =
+        quizQuestions[quizIndex];
 
-    const percent=
-        ((quizIndex)/quizQuestions.length)*100;
 
-    let html=`
+    const percent =
+        Math.round(
+            (
+                quizIndex /
+                quizQuestions.length
+            ) * 100
+        );
+
+
+    let html = `
+
         <div class="quiz-progress">
-            <span style="width:${percent}%"></span>
+
+            <span
+                style="
+                    width:${percent}%;
+                "
+            ></span>
+
         </div>
 
-        <div style="font-weight:900;color:#e00032;margin-bottom:8px;">
-            ${escapeHTML(currentCourse)}
-            • Question ${quizIndex+1}/${quizQuestions.length}
+
+        <div
+            style="
+                font-weight:900;
+                color:#e00032;
+                margin-bottom:8px;
+            "
+        >
+            ${currentCourse}
+            • Question
+            ${quizIndex + 1}
+            /
+            ${quizQuestions.length}
         </div>
+
 
         <div class="question">
-            ${escapeHTML(q.question)}
+            ${q.question}
         </div>
+
     `;
 
-    q.options.forEach((option,index)=>{
 
-        html+=`
-            <button
-                class="option"
-                id="option-${index}"
-                onclick="answerQuestion(${index})">
-                <b>${String.fromCharCode(65+index)}.</b>
-                ${escapeHTML(option)}
-            </button>
-        `;
-    });
+    q.options.forEach(
+        (opt,i) => {
 
-    html+=`
+            html += `
+
+                <button
+                    class="option"
+                    id="opt${i}"
+                    onclick="
+                        answerQuestion(${i})
+                    "
+                >
+
+                    <b>
+                        ${String.fromCharCode(65+i)}.
+                    </b>
+
+                    ${opt}
+
+                </button>
+
+            `;
+
+        }
+    );
+
+
+    html += `
+
         <button
             id="nextQuestion"
             class="next-btn"
-            style="display:none"
-            onclick="nextQuestion()">
+            style="display:none;"
+            onclick="nextQuestion()"
+        >
             NEXT ➜
         </button>
+
     `;
 
-    openPanel("🧠 COURSE CHALLENGE",html);
+
+    openPanel(
+        "🧠 Course Challenge",
+        html
+    );
+
 }
+
 
 function answerQuestion(index){
 
-    if(quizAnswered) return;
+    if(quizAnswered)
+        return;
 
-    quizAnswered=true;
 
-    const q=quizQuestions[quizIndex];
+    quizAnswered = true;
 
-    let correct=Number(q.answer);
 
-    if(Number.isNaN(correct)){
+    const q =
+        quizQuestions[quizIndex];
 
-        const letter=String(q.answer)
+
+    let correct =
+        Number(q.answer);
+
+
+    if(isNaN(correct)){
+
+        const letAns =
+            (q.answer || "")
+            .toString()
             .trim()
             .toUpperCase();
 
-        if(letter==="A") correct=0;
-        else if(letter==="B") correct=1;
-        else if(letter==="C") correct=2;
-        else if(letter==="D") correct=3;
+
+        correct =
+            "ABCD".indexOf(
+                letAns
+            );
+
     }
 
-    const buttons=document.querySelectorAll(".option");
 
-    buttons.forEach((button,i)=>{
+    const buttons =
+        document.querySelectorAll(
+            ".option"
+        );
 
-        button.disabled=true;
 
-        if(i===correct)
-            button.classList.add("correct");
+    buttons.forEach(
+        (btn,i) => {
 
-        if(i===index && i!==correct)
-            button.classList.add("wrong");
-    });
+            btn.disabled = true;
 
-    if(index===correct){
+
+            if(i === correct)
+                btn.classList.add(
+                    "correct"
+                );
+
+
+            if(
+                i === index &&
+                i !== correct
+            )
+                btn.classList.add(
+                    "wrong"
+                );
+
+        }
+    );
+
+
+    if(index === correct){
 
         quizScore++;
-        addXP(10);
-        toast("🔥 CORRECT! +10 XP");
-    }else{
-        toast("❌ Not this time!");
+
+        player.xp += 10;
+
+        localStorage.setItem(
+            "pngpd_xp",
+            player.xp
+        );
+
+        updateHUD();
+
+        toast(
+            "🔥 CORRECT! +10 XP"
+        );
+
+    }
+    else{
+
+        toast(
+            "❌ Try again!"
+        );
+
     }
 
-    document.getElementById("nextQuestion").style.display="block";
+
+    document.getElementById(
+        "nextQuestion"
+    ).style.display =
+        "block";
+
 }
+
 
 function nextQuestion(){
 
     quizIndex++;
 
-    if(quizIndex>=quizQuestions.length){
+
+    if(
+        quizIndex >=
+        quizQuestions.length
+    ){
+
         finishQuiz();
-        return;
+
+    }
+    else{
+
+        quizAnswered = false;
+
+        renderQuiz();
+
     }
 
-    quizAnswered=false;
-    renderQuiz();
 }
+
 
 function finishQuiz(){
 
-    const total=quizQuestions.length;
-    const percentage=Math.round((quizScore/total)*100);
+    const total =
+        quizQuestions.length;
 
-    const bonus=quizScore*20;
 
-    state.money+=bonus;
+    const perc =
+        Math.round(
+            (
+                quizScore /
+                total
+            ) * 100
+        );
 
-    localStorage.setItem("pngpd_money",state.money);
+
+    const bonus =
+        quizScore * 20;
+
+
+    player.money += bonus;
+
+
+    localStorage.setItem(
+        "pngpd_money",
+        player.money
+    );
+
 
     updateHUD();
 
-    let message="Keep studying! 📚";
 
-    if(percentage>=80)
-        message="🔥 EXCELLENT! PNGPD STAR!";
-    else if(percentage>=60)
-        message="👏 GOOD JOB!";
-    else if(percentage>=40)
-        message="💪 YOU CAN DO BETTER!";
+    let msg =
+        "Keep studying!";
+
+
+    if(perc >= 80)
+        msg = "🏆 EXCELLENT!";
+
+    else if(perc >= 60)
+        msg = "👏 Good job!";
+
+    else if(perc >= 40)
+        msg = "💪 Keep practicing!";
+
     else
-        message="📖 BACK TO THE LIBRARY!";
+        msg = "📖 Review and try again.";
+
 
     openPanel(
-        "🏆 QUIZ COMPLETE",
+        "🏁 Quiz Complete",
         `
-        <div style="text-align:center;">
-            <div style="font-size:65px;">${percentage>=70?"🏆":"📚"}</div>
 
-            <h2 style="font-size:32px;color:#e00032;">
-                ${quizScore}/${total}
-            </h2>
+            <div
+                style="
+                    text-align:center;
+                "
+            >
 
-            <p style="font-size:22px;font-weight:1000;">
-                ${percentage}%
-            </p>
+                <div
+                    style="
+                        font-size:50px;
+                    "
+                >
+                    ${
+                        perc >= 70
+                        ? "🏆"
+                        : "📚"
+                    }
+                </div>
 
-            <div class="note">
-                <h3>${message}</h3>
-                <p>
-                    💰 Reward earned:
-                    <b>₦${bonus.toLocaleString()}</b>
+
+                <h2
+                    style="
+                        font-size:32px;
+                        color:#e00032;
+                    "
+                >
+                    ${quizScore}/${total}
+                </h2>
+
+
+                <p
+                    style="
+                        font-size:22px;
+                        font-weight:900;
+                    "
+                >
+                    ${perc}%
+                    -
+                    ${msg}
                 </p>
+
+
+                <div class="note">
+
+                    <h3>
+                        Reward:
+                    </h3>
+
+                    <p>
+                        💰
+                        ₦${bonus.toLocaleString()}
+                        earned!
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="next-btn"
+                    onclick="openLibrary()"
+                >
+                    BACK TO LIBRARY 📚
+                </button>
+
             </div>
 
-            <button class="next-btn"
-                    onclick="openLibrary()">
-                BACK TO LIBRARY 📚
-            </button>
-        </div>
         `
     );
+
 }
 
-/* =========================
-   NOTES
-========================= */
-
-function showCourseNotes(encoded){
-
-    const course=decodeURIComponent(encoded);
-
-    const notes={
-        "PGP 122":[
-            ["Filtration","Filtration removes solid particles from a fluid by passing the fluid through a filtering medium."],
-            ["Membrane Separation","A membrane is a thin semipermeable barrier that selectively controls transport between phases."],
-            ["Extraction","Liquid-liquid extraction separates components mainly through differences in solubility."],
-            ["Evaporation","Evaporation concentrates a solution by vaporizing part of the solvent, usually water."]
-        ],
-
-        "PGP 123":[
-            ["Hard Water","Hard water contains dissolved calcium and magnesium salts."],
-            ["Temporary Hardness","Usually caused by calcium or magnesium bicarbonates and can be removed by boiling."],
-            ["Permanent Hardness","Caused by chlorides or sulfates of calcium or magnesium and cannot be removed simply by boiling."],
-            ["Wastewater Treatment","Major stages include preliminary, primary, secondary and tertiary treatment."]
-        ],
-
-        "PGP 125":[
-            ["Petroleum Origin","The course material describes the accepted biogenic theory: petroleum and natural gas originate from ancient organic matter deposited in sedimentary basins."],
-            ["Crude Distillation","Crude oil is separated into broad fractions based mainly on differences in boiling points and volatility."],
-            ["Thermal Cracking","Thermal cracking uses heat to break large hydrocarbon molecules into smaller molecules."],
-            ["Catalytic Reforming","Reforming converts suitable hydrocarbons into higher-octane products and produces hydrogen as a valuable by-product."],
-            ["Alkylation","Alkylation combines isobutane with light olefins to produce highly branched, high-octane alkylate."]
-        ]
-    };
-
-    const selected=notes[course] || [
-        ["Study Mode","Your course notes will appear here as more material is added to the library."]
-    ];
-
-    let html="";
-
-    selected.forEach(n=>{
-        html+=`
-            <div class="note">
-                <h3>${escapeHTML(n[0])}</h3>
-                <p>${escapeHTML(n[1])}</p>
-            </div>
-        `;
-    });
-
-    openPanel("📒 "+course+" KEY NOTES",html);
-}
 
 /* =========================
-   LOCATIONS
+   CLASSROOM
 ========================= */
 
 function openClassroom(){
 
-    addXP(5);
+    player.xp += 20;
+
+
+    localStorage.setItem(
+        "pngpd_xp",
+        player.xp
+    );
+
 
     openPanel(
-        "🏫 CLASSROOM",
+        "🏫 Classroom",
         `
-        <div class="note">
-            <h3>🎓 CLASS IS IN SESSION</h3>
-            <p>
-                Attend lectures, complete assignments and
-                increase your academic XP.
-            </p>
-        </div>
 
-        <button class="next-btn" onclick="addXP(20);closePanel();">
-            ATTEND CLASS +20 XP 🎓
-        </button>
+            <div class="note">
+
+                <h3>
+                    🎓 Lecture Time
+                </h3>
+
+                <p>
+                    You attended a lecture
+                    and gained knowledge
+                    (+20 XP).
+                </p>
+
+            </div>
+
         `
     );
+
+
+    updateHUD();
+
 }
+
+
+/* =========================
+   HOSTEL
+========================= */
 
 function openHostel(){
 
-    state.energy=Math.min(100,state.energy+35);
-    updateHUD();
+    player.energy =
+        Math.min(
+            100,
+            player.energy + 30
+        );
+
+
+    localStorage.setItem(
+        "pngpd_energy",
+        player.energy
+    );
+
 
     openPanel(
-        "🏠 STUDENT HOSTEL",
+        "🏠 Hostel",
         `
-        <div class="note">
-            <h3>😴 REST TIME</h3>
-            <p>
-                You rested and recovered some energy.
-            </p>
-        </div>
+
+            <div class="note">
+
+                <h3>
+                    😴 Rested
+                </h3>
+
+                <p>
+                    You had a good rest.
+                    Energy +30.
+                </p>
+
+            </div>
+
         `
     );
+
+
+    updateHUD();
+
 }
+
+
+/* =========================
+   CANTEEN
+========================= */
 
 function openCanteen(){
 
-    if(state.money<300){
+    if(player.money < 300){
 
         openPanel(
-            "🍔 CANTEEN",
+            "🍔 Canteen",
             `
-            <div class="note">
-                <h3>💸 NOT ENOUGH MONEY</h3>
-                <p>You need ₦300 for a meal.</p>
-            </div>
+
+                <div class="note">
+
+                    <h3>
+                        💸 Not Enough ₦
+                    </h3>
+
+                    <p>
+                        You need
+                        ₦300
+                        for a meal.
+                    </p>
+
+                </div>
+
             `
         );
 
-        return;
+    }
+    else{
+
+        player.money -= 300;
+
+        player.energy =
+            Math.min(
+                100,
+                player.energy + 30
+            );
+
+
+        localStorage.setItem(
+            "pngpd_money",
+            player.money
+        );
+
+
+        localStorage.setItem(
+            "pngpd_energy",
+            player.energy
+        );
+
+
+        openPanel(
+            "🍔 Canteen",
+            `
+
+                <div class="note">
+
+                    <h3>
+                        🍗 Delicious Meal
+                    </h3>
+
+                    <p>
+                        You enjoyed a meal.
+                        Energy +30.
+                        Money -₦300.
+                    </p>
+
+                </div>
+
+            `
+        );
+
+
+        updateHUD();
+
+
+        toast(
+            "🍔 Meal purchased! +30 Energy"
+        );
+
     }
 
-    openPanel(
-        "🍔 CAMPUS CANTEEN",
-        `
-        <div class="note">
-            <h3>🍗 STUDENT MEAL</h3>
-            <p>A hot meal restores energy.</p>
-        </div>
-
-        <button class="next-btn"
-                onclick="
-                    spendMoney(300);
-                    state.energy=Math.min(100,state.energy+30);
-                    updateHUD();
-                    closePanel();
-                    toast('🍔 Meal purchased! +30 Energy');
-                ">
-            BUY MEAL — ₦300
-        </button>
-        `
-    );
 }
+
+
+/* =========================
+   LAB
+========================= */
 
 function openLab(){
 
-    openPanel(
-        "🧪 PROCESS LAB",
-        `
-        <div class="note">
-            <h3>⚗️ PRACTICAL CHALLENGE</h3>
-            <p>
-                Laboratory activities will give you practical
-                engineering XP in the full game.
-            </p>
-        </div>
+    player.xp += 25;
 
-        <button class="next-btn"
-                onclick="addXP(25);closePanel();">
-            COMPLETE PRACTICAL +25 XP 🧪
-        </button>
+
+    localStorage.setItem(
+        "pngpd_xp",
+        player.xp
+    );
+
+
+    openPanel(
+        "🧪 Laboratory",
+        `
+
+            <div class="note">
+
+                <h3>
+                    ⚗️ Practical Challenge
+                </h3>
+
+                <p>
+                    You completed a lab
+                    exercise.
+                    +25 XP.
+                </p>
+
+            </div>
+
         `
     );
+
+
+    updateHUD();
+
 }
+
+
+/* =========================
+   ARENA
+========================= */
 
 function openArena(){
 
     openPanel(
-        "⚔️ PNGPD ARENA",
+        "⚔️ Arena",
         `
-        <div class="note">
-            <h3>🔥 ACADEMIC BATTLE ZONE</h3>
-            <p>
-                Challenge another PNGPD student in a
-                1v1 academic battle.
-            </p>
-        </div>
 
-        <button class="next-btn"
-                onclick="openArenaSystem()">
-            ENTER ARENA ⚔️
-        </button>
+            <div class="note">
+
+                <h3>
+                    🔥 Arena Battle
+                </h3>
+
+                <p>
+                    Challenge another
+                    student in an academic
+                    quiz battle!
+                </p>
+
+            </div>
+
+
+            <button
+                class="next-btn"
+                onclick="openArenaSystem()"
+            >
+                ENTER ARENA ⚔️
+            </button>
+
         `
     );
+
 }
+
 
 function openArenaSystem(){
 
-    if(typeof window.PNGPD_ARENA==="object" &&
-       typeof window.PNGPD_ARENA.open==="function"){
+    if(
+        window.PNGPD_ARENA &&
+        typeof window.PNGPD_ARENA.open === "function"
+    ){
+
+        closePanel();
 
         window.PNGPD_ARENA.open();
 
-    }else{
+        return;
 
-        openPanel(
-            "⚔️ ARENA",
-            `
-            <div class="note">
-                <h3>🔥 ARENA READY</h3>
-                <p>
-                    The online Arena system is connected
-                    separately through the Arena module.
-                </p>
-            </div>
-            `
-        );
     }
+
+
+    openPanel(
+        "⚔️ Arena",
+        `
+
+            <div class="note">
+
+                <h3>
+                    🏆 Arena
+                </h3>
+
+                <p>
+                    The Arena system is
+                    available through the
+                    Arena module.
+                </p>
+
+            </div>
+
+        `
+    );
+
 }
+
+
+/* =========================
+   PROFILE
+========================= */
 
 function openProfile(){
 
     openPanel(
-        "👤 PLAYER PROFILE",
+        "👤 Profile",
         `
-        <div class="note">
-            <h3>🎮 ${escapeHTML(state.name)}</h3>
-            <p>Student • PNGPD LIFE</p>
-        </div>
 
-        <div class="course-grid">
-            <div class="course-card">
-                ⭐ XP
-                <br>
-                ${state.xp}
+            <div class="note">
+
+                <h3>
+                    ${player.name}
+                </h3>
+
+                <p>
+                    PNGPD Student
+                </p>
+
             </div>
 
-            <div class="course-card">
-                💰 MONEY
-                <br>
-                ₦${state.money.toLocaleString()}
+
+            <div class="course-grid">
+
+                <div class="course-card">
+
+                    ⭐ XP
+                    <br>
+
+                    ${player.xp}
+
+                </div>
+
+
+                <div class="course-card">
+
+                    💰 Money
+                    <br>
+
+                    ₦${player.money.toLocaleString()}
+
+                </div>
+
+
+                <div class="course-card">
+
+                    ❤️ Energy
+                    <br>
+
+                    ${player.energy}
+
+                </div>
+
             </div>
 
-            <div class="course-card">
-                ❤️ ENERGY
-                <br>
-                ${state.energy}
-            </div>
-        </div>
         `
     );
+
 }
+
 
 /* =========================
-   UTILITIES
+   TOAST
 ========================= */
 
-function shuffle(array){
+function toast(msg){
 
-    for(let i=array.length-1;i>0;i--){
+    const el =
+        document.getElementById(
+            "toast"
+        );
 
-        const j=Math.floor(Math.random()*(i+1));
 
-        [array[i],array[j]]=
-        [array[j],array[i]];
-    }
+    el.textContent = msg;
 
-    return array;
+
+    el.classList.add(
+        "show"
+    );
+
+
+    clearTimeout(
+        el._timer
+    );
+
+
+    el._timer =
+        setTimeout(
+            () => {
+
+                el.classList.remove(
+                    "show"
+                );
+
+            },
+            2200
+        );
+
 }
 
-function escapeHTML(value){
 
-    return String(value)
-        .replaceAll("&","&amp;")
-        .replaceAll("<","&lt;")
-        .replaceAll(">","&gt;")
-        .replaceAll('"',"&quot;")
-        .replaceAll("'","&#039;");
-}
+/* =========================
+   INITIALIZE
+========================= */
 
-function toast(message){
+document.getElementById(
+    "player"
+).style.left =
+    posX + "px";
 
-    const el=document.getElementById("toast");
 
-    el.textContent=message;
-    el.classList.add("show");
+document.getElementById(
+    "player"
+).style.top =
+    posY + "px";
 
-    clearTimeout(window.toastTimer);
-
-    window.toastTimer=setTimeout(()=>{
-        el.classList.remove("show");
-    },2200);
-}
-
-/* INITIAL PLAYER */
-document.getElementById("player").style.left=state.x+"px";
-document.getElementById("player").style.top=state.y+"px";
 
 updateHUD();
 
