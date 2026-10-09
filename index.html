@@ -2237,21 +2237,22 @@ const PNGPD = {
     ===================== */
 
     startQuiz(subject) {
-    const questions = window.PNGPD_QUESTIONS || [];
+    const bank = window.PNGPD_QUESTIONS || [];
 
-    const filteredQuestions = questions.filter(q =>
-        q.course === subject ||
-        q.subject === subject
+    const questionsForCourse = bank.filter(q =>
+        (q.course || q.subject || "").trim().toUpperCase() ===
+        subject.trim().toUpperCase()
     );
 
-    if (!filteredQuestions.length) {
+    if (questionsForCourse.length === 0) {
         this.openPanel(
             "📝 " + subject,
             `
-                <h3>No questions available for this course yet.</h3>
+                <h3>Question bank not loaded</h3>
                 <p style="margin:12px 0;color:#9bb0c2">
-                    The question bank needs questions assigned to
-                    ${subject}.
+                    The question bank for ${subject} is empty.
+                    Please ensure data/questions.js contains questions
+                    assigned to this course.
                 </p>
                 <button class="btn secondary"
                     onclick="PNGPD.startStudy()">
@@ -2262,30 +2263,53 @@ const PNGPD = {
         return;
     }
 
+    // Shuffle without changing the original question bank.
+    const shuffled = [...questionsForCourse];
+
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+
+    // Select up to 30 random questions.
+    const selectedQuestions = shuffled.slice(
+        0,
+        Math.min(30, shuffled.length)
+    );
+
     let current = 0;
+    let score = 0;
     const answers = {};
 
     const renderQuestion = () => {
-        const q = filteredQuestions[current];
-        const options = q.options || [];
-        const letters = ["A", "B", "C", "D"];
+        const q = selectedQuestions[current];
 
         this.openPanel(
-            `📝 ${subject}`,
+            `📚 ${subject}`,
             `
-                <p style="color:#00d49b">
-                    Question ${current + 1} of ${filteredQuestions.length}
-                </p>
+                <div style="display:flex;justify-content:space-between;gap:8px">
+                    <span style="color:#00d49b">
+                        Question ${current + 1}/${selectedQuestions.length}
+                    </span>
+                    <span>Score: ${score}</span>
+                </div>
 
-                <h3 style="margin:15px 0;line-height:1.5">
-                    ${q.question}
-                </h3>
+                <div style="margin:18px 0;padding:15px;background:#152536;border-radius:12px">
+                    <small style="color:#9bb0c2">
+                        ${q.topic || "Course practice"}
+                    </small>
+
+                    <h3 style="margin-top:10px;line-height:1.6">
+                        ${q.question}
+                    </h3>
+                </div>
 
                 <div id="quizOptions"></div>
 
-                <button id="quizNext" class="btn primary">
-                    ${current === filteredQuestions.length - 1
-                        ? "SUBMIT QUIZ"
+                <button id="quizNext" class="btn primary"
+                    style="margin-top:15px;width:100%">
+                    ${current === selectedQuestions.length - 1
+                        ? "FINISH STUDY SESSION"
                         : "NEXT QUESTION →"}
                 </button>
             `
@@ -2293,14 +2317,15 @@ const PNGPD = {
 
         const container = document.getElementById("quizOptions");
 
-        options.forEach((option, index) => {
+        q.options.forEach((option, index) => {
             const button = document.createElement("button");
 
             button.className = "option";
             button.style.display = "block";
             button.style.width = "100%";
-            button.style.marginBottom = "8px";
-            button.textContent = `${letters[index]}. ${option}`;
+            button.style.marginBottom = "9px";
+            button.textContent =
+                `${String.fromCharCode(65 + index)}. ${option}`;
 
             if (answers[current] === index) {
                 button.classList.add("selected");
@@ -2309,8 +2334,8 @@ const PNGPD = {
             button.onclick = () => {
                 answers[current] = index;
 
-                container.querySelectorAll("button").forEach(item =>
-                    item.classList.remove("selected")
+                container.querySelectorAll("button").forEach(b =>
+                    b.classList.remove("selected")
                 );
 
                 button.classList.add("selected");
@@ -2321,38 +2346,50 @@ const PNGPD = {
 
         document.getElementById("quizNext").onclick = () => {
             if (answers[current] === undefined) {
-                alert("Please select an answer.");
+                alert("Select an answer first.");
                 return;
             }
 
-            if (current < filteredQuestions.length - 1) {
+            if (current < selectedQuestions.length - 1) {
                 current++;
                 renderQuestion();
                 return;
             }
 
-            const score = filteredQuestions.reduce((total, question, index) =>
+            score = selectedQuestions.reduce((total, question, index) =>
                 total + (
-                    answers[index] === Number(question.answer) ? 1 : 0
+                    Number(answers[index]) === Number(question.answer) ? 1 : 0
                 ), 0
             );
 
             const percentage = Math.round(
-                score / filteredQuestions.length * 100
+                score / selectedQuestions.length * 100
             );
 
             this.openPanel(
-                "🎉 Quiz Results",
+                "📊 Study Results",
                 `
                     <h2>${subject} Completed!</h2>
 
-                    <p style="font-size:28px;color:#00d49b;margin:15px 0">
-                        ${score}/${filteredQuestions.length}
+                    <h1 style="color:#00d49b;margin:20px 0">
+                        ${score}/${selectedQuestions.length}
+                    </h1>
+
+                    <p>Percentage: ${percentage}%</p>
+
+                    <p style="margin:12px 0;color:#9bb0c2">
+                        ${percentage >= 70
+                            ? "Excellent work! Keep studying."
+                            : "Keep practising. You can improve your score."}
                     </p>
 
-                    <p>Score: ${percentage}%</p>
-
                     <button class="btn primary"
+                        onclick="PNGPD.startQuiz('${subject}')">
+                        🔀 STUDY AGAIN
+                    </button>
+
+                    <button class="btn secondary"
+                        style="margin-top:10px"
                         onclick="PNGPD.startStudy()">
                         BACK TO COURSES
                     </button>
