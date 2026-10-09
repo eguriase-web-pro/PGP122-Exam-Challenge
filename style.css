@@ -2090,3 +2090,88 @@ button {
         display: none;
     }
 }
+/* ==========================================
+   PNGPD LIFE 3D MOBILE CONTROLS
+========================================== */
+
+#mobile-controls {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+#joystick {
+    position: absolute;
+    left: 25px;
+    bottom: 30px;
+
+    width: 120px;
+    height: 120px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.25);
+
+    border: 3px solid rgba(255, 255, 255, 0.7);
+
+    pointer-events: auto;
+
+    touch-action: none;
+}
+
+#joystick-knob {
+    position: absolute;
+
+    width: 55px;
+    height: 55px;
+
+    left: 50%;
+    top: 50%;
+
+    margin-left: -27.5px;
+    margin-top: -27.5px;
+
+    border-radius: 50%;
+
+    background: #ff3333;
+
+    border: 3px solid white;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+
+    pointer-events: none;
+}
+
+#interact-button {
+
+    position: absolute;
+
+    right: 25px;
+    bottom: 45px;
+
+    width: 115px;
+    height: 65px;
+
+    border: none;
+    border-radius: 20px;
+
+    background: #ff3333;
+
+    color: white;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.35);
+
+    pointer-events: auto;
+
+    touch-action: manipulation;
+}
+
+#interact-button:active {
+
+    transform: scale(0.92);
+
+}
