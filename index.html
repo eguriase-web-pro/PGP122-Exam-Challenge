@@ -667,6 +667,28 @@ button{
     font-weight:900;
 }
 
+/* ================= SHORT NOTE BUTTON ================= */
+
+.study-btn{
+    width:100%;
+    margin-top:10px;
+    padding:13px;
+    border-radius:12px;
+    background:#ff9800;
+    color:white;
+    font-weight:900;
+}
+
+.practice-btn{
+    width:100%;
+    margin-top:10px;
+    padding:13px;
+    border-radius:12px;
+    background:#e91e63;
+    color:white;
+    font-weight:900;
+}
+
 /* ================= TOAST ================= */
 
 #toast{
@@ -1047,16 +1069,589 @@ button{
 </div>
 
 
-<!-- ================= DATA FILES ================= -->
+<!-- ================= DATA FILE ================= -->
 
 <script src="data/questions.js"></script>
-
-<script src="data/study-materials.js"></script>
 
 <script src="game/actions.js"></script>
 
 
 <script>
+
+/* =====================================================
+   BUILT-IN SHORT NOTE MATERIAL
+   NO SEPARATE STUDY-MATERIALS.JS REQUIRED
+===================================================== */
+
+window.PNGPD_STUDY_MATERIALS = [
+
+    /* ================= PGP 121 ================= */
+
+    {
+        course:"PGP 121",
+
+        sections:[
+
+            {
+                title:"💧 Fluid Kinematics",
+
+                content:`
+                    <b>Fluid Kinematics</b> is the study of
+                    the motion of fluid particles, including
+                    their velocity and acceleration, without
+                    considering the forces causing the motion.
+
+                    <br><br>
+
+                    <b>Important classifications:</b><br>
+                    • Steady flow<br>
+                    • Unsteady flow<br>
+                    • Compressible flow<br>
+                    • Incompressible flow<br>
+                    • Laminar flow<br>
+                    • Turbulent flow
+                `
+            },
+
+            {
+                title:"📐 Flow Rate & Continuity",
+
+                content:`
+                    The volumetric rate of flow is:
+
+                    <br><br>
+
+                    <b>Q = AV</b>
+
+                    <br><br>
+
+                    Where:<br>
+                    Q = volumetric flow rate<br>
+                    A = cross-sectional area<br>
+                    V = average velocity
+
+                    <br><br>
+
+                    For incompressible flow:
+
+                    <br><br>
+
+                    <b>A₁V₁ = A₂V₂</b>
+
+                    <br><br>
+
+                    This is based on conservation of mass.
+                `
+            },
+
+            {
+                title:"⚡ Fluid Head",
+
+                content:`
+                    The main forms of head for a flowing
+                    liquid are:
+
+                    <br><br>
+
+                    <b>Potential head = z</b>
+
+                    <br>
+
+                    <b>Velocity head = V² / 2g</b>
+
+                    <br>
+
+                    <b>Pressure head = p / γ</b>
+
+                    <br><br>
+
+                    Total head:
+
+                    <br><br>
+
+                    <b>
+                    H = z + V²/(2g) + p/γ
+                    </b>
+                `
+            },
+
+            {
+                title:"🔬 Bernoulli's Equation",
+
+                content:`
+                    Bernoulli's equation relates pressure,
+                    velocity and elevation for ideal,
+                    incompressible, steady flow along a
+                    streamline.
+
+                    <br><br>
+
+                    <b>
+                    p/γ + V²/(2g) + z = constant
+                    </b>
+
+                    <br><br>
+
+                    It is applied in devices such as:
+
+                    <br>
+                    • Venturimeter<br>
+                    • Pitot tube
+                `
+            },
+
+            {
+                title:"📏 Venturimeter & Pitot Tube",
+
+                content:`
+                    <b>Venturimeter:</b>
+
+                    <br>
+
+                    Used to determine the flow rate of
+                    fluid through a pipe.
+
+                    <br><br>
+
+                    Main parts:
+
+                    <br>
+                    • Converging section<br>
+                    • Throat<br>
+                    • Diverging section
+
+                    <br><br>
+
+                    <b>Pitot tube:</b>
+
+                    <br>
+
+                    Used to measure fluid velocity at a
+                    particular point by converting kinetic
+                    energy into pressure energy at the
+                    stagnation point.
+                `
+            }
+
+        ]
+    },
+
+
+    /* ================= PGP 122 ================= */
+
+    {
+        course:"PGP 122",
+
+        sections:[
+
+            {
+                title:"⚙️ Introduction to Separation",
+
+                content:`
+                    <b>Separation</b> is the process of dividing
+                    a mixture into two or more distinct
+                    components or phases based on differences
+                    in their physical or chemical properties.
+
+                    <br><br>
+
+                    Separation processes are important because
+                    chemical plants normally require separation
+                    before products can be obtained in the
+                    required form.
+                `
+            },
+
+            {
+                title:"🔄 Liquid & Solid Mixing",
+
+                content:`
+                    <b>Mixing</b> reduces non-uniformity such as
+                    concentration and temperature differences.
+
+                    <br><br>
+
+                    Types include:
+
+                    <br>
+                    • Liquid/fluid mixing<br>
+                    • Solid/powder mixing
+
+                    <br><br>
+
+                    <b>Tumbling mixers</b> include double-cone
+                    and twin-shell/V-blender arrangements.
+
+                    <br><br>
+
+                    Double-cone mixers are suitable for
+                    free-flowing dry powders.
+
+                    <br><br>
+
+                    Typical batch filling is about
+                    <b>50–60%</b>, while mixing may commonly
+                    take about <b>5–20 minutes</b>.
+                `
+            },
+
+            {
+                title:"🧹 Filtration",
+
+                content:`
+                    <b>Filtration</b> is the separation of solid
+                    particles from a fluid by passing the mixture
+                    through a filtering medium.
+
+                    <br><br>
+
+                    <b>Filter cake:</b> solid material retained
+                    by the filter medium.
+
+                    <br><br>
+
+                    <b>Filtrate:</b> fluid that passes through
+                    the filter medium.
+
+                    <br><br>
+
+                    Filtration rate can be expressed as:
+
+                    <br><br>
+
+                    <b>dV/dt</b>
+                `
+            },
+
+            {
+                title:"🧪 Membrane Separation",
+
+                content:`
+                    Membrane separation uses a selective membrane
+                    to separate components of a mixture.
+
+                    <br><br>
+
+                    Separation may depend on differences in:
+
+                    <br>
+                    • Molecular size<br>
+                    • Solubility<br>
+                    • Diffusivity<br>
+                    • Pressure difference
+
+                    <br><br>
+
+                    The membrane allows some components to
+                    permeate more readily than others.
+                `
+            },
+
+            {
+                title:"⛏️ Leaching",
+
+                content:`
+                    <b>Leaching</b> is a solid-liquid extraction
+                    process in which a solvent removes a soluble
+                    constituent from a solid.
+
+                    <br><br>
+
+                    Main stages:
+
+                    <br>
+                    <b>1.</b> Contacting the solid with solvent<br>
+                    <b>2.</b> Transfer of the soluble material<br>
+                    <b>3.</b> Separation of the liquid from the solid
+
+                    <br><br>
+
+                    Factors affecting leaching:
+
+                    <br>
+                    • Particle size<br>
+                    • Solvent properties<br>
+                    • Temperature<br>
+                    • Contact time<br>
+                    • Agitation
+                `
+            },
+
+            {
+                title:"🔥 Evaporation",
+
+                content:`
+                    <b>Evaporation</b> concentrates a solution
+                    by vaporising part of its solvent.
+
+                    <br><br>
+
+                    Important concepts:
+
+                    <br>
+                    • Boiling point<br>
+                    • Heat transfer<br>
+                    • Steam economy<br>
+                    • Single-effect evaporation<br>
+                    • Multiple-effect evaporation
+
+                    <br><br>
+
+                    Multiple-effect evaporation can improve
+                    steam economy by using vapour generated
+                    in one effect to provide heat for another.
+                `
+            }
+
+        ]
+    },
+
+
+    /* ================= PGP 124 ================= */
+
+    {
+        course:"PGP 124",
+
+        sections:[
+
+            {
+                title:"📐 Calculus",
+
+                content:`
+                    Calculus deals mainly with:
+
+                    <br><br>
+
+                    • Limits<br>
+                    • Continuity<br>
+                    • Differentiation<br>
+                    • Integration<br>
+                    • Applications of derivatives
+                `
+            },
+
+            {
+                title:"📈 Differentiation",
+
+                content:`
+                    Differentiation determines the rate at
+                    which one quantity changes with respect
+                    to another.
+
+                    <br><br>
+
+                    Basic power rule:
+
+                    <br><br>
+
+                    <b>
+                    If y = xⁿ,
+                    then dy/dx = nxⁿ⁻¹
+                    </b>
+
+                    <br><br>
+
+                    Applications include gradients, rates
+                    of change, maximum values and minimum
+                    values.
+                `
+            },
+
+            {
+                title:"∫ Integration",
+
+                content:`
+                    Integration is the reverse process of
+                    differentiation.
+
+                    <br><br>
+
+                    Basic result:
+
+                    <br><br>
+
+                    <b>
+                    ∫xⁿ dx =
+                    xⁿ⁺¹/(n+1) + C
+                    </b>
+
+                    <br><br>
+
+                    C is the constant of integration.
+                `
+            }
+
+        ]
+    },
+
+
+    /* ================= PGP 126 ================= */
+
+    {
+        course:"PGP 126",
+
+        sections:[
+
+            {
+                title:"⚖️ Engineering Relative Density",
+
+                content:`
+                    Relative density compares the density of
+                    a substance with the density of a reference
+                    substance.
+
+                    <br><br>
+
+                    <b>
+                    RD =
+                    Density of substance /
+                    Density of reference substance
+                    </b>
+
+                    <br><br>
+
+                    <b>Important practical points:</b>
+
+                    <br>
+                    • Use clean apparatus.<br>
+                    • Avoid trapped air bubbles.<br>
+                    • Consider temperature effects.<br>
+                    • Take readings correctly.<br>
+                    • Record measurements carefully.
+                `
+            },
+
+            {
+                title:"🌡️ Pour Point",
+
+                content:`
+                    <b>Pour point</b> is the lowest temperature
+                    at which an oil remains sufficiently fluid
+                    to pour under specified test conditions.
+
+                    <br><br>
+
+                    <b>Apparatus:</b>
+
+                    <br>
+                    • Pour-point test jar<br>
+                    • Thermometer<br>
+                    • Cooling bath<br>
+                    • Petroleum sample
+
+                    <br><br>
+
+                    The sample is cooled under controlled
+                    conditions while its ability to flow is
+                    observed.
+                `
+            },
+
+            {
+                title:"🛢️ API Gravity",
+
+                content:`
+                    API gravity is used to express the
+                    relative density of petroleum liquids.
+
+                    <br><br>
+
+                    <b>
+                    API =
+                    (141.5 / SG at 60°F/60°F)
+                    − 131.5
+                    </b>
+
+                    <br><br>
+
+                    API gravity is inversely related to
+                    specific gravity.
+
+                    <br><br>
+
+                    <b>
+                    Higher API → lighter petroleum
+                    </b>
+
+                    <br>
+
+                    <b>
+                    Lower API → heavier petroleum
+                    </b>
+
+                    <br><br>
+
+                    <b>Common apparatus:</b>
+
+                    <br>
+                    • API hydrometer<br>
+                    • Hydrometer cylinder<br>
+                    • Thermometer<br>
+                    • Petroleum sample
+                `
+            }
+
+        ]
+    },
+
+
+    /* ================= PGP 127 ================= */
+
+    {
+        course:"PGP 127",
+
+        sections:[
+
+            {
+                title:"📝 Technical Report Writing",
+
+                content:`
+                    A technical report presents technical
+                    information in an organised and
+                    understandable manner.
+
+                    <br><br>
+
+                    Common sections include:
+
+                    <br>
+                    • Title<br>
+                    • Introduction<br>
+                    • Objectives<br>
+                    • Methodology<br>
+                    • Results<br>
+                    • Discussion<br>
+                    • Conclusion<br>
+                    • References
+                `
+            },
+
+            {
+                title:"🎤 Oral Presentation",
+
+                content:`
+                    A good technical presentation should be:
+
+                    <br><br>
+
+                    • Clear<br>
+                    • Organised<br>
+                    • Concise<br>
+                    • Technically accurate
+
+                    <br><br>
+
+                    The presenter should understand the
+                    subject instead of simply memorising
+                    the material.
+                `
+            }
+
+        ]
+    }
+
+];
+
 
 /* =====================================================
    PLAYER DATA
@@ -1505,17 +2100,17 @@ function openLibrary(){
 
             Choose a course to see:
 
-            <br>
+            <br><br>
 
-            • Definitions
+            📌 Definitions
             <br>
-            • Key points
+            📌 Key points
             <br>
-            • Formulas
+            📌 Formulas
             <br>
-            • Practical facts
+            📌 Practical facts
             <br>
-            • Practice questions
+            📌 Practice questions
 
         </div>
 
@@ -1545,7 +2140,7 @@ function openLibrary(){
                             font-size:12px
                         "
                     >
-                        Notes + Practice
+                        SHORT NOTES + PRACTICE
                     </div>
 
                     <button
@@ -1555,7 +2150,7 @@ function openLibrary(){
                             )
                         "
                     >
-                        OPEN
+                        OPEN COURSE
                     </button>
 
                 </div>
@@ -1587,20 +2182,13 @@ function getCourseMaterial(
     course
 ){
 
-    if(
-        !window.PNGPD_STUDY_MATERIALS
-    ){
-
-        return null;
-
-    }
-
-
-    return window.PNGPD_STUDY_MATERIALS
-        .find(
-            item =>
-                item.course === course
-        );
+    return (
+        window.PNGPD_STUDY_MATERIALS
+        || []
+    ).find(
+        item =>
+            item.course === course
+    );
 
 }
 
@@ -1630,7 +2218,37 @@ function openCourse(
         );
 
 
-    let html = "";
+    let html = `
+
+        <div
+            class="note"
+            style="
+                border-left-color:#e91e63;
+                background:
+                    linear-gradient(
+                        135deg,
+                        #fff3e0,
+                        #ffe0b2
+                    );
+            "
+        >
+
+            <h2>
+                📖 ${course}
+            </h2>
+
+            <p>
+                <b>QUICK REVISION NOTES</b>
+            </p>
+
+            <p>
+                Read the key points and formulas
+                before attempting the practice.
+            </p>
+
+        </div>
+
+    `;
 
 
     if(
@@ -1650,7 +2268,12 @@ function openCourse(
                                 ${section.title}
                             </h3>
 
-                            <div>
+                            <div
+                                style="
+                                    line-height:1.7;
+                                    color:#333;
+                                "
+                            >
                                 ${section.content}
                             </div>
 
@@ -1680,23 +2303,43 @@ function openCourse(
 
     html += `
 
-        <button
-            class="next-btn"
-            onclick="
-                startQuiz(
-                    '${escapeText(course)}'
-                )
+        <div
+            style="
+                margin-top:18px;
+                padding:18px;
+                border-radius:18px;
+                background:
+                    linear-gradient(
+                        135deg,
+                        #e91e63,
+                        #ff5722
+                    );
+                color:white;
+                text-align:center;
             "
         >
 
-            📝 PRACTICE
-            ${Math.min(
-                30,
-                questions.length
-            )}
-            QUESTIONS
+            <h3>
+                🧠 TEST YOUR KNOWLEDGE
+            </h3>
 
-        </button>
+            <p>
+                ${questions.length}
+                practice questions available.
+            </p>
+
+            <button
+                class="practice-btn"
+                onclick="
+                    startQuiz(
+                        '${escapeText(course)}'
+                    )
+                "
+            >
+                📝 START PRACTICE
+            </button>
+
+        </div>
 
     `;
 
@@ -2079,13 +2722,13 @@ function openCanteen(){
 
         <div class="note">
 
-            Choose your food.
+            🍽️ Choose your food.
 
-            <br>
+            <br><br>
 
-            Your money decreases by
-            the listed price and your
-            energy increases.
+            Each food has a different price
+            and restores a different amount
+            of energy.
 
         </div>
 
@@ -2094,976 +2737,4 @@ function openCanteen(){
     `;
 
 
-    foods.forEach(
-        food => {
-
-            html += `
-
-                <div class="card">
-
-                    <div
-                        style="
-                            font-size:35px
-                        "
-                    >
-                        ${food[0]}
-                    </div>
-
-                    <div>
-                        ${food[1]}
-                    </div>
-
-                    <div>
-                        ₦${food[2]}
-                        • +${food[3]}
-                        Energy
-                    </div>
-
-                    <button
-                        onclick="
-                            buyFood(
-                                ${food[2]},
-                                ${food[3]},
-                                '${food[1]}'
-                            )
-                        "
-                    >
-                        BUY
-                    </button>
-
-                </div>
-
-            `;
-
-        }
-    );
-
-
-    html += `
-        </div>
-    `;
-
-
-    openPanel(
-        "🍔 CANTEEN",
-        html
-    );
-
-}
-
-
-function buyFood(
-    price,
-    energy,
-    foodName
-){
-
-    if(
-        state.money <
-        price
-    ){
-
-        toast(
-            "Not enough money 💸"
-        );
-
-        return;
-
-    }
-
-
-    state.money -=
-        price;
-
-
-    state.energy =
-        Math.min(
-            100,
-            state.energy +
-            energy
-        );
-
-
-    updateHUD();
-
-
-    toast(
-        foodName +
-        " bought! 🍽️"
-    );
-
-}
-
-
-/* =====================================================
-   PGP 126 LAB
-===================================================== */
-
-const labPracticals = [
-
-    {
-
-        title:
-            "Engineering Relative Density",
-
-        formula:
-            "RD = density of substance ÷ density of reference substance.",
-
-        apparatus:
-            "Hydrometer or density bottle, balance, measuring cylinder and clean sample.",
-
-        focus:
-            "Revise correct reading technique, reference liquid, temperature, sample handling and sources of error."
-
-    },
-
-    {
-
-        title:
-            "Pour Point",
-
-        formula:
-            "Pour point is the lowest temperature at which the oil remains sufficiently fluid to pour under the specified test conditions.",
-
-        apparatus:
-            "Pour-point test jar, thermometer, cooling bath and petroleum sample.",
-
-        focus:
-            "Revise controlled cooling, thermometer readings, observation of movement and practical interpretation."
-
-    },
-
-    {
-
-        title:
-            "API Gravity",
-
-        formula:
-            "API = (141.5 ÷ SG at 60°F/60°F) − 131.5.",
-
-        apparatus:
-            "API hydrometer, hydrometer cylinder, thermometer and petroleum sample.",
-
-        focus:
-            "Revise the formula, specific-gravity relationship, apparatus, reading technique and interpretation."
-
-    }
-
-];
-
-
-function openLab(){
-
-    let html = `
-
-        <div class="note">
-
-            <b>
-                🧪 PGP 126 PRACTICAL REVISION
-            </b>
-
-            <br><br>
-
-            Practicals:
-
-            <br>
-            • Engineering Relative Density
-            <br>
-            • Pour Point
-            <br>
-            • API Gravity
-
-        </div>
-
-        <div class="lab-grid">
-
-    `;
-
-
-    labPracticals.forEach(
-        (
-            practical,
-            index
-        ) => {
-
-            html += `
-
-                <div class="card">
-
-                    <div>
-                        ${practical.title}
-                    </div>
-
-                    <button
-                        onclick="
-                            labNotes(
-                                ${index}
-                            )
-                        "
-                    >
-                        PRACTICAL NOTES
-                    </button>
-
-                    <button
-                        onclick="
-                            labQuiz(
-                                ${index}
-                            )
-                        "
-                    >
-                        QUIZ ME
-                    </button>
-
-                </div>
-
-            `;
-
-        }
-    );
-
-
-    html += `
-        </div>
-    `;
-
-
-    openPanel(
-        "🧪 PGP 126 LABORATORY",
-        html
-    );
-
-}
-
-
-function labNotes(
-    index
-){
-
-    const p =
-        labPracticals[
-            index
-        ];
-
-
-    openPanel(
-
-        "🧪 " +
-        p.title,
-
-        `
-
-        <div class="note">
-
-            <h3>
-                Formula / Principle
-            </h3>
-
-            <p>
-                ${p.formula}
-            </p>
-
-        </div>
-
-
-        <div class="note">
-
-            <h3>
-                Apparatus
-            </h3>
-
-            <p>
-                ${p.apparatus}
-            </p>
-
-        </div>
-
-
-        <div class="note">
-
-            <h3>
-                Practical Focus
-            </h3>
-
-            <p>
-                ${p.focus}
-            </p>
-
-        </div>
-
-        `
-
-    );
-
-}
-
-
-function labQuiz(
-    index
-){
-
-    const p =
-        labPracticals[
-            index
-        ];
-
-
-    const questionSets = [
-
-        [
-
-            {
-
-                q:
-                    "Which formula is used for API gravity?",
-
-                options:[
-                    "(141.5/SG) − 131.5",
-                    "SG × 141.5",
-                    "131.5 − SG",
-                    "SG / 141.5"
-                ],
-
-                answer:0
-
-            },
-
-            {
-
-                q:
-                    "If specific gravity decreases, API gravity generally:",
-
-                options:[
-                    "Increases",
-                    "Decreases",
-                    "Becomes zero",
-                    "Does not change"
-                ],
-
-                answer:0
-
-            }
-
-        ],
-
-
-        [
-
-            {
-
-                q:
-                    "Pour point testing mainly involves:",
-
-                options:[
-                    "Heating until boiling",
-                    "Controlled cooling and checking fluid movement",
-                    "Measuring pH",
-                    "Filtering solids"
-                ],
-
-                answer:1
-
-            },
-
-            {
-
-                q:
-                    "A thermometer is required in pour point testing mainly to:",
-
-                options:[
-                    "Measure sample temperature",
-                    "Measure density",
-                    "Measure pressure",
-                    "Weigh the sample"
-                ],
-
-                answer:0
-
-            }
-
-        ],
-
-
-        [
-
-            {
-
-                q:
-                    "Relative density compares the density of a substance with:",
-
-                options:[
-                    "Its mass",
-                    "A reference substance",
-                    "Its viscosity",
-                    "Its temperature only"
-                ],
-
-                answer:1
-
-            },
-
-            {
-
-                q:
-                    "Which can cause poor density measurement?",
-
-                options:[
-                    "Clean apparatus",
-                    "Trapped air",
-                    "Correct temperature",
-                    "Proper reading"
-                ],
-
-                answer:1
-
-            }
-
-        ]
-
-    ];
-
-
-    const questions =
-        questionSets[index];
-
-
-    let questionIndex =
-        0;
-
-    let score = 0;
-
-
-    function showLabQuestion(){
-
-        if(
-            questionIndex >=
-            questions.length
-        ){
-
-            openPanel(
-
-                "🏆 LAB RESULT",
-
-                `
-
-                <div
-                    class="note"
-                    style="
-                        text-align:center
-                    "
-                >
-
-                    <h2>
-                        ${p.title}
-                    </h2>
-
-                    <h1>
-                        ${score}/${questions.length}
-                    </h1>
-
-                </div>
-
-                `
-
-            );
-
-            return;
-
-        }
-
-
-        const q =
-            questions[
-                questionIndex
-            ];
-
-
-        let html = `
-
-            <div class="quiz-question">
-
-                ${q.q}
-
-            </div>
-
-        `;
-
-
-        q.options.forEach(
-            (
-                option,
-                i
-            ) => {
-
-                html += `
-
-                    <button
-                        class="option"
-                        onclick="
-                            labAnswer(
-                                ${i}
-                            )
-                        "
-                    >
-
-                        ${String.fromCharCode(
-                            65 + i
-                        )}.
-                        ${option}
-
-                    </button>
-
-                `;
-
-            }
-        );
-
-
-        openPanel(
-            "🧪 " + p.title,
-            html
-        );
-
-    }
-
-
-    window.labAnswer =
-        function(selected){
-
-            const q =
-                questions[
-                    questionIndex
-                ];
-
-
-            if(
-                selected ===
-                q.answer
-            ){
-
-                score++;
-
-            }
-
-
-            questionIndex++;
-
-            showLabQuestion();
-
-        };
-
-
-    showLabQuestion();
-
-}
-
-
-/* =====================================================
-   ARENA
-===================================================== */
-
-function openArena(){
-
-    /*
-       If the real Supabase Arena system
-       exists inside game/actions.js,
-       use it.
-    */
-
-    if(
-        window.PNGPD_ARENA &&
-        typeof
-        window.PNGPD_ARENA.open ===
-        "function"
-    ){
-
-        window.PNGPD_ARENA.open();
-
-        return;
-
-    }
-
-
-    /*
-       Local fallback
-       so the building never appears dead.
-    */
-
-    openPanel(
-
-        "⚔️ ARENA",
-
-        `
-
-        <div class="note">
-
-            <h2>
-                🔥 Academic Battle Arena
-            </h2>
-
-            <p>
-                Challenge another PNGPD
-                student in an academic
-                quiz battle.
-            </p>
-
-            <button
-                class="next-btn"
-                onclick="
-                    openLocalArena()
-                "
-            >
-                ENTER PRACTICE BATTLE
-            </button>
-
-        </div>
-
-        `
-
-    );
-
-}
-
-
-function openLocalArena(){
-
-    const pool =
-        [
-            ...(window.PNGPD_QUESTIONS || [])
-        ]
-        .sort(
-            () =>
-                Math.random() - 0.5
-        )
-        .slice(
-            0,
-            10
-        );
-
-
-    let index = 0;
-
-    let score = 0;
-
-
-    function showArenaQuestion(){
-
-        if(
-            index >=
-            pool.length
-        ){
-
-            openPanel(
-
-                "🏆 ARENA RESULT",
-
-                `
-
-                <div
-                    class="note"
-                    style="
-                        text-align:center
-                    "
-                >
-
-                    <h1>
-                        ${score}/${pool.length}
-                    </h1>
-
-                    <p>
-                        Academic battle completed.
-                    </p>
-
-                </div>
-
-                `
-
-            );
-
-            return;
-
-        }
-
-
-        const q =
-            pool[index];
-
-
-        let html = `
-
-            <div class="quiz-question">
-
-                ${q.question}
-
-            </div>
-
-        `;
-
-
-        q.options.forEach(
-            (
-                option,
-                i
-            ) => {
-
-                html += `
-
-                    <button
-                        class="option"
-                        onclick="
-                            arenaAnswer(
-                                ${i}
-                            )
-                        "
-                    >
-
-                        ${String.fromCharCode(
-                            65 + i
-                        )}.
-                        ${option}
-
-                    </button>
-
-                `;
-
-            }
-        );
-
-
-        openPanel(
-
-            `⚔️ BATTLE
-            ${index + 1}/${pool.length}`,
-
-            html
-
-        );
-
-    }
-
-
-    window.arenaAnswer =
-        function(selected){
-
-            if(
-                selected ===
-                Number(
-                    pool[index].answer
-                )
-            ){
-
-                score++;
-
-            }
-
-
-            index++;
-
-            showArenaQuestion();
-
-        };
-
-
-    showArenaQuestion();
-
-}
-
-
-/* =====================================================
-   GOOGLE MAPS STYLE CAMPUS PANNING
-===================================================== */
-
-let panX = 0;
-
-let panY = 0;
-
-let dragging = false;
-
-let lastX = 0;
-
-let lastY = 0;
-
-
-function applyPan(){
-
-    document.getElementById(
-        "world"
-    ).style.transform =
-        `
-        translate(
-            ${panX}px,
-            ${panY}px
-        )
-        `;
-
-}
-
-
-function centerWorld(){
-
-    const viewport =
-        document.getElementById(
-            "viewport"
-        );
-
-
-    panX =
-        (
-            viewport.clientWidth
-            - 1800
-        ) / 2;
-
-
-    panY =
-        (
-            viewport.clientHeight
-            - 1200
-        ) / 2;
-
-
-    applyPan();
-
-}
-
-
-/* mouse + touch */
-
-const viewport =
-    document.getElementById(
-        "viewport"
-    );
-
-
-viewport.addEventListener(
-    "pointerdown",
-    event => {
-
-        if(
-            event.target.closest(
-                ".building"
-            )
-        ){
-
-            return;
-
-        }
-
-
-        dragging = true;
-
-        lastX =
-            event.clientX;
-
-        lastY =
-            event.clientY;
-
-
-        viewport.setPointerCapture(
-            event.pointerId
-        );
-
-    }
-);
-
-
-viewport.addEventListener(
-    "pointermove",
-    event => {
-
-        if(!dragging){
-
-            return;
-
-        }
-
-
-        panX +=
-            event.clientX -
-            lastX;
-
-        panY +=
-            event.clientY -
-            lastY;
-
-
-        lastX =
-            event.clientX;
-
-        lastY =
-            event.clientY;
-
-
-        applyPan();
-
-    }
-);
-
-
-viewport.addEventListener(
-    "pointerup",
-    () => {
-
-        dragging = false;
-
-    }
-);
-
-
-viewport.addEventListener(
-    "pointercancel",
-    () => {
-
-        dragging = false;
-
-    }
-);
-
-
-/* mouse wheel / trackpad */
-
-viewport.addEventListener(
-    "wheel",
-    event => {
-
-        event.preventDefault();
-
-        panX -=
-            event.deltaX;
-
-        panY -=
-            event.deltaY;
-
-        applyPan();
-
-    },
-    {
-        passive:false
-    }
-);
-
-
-/* recenter when screen changes */
-
-window.addEventListener(
-    "resize",
-    () => {
-
-        if(
-            document.getElementById(
-                "game"
-            ).style.display ===
-            "block"
-            &&
-            !dragging
-        ){
-
-            centerWorld();
-
-        }
-
-    }
-);
-
-</script>
-
-</body>
-</html>
+    foods.forEach
