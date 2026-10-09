@@ -2254,56 +2254,39 @@ const PNGPD = {
        QUIZ
     ===================== */
 
-    startQuiz(subject){
-
-    const questions =
-        window.PNGPD_QUESTIONS || window.questions || [];
+    startQuiz(subject) {
+    const questions = window.PNGPD_QUESTIONS || [];
 
     const filteredQuestions = questions.filter(q =>
-        q.subject === subject ||
         q.course === subject ||
-        (subject === "Mathematics" &&
-         /MTH|Mathematics/i.test(q.subject || q.course || "")) ||
-        (subject === "Engineering" &&
-         /GLT|Engineering/i.test(q.subject || q.course || ""))
+        q.subject === subject
     );
 
-    if(!filteredQuestions.length){
-
+    if (!filteredQuestions.length) {
         this.openPanel(
             "📝 " + subject,
             `
-                <h3>No questions available yet.</h3>
-                <p style="margin-top:12px;color:#9bb0c2;line-height:1.6">
-                    The question bank is empty or its question format
-                    does not match this subject.
+                <h3>No questions available for this course yet.</h3>
+                <p style="margin:12px 0;color:#9bb0c2">
+                    The question bank needs questions assigned to
+                    ${subject}.
                 </p>
                 <button class="btn secondary"
                     onclick="PNGPD.startStudy()">
-                    ← BACK TO SUBJECTS
+                    ← BACK TO COURSES
                 </button>
             `
         );
-
         return;
     }
 
     let current = 0;
-    let score = 0;
     const answers = {};
 
     const renderQuestion = () => {
-
         const q = filteredQuestions[current];
-
-        const options = q.options || [
-            q.optionA,
-            q.optionB,
-            q.optionC,
-            q.optionD
-        ].filter(Boolean);
-
-        const letters = ["A","B","C","D"];
+        const options = q.options || [];
+        const letters = ["A", "B", "C", "D"];
 
         this.openPanel(
             `📝 ${subject}`,
@@ -2312,8 +2295,8 @@ const PNGPD = {
                     Question ${current + 1} of ${filteredQuestions.length}
                 </p>
 
-                <h3 style="margin-top:15px;line-height:1.5">
-                    ${q.question || q.text}
+                <h3 style="margin:15px 0;line-height:1.5">
+                    ${q.question}
                 </h3>
 
                 <div id="quizOptions"></div>
@@ -2329,28 +2312,23 @@ const PNGPD = {
         const container = document.getElementById("quizOptions");
 
         options.forEach((option, index) => {
-
             const button = document.createElement("button");
 
             button.className = "option";
-
             button.style.display = "block";
+            button.style.width = "100%";
+            button.style.marginBottom = "8px";
+            button.textContent = `${letters[index]}. ${option}`;
 
-            button.textContent =
-                `${letters[index]}. ${typeof option === "object"
-                    ? option.text
-                    : option}`;
-
-            if(answers[current] === index){
+            if (answers[current] === index) {
                 button.classList.add("selected");
             }
 
             button.onclick = () => {
-
                 answers[current] = index;
 
-                container.querySelectorAll("button").forEach(b =>
-                    b.classList.remove("selected")
+                container.querySelectorAll("button").forEach(item =>
+                    item.classList.remove("selected")
                 );
 
                 button.classList.add("selected");
@@ -2360,68 +2338,44 @@ const PNGPD = {
         });
 
         document.getElementById("quizNext").onclick = () => {
-
-            if(answers[current] === undefined){
-
+            if (answers[current] === undefined) {
                 alert("Please select an answer.");
-
                 return;
             }
 
-            if(current < filteredQuestions.length - 1){
-
+            if (current < filteredQuestions.length - 1) {
                 current++;
-
                 renderQuestion();
-
-            }else{
-
-                score = filteredQuestions.reduce((total, question, index) => {
-
-                    const opts = question.options || [
-                        question.optionA,
-                        question.optionB,
-                        question.optionC,
-                        question.optionD
-                    ].filter(Boolean);
-
-                    const correct = question.answer ?? question.correctAnswer;
-
-                    const selected = answers[index];
-
-                    const correctIndex = typeof correct === "number"
-                        ? correct
-                        : ["A","B","C","D"].indexOf(
-                            String(correct).toUpperCase()
-                        );
-
-                    return total + (
-                        selected === correctIndex ? 1 : 0
-                    );
-
-                }, 0);
-
-                this.openPanel(
-                    "🎉 Quiz Results",
-                    `
-                        <h2>${subject} Completed!</h2>
-
-                        <p style="margin-top:15px;font-size:24px;color:#00d49b">
-                            ${score}/${filteredQuestions.length}
-                        </p>
-
-                        <p style="margin-top:10px">
-                            Percentage:
-                            ${Math.round(score / filteredQuestions.length * 100)}%
-                        </p>
-
-                        <button class="btn primary"
-                            onclick="PNGPD.startStudy()">
-                            BACK TO SUBJECTS
-                        </button>
-                    `
-                );
+                return;
             }
+
+            const score = filteredQuestions.reduce((total, question, index) =>
+                total + (
+                    answers[index] === Number(question.answer) ? 1 : 0
+                ), 0
+            );
+
+            const percentage = Math.round(
+                score / filteredQuestions.length * 100
+            );
+
+            this.openPanel(
+                "🎉 Quiz Results",
+                `
+                    <h2>${subject} Completed!</h2>
+
+                    <p style="font-size:28px;color:#00d49b;margin:15px 0">
+                        ${score}/${filteredQuestions.length}
+                    </p>
+
+                    <p>Score: ${percentage}%</p>
+
+                    <button class="btn primary"
+                        onclick="PNGPD.startStudy()">
+                        BACK TO COURSES
+                    </button>
+                `
+            );
         };
     };
 
