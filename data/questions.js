@@ -974,5 +974,560 @@ window.PNGPD_QUESTIONS = [
         answer: 2,
         explanation: "Excess air helps provide sufficient oxygen for more complete combustion despite imperfect mixing and operating variations."
     }
+    // =====================================================
+    // PGP 122 — SEPARATION PROCESS I
+    // BATCH: LEACHING, EXTRACTION, FILTRATION, MEMBRANES
+    // =====================================================
+
+    {
+        id: 81,
+        course: "PGP 122",
+        topic: "Leaching",
+        difficulty: "Easy",
+        question: "What is the main purpose of leaching?",
+        options: [
+            "To remove a soluble substance from a solid using a liquid solvent",
+            "To convert a liquid directly into a gas without heating",
+            "To separate two gases by compression",
+            "To solidify a liquid mixture"
+        ],
+        answer: 0,
+        explanation: "Leaching transfers a soluble component from a solid into a suitable liquid solvent."
+    },
+    {
+        id: 82,
+        course: "PGP 122",
+        topic: "Leaching",
+        difficulty: "Easy",
+        question: "In leaching, what is the liquid used to dissolve the desired component called?",
+        options: ["Filtrate", "Solvent", "Sediment", "Residue"],
+        answer: 1,
+        explanation: "The solvent dissolves the desired soluble component from the solid feed."
+    },
+    {
+        id: 83,
+        course: "PGP 122",
+        topic: "Leaching",
+        difficulty: "Medium",
+        question: "After leaching a solid mixture, what is the liquid containing the dissolved solute commonly called?",
+        options: ["Cake", "Sludge", "Leach solution", "Dry residue"],
+        answer: 2,
+        explanation: "The leach solution contains the solvent and the component transferred from the solid."
+    },
+    {
+        id: 84,
+        course: "PGP 122",
+        topic: "Leaching",
+        difficulty: "Easy",
+        question: "What is the insoluble solid left after leaching commonly called?",
+        options: ["Distillate", "Extract", "Permeate", "Leached residue"],
+        answer: 3,
+        explanation: "The leached residue is the solid remaining after the soluble material has been extracted."
+    },
+    {
+        id: 85,
+        course: "PGP 122",
+        topic: "Leaching",
+        difficulty: "Medium",
+        question: "Why is a solid often reduced to smaller particles before leaching?",
+        options: [
+            "To increase the exposed surface area and improve mass transfer",
+            "To make the solute permanently insoluble",
+            "To eliminate the need for a solvent",
+            "To prevent contact between the solid and liquid"
+        ],
+        answer: 0,
+        explanation: "Smaller particles generally provide greater surface area for solvent contact, which can improve extraction rates."
+    },
+    {
+        id: 86,
+        course: "PGP 122",
+        topic: "Leaching",
+        difficulty: "Medium",
+        question: "Which factor can reduce the effectiveness of leaching?",
+        options: [
+            "Using a solvent that dissolves the desired solute",
+            "Poor contact between the solvent and the solid",
+            "Providing adequate mixing",
+            "Selecting an appropriate solvent"
+        ],
+        answer: 1,
+        explanation: "Poor solid–liquid contact limits mass transfer and can leave more of the desired solute in the solid residue."
+    },
+    {
+        id: 87,
+        course: "PGP 122",
+        topic: "Leaching",
+        difficulty: "Medium",
+        question: "A solid contains 20 kg of soluble material. If 75% is extracted, how much soluble material is recovered?",
+        options: ["5 kg", "10 kg", "15 kg", "18 kg"],
+        answer: 2,
+        explanation: "Recovered material = 0.75 × 20 = 15 kg."
+    },
+    {
+        id: 88,
+        course: "PGP 122",
+        topic: "Leaching",
+        difficulty: "Medium",
+        question: "If 15 kg of a soluble component is initially present and 12 kg is extracted, what percentage is recovered?",
+        options: ["20%", "60%", "75%", "80%"],
+        answer: 3,
+        explanation: "Recovery = (12/15) × 100 = 80%."
+    },
+    {
+        id: 89,
+        course: "PGP 122",
+        topic: "Leaching",
+        difficulty: "Medium",
+        question: "A solid contains 40 kg of soluble material. If 10 kg remains unextracted, how much was extracted?",
+        options: ["30 kg", "10 kg", "40 kg", "50 kg"],
+        answer: 0,
+        explanation: "Extracted material = initial amount − unextracted amount = 40 − 10 = 30 kg."
+    },
+    {
+        id: 90,
+        course: "PGP 122",
+        topic: "Leaching",
+        difficulty: "Medium",
+        question: "What is counter-current leaching?",
+        options: [
+            "Solid and solvent are both stationary throughout the process",
+            "The solid and solvent move through the stages in opposite directions",
+            "The solvent never contacts the solid",
+            "The solid is converted entirely into vapour"
+        ],
+        answer: 1,
+        explanation: "In counter-current operation, the solid and solvent move in opposite directions through successive stages."
+    },
+    {
+        id: 91,
+        course: "PGP 122",
+        topic: "Leaching",
+        difficulty: "Medium",
+        question: "What is one potential advantage of multistage counter-current leaching over a single contact stage?",
+        options: [
+            "It always eliminates solvent consumption",
+            "It prevents solute dissolution",
+            "It can achieve greater solute recovery with efficient solvent use",
+            "It makes all solids soluble"
+        ],
+        answer: 2,
+        explanation: "Multiple counter-current contacts can improve extraction performance and solvent utilization."
+    },
+    {
+        id: 92,
+        course: "PGP 122",
+        topic: "Leaching",
+        difficulty: "Easy",
+        question: "Which property is especially important when selecting a solvent for leaching?",
+        options: [
+            "The colour of the container",
+            "The shape of the equipment building",
+            "The number of operators in the plant",
+            "The solvent's ability to dissolve the desired component selectively"
+        ],
+        answer: 3,
+        explanation: "Solubility and selectivity are important because the solvent should extract the desired component effectively."
+    },
+    {
+        id: 93,
+        course: "PGP 122",
+        topic: "Liquid-Liquid Extraction",
+        difficulty: "Easy",
+        question: "What is liquid–liquid extraction?",
+        options: [
+            "Transferring a component from one liquid phase into another liquid phase",
+            "Removing a solid from a gas using a filter",
+            "Converting a solid directly into a gas",
+            "Separating particles only by size"
+        ],
+        answer: 0,
+        explanation: "Liquid–liquid extraction separates components through their different distributions between two liquid phases."
+    },
+    {
+        id: 94,
+        course: "PGP 122",
+        topic: "Liquid-Liquid Extraction",
+        difficulty: "Easy",
+        question: "What is the extracting solvent expected to do in liquid–liquid extraction?",
+        options: [
+            "React with every component completely",
+            "Preferentially dissolve the component being recovered",
+            "Remain solid throughout the process",
+            "Prevent mass transfer between the phases"
+        ],
+        answer: 1,
+        explanation: "A suitable extracting solvent preferentially dissolves the target component and allows it to transfer into the solvent-rich phase."
+    },
+    {
+        id: 95,
+        course: "PGP 122",
+        topic: "Liquid-Liquid Extraction",
+        difficulty: "Medium",
+        question: "What does the distribution coefficient describe in liquid–liquid extraction?",
+        options: [
+            "The weight of the extraction vessel",
+            "The rotational speed of a pump",
+            "The equilibrium concentration ratio of a solute between the two liquid phases",
+            "The temperature of the laboratory"
+        ],
+        answer: 2,
+        explanation: "A distribution coefficient expresses the equilibrium ratio of a solute's concentrations in the two phases, using a defined convention."
+    },
+    {
+        id: 96,
+        course: "PGP 122",
+        topic: "Liquid-Liquid Extraction",
+        difficulty: "Medium",
+        question: "At equilibrium, a solute has a concentration of 12 g/L in the extract phase and 3 g/L in the other phase. If K = Cextract/Cother, what is K?",
+        options: ["0.25", "3", "9", "4"],
+        answer: 3,
+        explanation: "K = Cextract/Cother = 12/3 = 4."
+    },
+    {
+        id: 97,
+        course: "PGP 122",
+        topic: "Liquid-Liquid Extraction",
+        difficulty: "Medium",
+        question: "Why are two liquid phases required for conventional liquid–liquid extraction?",
+        options: [
+            "The solute must distribute between the phases according to its relative solubility",
+            "Both phases must always have identical compositions",
+            "The solute must be completely insoluble in both phases",
+            "The phases must both be solid at room temperature"
+        ],
+        answer: 0,
+        explanation: "Extraction relies on the solute distributing differently between two liquid phases, usually with limited mutual miscibility."
+    },
+    {
+        id: 98,
+        course: "PGP 122",
+        topic: "Liquid-Liquid Extraction",
+        difficulty: "Medium",
+        question: "What is the raffinate in liquid–liquid extraction?",
+        options: [
+            "The solid particles in a filter cake",
+            "The liquid phase remaining after the desired solute has been transferred into the extracting phase",
+            "The vapour produced during evaporation",
+            "The heating fluid inside a heat exchanger"
+        ],
+        answer: 1,
+        explanation: "The raffinate is the phase depleted in the extracted solute relative to the feed."
+    },
+    {
+        id: 99,
+        course: "PGP 122",
+        topic: "Liquid-Liquid Extraction",
+        difficulty: "Medium",
+        question: "What is the extract in liquid–liquid extraction?",
+        options: [
+            "The original feed vessel",
+            "The unprocessed solid",
+            "The solvent-rich phase containing the transferred solute",
+            "The vapour leaving an evaporator"
+        ],
+        answer: 2,
+        explanation: "The extract is the phase enriched in the transferred solute."
+    },
+    {
+        id: 100,
+        course: "PGP 122",
+        topic: "Liquid-Liquid Extraction",
+        difficulty: "Medium",
+        question: "Which equipment can be used for liquid–liquid extraction?",
+        options: [
+            "A domestic refrigerator only",
+            "A weighing balance only",
+            "A simple storage tank without contact between phases",
+            "A mixer-settler"
+        ],
+        answer: 3,
+        explanation: "A mixer-settler mixes the phases to promote mass transfer and then allows them to separate."
+    },
+    {
+        id: 101,
+        course: "PGP 122",
+        topic: "Filtration",
+        difficulty: "Easy",
+        question: "What is filtration?",
+        options: [
+            "Separating suspended solids from a fluid by passing the mixture through a porous medium",
+            "Dissolving all suspended solids in a solvent",
+            "Converting liquid into steam",
+            "Separating two dissolved liquids by their boiling points"
+        ],
+        answer: 0,
+        explanation: "Filtration retains suspended solids on or within a porous medium while the fluid passes through."
+    },
+    {
+        id: 102,
+        course: "PGP 122",
+        topic: "Filtration",
+        difficulty: "Easy",
+        question: "What is the filtrate?",
+        options: [
+            "The solid retained by the filter",
+            "The fluid that passes through the filter medium",
+            "The filter housing",
+            "The solid feed before filtration"
+        ],
+        answer: 1,
+        explanation: "The filtrate is the fluid collected after it passes through the filter medium."
+    },
+    {
+        id: 103,
+        course: "PGP 122",
+        topic: "Filtration",
+        difficulty: "Easy",
+        question: "What is a filter cake?",
+        options: [
+            "The liquid collected after filtration",
+            "The vapour above a liquid",
+            "The accumulated solids retained during filtration",
+            "The solvent used in leaching"
+        ],
+        answer: 2,
+        explanation: "A filter cake is the layer of retained solids that builds up on the filter medium."
+    },
+    {
+        id: 104,
+        course: "PGP 122",
+        topic: "Filtration",
+        difficulty: "Medium",
+        question: "What is the main function of a filter medium?",
+        options: [
+            "To heat the feed to its boiling point",
+            "To dissolve every particle in the feed",
+            "To create the chemical reaction being studied",
+            "To retain solids while allowing fluid to pass through"
+        ],
+        answer: 3,
+        explanation: "The filter medium provides a porous barrier that permits fluid passage while retaining solids."
+    },
+    {
+        id: 105,
+        course: "PGP 122",
+        topic: "Filtration",
+        difficulty: "Medium",
+        question: "What is the usual effect of increasing the pressure difference across a filter cake, assuming other conditions remain suitable?",
+        options: [
+            "It can increase the filtration rate",
+            "It always reduces the filtration rate to zero",
+            "It eliminates the solid particles",
+            "It converts the filtrate into a solid"
+        ],
+        answer: 0,
+        explanation: "A greater pressure difference can increase the driving force for filtration, although cake compression and other resistances may limit the improvement."
+    },
+    {
+        id: 106,
+        course: "PGP 122",
+        topic: "Filtration",
+        difficulty: "Medium",
+        question: "Why can filtration become slower as a cake builds up?",
+        options: [
+            "The liquid always becomes chemically pure",
+            "The cake adds resistance to fluid flow",
+            "The filter medium disappears immediately",
+            "Gravity stops acting on the liquid"
+        ],
+        answer: 1,
+        explanation: "The growing cake increases resistance to flow, often reducing the filtration rate at constant pressure."
+    },
+    {
+        id: 107,
+        course: "PGP 122",
+        topic: "Filtration",
+        difficulty: "Easy",
+        question: "Which device commonly uses a porous filter medium to separate solids from liquid?",
+        options: [
+            "A turbine blade",
+            "A condenser used only for vapour",
+            "A filter press",
+            "A combustion chamber"
+        ],
+        answer: 2,
+        explanation: "A filter press separates suspended solids from liquid by forcing the mixture through filter media."
+    },
+    {
+        id: 108,
+        course: "PGP 122",
+        topic: "Filtration",
+        difficulty: "Medium",
+        question: "A filtration operation produces 80 kg of dry solids from a feed containing 100 kg of suspended solids. What is the solids recovery?",
+        options: ["20%", "40%", "80%", "125%"],
+        answer: 2,
+        explanation: "Solids recovery = (80/100) × 100 = 80%."
+    },
+    {
+        id: 109,
+        course: "PGP 122",
+        topic: "Filtration",
+        difficulty: "Medium",
+        question: "A filter processes 120 L of liquid in 4 minutes at a constant average rate. What is the average volumetric flow rate?",
+        options: ["15 L/min", "20 L/min", "25 L/min", "30 L/min"],
+        answer: 3,
+        explanation: "Average flow rate = volume/time = 120/4 = 30 L/min."
+    },
+    {
+        id: 110,
+        course: "PGP 122",
+        topic: "Membrane Separation",
+        difficulty: "Easy",
+        question: "What is the basic principle of membrane separation?",
+        options: [
+            "A membrane selectively allows certain components to pass more readily than others",
+            "All components must pass through at exactly the same rate",
+            "The feed must always be completely vaporized",
+            "The process can only separate dry solids"
+        ],
+        answer: 0,
+        explanation: "Membrane separation uses selective transport through a membrane to separate components."
+    },
+    {
+        id: 111,
+        course: "PGP 122",
+        topic: "Membrane Separation",
+        difficulty: "Easy",
+        question: "What is permeate in a membrane separation process?",
+        options: [
+            "The material that cannot enter the feed tank",
+            "The portion that passes through the membrane",
+            "The solid casing surrounding the membrane",
+            "The material used to manufacture a pump"
+        ],
+        answer: 1,
+        explanation: "Permeate is the stream that passes through the membrane."
+    },
+    {
+        id: 112,
+        course: "PGP 122",
+        topic: "Membrane Separation",
+        difficulty: "Easy",
+        question: "What is retentate in a membrane process?",
+        options: [
+            "The stream that has completely evaporated",
+            "The heating steam",
+            "The stream retained on the feed side and enriched in rejected components",
+            "The clean permeate collected after the membrane"
+        ],
+        answer: 2,
+        explanation: "Retentate is the portion that does not pass through the membrane and is enriched in components rejected by it."
+    },
+    {
+        id: 113,
+        course: "PGP 122",
+        topic: "Membrane Separation",
+        difficulty: "Medium",
+        question: "Which membrane process is commonly used to remove many dissolved salts from water?",
+        options: [
+            "Ordinary sedimentation",
+            "Gravity thickening",
+            "Coarse screening",
+            "Reverse osmosis"
+        ],
+        answer: 3,
+        explanation: "Reverse osmosis uses applied pressure to drive water through a semipermeable membrane while rejecting much of the dissolved salt."
+    },
+    {
+        id: 114,
+        course: "PGP 122",
+        topic: "Membrane Separation",
+        difficulty: "Medium",
+        question: "Which membrane process is generally associated with removing suspended particles and many microorganisms?",
+        options: [
+            "Microfiltration",
+            "Simple evaporation",
+            "Crystallization",
+            "Liquid–liquid extraction"
+        ],
+        answer: 0,
+        explanation: "Microfiltration uses relatively large membrane pores to remove suspended particles and many microorganisms; performance depends on membrane characteristics and operating conditions."
+    },
+    {
+        id: 115,
+        course: "PGP 122",
+        topic: "Membrane Separation",
+        difficulty: "Medium",
+        question: "What does membrane flux measure?",
+        options: [
+            "The mass of the membrane housing",
+            "The amount of permeate passing through a unit membrane area per unit time",
+            "The number of valves in a plant",
+            "The colour difference between two liquids"
+        ],
+        answer: 1,
+        explanation: "Membrane flux is commonly expressed as permeate volume per membrane area per unit time."
+    },
+    {
+        id: 116,
+        course: "PGP 122",
+        topic: "Membrane Separation",
+        difficulty: "Medium",
+        question: "A membrane produces 24 L of permeate in 2 hours through an area of 3 m². What is the average flux?",
+        options: [
+            "2 L/(m²·h)",
+            "3 L/(m²·h)",
+            "4 L/(m²·h)",
+            "12 L/(m²·h)"
+        ],
+        answer: 0,
+        explanation: "Flux = permeate volume/(area × time) = 24/(3 × 2) = 4 L/(m²·h)."
+    },
+    {
+        id: 117,
+        course: "PGP 122",
+        topic: "Membrane Separation",
+        difficulty: "Medium",
+        question: "Which problem can reduce membrane performance during operation?",
+        options: [
+            "Correctly selecting the membrane",
+            "Membrane fouling by accumulated material",
+            "Maintaining suitable operating conditions",
+            "Using an appropriate pretreatment system"
+        ],
+        answer: 1,
+        explanation: "Fouling occurs when materials accumulate on or within the membrane, increasing resistance and reducing performance."
+    },
+    {
+        id: 118,
+        course: "PGP 122",
+        topic: "Membrane Separation",
+        difficulty: "Medium",
+        question: "What is one purpose of pretreatment before membrane separation?",
+        options: [
+            "To guarantee that every dissolved substance becomes a solid",
+            "To eliminate the need for monitoring",
+            "To reduce fouling and protect the membrane",
+            "To prevent the feed from contacting the membrane"
+        ],
+        answer: 2,
+        explanation: "Pretreatment removes or reduces problematic particles and substances that could foul or damage the membrane."
+    },
+    {
+        id: 119,
+        course: "PGP 122",
+        topic: "Evaporation",
+        difficulty: "Easy",
+        question: "What is the principal purpose of evaporation in process engineering?",
+        options: [
+            "To separate two solid particles by size",
+            "To transfer a solute from one liquid to another immiscible liquid",
+            "To remove suspended solids exclusively by a porous barrier",
+            "To concentrate a solution by vaporizing part of its solvent"
+        ],
+        answer: 3,
+        explanation: "Evaporation concentrates a solution by vaporizing some of its volatile solvent, commonly water."
+    },
+    {
+        id: 120,
+        course: "PGP 122",
+        topic: "Evaporation",
+        difficulty: "Medium",
+        question: "A feed of 100 kg contains 10% dissolved solids by mass. If the product contains 25% solids and no solids are lost, what is the product mass?",
+        options: ["40 kg", "25 kg", "50 kg", "75 kg"],
+        answer: 0,
+        explanation: "Solids in feed = 100 × 0.10 = 10 kg. Product mass = 10/0.25 = 40 kg."
+    }
 
 ];
