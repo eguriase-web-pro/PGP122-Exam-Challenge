@@ -2237,12 +2237,17 @@ const PNGPD = {
     ===================== */
 
     startQuiz(subject) {
-    const bank = window.PNGPD_QUESTIONS || [];
+    const bank = window.PNGPD_QUESTIONS || window.questions || [];
 
-    const questionsForCourse = bank.filter(q =>
-        (q.course || q.subject || "").trim().toUpperCase() ===
-        subject.trim().toUpperCase()
-    );
+const normalizeCourse = value =>
+    String(value || "")
+        .toUpperCase()
+        .replace(/[^A-Z0-9]/g, "");
+
+const questionsForCourse = bank.filter(q =>
+    normalizeCourse(q.course || q.subject || q.courseCode) ===
+    normalizeCourse(subject)
+);
 
     if (questionsForCourse.length === 0) {
         this.openPanel(
