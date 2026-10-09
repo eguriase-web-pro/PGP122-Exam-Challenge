@@ -299,7 +299,7 @@ async function findArenaOpponent(course) {
         const {
             data: { user },
             error: userError
-        } = await window.supabaseClient.auth.getUser();
+        } = await window.pngpdSupabase.auth.getUser();
 
         if (userError || !user) {
             alert("Please log in first.");
