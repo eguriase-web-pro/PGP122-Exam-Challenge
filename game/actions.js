@@ -383,6 +383,230 @@ async function findArenaOpponent(course) {
         alert("Something went wrong.");
     }
 }
+/* =========================================================
+   ARENA — INVITATIONS
+   ========================================================= */
+
+async function loadArenaInvitations() {
+
+    try {
+
+        if (!window.pngpdSupabase) {
+            alert("Supabase is not connected.");
+            return;
+        }
+
+        const {
+            data: { user },
+            error: userError
+        } = await window.pngpdSupabase.auth.getUser();
+
+        if (userError || !user) {
+            alert("Please log in first.");
+            return;
+        }
+
+        const { data: invitations, error } =
+            await window.pngpdSupabase
+                .from("arena_matches")
+                .select(`
+                    id,
+                    course,
+                    challenger_id,
+                    status,
+                    created_at
+                `)
+                .eq("opponent_id", user.id)
+                .eq("status", "pending")
+                .order("created_at", {
+                    ascending: false
+                });
+
+        if (error) {
+            console.error(error);
+            alert("Could not load invitations.");
+            return;
+        }
+
+        if (!invitations || invitations.length === 0) {
+
+            showGeneralPanel(
+                "📨 Invitations",
+                `
+                    <div class="panel-card">
+                        <h3>📭 No Invitations</h3>
+                        <p>
+                            You don't have any pending
+                            battle invitations.
+                        </p>
+                    </div>
+                `
+            );
+
+            return;
+        }
+
+        let html = "";
+
+        for (const invitation of invitations) {
+
+            const { data: challenger } =
+                await window.pngpdSupabase
+                    .from("arena_profiles")
+                    .select("username")
+                    .eq(
+                        "user_id",
+                        invitation.challenger_id
+                    )
+                    .single();
+
+            const username =
+                challenger?.username ||
+                "Unknown Player";
+
+            html += `
+                <div class="panel-card"
+                     style="margin-bottom:12px;">
+
+                    <h3>⚔️ Battle Challenge</h3>
+
+                    <p>
+                        <strong>${username}</strong>
+                        challenged you to a
+                        <strong>${invitation.course}</strong>
+                        battle.
+                    </p>
+
+                    <div style="
+                        display:grid;
+                        grid-template-columns:1fr 1fr;
+                        gap:8px;
+                        margin-top:15px;
+                    ">
+
+                        <button
+                            class="btn btn-primary"
+                            onclick="acceptArenaChallenge('${invitation.id}')"
+                        >
+                            ✅ Accept
+                        </button>
+
+                        <button
+                            class="btn"
+                            onclick="declineArenaChallenge('${invitation.id}')"
+                        >
+                            ❌ Decline
+                        </button>
+
+                    </div>
+
+                </div>
+            `;
+        }
+
+        showGeneralPanel(
+            "📨 Battle Invitations",
+            html
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Invitation error:",
+            error
+        );
+
+        alert("Something went wrong.");
+    }
+}
+
+
+async function acceptArenaChallenge(matchId) {
+
+    try {
+
+        const { error } =
+            await window.pngpdSupabase
+                .from("arena_matches")
+                .update({
+                    status: "accepted"
+                })
+                .eq("id", matchId)
+                .eq("status", "pending");
+
+        if (error) {
+            console.error(error);
+            alert("Could not accept challenge.");
+            return;
+        }
+
+        showGeneralPanel(
+            "⚔️ Challenge Accepted",
+            `
+                <div class="panel-card">
+
+                    <h3>✅ Battle Accepted!</h3>
+
+                    <p>
+                        Your opponent has been notified.
+                    </p>
+
+                    <p>
+                        The battle system will start next.
+                    </p>
+
+                </div>
+            `
+        );
+
+    } catch (error) {
+
+        console.error(error);
+        alert("Something went wrong.");
+    }
+}
+
+
+async function declineArenaChallenge(matchId) {
+
+    try {
+
+        const { error } =
+            await window.pngpdSupabase
+                .from("arena_matches")
+                .update({
+                    status: "declined"
+                })
+                .eq("id", matchId)
+                .eq("status", "pending");
+
+        if (error) {
+            console.error(error);
+            alert("Could not decline challenge.");
+            return;
+        }
+
+        showGeneralPanel(
+            "📨 Invitation",
+            `
+                <div class="panel-card">
+
+                    <h3>❌ Challenge Declined</h3>
+
+                    <p>
+                        The battle invitation has been declined.
+                    </p>
+
+                </div>
+            `
+        );
+
+    } catch (error) {
+
+        console.error(error);
+        alert("Something went wrong.");
+    }
+}
 
 
 /* =========================================================
