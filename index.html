@@ -2,31 +2,30 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PNGPD LIFE</title>
+<meta name="viewport"
+      content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>PNGPD LIFE 2.0</title>
 
 <style>
 *{
     box-sizing:border-box;
     margin:0;
     padding:0;
+    -webkit-tap-highlight-color:transparent;
 }
 
-body{
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
     font-family:Arial,Helvetica,sans-serif;
-    background:#07111a;
-    color:#fff;
-    min-height:100vh;
-    overflow-x:hidden;
+    background:#111;
 }
 
 button{
     font-family:inherit;
+    border:0;
     cursor:pointer;
-}
-
-.hidden{
-    display:none !important;
 }
 
 /* =========================
@@ -36,2231 +35,1744 @@ button{
 #splash{
     position:fixed;
     inset:0;
-    background:
-        radial-gradient(circle at center,#12334b 0%,#07111a 65%);
+    z-index:9999;
     display:flex;
     align-items:center;
     justify-content:center;
-    z-index:9999;
-}
-
-.splash-box{
+    flex-direction:column;
+    color:white;
     text-align:center;
-    padding:30px;
+    background:
+        radial-gradient(circle at 20% 20%,#ff334f 0 10%,transparent 25%),
+        radial-gradient(circle at 80% 20%,#ff9f1c 0 8%,transparent 25%),
+        radial-gradient(circle at 50% 90%,#8b2cff 0 12%,transparent 28%),
+        linear-gradient(135deg,#4a0b3c,#101c4d 50%,#062d2a);
 }
 
 .logo{
-    font-size:48px;
-    font-weight:900;
-    letter-spacing:2px;
+    font-size:clamp(42px,12vw,90px);
+    font-weight:1000;
+    letter-spacing:-4px;
+    text-shadow:
+        0 7px 0 #a80025,
+        0 12px 25px rgba(0,0,0,.5);
 }
 
 .logo span{
-    color:#35d07f;
+    color:#ffd23f;
 }
 
-.subtitle{
+.tagline{
     margin-top:10px;
-    color:#9bb0c2;
+    font-weight:800;
+    font-size:18px;
 }
 
-.loader{
-    width:220px;
-    height:5px;
-    background:#172733;
-    border-radius:10px;
-    margin:30px auto 0;
-    overflow:hidden;
+.start-btn{
+    margin-top:35px;
+    padding:18px 42px;
+    border-radius:50px;
+    background:#ff244f;
+    color:#fff;
+    font-size:20px;
+    font-weight:1000;
+    box-shadow:0 8px 0 #a9002a,0 15px 30px rgba(0,0,0,.4);
 }
 
-.loader div{
-    height:100%;
-    width:45%;
-    background:#35d07f;
-    animation:load 1.3s infinite;
-}
-
-@keyframes load{
-    from{transform:translateX(-100%);}
-    to{transform:translateX(500%);}
+.start-btn:active{
+    transform:translateY(6px);
+    box-shadow:0 2px 0 #a9002a;
 }
 
 /* =========================
    AUTH
 ========================= */
 
-.screen{
-    min-height:100vh;
-    padding:25px;
+#auth{
+    position:fixed;
+    inset:0;
+    z-index:9000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:
+        radial-gradient(circle at 10% 20%,#ff244f 0 8%,transparent 25%),
+        radial-gradient(circle at 90% 80%,#ffb703 0 8%,transparent 25%),
+        linear-gradient(135deg,#28104e,#102a52);
 }
 
-.auth-wrap{
-    max-width:430px;
-    margin:50px auto;
+.auth-card{
+    width:min(430px,100%);
+    padding:28px;
+    border-radius:30px;
+    background:rgba(255,255,255,.96);
+    box-shadow:0 25px 70px rgba(0,0,0,.45);
 }
 
-.card{
-    background:#0d1b26;
-    border:1px solid #1c3445;
-    border-radius:18px;
-    padding:25px;
-    box-shadow:0 15px 50px rgba(0,0,0,.25);
+.auth-card h1{
+    color:#ef1747;
+    font-size:34px;
+    font-weight:1000;
 }
 
-.card h1{
-    margin-bottom:8px;
+.auth-card p{
+    margin:6px 0 20px;
+    color:#555;
 }
 
-.muted{
-    color:#8da4b5;
-}
-
-.input{
+.auth-card input{
     width:100%;
-    padding:14px;
-    margin-top:12px;
-    border:1px solid #294354;
-    background:#08141e;
-    color:#fff;
-    border-radius:10px;
+    padding:16px;
+    margin:7px 0;
+    border:2px solid #ddd;
+    border-radius:15px;
+    font-size:16px;
     outline:none;
 }
 
-.input:focus{
-    border-color:#35d07f;
+.auth-card input:focus{
+    border-color:#ff244f;
 }
 
-.btn{
-    border:0;
-    border-radius:10px;
-    padding:13px 17px;
-    font-weight:700;
-    margin-top:12px;
-}
-
-.btn.primary{
-    background:#35d07f;
-    color:#06120b;
-}
-
-.btn.secondary{
-    background:#1b3445;
-    color:#fff;
-}
-
-.btn.danger{
-    background:#b83232;
-    color:#fff;
-}
-
-.full{
+.auth-main{
     width:100%;
+    padding:16px;
+    margin-top:10px;
+    border-radius:15px;
+    background:#ff244f;
+    color:#fff;
+    font-weight:1000;
+    font-size:17px;
 }
 
 .auth-switch{
-    text-align:center;
-    margin-top:18px;
-    color:#8da4b5;
+    background:none;
+    color:#6a22d9;
+    margin-top:15px;
+    font-weight:800;
 }
 
-.auth-switch span{
-    color:#35d07f;
-    cursor:pointer;
-}
-
-/* =========================
-   ASSESSMENT
-========================= */
-
-#assessmentScreen{
-    display:none;
-}
-
-.assessment-box{
-    max-width:650px;
-    margin:30px auto;
-}
-
-.assessment-option{
-    width:100%;
-    text-align:left;
-    background:#101f2b;
-    color:#fff;
-    border:1px solid #294354;
-    padding:15px;
-    border-radius:10px;
+.auth-error{
+    color:#e00032;
     margin-top:10px;
-}
-
-.assessment-option:hover{
-    border-color:#35d07f;
-}
-
-.progress{
-    width:100%;
-    height:7px;
-    background:#182a37;
-    border-radius:10px;
-    margin:20px 0;
-    overflow:hidden;
-}
-
-.progress div{
-    height:100%;
-    background:#35d07f;
+    font-weight:700;
 }
 
 /* =========================
    GAME
 ========================= */
 
-#gameScreen{
+#game{
     display:none;
-    min-height:100vh;
-}
-
-.topbar{
-    position:sticky;
-    top:0;
-    z-index:100;
-    background:#091722;
-    border-bottom:1px solid #1d3545;
-    padding:12px 15px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:10px;
-}
-
-.player-mini{
-    display:flex;
-    align-items:center;
-    gap:10px;
-}
-
-.avatar{
-    width:42px;
-    height:42px;
-    border-radius:50%;
-    background:#35d07f;
-    color:#06120b;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-weight:900;
-}
-
-.stats{
-    display:flex;
-    gap:12px;
-    flex-wrap:wrap;
-    color:#b9cad5;
-    font-size:13px;
-}
-
-.game-content{
-    max-width:1000px;
-    margin:auto;
-    padding:15px;
-}
-
-.world{
-    position:relative;
-    min-height:520px;
-    border-radius:20px;
-    overflow:hidden;
-    border:1px solid #234152;
-    background:
-        linear-gradient(90deg,rgba(22,62,49,.5) 1px,transparent 1px),
-        linear-gradient(rgba(22,62,49,.5) 1px,transparent 1px),
-        #10271f;
-    background-size:50px 50px;
-}
-
-.world-title{
-    position:absolute;
-    top:15px;
-    left:15px;
-    background:rgba(5,15,22,.85);
-    padding:10px 14px;
-    border-radius:10px;
-    z-index:5;
-}
-
-.player{
-    position:absolute;
-    width:42px;
-    height:42px;
-    border-radius:10px;
-    background:#35d07f;
-    color:#07111a;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:21px;
-    font-weight:900;
-    z-index:10;
-    transition:.08s;
-}
-
-.location{
-    position:absolute;
-    min-width:120px;
-    padding:12px;
-    border-radius:12px;
-    text-align:center;
-    background:#10202c;
-    border:1px solid #365366;
-    box-shadow:0 10px 25px rgba(0,0,0,.25);
-}
-
-.location:hover{
-    border-color:#35d07f;
-    transform:translateY(-2px);
-}
-
-.loc-library{left:8%;top:20%}
-.loc-class{left:38%;top:14%}
-.loc-hostel{right:8%;top:22%}
-.loc-canteen{left:12%;bottom:18%}
-.loc-lab{left:42%;bottom:12%}
-.loc-arena{right:10%;bottom:18%}
-
-.controls{
-    display:flex;
-    justify-content:center;
-    gap:8px;
-    margin-top:15px;
-}
-
-.control-btn{
-    width:50px;
-    height:50px;
-    border-radius:10px;
-    border:1px solid #294354;
-    background:#10202c;
-    color:#fff;
-    font-size:20px;
-}
-
-/* =========================
-   BOTTOM NAV
-========================= */
-
-.bottom-nav{
-    position:sticky;
-    bottom:0;
-    z-index:100;
-    background:#091722;
-    border-top:1px solid #1d3545;
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    padding:8px;
-}
-
-.nav-btn{
-    background:none;
-    border:0;
-    color:#91a8b8;
-    padding:8px 3px;
-    font-size:12px;
-}
-
-.nav-btn:hover{
-    color:#35d07f;
-}
-
-/* =========================
-   PANEL
-========================= */
-
-#gamePanel{
     position:fixed;
     inset:0;
-    z-index:500;
-    display:none;
-    align-items:flex-end;
-    justify-content:center;
-    background:rgba(0,0,0,.65);
+    overflow:hidden;
+    background:#6fbd48;
 }
 
-.panel{
+/* CAMERA WORLD */
+
+#world{
+    position:absolute;
+    width:1800px;
+    height:1200px;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    background:
+        radial-gradient(circle,#86d95d 0 35%,#68bd45 36% 100%);
+    overflow:hidden;
+}
+
+/* grass texture */
+
+#world::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    opacity:.16;
+    background-image:
+        radial-gradient(#237e36 1px,transparent 1px);
+    background-size:24px 24px;
+}
+
+/* roads */
+
+.road{
+    position:absolute;
+    background:#49494f;
+    border:10px solid #37373c;
+    box-shadow:inset 0 0 0 4px rgba(255,255,255,.08);
+}
+
+.road.horizontal{
+    height:145px;
+    width:100%;
+}
+
+.road.vertical{
+    width:145px;
+    height:100%;
+}
+
+.road::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:repeating-linear-gradient(
+        90deg,
+        transparent 0 40px,
+        #ffd84a 40px 65px,
+        transparent 65px 105px
+    );
+    opacity:.7;
+}
+
+.road.vertical::after{
+    background:repeating-linear-gradient(
+        0deg,
+        transparent 0 40px,
+        #ffd84a 40px 65px,
+        transparent 65px 105px
+    );
+}
+
+/* PATHS */
+
+.path{
+    position:absolute;
+    background:#e6c58c;
+    border:5px solid #c9a36a;
+    border-radius:20px;
+}
+
+/* buildings */
+
+.building{
+    position:absolute;
+    width:230px;
+    height:150px;
+    border-radius:24px;
+    border:7px solid rgba(0,0,0,.25);
+    box-shadow:
+        0 12px 0 rgba(0,0,0,.18),
+        0 20px 30px rgba(0,0,0,.22);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    color:#fff;
+    font-weight:1000;
+    text-align:center;
+    z-index:5;
+    transition:.15s;
+}
+
+.building:hover{
+    transform:scale(1.04);
+}
+
+.building .icon{
+    font-size:50px;
+}
+
+.building .name{
+    font-size:19px;
+    text-shadow:2px 3px 0 rgba(0,0,0,.3);
+}
+
+.building small{
+    margin-top:3px;
+    opacity:.9;
+}
+
+.library{
+    left:210px;
+    top:210px;
+    background:linear-gradient(135deg,#ef1747,#ff5a36);
+}
+
+.classroom{
+    left:720px;
+    top:160px;
+    background:linear-gradient(135deg,#ff8c00,#ffd23f);
+    color:#542000;
+}
+
+.hostel{
+    left:1190px;
+    top:220px;
+    background:linear-gradient(135deg,#7c25e8,#c142ff);
+}
+
+.canteen{
+    left:220px;
+    top:760px;
+    background:linear-gradient(135deg,#ff1744,#ff7b00);
+}
+
+.lab{
+    left:760px;
+    top:760px;
+    background:linear-gradient(135deg,#0077ff,#00c6ff);
+}
+
+.arena{
+    left:1250px;
+    top:750px;
+    background:linear-gradient(135deg,#e6007e,#ff3d3d);
+}
+
+/* trees */
+
+.tree{
+    position:absolute;
+    width:70px;
+    height:90px;
+    z-index:4;
+}
+
+.tree .trunk{
+    position:absolute;
+    width:18px;
+    height:40px;
+    background:#75401f;
+    left:26px;
+    top:48px;
+    border-radius:8px;
+}
+
+.tree .leaf{
+    position:absolute;
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    background:#19a844;
+    border:5px solid #08752d;
+    box-shadow:
+        -18px 10px 0 #23bd50,
+        18px 10px 0 #0d9638;
+}
+
+/* campus signs */
+
+.sign{
+    position:absolute;
+    padding:8px 15px;
+    border-radius:10px;
+    background:#fff;
+    border:4px solid #333;
+    font-weight:1000;
+    color:#222;
+    z-index:7;
+}
+
+/* player */
+
+#player{
+    position:absolute;
+    width:58px;
+    height:70px;
+    z-index:50;
+    left:860px;
+    top:550px;
+    transition:transform .08s linear;
+}
+
+.player-shadow{
+    position:absolute;
+    width:45px;
+    height:15px;
+    bottom:0;
+    left:7px;
+    border-radius:50%;
+    background:rgba(0,0,0,.3);
+}
+
+.player-body{
+    position:absolute;
+    left:10px;
+    top:18px;
+    width:38px;
+    height:42px;
+    border-radius:13px 13px 10px 10px;
+    background:#ff1744;
+    border:4px solid #9d0022;
+}
+
+.player-head{
+    position:absolute;
+    left:12px;
+    top:0;
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    background:#9b5b32;
+    border:4px solid #603017;
+}
+
+.player-head::after{
+    content:"";
+    position:absolute;
+    left:3px;
+    top:-5px;
+    width:25px;
+    height:12px;
+    border-radius:50%;
+    background:#171717;
+}
+
+/* =========================
+   HUD
+========================= */
+
+#hud{
+    position:fixed;
+    top:12px;
+    left:12px;
+    right:12px;
+    z-index:500;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    pointer-events:none;
+}
+
+.hud-left{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+.stat{
+    pointer-events:auto;
+    padding:9px 13px;
+    border-radius:15px;
+    background:#fff;
+    border:3px solid #252525;
+    box-shadow:0 5px 0 rgba(0,0,0,.25);
+    font-weight:1000;
+}
+
+.money{
+    color:#008a3a;
+}
+
+.xp{
+    color:#6c1cff;
+}
+
+.energy{
+    color:#ff1744;
+}
+
+.hud-right{
+    pointer-events:auto;
+    display:flex;
+    gap:8px;
+}
+
+.round-btn{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    border:3px solid #222;
+    background:#ffd23f;
+    font-size:23px;
+    box-shadow:0 5px 0 rgba(0,0,0,.25);
+}
+
+/* =========================
+   CONTROLS
+========================= */
+
+#controls{
+    position:fixed;
+    bottom:18px;
+    left:18px;
+    z-index:600;
+    display:grid;
+    grid-template-columns:58px 58px 58px;
+    grid-template-rows:58px 58px 58px;
+    gap:5px;
+}
+
+.move-btn{
+    border-radius:17px;
+    background:#fff;
+    border:3px solid #222;
+    font-size:25px;
+    box-shadow:0 5px 0 rgba(0,0,0,.3);
+}
+
+.move-btn:active{
+    transform:translateY(4px);
+    box-shadow:0 1px 0 rgba(0,0,0,.3);
+}
+
+.up{grid-column:2;}
+.left{grid-column:1;grid-row:2;}
+.down{grid-column:2;grid-row:2;}
+.right{grid-column:3;grid-row:2;}
+
+/* interaction */
+
+#interact{
+    position:fixed;
+    bottom:28px;
+    right:20px;
+    z-index:600;
+    padding:16px 20px;
+    border-radius:20px;
+    background:#ff1744;
+    color:#fff;
+    border:4px solid #8f0020;
+    font-weight:1000;
+    font-size:17px;
+    display:none;
+    box-shadow:0 7px 0 #75001b;
+}
+
+/* =========================
+   PANELS
+========================= */
+
+#panel{
+    position:fixed;
+    inset:0;
+    z-index:1000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:18px;
+    background:rgba(12,8,30,.62);
+    backdrop-filter:blur(5px);
+}
+
+.panel-card{
     width:min(700px,100%);
     max-height:90vh;
     overflow:auto;
-    background:#0b1822;
-    border:1px solid #274354;
-    border-radius:20px 20px 0 0;
-    padding:22px;
+    background:#fff;
+    border-radius:28px;
+    border:6px solid #222;
+    box-shadow:0 25px 70px rgba(0,0,0,.5);
 }
 
 .panel-head{
+    padding:18px 20px;
+    color:#fff;
+    background:linear-gradient(135deg,#ff1744,#ff7b00,#7c25e8);
     display:flex;
-    justify-content:space-between;
     align-items:center;
-    gap:10px;
-    margin-bottom:15px;
+    justify-content:space-between;
 }
 
-.close-btn{
-    border:0;
-    background:#182d3b;
-    color:#fff;
-    width:36px;
-    height:36px;
+.panel-head h2{
+    font-size:25px;
+    font-weight:1000;
+}
+
+.close{
+    width:42px;
+    height:42px;
     border-radius:50%;
+    background:#fff;
+    color:#222;
+    font-size:22px;
+    font-weight:1000;
 }
 
-.panel-section{
-    background:#10202c;
+.panel-body{
+    padding:20px;
+}
+
+/* courses */
+
+.course-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(145px,1fr));
+    gap:12px;
+}
+
+.course-card{
+    min-height:110px;
     padding:15px;
-    border-radius:12px;
-    margin-top:12px;
-}
-
-/* =========================
-   QUIZ
-========================= */
-
-.quiz-option{
-    width:100%;
-    text-align:left;
-    background:#10202c;
-    border:1px solid #294354;
+    border-radius:20px;
     color:#fff;
-    padding:14px;
-    border-radius:10px;
-    margin-top:9px;
+    font-weight:1000;
+    text-align:left;
+    border:4px solid #222;
+    box-shadow:0 6px 0 rgba(0,0,0,.2);
 }
 
-.quiz-option:hover{
-    border-color:#35d07f;
+.course-card:nth-child(6n+1){
+    background:#ff1744;
+}
+.course-card:nth-child(6n+2){
+    background:#ff7b00;
+}
+.course-card:nth-child(6n+3){
+    background:#7c25e8;
+}
+.course-card:nth-child(6n+4){
+    background:#008cff;
+}
+.course-card:nth-child(6n+5){
+    background:#00a86b;
+}
+.course-card:nth-child(6n+6){
+    background:#e91e63;
 }
 
-.quiz-option.selected{
-    border-color:#35d07f;
-    background:#15372a;
+.course-card strong{
+    font-size:19px;
 }
 
-/* =========================
-   ARENA
-========================= */
+.course-card small{
+    display:block;
+    margin-top:7px;
+    opacity:.9;
+}
 
-.arena-card{
-    background:#10202c;
-    border:1px solid #294354;
-    border-radius:12px;
+/* quiz */
+
+.quiz-progress{
+    height:14px;
+    background:#ddd;
+    border-radius:20px;
+    overflow:hidden;
+    margin-bottom:18px;
+}
+
+.quiz-progress span{
+    display:block;
+    height:100%;
+    background:linear-gradient(90deg,#ff1744,#ffb703,#7c25e8);
+}
+
+.question{
+    font-size:21px;
+    font-weight:1000;
+    line-height:1.4;
+    margin-bottom:18px;
+    color:#222;
+}
+
+.option{
+    width:100%;
     padding:15px;
-    margin-top:10px;
+    margin:7px 0;
+    border-radius:15px;
+    background:#f4f4f7;
+    border:3px solid #ddd;
+    text-align:left;
+    font-size:16px;
+    font-weight:800;
 }
 
-.match-row{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:10px;
-    padding:12px 0;
-    border-bottom:1px solid #203846;
+.option:hover{
+    border-color:#ff1744;
+    background:#fff1f4;
 }
 
-.match-row:last-child{
-    border-bottom:0;
+.option.correct{
+    background:#a8f5c5;
+    border-color:#00a34b;
 }
 
-.badge{
-    display:inline-block;
-    padding:5px 8px;
-    border-radius:8px;
-    background:#183344;
-    color:#9fd7ba;
-    font-size:11px;
+.option.wrong{
+    background:#ffc1cc;
+    border-color:#e00032;
 }
 
-/* =========================
-   TOAST
-========================= */
+.next-btn{
+    width:100%;
+    padding:15px;
+    margin-top:12px;
+    border-radius:15px;
+    background:#6c1cff;
+    color:#fff;
+    font-size:17px;
+    font-weight:1000;
+}
+
+/* notes */
+
+.note{
+    padding:15px;
+    margin:10px 0;
+    border-radius:17px;
+    background:#fff7d5;
+    border-left:7px solid #ffb703;
+}
+
+.note h3{
+    color:#e00032;
+    margin-bottom:5px;
+}
+
+/* notification */
 
 #toast{
     position:fixed;
     left:50%;
-    bottom:80px;
-    transform:translateX(-50%);
-    background:#0b1822;
-    border:1px solid #365366;
-    padding:12px 17px;
-    border-radius:10px;
-    z-index:2000;
-    display:none;
-    max-width:90%;
-    text-align:center;
+    top:90px;
+    transform:translateX(-50%) translateY(-20px);
+    z-index:3000;
+    background:#222;
+    color:#fff;
+    padding:13px 18px;
+    border-radius:15px;
+    font-weight:900;
+    opacity:0;
+    pointer-events:none;
+    transition:.25s;
+}
+
+#toast.show{
+    opacity:1;
+    transform:translateX(-50%) translateY(0);
+}
+
+/* mobile */
+
+@media(max-width:600px){
+    .building{
+        width:190px;
+        height:130px;
+    }
+
+    .building .icon{
+        font-size:40px;
+    }
+
+    .building .name{
+        font-size:16px;
+    }
+
+    .stat{
+        font-size:12px;
+        padding:7px 9px;
+    }
+
+    .hud-right{
+        display:none;
+    }
+
+    #world{
+        transform:translate(-50%,-50%) scale(.9);
+    }
 }
 </style>
 </head>
 
 <body>
 
-<!-- =========================
-     SPLASH
-========================= -->
+<!-- SPLASH -->
+<section id="splash">
+    <div class="logo">PNGPD <span>LIFE</span></div>
+    <div style="font-size:20px;font-weight:900;">2.0</div>
+    <div class="tagline">YOUR CAMPUS. YOUR STORY. YOUR GAME. 🎮</div>
+    <button class="start-btn" onclick="showAuth()">PLAY NOW 🚀</button>
+</section>
 
-<div id="splash">
-    <div class="splash-box">
-        <div class="logo">PNGPD <span>LIFE</span></div>
-        <div class="subtitle">Your department. Your campus. Your life.</div>
-        <div class="loader"><div></div></div>
-    </div>
-</div>
+<!-- AUTH -->
+<section id="auth">
+    <div class="auth-card">
+        <h1 id="authTitle">Welcome Back 👋</h1>
+        <p id="authText">Enter PNGPD LIFE and start your campus journey.</p>
 
-<!-- =========================
-     LOGIN / REGISTER
-========================= -->
+        <input id="username" placeholder="Username">
+        <input id="email" type="email" placeholder="Email">
+        <input id="password" type="password" placeholder="Password">
 
-<div id="authScreen" class="screen">
+        <button class="auth-main" onclick="enterGame()">ENTER PNGPD LIFE 🎮</button>
 
-    <div class="auth-wrap">
-
-        <div class="card">
-
-            <h1 id="authTitle">Welcome to PNGPD LIFE</h1>
-
-            <p class="muted" id="authSubtitle">
-                Enter the PNGPD world.
-            </p>
-
-            <div id="registerFields">
-
-                <input
-                    id="fullName"
-                    class="input"
-                    placeholder="Full name"
-                    autocomplete="name"
-                >
-
-            </div>
-
-            <input
-                id="email"
-                class="input"
-                type="email"
-                placeholder="Email"
-                autocomplete="email"
-            >
-
-            <input
-                id="password"
-                class="input"
-                type="password"
-                placeholder="Password"
-                autocomplete="current-password"
-            >
-
-            <button
-                id="authButton"
-                class="btn primary full"
-                onclick="PNGPD.submitAuth()"
-            >
-                CREATE ACCOUNT
-            </button>
-
-            <div class="auth-switch">
-                <span id="authSwitchText">
-                    Already have an account?
-                </span>
-
-                <span
-                    id="authSwitchAction"
-                    onclick="PNGPD.toggleAuth()"
-                >
-                    Login
-                </span>
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-<!-- =========================
-     ASSESSMENT
-========================= -->
-
-<div id="assessmentScreen" class="screen">
-
-    <div class="assessment-box">
-
-        <div class="card">
-
-            <h1>🧠 Entry Assessment</h1>
-
-            <p class="muted" style="margin-top:8px;">
-                Complete the assessment to determine your starting profile.
-            </p>
-
-            <div class="progress">
-                <div id="assessmentProgress"></div>
-            </div>
-
-            <div id="assessmentQuestion"></div>
-
-        </div>
-
-    </div>
-
-</div>
-
-<!-- =========================
-     GAME
-========================= -->
-
-<div id="gameScreen">
-
-    <div class="topbar">
-
-        <div class="player-mini">
-
-            <div class="avatar" id="playerAvatar">
-                P
-            </div>
-
-            <div>
-                <strong id="playerName">
-                    Player
-                </strong>
-
-                <div
-                    id="playerLevel"
-                    class="muted"
-                >
-                    Level 1
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="stats">
-
-            <span>💰 ₦<b id="money">0</b></span>
-            <span>⭐ <b id="xp">0</b> XP</span>
-            <span>❤️ <b id="energy">100</b></span>
-
-        </div>
-
-    </div>
-
-    <div class="game-content">
-
-        <div class="world">
-
-            <div class="world-title">
-                📍 PTI — PNGPD Campus
-            </div>
-
-            <div
-                id="playerCharacter"
-                class="player"
-                style="left:48%;top:45%;"
-            >
-                P
-            </div>
-
-            <button
-                class="location loc-library"
-                onclick="PNGPD.visitLocation('library')"
-            >
-                📚<br>Library
-            </button>
-
-            <button
-                class="location loc-class"
-                onclick="PNGPD.visitLocation('classroom')"
-            >
-                🏫<br>Classroom
-            </button>
-
-            <button
-                class="location loc-hostel"
-                onclick="PNGPD.visitLocation('hostel')"
-            >
-                🛏️<br>Hostel
-            </button>
-
-            <button
-                class="location loc-canteen"
-                onclick="PNGPD.visitLocation('canteen')"
-            >
-                🍲<br>Canteen
-            </button>
-
-            <button
-                class="location loc-lab"
-                onclick="PNGPD.visitLocation('lab')"
-            >
-                🔬<br>Laboratory
-            </button>
-
-            <button
-                class="location loc-arena"
-                onclick="PNGPD.visitLocation('arena')"
-            >
-                🏟️<br>Arena
-            </button>
-
-        </div>
-
-        <div class="controls">
-
-            <button
-                class="control-btn"
-                onclick="PNGPD.movePlayer('up')"
-            >⬆️</button>
-
-            <button
-                class="control-btn"
-                onclick="PNGPD.movePlayer('left')"
-            >⬅️</button>
-
-            <button
-                class="control-btn"
-                onclick="PNGPD.movePlayer('down')"
-            >⬇️</button>
-
-            <button
-                class="control-btn"
-                onclick="PNGPD.movePlayer('right')"
-            >➡️</button>
-
-        </div>
-
-    </div>
-
-    <div class="bottom-nav">
-
-        <button
-            class="nav-btn"
-            onclick="PNGPD.openBank()"
-        >
-            💰<br>Bank
+        <button class="auth-switch" onclick="toggleAuth()">
+            Create a new account
         </button>
 
-        <button
-            class="nav-btn"
-            onclick="PNGPD.openShop()"
-        >
-            🛒<br>Shop
-        </button>
+        <div class="auth-error" id="authError"></div>
+    </div>
+</section>
 
-        <button
-            class="nav-btn"
-            onclick="PNGPD.openProperties()"
-        >
-            🏠<br>Properties
-        </button>
+<!-- GAME -->
+<section id="game">
 
-        <button
-            class="nav-btn"
-            onclick="PNGPD.openGarage()"
-        >
-            🚗<br>Garage
-        </button>
+    <div id="world">
 
-        <button
-            class="nav-btn"
-            onclick="PNGPD.openTournaments()"
-        >
-            🏆<br>Events
-        </button>
+        <!-- ROADS -->
+        <div class="road horizontal" style="top:510px;"></div>
+        <div class="road vertical" style="left:825px;"></div>
+
+        <!-- PATHS -->
+        <div class="path" style="left:420px;top:330px;width:400px;height:55px;"></div>
+        <div class="path" style="left:1000px;top:330px;width:300px;height:55px;"></div>
+        <div class="path" style="left:430px;top:650px;width:390px;height:55px;"></div>
+        <div class="path" style="left:1000px;top:650px;width:300px;height:55px;"></div>
+
+        <!-- BUILDINGS -->
+        <div class="building library" onclick="openLibrary()">
+            <div class="icon">📚</div>
+            <div class="name">PNGPD LIBRARY</div>
+            <small>Study & Quizzes</small>
+        </div>
+
+        <div class="building classroom" onclick="openClassroom()">
+            <div class="icon">🏫</div>
+            <div class="name">CLASSROOM BLOCK</div>
+            <small>Attend Class</small>
+        </div>
+
+        <div class="building hostel" onclick="openHostel()">
+            <div class="icon">🏠</div>
+            <div class="name">STUDENT HOSTEL</div>
+            <small>Rest & Recover</small>
+        </div>
+
+        <div class="building canteen" onclick="openCanteen()">
+            <div class="icon">🍔</div>
+            <div class="name">CAMPUS CANTEEN</div>
+            <small>Eat & Socialize</small>
+        </div>
+
+        <div class="building lab" onclick="openLab()">
+            <div class="icon">🧪</div>
+            <div class="name">PROCESS LAB</div>
+            <small>Practical XP</small>
+        </div>
+
+        <div class="building arena" onclick="openArena()">
+            <div class="icon">⚔️</div>
+            <div class="name">PNGPD ARENA</div>
+            <small>Academic Battles</small>
+        </div>
+
+        <!-- SIGNS -->
+        <div class="sign" style="left:480px;top:275px;">📍 STUDY ZONE</div>
+        <div class="sign" style="left:1080px;top:275px;">🎓 STUDENT ZONE</div>
+        <div class="sign" style="left:510px;top:720px;">🍕 FOOD STREET</div>
+        <div class="sign" style="left:1080px;top:720px;">🔥 BATTLE ZONE</div>
+
+        <!-- TREES -->
+        <div class="tree" style="left:50px;top:80px">
+            <div class="leaf"></div><div class="trunk"></div>
+        </div>
+        <div class="tree" style="left:500px;top:80px">
+            <div class="leaf"></div><div class="trunk"></div>
+        </div>
+        <div class="tree" style="left:1050px;top:70px">
+            <div class="leaf"></div><div class="trunk"></div>
+        </div>
+        <div class="tree" style="left:1500px;top:120px">
+            <div class="leaf"></div><div class="trunk"></div>
+        </div>
+        <div class="tree" style="left:70px;top:650px">
+            <div class="leaf"></div><div class="trunk"></div>
+        </div>
+        <div class="tree" style="left:540px;top:980px">
+            <div class="leaf"></div><div class="trunk"></div>
+        </div>
+        <div class="tree" style="left:1050px;top:1000px">
+            <div class="leaf"></div><div class="trunk"></div>
+        </div>
+        <div class="tree" style="left:1550px;top:850px">
+            <div class="leaf"></div><div class="trunk"></div>
+        </div>
+
+        <!-- PLAYER -->
+        <div id="player">
+            <div class="player-head"></div>
+            <div class="player-body"></div>
+            <div class="player-shadow"></div>
+        </div>
 
     </div>
 
-</div>
+    <!-- HUD -->
+    <div id="hud">
+        <div class="hud-left">
+            <div class="stat">👤 <span id="playerName">Patrick</span></div>
+            <div class="stat money">💰 ₦<span id="money">5000</span></div>
+            <div class="stat xp">⭐ XP <span id="xp">0</span></div>
+            <div class="stat energy">❤️ <span id="energy">100</span></div>
+        </div>
 
-<!-- =========================
-     PANEL
-========================= -->
+        <div class="hud-right">
+            <button class="round-btn" onclick="openProfile()">👤</button>
+            <button class="round-btn" onclick="openLibrary()">📚</button>
+        </div>
+    </div>
 
-<div
-    id="gamePanel"
-    onclick="if(event.target===this) PNGPD.closePanel()"
->
+    <!-- CONTROLS -->
+    <div id="controls">
+        <button class="move-btn up" onpointerdown="move('up')">⬆️</button>
+        <button class="move-btn left" onpointerdown="move('left')">⬅️</button>
+        <button class="move-btn down" onpointerdown="move('down')">⬇️</button>
+        <button class="move-btn right" onpointerdown="move('right')">➡️</button>
+    </div>
 
-    <div class="panel">
+    <button id="interact" onclick="interact()">ENTER / INTERACT</button>
+</section>
 
+<!-- PANEL -->
+<div id="panel">
+    <div class="panel-card">
         <div class="panel-head">
-
-            <h2 id="panelTitle">
-                PNGPD LIFE
-            </h2>
-
-            <button
-                class="close-btn"
-                onclick="PNGPD.closePanel()"
-            >
-                ✕
-            </button>
-
+            <h2 id="panelTitle">PNGPD LIFE</h2>
+            <button class="close" onclick="closePanel()">×</button>
         </div>
-
-        <div id="panelContent"></div>
-
+        <div class="panel-body" id="panelBody"></div>
     </div>
-
 </div>
 
 <div id="toast"></div>
 
-<!-- =========================
-     PROJECT FILES
-========================= -->
-
 <script src="data/questions.js"></script>
-<script src="data/locations.js"></script>
-<script src="game/playerMovement.js"></script>
-<script src="game/profile.js"></script>
-<script src="game/actions.js"></script>
-
-<!-- =========================
-     SUPABASE
-========================= -->
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-
-const SUPABASE_URL =
-    "https://xlylxyxjsvhvrnjrcvrf.supabase.co";
-
-const SUPABASE_KEY =
-    "sb_publishable_UNIyxQ_8WvQzR2t2fCjKtQ_MNcIJ7T9";
-
-let pngpdSupabase = null;
-
-try{
-
-    pngpdSupabase =
-        window.supabase.createClient(
-            SUPABASE_URL,
-            SUPABASE_KEY
-        );
-
-    window.pngpdSupabase =
-        pngpdSupabase;
-
-}catch(error){
-
-    console.error(
-        "Supabase connection failed:",
-        error
-    );
-
-}
-
 /* =========================================================
-   MAIN GAME OBJECT
+   PNGPD LIFE 2.0
+   CORE GAME
 ========================================================= */
 
-const PNGPD = {
-
-    player:null,
-
-    authMode:"register",
-
-    assessmentQuestions:[],
-
-    assessmentIndex:0,
-
-    assessmentScore:0,
-
-    /* =========================
-       TOAST
-    ========================= */
-
-    toast(message){
-
-        const toast =
-            document.getElementById("toast");
-
-        toast.textContent = message;
-
-        toast.style.display = "block";
-
-        clearTimeout(window._pngpdToast);
-
-        window._pngpdToast =
-            setTimeout(()=>{
-                toast.style.display = "none";
-            },2500);
-
-    },
-
-    /* =========================
-       PANELS
-    ========================= */
-
-    openPanel(title,content){
-
-        document.getElementById(
-            "panelTitle"
-        ).textContent = title;
-
-        document.getElementById(
-            "panelContent"
-        ).innerHTML = content;
-
-        document.getElementById(
-            "gamePanel"
-        ).style.display = "flex";
-
-    },
-
-    closePanel(){
-
-        document.getElementById(
-            "gamePanel"
-        ).style.display = "none";
-
-    },
-
-    /* =========================
-       AUTH MODE
-    ========================= */
-
-    toggleAuth(){
-
-        this.authMode =
-            this.authMode === "register"
-            ? "login"
-            : "register";
-
-        const registerFields =
-            document.getElementById(
-                "registerFields"
-            );
-
-        const title =
-            document.getElementById(
-                "authTitle"
-            );
-
-        const subtitle =
-            document.getElementById(
-                "authSubtitle"
-            );
-
-        const button =
-            document.getElementById(
-                "authButton"
-            );
-
-        const switchText =
-            document.getElementById(
-                "authSwitchText"
-            );
-
-        const switchAction =
-            document.getElementById(
-                "authSwitchAction"
-            );
-
-        if(this.authMode === "register"){
-
-            registerFields.style.display =
-                "block";
-
-            title.textContent =
-                "Welcome to PNGPD LIFE";
-
-            subtitle.textContent =
-                "Create your PNGPD LIFE account.";
-
-            button.textContent =
-                "CREATE ACCOUNT";
-
-            switchText.textContent =
-                "Already have an account?";
-
-            switchAction.textContent =
-                "Login";
-
-        }else{
-
-            registerFields.style.display =
-                "none";
-
-            title.textContent =
-                "Welcome Back";
-
-            subtitle.textContent =
-                "Login to continue your PNGPD LIFE.";
-
-            button.textContent =
-                "LOGIN";
-
-            switchText.textContent =
-                "Don't have an account?";
-
-            switchAction.textContent =
-                "Register";
-
-        }
-
-    },
-
-    /* =========================
-       AUTH
-    ========================= */
-
-    async submitAuth(){
-
-        if(!pngpdSupabase){
-
-            this.toast(
-                "Supabase is not connected."
-            );
-
-            return;
-
-        }
-
-        const email =
-            document.getElementById(
-                "email"
-            ).value.trim();
-
-        const password =
-            document.getElementById(
-                "password"
-            ).value;
-
-        if(!email || !password){
-
-            this.toast(
-                "Enter your email and password."
-            );
-
-            return;
-
-        }
-
-        try{
-
-            if(this.authMode === "register"){
-
-                const fullName =
-                    document.getElementById(
-                        "fullName"
-                    ).value.trim();
-
-                if(!fullName){
-
-                    this.toast(
-                        "Enter your full name."
-                    );
-
-                    return;
-
-                }
-
-                const {data,error} =
-                    await pngpdSupabase.auth.signUp({
-
-                        email,
-
-                        password,
-
-                        options:{
-                            data:{
-                                full_name:fullName
-                            }
-                        }
-
-                    });
-
-                if(error) throw error;
-
-                if(data.session){
-
-                    await this.afterLogin(
-                        data.session
-                    );
-
-                }else{
-
-                    this.toast(
-                        "Account created. Check your email if confirmation is required."
-                    );
-
-                }
-
-            }else{
-
-                const {data,error} =
-                    await pngpdSupabase.auth.signInWithPassword({
-
-                        email,
-
-                        password
-
-                    });
-
-                if(error) throw error;
-
-                await this.afterLogin(
-                    data.session
-                );
-
-            }
-
-        }catch(error){
-
-            console.error(error);
-
-            this.toast(
-                error.message ||
-                "Authentication failed."
-            );
-
-        }
-
-    },
-
-    async afterLogin(session){
-
-        if(!session){
-
-            this.toast(
-                "No active session."
-            );
-
-            return;
-
-        }
-
-        window.pngpdSession =
-            session;
-
-        await this.loadPlayer();
-
-    },
-
-    /* =========================
-       LOAD PLAYER
-    ========================= */
-
-    async loadPlayer(){
-
-        const user =
-            (await pngpdSupabase.auth.getUser()).data.user;
-
-        if(!user){
-
-            this.showAuth();
-
-            return;
-
-        }
-
-        let stored =
-            localStorage.getItem(
-                "pngpd_player"
-            );
-
-        if(stored){
-
-            try{
-
-                this.player =
-                    JSON.parse(stored);
-
-            }catch{
-
-                this.player = null;
-
-            }
-
-        }
-
-        if(!this.player){
-
-            this.player = {
-
-                id:user.id,
-
-                name:
-                    user.user_metadata?.full_name ||
-                    user.email?.split("@")[0] ||
-                    "Player",
-
-                email:user.email,
-
-                level:1,
-
-                xp:0,
-
-                money:5000,
-
-                energy:100,
-
-                intelligence:0,
-
-                assessmentScore:0,
-
-                createdAt:
-                    new Date().toISOString()
-
-            };
-
-            this.savePlayer();
-
-        }
-
-        this.showGame();
-
-        this.updateHUD();
-
-    },
-
-    savePlayer(){
-
-        localStorage.setItem(
-            "pngpd_player",
-            JSON.stringify(this.player)
-        );
-
-    },
-
-    /* =========================
-       SCREENS
-    ========================= */
-
-    showAuth(){
-
-        document.getElementById(
-            "authScreen"
-        ).style.display = "block";
-
-        document.getElementById(
-            "assessmentScreen"
-        ).style.display = "none";
-
-        document.getElementById(
-            "gameScreen"
-        ).style.display = "none";
-
-    },
-
-    showAssessment(){
-
-        document.getElementById(
-            "authScreen"
-        ).style.display = "none";
-
-        document.getElementById(
-            "assessmentScreen"
-        ).style.display = "block";
-
-        document.getElementById(
-            "gameScreen"
-        ).style.display = "none";
-
-    },
-
-    showGame(){
-
-        document.getElementById(
-            "authScreen"
-        ).style.display = "none";
-
-        document.getElementById(
-            "assessmentScreen"
-        ).style.display = "none";
-
-        document.getElementById(
-            "gameScreen"
-        ).style.display = "block";
-
-    },
-
-    /* =========================
-       HUD
-    ========================= */
-
-    updateHUD(){
-
-        if(!this.player) return;
-
-        document.getElementById(
-            "playerName"
-        ).textContent =
-            this.player.name;
-
-        document.getElementById(
-            "playerLevel"
-        ).textContent =
-            `Level ${this.player.level}`;
-
-        document.getElementById(
-            "money"
-        ).textContent =
-            Number(this.player.money || 0).toLocaleString();
-
-        document.getElementById(
-            "xp"
-        ).textContent =
-            this.player.xp || 0;
-
-        document.getElementById(
-            "energy"
-        ).textContent =
-            this.player.energy ?? 100;
-
-        const first =
-            (this.player.name || "P")
-            .charAt(0)
-            .toUpperCase();
-
-        document.getElementById(
-            "playerAvatar"
-        ).textContent = first;
-
-        document.getElementById(
-            "playerCharacter"
-        ).textContent = first;
-
-    },
-
-    /* =========================
-       XP
-    ========================= */
-
-    addXP(amount){
-
-        if(!this.player) return;
-
-        this.player.xp =
-            Number(this.player.xp || 0) +
-            Number(amount || 0);
-
-        const required =
-            this.player.level * 100;
-
-        if(this.player.xp >= required){
-
-            this.player.xp -= required;
-
-            this.player.level++;
-
-            this.toast(
-                `🎉 Level ${this.player.level}!`
-            );
-
-        }
-
-        this.savePlayer();
-
-        this.updateHUD();
-
-    },
-
-    /* =========================
-       MOVEMENT
-    ========================= */
-
-    movePlayer(direction){
-
-        const character =
-            document.getElementById(
-                "playerCharacter"
-            );
-
-        if(!character) return;
-
-        let left =
-            parseFloat(character.style.left) || 48;
-
-        let top =
-            parseFloat(character.style.top) || 45;
-
-        const step = 3;
-
-        if(direction === "left")
-            left -= step;
-
-        if(direction === "right")
-            left += step;
-
-        if(direction === "up")
-            top -= step;
-
-        if(direction === "down")
-            top += step;
-
-        left =
-            Math.max(2,Math.min(94,left));
-
-        top =
-            Math.max(8,Math.min(90,top));
-
-        character.style.left =
-            left + "%";
-
-        character.style.top =
-            top + "%";
-
-    },
-
-    /* =========================
-       LOCATIONS
-    ========================= */
-
-    visitLocation(location){
-
-        switch(location){
-
-            case "library":
-
-                if(typeof window.openLibrary === "function"){
-
-                    window.openLibrary();
-
-                }else{
-
-                    this.openBank(
-                        "📚 Library"
-                    );
-
-                }
-
-                break;
-
-            case "classroom":
-
-                this.startStudy();
-
-                break;
-
-            case "hostel":
-
-                this.rest();
-
-                break;
-
-            case "canteen":
-
-                this.eat();
-
-                break;
-
-            case "lab":
-
-                this.labChallenge();
-
-                break;
-
-            case "arena":
-
-                this.battle();
-
-                break;
-
-            default:
-
-                this.toast(
-                    "Location unavailable."
-                );
-
-        }
-
-    },
-
-    /* =========================
-       STUDY
-    ========================= */
-
-    startStudy(){
-
-        this.openPanel(
-
-            "📚 Study",
-
-            `
-
-            <div class="panel-section">
-
-                <h3>Choose a course</h3>
-
-                <p class="muted" style="margin-top:8px;">
-                    Select a course to start studying.
-                </p>
-
-            </div>
-
-            <button
-                class="btn primary full"
-                onclick="PNGPD.startQuiz('PGP 121')"
-            >
-                PGP 121
-            </button>
-
-            <button
-                class="btn primary full"
-                onclick="PNGPD.startQuiz('PGP 122')"
-            >
-                PGP 122
-            </button>
-
-            <button
-                class="btn primary full"
-                onclick="PNGPD.startQuiz('PGP 123')"
-            >
-                PGP 123
-            </button>
-
-            <button
-                class="btn primary full"
-                onclick="PNGPD.startQuiz('PGP 124')"
-            >
-                PGP 124
-            </button>
-
-            <button
-                class="btn primary full"
-                onclick="PNGPD.startQuiz('PGP 125')"
-            >
-                PGP 125
-            </button>
-
-            <button
-                class="btn primary full"
-                onclick="PNGPD.startQuiz('PGP 126')"
-            >
-                PGP 126
-            </button>
-
-            <button
-                class="btn primary full"
-                onclick="PNGPD.startQuiz('PGP 127')"
-            >
-                PGP 127
-            </button>
-
-            <button
-                class="btn secondary full"
-                onclick="PNGPD.startQuiz('MTH 101')"
-            >
-                MTH 101
-            </button>
-
-            <button
-                class="btn secondary full"
-                onclick="PNGPD.startQuiz('MTH 112')"
-            >
-                MTH 112
-            </button>
-
-            <button
-                class="btn secondary full"
-                onclick="PNGPD.startQuiz('GNS 101')"
-            >
-                GNS 101
-            </button>
-
-            <button
-                class="btn secondary full"
-                onclick="PNGPD.startQuiz('GNS 111')"
-            >
-                GNS 111
-            </button>
-
-            `
-
-        );
-
-    },
-
-    startQuiz(subject){
-
-        if(
-            typeof window.startQuiz ===
-            "function"
-        ){
-
-            window.startQuiz(subject);
-
-            return;
-
-        }
-
-        this.runLocalQuiz(subject);
-
-    },
-
-    runLocalQuiz(subject){
-
-        const bank =
-            window.PNGPD_QUESTIONS;
-
-        let questions = [];
-
-        if(Array.isArray(bank)){
-
-            questions =
-                bank.filter(q => {
-
-                    const course =
-                        q.course ||
-                        q.subject ||
-                        q.code;
-
-                    return String(course)
-                        .toLowerCase()
-                        .replace(/\s/g,"")
-                        ===
-                        String(subject)
-                        .toLowerCase()
-                        .replace(/\s/g,"");
-
-                });
-
-        }else if(
-            bank &&
-            typeof bank === "object"
-        ){
-
-            questions =
-                bank[subject] ||
-                bank[subject.replace(" ","")] ||
-                [];
-
-        }
-
-        if(!questions.length){
-
-            this.openPanel(
-
-                subject,
-
-                `
-
-                <div class="panel-section">
-
-                    <h3>Question bank not loaded</h3>
-
-                    <p class="muted" style="margin-top:8px;">
-                        The question bank for
-                        ${subject}
-                        is empty or has not been loaded.
-                    </p>
-
-                </div>
-
-                `
-
-            );
-
-            return;
-
-        }
-
-        questions =
-            [...questions]
-            .sort(()=>Math.random()-.5)
-            .slice(0,30);
-
-        window._pngpdQuiz = {
-
-            subject,
-
-            questions,
-
-            index:0,
-
-            score:0
-
-        };
-
-        this.renderLocalQuiz();
-
-    },
-
-    renderLocalQuiz(){
-
-        const quiz =
-            window._pngpdQuiz;
-
-        if(!quiz) return;
-
-        if(
-            quiz.index >=
-            quiz.questions.length
-        ){
-
-            this.finishLocalQuiz();
-
-            return;
-
-        }
-
-        const q =
-            quiz.questions[quiz.index];
-
-        const question =
-            q.question ||
-            q.question_text ||
-            q.text ||
-            "Question";
-
-        const options = [
-
-            q.option_a ?? q.a ?? q.options?.[0],
-
-            q.option_b ?? q.b ?? q.options?.[1],
-
-            q.option_c ?? q.c ?? q.options?.[2],
-
-            q.option_d ?? q.d ?? q.options?.[3]
-
-        ];
-
-        this.openPanel(
-
-            `📖 ${quiz.subject}`,
-
-            `
-
-            <div class="panel-section">
-
-                <span class="badge">
-                    Question ${quiz.index+1}/${quiz.questions.length}
-                </span>
-
-                <h3 style="margin-top:15px;">
-                    ${this.escapeHTML(question)}
-                </h3>
-
-            </div>
-
-            <div>
-
-                ${options.map((option,index)=>`
-
-                    <button
-                        class="quiz-option"
-                        onclick="PNGPD.answerLocalQuiz(${index})"
-                    >
-                        <b>${String.fromCharCode(65+index)}.</b>
-                        ${this.escapeHTML(option || "")}
-                    </button>
-
-                `).join("")}
-
-            </div>
-
-            `
-
-        );
-
-    },
-
-    answerLocalQuiz(index){
-
-        const quiz =
-            window._pngpdQuiz;
-
-        const q =
-            quiz.questions[quiz.index];
-
-        const correct =
-            q.correct_answer ??
-            q.answer ??
-            q.correctAnswer;
-
-        const letter =
-            String.fromCharCode(
-                65 + index
-            );
-
-        if(
-            String(correct)
-            .trim()
-            .toUpperCase()
-            ===
-            letter
-            ||
-            String(correct)
-            .trim()
-            ===
-            String(index)
-        ){
-
-            quiz.score++;
-
-            this.toast("✅ Correct!");
-
-        }else{
-
-            this.toast("❌ Incorrect.");
-
-        }
-
-        quiz.index++;
-
-        setTimeout(
-            ()=>this.renderLocalQuiz(),
-            350
-        );
-
-    },
-
-    finishLocalQuiz(){
-
-        const quiz =
-            window._pngpdQuiz;
-
-        const total =
-            quiz.questions.length;
-
-        const percent =
-            Math.round(
-                quiz.score / total * 100
-            );
-
-        this.addXP(
-            quiz.score * 5
-        );
-
-        this.openPanel(
-
-            `📊 ${quiz.subject} Result`,
-
-            `
-
-            <div class="panel-section">
-
-                <h2>
-                    ${quiz.score}/${total}
-                </h2>
-
-                <p class="muted" style="margin-top:8px;">
-                    Score: ${percent}%
-                </p>
-
-            </div>
-
-            <button
-                class="btn primary full"
-                onclick="PNGPD.closePanel()"
-            >
-                CONTINUE
-            </button>
-
-            `
-
-        );
-
-        window._pngpdQuiz = null;
-
-    },
-
-    /* =========================
-       OTHER ACTIVITIES
-    ========================= */
-
-    labChallenge(){
-
-        this.addXP(5);
-
-        this.openPanel(
-
-            "🔬 Laboratory",
-
-            `
-
-            <div class="panel-section">
-
-                <h3>Laboratory Challenge</h3>
-
-                <p class="muted" style="margin-top:10px;">
-                    You completed a quick laboratory activity.
-                </p>
-
-                <p style="margin-top:10px;">
-                    ⭐ +5 XP
-                </p>
-
-            </div>
-
-            `
-
-        );
-
-    },
-
-    rest(){
-
-        if(!this.player) return;
-
-        this.player.energy =
-            Math.min(
-                100,
-                Number(this.player.energy || 0)+25
-            );
-
-        this.savePlayer();
-
-        this.updateHUD();
-
-        this.openPanel(
-
-            "🛏️ Hostel",
-
-            `
-
-            <div class="panel-section">
-
-                <h3>You rested.</h3>
-
-                <p class="muted" style="margin-top:8px;">
-                    Energy restored.
-                </p>
-
-            </div>
-
-            `
-
-        );
-
-    },
-
-    eat(){
-
-        if(!this.player) return;
-
-        const cost = 500;
-
-        if(
-            Number(this.player.money) <
-            cost
-        ){
-
-            this.toast(
-                "Not enough money."
-            );
-
-            return;
-
-        }
-
-        this.player.money -= cost;
-
-        this.player.energy =
-            Math.min(
-                100,
-                Number(this.player.energy || 0)+20
-            );
-
-        this.savePlayer();
-
-        this.updateHUD();
-
-        this.openPanel(
-
-            "🍲 Canteen",
-
-            `
-
-            <div class="panel-section">
-
-                <h3>Meal purchased.</h3>
-
-                <p style="margin-top:8px;">
-                    Energy +20
-                </p>
-
-                <p>
-                    Money -₦500
-                </p>
-
-            </div>
-
-            `
-
-        );
-
-    },
-
-    /* =========================
-       ARENA ENTRY
-    ========================= */
-
-    battle(){
-
-        if(
-            typeof window.openArena ===
-            "function"
-        ){
-
-            window.openArena();
-
-            return;
-
-        }
-
-        this.openPanel(
-
-            "🏟️ Arena",
-
-            `
-
-            <h3>Academic Arena</h3>
-
-            <p class="muted" style="margin-top:12px;">
-                Arena system is loading...
-            </p>
-
-            `
-
-        );
-
-    },
-
-    /* =========================
-       MENU PLACEHOLDERS
-    ========================= */
-
-    openBank(){
-
-        this.openPanel(
-
-            "💰 Bank",
-
-            `
-
-            <div class="panel-section">
-
-                <h3>
-                    ₦${Number(this.player?.money || 0).toLocaleString()}
-                </h3>
-
-                <p class="muted">
-                    Current balance
-                </p>
-
-            </div>
-
-            `
-
-        );
-
-    },
-
-    openShop(){
-
-        this.openPanel(
-
-            "🛒 Shop",
-
-            `
-
-            <div class="panel-section">
-
-                <h3>Campus Shop</h3>
-
-                <p class="muted" style="margin-top:8px;">
-                    Items and upgrades will appear here.
-                </p>
-
-            </div>
-
-            `
-
-        );
-
-    },
-
-    openProperties(){
-
-        this.openPanel(
-
-            "🏠 Properties",
-
-            `
-
-            <div class="panel-section">
-
-                <h3>Your Properties</h3>
-
-                <p class="muted" style="margin-top:8px;">
-                    Purchase and manage properties here.
-                </p>
-
-            </div>
-
-            `
-
-        );
-
-    },
-
-    openGarage(){
-
-        this.openPanel(
-
-            "🚗 Garage",
-
-            `
-
-            <div class="panel-section">
-
-                <h3>Your Garage</h3>
-
-                <p class="muted" style="margin-top:8px;">
-                    Vehicles will appear here.
-                </p>
-
-            </div>
-
-            `
-
-        );
-
-    },
-
-    openTournaments(){
-
-        if(
-            typeof window.openChampionship ===
-            "function"
-        ){
-
-            window.openChampionship();
-
-            return;
-
-        }
-
-        this.openPanel(
-
-            "🏆 Events",
-
-            `
-
-            <div class="panel-section">
-
-                <h3>PNGPD Events</h3>
-
-                <p class="muted">
-                    Events are loading...
-                </p>
-
-            </div>
-
-            `
-
-        );
-
-    },
-
-    /* =========================
-       LOGOUT
-    ========================= */
-
-    async logout(){
-
-        try{
-
-            if(pngpdSupabase){
-
-                await pngpdSupabase.auth.signOut();
-
-            }
-
-        }catch(error){
-
-            console.error(error);
-
-        }
-
-        localStorage.removeItem(
-            "pngpd_player"
-        );
-
-        this.player = null;
-
-        this.showAuth();
-
-    },
-
-    /* =========================
-       ESCAPE HTML
-    ========================= */
-
-    escapeHTML(value){
-
-        return String(value ?? "")
-            .replace(/&/g,"&amp;")
-            .replace(/</g,"&lt;")
-            .replace(/>/g,"&gt;")
-            .replace(/"/g,"&quot;")
-            .replace(/'/g,"&#039;");
-
-    }
-
+const state = {
+    name: localStorage.getItem("pngpd_name") || "Patrick",
+    money: Number(localStorage.getItem("pngpd_money") || 5000),
+    xp: Number(localStorage.getItem("pngpd_xp") || 0),
+    energy: Number(localStorage.getItem("pngpd_energy") || 100),
+    x: 860,
+    y: 550,
+    speed: 24,
+    authRegister:false
 };
 
-window.PNGPD = PNGPD;
+let currentCourse = "";
+let quizQuestions = [];
+let quizIndex = 0;
+let quizScore = 0;
+let quizAnswered = false;
 
-/* =========================================================
-   STARTUP
-========================================================= */
+/* =========================
+   AUTH
+========================= */
 
-async function initializePNGPD(){
-
-    setTimeout(async ()=>{
-
-        document.getElementById(
-            "splash"
-        ).style.display = "none";
-
-        if(!pngpdSupabase){
-
-            PNGPD.showAuth();
-
-            return;
-
-        }
-
-        try{
-
-            const {data} =
-                await pngpdSupabase.auth.getSession();
-
-            if(data.session){
-
-                await PNGPD.afterLogin(
-                    data.session
-                );
-
-            }else{
-
-                PNGPD.showAuth();
-
-            }
-
-        }catch(error){
-
-            console.error(error);
-
-            PNGPD.showAuth();
-
-        }
-
-    },1000);
-
+function showAuth(){
+    document.getElementById("splash").style.display="none";
+    document.getElementById("auth").style.display="flex";
 }
 
-initializePNGPD();
+function toggleAuth(){
+    state.authRegister=!state.authRegister;
+
+    document.getElementById("authTitle").textContent =
+        state.authRegister ? "Create Your Character 🚀" : "Welcome Back 👋";
+
+    document.getElementById("authText").textContent =
+        state.authRegister
+        ? "Create your PNGPD LIFE student account."
+        : "Enter PNGPD LIFE and start your campus journey.";
+
+    document.querySelector(".auth-main").textContent =
+        state.authRegister ? "CREATE CHARACTER 🎮" : "ENTER PNGPD LIFE 🎮";
+
+    document.querySelector(".auth-switch").textContent =
+        state.authRegister
+        ? "I already have an account"
+        : "Create a new account";
+}
+
+function enterGame(){
+
+    const name =
+        document.getElementById("username").value.trim() ||
+        "Patrick";
+
+    state.name=name;
+
+    localStorage.setItem("pngpd_name",name);
+    localStorage.setItem("pngpd_money",state.money);
+    localStorage.setItem("pngpd_xp",state.xp);
+
+    document.getElementById("auth").style.display="none";
+    document.getElementById("game").style.display="block";
+
+    updateHUD();
+
+    toast("Welcome to PNGPD LIFE, "+name+"! 🎮🔥");
+}
+
+/* =========================
+   HUD
+========================= */
+
+function updateHUD(){
+    document.getElementById("playerName").textContent=state.name;
+    document.getElementById("money").textContent=state.money.toLocaleString();
+    document.getElementById("xp").textContent=state.xp;
+    document.getElementById("energy").textContent=state.energy;
+}
+
+function addXP(amount){
+    state.xp += amount;
+    localStorage.setItem("pngpd_xp",state.xp);
+    updateHUD();
+    toast("⭐ +"+amount+" XP!");
+}
+
+function spendMoney(amount){
+    state.money=Math.max(0,state.money-amount);
+    localStorage.setItem("pngpd_money",state.money);
+    updateHUD();
+}
+
+/* =========================
+   PLAYER MOVEMENT
+========================= */
+
+function move(direction){
+
+    const world=document.getElementById("world");
+
+    if(direction==="up") state.y-=state.speed;
+    if(direction==="down") state.y+=state.speed;
+    if(direction==="left") state.x-=state.speed;
+    if(direction==="right") state.x+=state.speed;
+
+    state.x=Math.max(30,Math.min(1710,state.x));
+    state.y=Math.max(30,Math.min(1110,state.y));
+
+    const player=document.getElementById("player");
+
+    player.style.left=state.x+"px";
+    player.style.top=state.y+"px";
+
+    camera();
+
+    checkNearLocation();
+}
+
+function camera(){
+
+    const world=document.getElementById("world");
+
+    const vw=window.innerWidth;
+    const vh=window.innerHeight;
+
+    let left=-(state.x-vw/2);
+    let top=-(state.y-vh/2);
+
+    left=Math.min(0,Math.max(vw-1800,left));
+    top=Math.min(0,Math.max(vh-1200,top));
+
+    world.style.left=(vw/2+left)+"px";
+    world.style.top=(vh/2+top)+"px";
+}
+
+document.addEventListener("keydown",e=>{
+
+    if(e.key==="ArrowUp" || e.key.toLowerCase()==="w")
+        move("up");
+
+    if(e.key==="ArrowDown" || e.key.toLowerCase()==="s")
+        move("down");
+
+    if(e.key==="ArrowLeft" || e.key.toLowerCase()==="a")
+        move("left");
+
+    if(e.key==="ArrowRight" || e.key.toLowerCase()==="d")
+        move("right");
+
+    if(e.key==="Enter")
+        interact();
+});
+
+/* =========================
+   LOCATIONS
+========================= */
+
+const locations=[
+    {
+        name:"PNGPD Library",
+        x:210,y:210,w:230,h:150,
+        action:openLibrary
+    },
+    {
+        name:"Classroom Block",
+        x:720,y:160,w:230,h:150,
+        action:openClassroom
+    },
+    {
+        name:"Student Hostel",
+        x:1190,y:220,w:230,h:150,
+        action:openHostel
+    },
+    {
+        name:"Campus Canteen",
+        x:220,y:760,w:230,h:150,
+        action:openCanteen
+    },
+    {
+        name:"Process Lab",
+        x:760,y:760,w:230,h:150,
+        action:openLab
+    },
+    {
+        name:"PNGPD Arena",
+        x:1250,y:750,w:230,h:150,
+        action:openArena
+    }
+];
+
+let nearby=null;
+
+function checkNearLocation(){
+
+    nearby=null;
+
+    for(const loc of locations){
+
+        const cx=loc.x+loc.w/2;
+        const cy=loc.y+loc.h/2;
+
+        const dx=state.x-cx;
+        const dy=state.y-cy;
+
+        const distance=Math.sqrt(dx*dx+dy*dy);
+
+        if(distance<180){
+            nearby=loc;
+            break;
+        }
+    }
+
+    const button=document.getElementById("interact");
+
+    if(nearby){
+        button.style.display="block";
+        button.textContent="ENTER "+nearby.name.toUpperCase()+" 🚪";
+    }else{
+        button.style.display="none";
+    }
+}
+
+function interact(){
+    if(nearby && nearby.action){
+        nearby.action();
+    }
+}
+
+/* =========================
+   PANEL
+========================= */
+
+function openPanel(title,html){
+    document.getElementById("panelTitle").textContent=title;
+    document.getElementById("panelBody").innerHTML=html;
+    document.getElementById("panel").style.display="flex";
+}
+
+function closePanel(){
+    document.getElementById("panel").style.display="none";
+}
+
+/* =========================
+   LIBRARY
+========================= */
+
+function getQuestions(){
+
+    const bank=window.PNGPD_QUESTIONS;
+
+    if(!Array.isArray(bank)){
+        return [];
+    }
+
+    return bank.filter(q =>
+        q &&
+        typeof q.question==="string" &&
+        Array.isArray(q.options) &&
+        q.options.length>=2
+    );
+}
+
+function getCourses(){
+
+    const courses=[...new Set(
+        getQuestions().map(q=>q.course || q.subject || q.code)
+    )].filter(Boolean);
+
+    return courses.sort();
+}
+
+function openLibrary(){
+
+    const courses=getCourses();
+
+    let html=`
+        <p style="font-weight:800;margin-bottom:15px;">
+            📚 Welcome to the PNGPD Library!
+            Choose a course to study or challenge yourself.
+        </p>
+        <div class="course-grid">
+    `;
+
+    if(!courses.length){
+
+        html+=`
+            <div style="
+                padding:20px;
+                border-radius:18px;
+                background:#ffe5eb;
+                color:#d00035;
+                font-weight:900;
+                grid-column:1/-1;
+            ">
+                Question bank not loaded.
+                Make sure <b>data/questions.js</b> contains
+                <b>window.PNGPD_QUESTIONS = [...]</b>.
+            </div>
+        `;
+
+    }else{
+
+        courses.forEach(course=>{
+
+            const count=getQuestions()
+                .filter(q=>(q.course||q.subject||q.code)===course)
+                .length;
+
+            const safe=encodeURIComponent(course);
+
+            html+=`
+                <button class="course-card"
+                        onclick="selectCourse(decodeURIComponent('${safe}'))">
+                    <strong>${escapeHTML(course)}</strong>
+                    <small>${count} questions available</small>
+                    <small>▶ START STUDY</small>
+                </button>
+            `;
+        });
+    }
+
+    html+=`</div>`;
+
+    openPanel("📚 PNGPD LIBRARY",html);
+}
+
+function selectCourse(course){
+
+    currentCourse=course;
+
+    const count=getQuestions()
+        .filter(q=>(q.course||q.subject||q.code)===course)
+        .length;
+
+    openPanel(
+        "📖 "+course,
+        `
+        <div class="note">
+            <h3>🎯 COURSE CHALLENGE</h3>
+            <p>
+                You have <b>${count}</b> questions available.
+                Start a randomized quiz with no repeated question
+                inside the same session.
+            </p>
+        </div>
+
+        <button class="next-btn"
+                onclick="startQuiz('${encodeURIComponent(course)}')">
+            START QUIZ 🚀
+        </button>
+
+        <button class="next-btn"
+                style="background:#ff1744;"
+                onclick="showCourseNotes('${encodeURIComponent(course)}')">
+            KEY NOTES 📒
+        </button>
+        `
+    );
+}
+
+/* =========================
+   QUIZ
+========================= */
+
+function startQuiz(encoded){
+
+    currentCourse=decodeURIComponent(encoded);
+
+    let bank=getQuestions().filter(
+        q=>(q.course||q.subject||q.code)===currentCourse
+    );
+
+    bank=shuffle([...bank]);
+
+    quizQuestions=bank.slice(
+        0,
+        Math.min(30,bank.length)
+    );
+
+    quizIndex=0;
+    quizScore=0;
+    quizAnswered=false;
+
+    if(!quizQuestions.length){
+        openPanel(
+            "❌ NO QUESTIONS",
+            `<div class="note">
+                No questions were found for ${escapeHTML(currentCourse)}.
+            </div>`
+        );
+        return;
+    }
+
+    renderQuiz();
+}
+
+function renderQuiz(){
+
+    const q=quizQuestions[quizIndex];
+
+    const percent=
+        ((quizIndex)/quizQuestions.length)*100;
+
+    let html=`
+        <div class="quiz-progress">
+            <span style="width:${percent}%"></span>
+        </div>
+
+        <div style="font-weight:900;color:#e00032;margin-bottom:8px;">
+            ${escapeHTML(currentCourse)}
+            • Question ${quizIndex+1}/${quizQuestions.length}
+        </div>
+
+        <div class="question">
+            ${escapeHTML(q.question)}
+        </div>
+    `;
+
+    q.options.forEach((option,index)=>{
+
+        html+=`
+            <button
+                class="option"
+                id="option-${index}"
+                onclick="answerQuestion(${index})">
+                <b>${String.fromCharCode(65+index)}.</b>
+                ${escapeHTML(option)}
+            </button>
+        `;
+    });
+
+    html+=`
+        <button
+            id="nextQuestion"
+            class="next-btn"
+            style="display:none"
+            onclick="nextQuestion()">
+            NEXT ➜
+        </button>
+    `;
+
+    openPanel("🧠 COURSE CHALLENGE",html);
+}
+
+function answerQuestion(index){
+
+    if(quizAnswered) return;
+
+    quizAnswered=true;
+
+    const q=quizQuestions[quizIndex];
+
+    let correct=Number(q.answer);
+
+    if(Number.isNaN(correct)){
+
+        const letter=String(q.answer)
+            .trim()
+            .toUpperCase();
+
+        if(letter==="A") correct=0;
+        else if(letter==="B") correct=1;
+        else if(letter==="C") correct=2;
+        else if(letter==="D") correct=3;
+    }
+
+    const buttons=document.querySelectorAll(".option");
+
+    buttons.forEach((button,i)=>{
+
+        button.disabled=true;
+
+        if(i===correct)
+            button.classList.add("correct");
+
+        if(i===index && i!==correct)
+            button.classList.add("wrong");
+    });
+
+    if(index===correct){
+
+        quizScore++;
+        addXP(10);
+        toast("🔥 CORRECT! +10 XP");
+    }else{
+        toast("❌ Not this time!");
+    }
+
+    document.getElementById("nextQuestion").style.display="block";
+}
+
+function nextQuestion(){
+
+    quizIndex++;
+
+    if(quizIndex>=quizQuestions.length){
+        finishQuiz();
+        return;
+    }
+
+    quizAnswered=false;
+    renderQuiz();
+}
+
+function finishQuiz(){
+
+    const total=quizQuestions.length;
+    const percentage=Math.round((quizScore/total)*100);
+
+    const bonus=quizScore*20;
+
+    state.money+=bonus;
+
+    localStorage.setItem("pngpd_money",state.money);
+
+    updateHUD();
+
+    let message="Keep studying! 📚";
+
+    if(percentage>=80)
+        message="🔥 EXCELLENT! PNGPD STAR!";
+    else if(percentage>=60)
+        message="👏 GOOD JOB!";
+    else if(percentage>=40)
+        message="💪 YOU CAN DO BETTER!";
+    else
+        message="📖 BACK TO THE LIBRARY!";
+
+    openPanel(
+        "🏆 QUIZ COMPLETE",
+        `
+        <div style="text-align:center;">
+            <div style="font-size:65px;">${percentage>=70?"🏆":"📚"}</div>
+
+            <h2 style="font-size:32px;color:#e00032;">
+                ${quizScore}/${total}
+            </h2>
+
+            <p style="font-size:22px;font-weight:1000;">
+                ${percentage}%
+            </p>
+
+            <div class="note">
+                <h3>${message}</h3>
+                <p>
+                    💰 Reward earned:
+                    <b>₦${bonus.toLocaleString()}</b>
+                </p>
+            </div>
+
+            <button class="next-btn"
+                    onclick="openLibrary()">
+                BACK TO LIBRARY 📚
+            </button>
+        </div>
+        `
+    );
+}
+
+/* =========================
+   NOTES
+========================= */
+
+function showCourseNotes(encoded){
+
+    const course=decodeURIComponent(encoded);
+
+    const notes={
+        "PGP 122":[
+            ["Filtration","Filtration removes solid particles from a fluid by passing the fluid through a filtering medium."],
+            ["Membrane Separation","A membrane is a thin semipermeable barrier that selectively controls transport between phases."],
+            ["Extraction","Liquid-liquid extraction separates components mainly through differences in solubility."],
+            ["Evaporation","Evaporation concentrates a solution by vaporizing part of the solvent, usually water."]
+        ],
+
+        "PGP 123":[
+            ["Hard Water","Hard water contains dissolved calcium and magnesium salts."],
+            ["Temporary Hardness","Usually caused by calcium or magnesium bicarbonates and can be removed by boiling."],
+            ["Permanent Hardness","Caused by chlorides or sulfates of calcium or magnesium and cannot be removed simply by boiling."],
+            ["Wastewater Treatment","Major stages include preliminary, primary, secondary and tertiary treatment."]
+        ],
+
+        "PGP 125":[
+            ["Petroleum Origin","The course material describes the accepted biogenic theory: petroleum and natural gas originate from ancient organic matter deposited in sedimentary basins."],
+            ["Crude Distillation","Crude oil is separated into broad fractions based mainly on differences in boiling points and volatility."],
+            ["Thermal Cracking","Thermal cracking uses heat to break large hydrocarbon molecules into smaller molecules."],
+            ["Catalytic Reforming","Reforming converts suitable hydrocarbons into higher-octane products and produces hydrogen as a valuable by-product."],
+            ["Alkylation","Alkylation combines isobutane with light olefins to produce highly branched, high-octane alkylate."]
+        ]
+    };
+
+    const selected=notes[course] || [
+        ["Study Mode","Your course notes will appear here as more material is added to the library."]
+    ];
+
+    let html="";
+
+    selected.forEach(n=>{
+        html+=`
+            <div class="note">
+                <h3>${escapeHTML(n[0])}</h3>
+                <p>${escapeHTML(n[1])}</p>
+            </div>
+        `;
+    });
+
+    openPanel("📒 "+course+" KEY NOTES",html);
+}
+
+/* =========================
+   LOCATIONS
+========================= */
+
+function openClassroom(){
+
+    addXP(5);
+
+    openPanel(
+        "🏫 CLASSROOM",
+        `
+        <div class="note">
+            <h3>🎓 CLASS IS IN SESSION</h3>
+            <p>
+                Attend lectures, complete assignments and
+                increase your academic XP.
+            </p>
+        </div>
+
+        <button class="next-btn" onclick="addXP(20);closePanel();">
+            ATTEND CLASS +20 XP 🎓
+        </button>
+        `
+    );
+}
+
+function openHostel(){
+
+    state.energy=Math.min(100,state.energy+35);
+    updateHUD();
+
+    openPanel(
+        "🏠 STUDENT HOSTEL",
+        `
+        <div class="note">
+            <h3>😴 REST TIME</h3>
+            <p>
+                You rested and recovered some energy.
+            </p>
+        </div>
+        `
+    );
+}
+
+function openCanteen(){
+
+    if(state.money<300){
+
+        openPanel(
+            "🍔 CANTEEN",
+            `
+            <div class="note">
+                <h3>💸 NOT ENOUGH MONEY</h3>
+                <p>You need ₦300 for a meal.</p>
+            </div>
+            `
+        );
+
+        return;
+    }
+
+    openPanel(
+        "🍔 CAMPUS CANTEEN",
+        `
+        <div class="note">
+            <h3>🍗 STUDENT MEAL</h3>
+            <p>A hot meal restores energy.</p>
+        </div>
+
+        <button class="next-btn"
+                onclick="
+                    spendMoney(300);
+                    state.energy=Math.min(100,state.energy+30);
+                    updateHUD();
+                    closePanel();
+                    toast('🍔 Meal purchased! +30 Energy');
+                ">
+            BUY MEAL — ₦300
+        </button>
+        `
+    );
+}
+
+function openLab(){
+
+    openPanel(
+        "🧪 PROCESS LAB",
+        `
+        <div class="note">
+            <h3>⚗️ PRACTICAL CHALLENGE</h3>
+            <p>
+                Laboratory activities will give you practical
+                engineering XP in the full game.
+            </p>
+        </div>
+
+        <button class="next-btn"
+                onclick="addXP(25);closePanel();">
+            COMPLETE PRACTICAL +25 XP 🧪
+        </button>
+        `
+    );
+}
+
+function openArena(){
+
+    openPanel(
+        "⚔️ PNGPD ARENA",
+        `
+        <div class="note">
+            <h3>🔥 ACADEMIC BATTLE ZONE</h3>
+            <p>
+                Challenge another PNGPD student in a
+                1v1 academic battle.
+            </p>
+        </div>
+
+        <button class="next-btn"
+                onclick="openArenaSystem()">
+            ENTER ARENA ⚔️
+        </button>
+        `
+    );
+}
+
+function openArenaSystem(){
+
+    if(typeof window.PNGPD_ARENA==="object" &&
+       typeof window.PNGPD_ARENA.open==="function"){
+
+        window.PNGPD_ARENA.open();
+
+    }else{
+
+        openPanel(
+            "⚔️ ARENA",
+            `
+            <div class="note">
+                <h3>🔥 ARENA READY</h3>
+                <p>
+                    The online Arena system is connected
+                    separately through the Arena module.
+                </p>
+            </div>
+            `
+        );
+    }
+}
+
+function openProfile(){
+
+    openPanel(
+        "👤 PLAYER PROFILE",
+        `
+        <div class="note">
+            <h3>🎮 ${escapeHTML(state.name)}</h3>
+            <p>Student • PNGPD LIFE</p>
+        </div>
+
+        <div class="course-grid">
+            <div class="course-card">
+                ⭐ XP
+                <br>
+                ${state.xp}
+            </div>
+
+            <div class="course-card">
+                💰 MONEY
+                <br>
+                ₦${state.money.toLocaleString()}
+            </div>
+
+            <div class="course-card">
+                ❤️ ENERGY
+                <br>
+                ${state.energy}
+            </div>
+        </div>
+        `
+    );
+}
+
+/* =========================
+   UTILITIES
+========================= */
+
+function shuffle(array){
+
+    for(let i=array.length-1;i>0;i--){
+
+        const j=Math.floor(Math.random()*(i+1));
+
+        [array[i],array[j]]=
+        [array[j],array[i]];
+    }
+
+    return array;
+}
+
+function escapeHTML(value){
+
+    return String(value)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+}
+
+function toast(message){
+
+    const el=document.getElementById("toast");
+
+    el.textContent=message;
+    el.classList.add("show");
+
+    clearTimeout(window.toastTimer);
+
+    window.toastTimer=setTimeout(()=>{
+        el.classList.remove("show");
+    },2200);
+}
+
+/* INITIAL PLAYER */
+document.getElementById("player").style.left=state.x+"px";
+document.getElementById("player").style.top=state.y+"px";
+
+updateHUD();
 
 </script>
 
